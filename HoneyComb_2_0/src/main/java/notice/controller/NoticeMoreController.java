@@ -17,8 +17,6 @@ public class NoticeMoreController {
 		this.dao = dao;
 	}
 	
-	private LocaleResolver localeResolver;
-
 	@RequestMapping(method = RequestMethod.GET)
 	public String form() {
 		return "notice_more";
@@ -27,10 +25,6 @@ public class NoticeMoreController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String submit() {
 		return "notice_more";
-	}
-
-	public void setLocaleResolver(LocaleResolver localeResolver) {
-		this.localeResolver = localeResolver;
 	}
 
 }
