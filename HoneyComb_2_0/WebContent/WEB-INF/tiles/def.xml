@@ -32,6 +32,12 @@
 		<put-attribute name="body" value="/WEB-INF/page/main/notice/more.jsp" />
 
 	</definition>
+	<definition name="notice_more" extends="base_layout">
+
+		<put-attribute name="title" value="more" />
+		<put-attribute name="body" value="/WEB-INF/page/cloud/main.jsp" />
+
+	</definition>
 
 
 </tiles-definitions>
