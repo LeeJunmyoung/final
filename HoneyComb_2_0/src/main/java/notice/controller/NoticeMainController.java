@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.LocaleResolver;
 
 @Controller
-@RequestMapping("/notice/main.do")
+@RequestMapping("/main")
 public class NoticeMainController {
 
 	private LocaleResolver localeResolver;

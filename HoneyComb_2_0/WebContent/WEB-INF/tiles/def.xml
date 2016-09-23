@@ -11,17 +11,15 @@
 
 		<put-attribute name="title" value="main" />
 
-		<put-attribute name="notice" value="/WEB-INF/main/notice/main.jsp" />
-		<put-attribute name="promgr" value="/WEB-INF/main/promgr/main.jsp" />
-		<put-attribute name="calenar" value="/WEB-INF/main/calenar/main.jsp" />
+		<put-attribute name="notice" value="/WEB-INF/page/main/notice/main.jsp" />
+		<put-attribute name="promgr" value="/WEB-INF/page/main/promgr/main.jsp" />
+		<put-attribute name="calenar" value="/WEB-INF/page/main/calendar/main.jsp" />
 
 		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
 
-
 	</definition>
 
-	<definition name="base_layout" template="/WEB-INF/tiles/template/layout_base.jsp"
-		preparer="menuPreparer">
+	<definition name="base_layout" template="/WEB-INF/tiles/template/layout_base.jsp">
 
 		<put-attribute name="header" value="/WEB-INF/tiles/template/header.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
@@ -31,7 +29,7 @@
 	<definition name="notice_more" extends="base_layout">
 
 		<put-attribute name="title" value="more" />
-		<put-attribute name="body" value="/WEB-INF/main/notice/more.jsp" />
+		<put-attribute name="body" value="/WEB-INF/page/main/notice/more.jsp" />
 
 	</definition>
 

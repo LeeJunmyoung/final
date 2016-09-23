@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+
+<!-- 	<insert id="insert" parameterType="day93_20160909.mybatis.FileInfo">
+		insert into file_upload
+		values(file_num.nextval,#{student_num},#{file_name},#{file_path},#{file_size})
+	</insert> -->
+
+</mapper>
