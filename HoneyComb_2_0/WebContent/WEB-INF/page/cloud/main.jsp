@@ -11,10 +11,19 @@
 </head>
 <body>
 <c:forEach var="cloudlist" items="${cloudlist}">
-	<div>
-	  
+	<div style="border:5px solid">
+	  file_num :::${cloudlist.file_num}<br>
+	  file_name :::${cloudlist.file_name}<br>
+	  file_path:::${cloudlist.file_path}<br>
+	  file_uploader :::${cloudlist.file_uploader}<br>
+	  file_size :::${cloudlist.file_size}<br>
+	  file_date :::${cloudlist.file_date}<br>
+	  com_num :::${cloudlist.com_num}<br>
+	  folder :::${cloudlist.folder}<br>
+	  promgr_num :::${cloudlist.promgr_num}<br>
+	  mem_num :::${cloudlist.mem_num}<br>
+	  com_pos_name :::${cloudlist.com_pos_name}<br>
 	</div>
 </c:forEach>
-test
 </body>
 </html>
