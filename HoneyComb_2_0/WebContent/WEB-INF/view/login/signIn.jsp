@@ -196,7 +196,7 @@ width:250;
                 <div class="row">
                   <div class="col-md-12 text-center">
                     <h1>HONEYCOMB</h1><p></p><p></p>
-            <form name="myform" id="myform"OnSubmit="return checkIt()" action="/HoneyComb/coin/SignInpro.coin" method="post">
+            <form name="myform" id="myform"   method="post"><!-- OnSubmit="return checkIt()" -->
 	<!-- 이메일 입력창 -->
 	
     <input type="text" value="${email}" placeholder="email" name="email" id="email"/>
