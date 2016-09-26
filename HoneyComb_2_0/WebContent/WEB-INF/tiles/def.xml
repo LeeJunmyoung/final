@@ -35,6 +35,11 @@
 		<put-attribute name="title" value="cloud" />
 		<put-attribute name="body" value="/WEB-INF/page/cloud/main.jsp" />
 	</definition>
+	
+	<definition name="admin_main" extends="base_layout">
+		<put-attribute name="title" value="admin" />
+		<put-attribute name="body" value="/WEB-INF/admin/admin_main.jsp" />
+	</definition>
 
 
 </tiles-definitions>
