@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import notice.db.NoticeDao;
+import notice.db.NoticeDataBean;
 
 @Controller
-@RequestMapping("/more")
+@RequestMapping("/more.do")
 public class NoticeMoreController {
 
 	private NoticeDao dao;
@@ -20,7 +21,7 @@ public class NoticeMoreController {
 	public void setDao(NoticeDao dao) {
 		this.dao = dao;
 	}
-	
+
 	public String submit(MultipartHttpServletRequest request) {
 
 		String pageNum = request.getParameter("pageNum");
@@ -44,7 +45,17 @@ public class NoticeMoreController {
 		notice_count = dao.getNoticeCount(com_num);
 
 		if (notice_count > 0) {
+
 			articleList = dao.getNoticeItem(com_num, startRow, endRow);
+
+			for (int i = 0; i < articleList.size(); i++) {
+
+				NoticeDataBean article = (NoticeDataBean) articleList.get(i);
+				int isNew = dao.setIsNew(article.getNotice_num());
+				article.setIsNew(isNew);
+
+			}
+
 		} else {
 			articleList = Collections.EMPTY_LIST;
 		}
