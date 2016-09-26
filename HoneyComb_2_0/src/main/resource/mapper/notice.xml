@@ -5,6 +5,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="notice">
 
+	<insert id="item_add" parameterType="notice.db.NoticeDataBean">
+		insert into
+		notice(notice_num,notice_title,notice_content,notice_member,notice_date,com_num)
+		values(notice_num.NEXTVAL,?,?,?,?,?)
+	</insert>
+
 	<select id="count" parameterType="int" resultType="int">
 		select
 		count(*) from notice where com_num=#{com_num}
@@ -23,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 
-	<select id="item_all" parameterType="hashmap" resultType="notice.db.NoticeInfo">
+	<select id="item_all" parameterType="hashmap" resultType="notice.db.NoticeDataBean">
 		<![CDATA[
 		select
 		notice_num,notice_title,notice_content,notice_member,notice_date,r
@@ -33,6 +39,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		notice_num,notice_title,notice_content,notice_member,notice_date from
 		notice where com_num=#{com_num} order by notice_num desc))
 		where r>=#{startRow} and r<=#{endRow}
+		]]>
+	</select>
+
+	<select id="set_isNew" parameterType="int" resultType="int">
+		<![CDATA[
+		select extract(day from systimestamp-tm) ingDay from (
+		select to_timestamp((select notice_date from notice where notice_num=#{notice_num}), 
+		'yy/mm/dd hh24:mi:ss') tm from dual)
 		]]>
 	</select>
 

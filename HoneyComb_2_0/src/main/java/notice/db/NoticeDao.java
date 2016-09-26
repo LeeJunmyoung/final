@@ -16,23 +16,41 @@ public class NoticeDao extends SqlSessionDaoSupport {
 	public List getNoticeItem(int com_num, int startRow, int endRow) {
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		
+
 		if (startRow == -1) {
-			
+
 			map.put("com_num", com_num);
 			map.put("endRow", endRow);
 
 			return getSqlSession().selectList("notice.item_main", map);
 
 		} else {
-			
+
 			map.put("com_num", com_num);
 			map.put("startRow", startRow);
 			map.put("endRow", endRow);
-			
+
 			return getSqlSession().selectList("notice.item_all", com_num);
 
 		}
+
+	}
+
+	public int setIsNew(int notice_num) {
+
+		int ingDay = getSqlSession().insert("notice.set_isNew", notice_num);
+
+		if (ingDay < 1) {
+			return 0;
+		} else {
+			return -1;
+		}
+
+	}
+
+	public int insertItem(NoticeDataBean article) {
+
+		return getSqlSession().insert("notice.item_add", article);
 
 	}
 

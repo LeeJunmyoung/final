@@ -2,7 +2,7 @@ package notice.db;
 
 import java.sql.Timestamp;
 
-public class NoticeInfo {
+public class NoticeDataBean {
 
 	private int notice_num; // 공지 글 번호
 	private String notice_title; // 공지 제목

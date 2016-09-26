@@ -11,9 +11,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.LocaleResolver;
 
 import notice.db.NoticeDao;
+import notice.db.NoticeDataBean;
 
 @Controller
-@RequestMapping("/main")
+@RequestMapping("/main.do")
 public class NoticeMainController {
 
 	private NoticeDao dao;
@@ -46,7 +47,17 @@ public class NoticeMainController {
 		notice_count = dao.getNoticeCount(com_num);
 
 		if (notice_count > 0) {
+			
 			articleList = dao.getNoticeItem(com_num, -1, endRow);
+
+			for (int i = 0; i < articleList.size(); i++) {
+
+				NoticeDataBean article = (NoticeDataBean) articleList.get(i);
+				int isNew = dao.setIsNew(article.getNotice_num());
+				article.setIsNew(isNew);
+
+			}
+
 		} else {
 			articleList = Collections.EMPTY_LIST;
 		}
