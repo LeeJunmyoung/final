@@ -22,7 +22,12 @@ public class SignInController {
 
 		@RequestMapping(method = RequestMethod.POST)
 		public String submit() {
+			
+			
 				return "signIn";
+				
+				
+				
 		}
 
 	public void setLocaleResolver(LocaleResolver localeResolver) {

@@ -28,9 +28,47 @@
 	<bean id = "SignInController" class="login.controller.SignInController" />
 
 
-<bean id = "LogInController" class="login.controller.LogInController" />
+<bean id = "LogInController" class="login.controller.LogInController" p:logindao-ref="logindao" />
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<context:property-placeholder location="classpath:db.properties" />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${driver}" />
+		<property name="jdbcUrl" value="${url}" />
+		<property name="user" value="honeycomb" />
+		<property name="password" value="honeycomb" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:mapper/login.xml" />
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
+	
+	<bean id="logindao" class="login.controller.LoginDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 
 
 
