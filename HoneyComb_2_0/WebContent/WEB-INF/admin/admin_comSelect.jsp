@@ -11,11 +11,11 @@
 <body>
 <c:forEach var="adminlist" items="${adminlist}">
 	<div>
-	${com_num}<br>
-	${com_name}<br>
-	${com_add}<br>
-	${com_phone}<br>
-	${com_aff}<br>
+	${adminlist.com_num}<br>
+	${adminlist.com_name}<br>
+	${adminlist.com_add}<br>
+	${adminlist.com_phone}<br>
+	${adminlist.com_aff}<br>
 	  
 	</div>
 </c:forEach>
