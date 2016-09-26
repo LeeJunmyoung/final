@@ -40,7 +40,7 @@
 		<div class="col-md-1">
 
 			<input type="button" class="btn btn-primary btn-xs" value="뒤로가기"
-				onclick="location.href='/HoneyComb/index.jsp'">
+				onclick="location.href='/HoneyComb_2_0/index.jsp'">
 
 		</div>
 
@@ -121,19 +121,19 @@
 				
 					<c:if test="${startPage > pageSize}">
 						<li>
-							<a href="/HoneyComb/notice/noticeMore.notice?pageNum=${startPage - pageSize}">이전</a>
+							<a href="/HoneyComb_2_0/notice/more?pageNum=${startPage - pageSize}">이전</a>
 						</li>
 					</c:if>
 				
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
 						<li>
-							<a href="/HoneyComb/notice/noticeMore.notice?pageNum=${i}">${i}</a>
+							<a href="/HoneyComb_2_0/notice/more?pageNum=${i}">${i}</a>
 						</li>
 					</c:forEach>
 					
 					<c:if test="${endPage < pageCount}">
 						<li>
-							<a href="/HoneyComb/notice/noticeMore.notice?pageNum=${startPage + pageSize}">다음</a>
+							<a href="/HoneyComb_2_0/notice/more?pageNum=${startPage + pageSize}">다음</a>
 						</li>
 					</c:if>
 				

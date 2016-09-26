@@ -14,19 +14,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 		select
 		notice_num,notice_title,notice_content,notice_member,notice_date,r
-		from (
-		select
+		from ( select
 		notice_num,notice_title,notice_content,notice_member,notice_date,rownum
-		r from (
-		select
+		r from ( select
 		notice_num,notice_title,notice_content,notice_member,notice_date from
-		notice where com_num=? order by notice_num desc))
-		where r<=?";
+		notice where com_num=#{com_num} order by notice_num desc))
+		where r<=#{endRow}";
 		]]>
 	</select>
 
 	<select id="item_all" parameterType="hashmap" resultType="notice.db.NoticeInfo">
-
+		<![CDATA[
+		select
+		notice_num,notice_title,notice_content,notice_member,notice_date,r
+		from (select
+		notice_num,notice_title,notice_content,notice_member,notice_date,rownum
+		r from ( select
+		notice_num,notice_title,notice_content,notice_member,notice_date from
+		notice where com_num=#{com_num} order by notice_num desc))
+		where r>=#{startRow} and r<=#{endRow}
+		]]>
 	</select>
 
 </mapper>

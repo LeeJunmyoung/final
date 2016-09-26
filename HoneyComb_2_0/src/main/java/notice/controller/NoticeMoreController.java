@@ -3,6 +3,7 @@ package notice.controller;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -15,6 +16,7 @@ public class NoticeMoreController {
 
 	private NoticeDao dao;
 
+	@Autowired
 	public void setDao(NoticeDao dao) {
 		this.dao = dao;
 	}
@@ -48,8 +50,6 @@ public class NoticeMoreController {
 		}
 
 		number = notice_count - (currentPage - 1) * pageSize;
-		
-		
 
 		return "more";
 	}

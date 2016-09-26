@@ -16,7 +16,7 @@
 <script>
 	
  	function writeView() { // 공지 작성
-		url = "/HoneyComb/notice/noticeWriteForm.notice";
+		url = "/HoneyComb_2_0/notice/writeForm";
 		window.open(
 						url,
 						"post",
@@ -46,7 +46,7 @@
 		<div class="col-md-1">
 		
 				<input type="button" class="btn btn-primary btn-xs" value="더보기"
-			  		onclick="location.href='/HoneyComb/notice/noticeMore.notice'">
+			  		onclick="location.href='/HoneyComb_2_0/notice/more'">
 			
 		</div>
 		
