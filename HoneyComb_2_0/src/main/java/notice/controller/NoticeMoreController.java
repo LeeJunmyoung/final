@@ -1,9 +1,11 @@
 package notice.controller;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import notice.db.NoticeDao;
 
@@ -17,14 +19,39 @@ public class NoticeMoreController {
 		this.dao = dao;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public String form() {
-		return "notice_more";
-	}
+	public String submit(MultipartHttpServletRequest request) {
 
-	@RequestMapping(method = RequestMethod.POST)
-	public String submit() {
-		return "notice_more";
+		String pageNum = request.getParameter("pageNum");
+		int com_num = (int) request.getSession().getAttribute("com_num");
+
+		if (pageNum == null) {
+			pageNum = "1";
+		}
+
+		int pageSize = 5;
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage - 1) * pageSize + 1;
+		int endRow = 0;
+		endRow = currentPage * pageSize;
+
+		int notice_count = 0;
+		int number = 0;
+
+		List articleList = null;
+
+		notice_count = dao.getNoticeCount(com_num);
+
+		if (notice_count > 0) {
+			articleList = dao.getNoticeItem(com_num, startRow, endRow);
+		} else {
+			articleList = Collections.EMPTY_LIST;
+		}
+
+		number = notice_count - (currentPage - 1) * pageSize;
+		
+		
+
+		return "more";
 	}
 
 }

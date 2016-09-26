@@ -1,20 +1,39 @@
 package notice.db;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
-public class NoticeDao extends SqlSessionDaoSupport{
-	
-	/*public int insert(String student_num, String file_name, String file_path, String file_size) {
+public class NoticeDao extends SqlSessionDaoSupport {
 
-		FileInfo info = new FileInfo();
+	public int getNoticeCount(int com_num) {
 
-		info.setStudent_num(student_num);
-		info.setFile_name(file_name);
-		info.setFile_path(file_path);
-		info.setFile_size(file_size);
+		return getSqlSession().selectOne("notice.count", com_num);
 
-		return getSqlSession().insert("file.insert", info);
+	}
 
-	}*/
+	public List getNoticeItem(int com_num, int startRow, int endRow) {
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		if (startRow == -1) {
+			
+			map.put("com_num", com_num);
+			map.put("endRow", endRow);
+
+			return getSqlSession().selectList("notice.item_main", map);
+
+		} else {
+			
+			map.put("com_num", com_num);
+			map.put("startRow", startRow);
+			map.put("endRow", endRow);
+			
+			return getSqlSession().selectList("notice.item_all", com_num);
+
+		}
+
+	}
 
 } // public class NoticeDao end
