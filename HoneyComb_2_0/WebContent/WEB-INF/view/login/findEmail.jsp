@@ -122,7 +122,7 @@ width:200;
                 <div class="row">
                   <div class="col-md-12 text-center">
                   
-                    <form method="post">
+    <form method="post">
 	<h4>이름을 입력해주세요</h4>
 	<input type="text"  placeholder="Name" name="name" id="name"/><br><br>
 	<h4>전화번호를 입력해주세요</h4>

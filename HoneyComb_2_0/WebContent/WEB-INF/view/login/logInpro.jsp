@@ -7,7 +7,7 @@
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
-    <script src="/HoneyComb/view/script.js"  type="text/javascript" ></script>
+    <script src="/HoneyComb_2_0/resources/script/script.js"  type="text/javascript" ></script>
 <style type="text/css">
 a:link {text-decoration: none; color: #333333;}
 a:visited {text-decoration: none; color: #333333;}
