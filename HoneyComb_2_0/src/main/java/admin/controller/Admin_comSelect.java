@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.support.ServletContextLiveBeansView;
 import org.springframework.web.servlet.ModelAndView;
 
-import admin.db.adminDao;
+import admin.db.AdminDao;
 
 @Controller
 @RequestMapping("/admin_comSelect")
-public class admin_comSelect {
+public class Admin_comSelect {
 
-	private adminDao dao;
+	private AdminDao dao;
 
 	@Autowired
-	public void setDao(adminDao dao) {
+	public void setDao(AdminDao dao) {
 		this.dao = dao;
 	}
 
@@ -33,15 +33,15 @@ public class admin_comSelect {
 		session = request.getSession();
 		session.setAttribute("com_num", 1);
 		com_num = (int) request.getSession().getAttribute("com_num");
-	
+
 		List adminlist = dao.getadminList(com_num);
-		
+
 		ModelAndView mav = new ModelAndView("admin_main", "adminlist", adminlist);
-		
+
 		System.out.println(mav.getViewName());
 		mav.setViewName("admin_comSelect");
 		mav.addObject("admin_comSelect", adminlist);
-		
+
 		System.out.println(mav.getViewName());
 		return mav;
 	}

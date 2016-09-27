@@ -1,6 +1,6 @@
 package admin.db;
 
-public class adminInfo {
+public class AdminInfo {
 	private int com_num;
 	private String com_name;
 	private String com_add;

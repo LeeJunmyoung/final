@@ -45,6 +45,5 @@
 		<put-attribute name="title" value="admin" />
 		<put-attribute name="body" value="/WEB-INF/admin/admin_comSelect.jsp" />
 	</definition>
-
-
+	
 </tiles-definitions>

@@ -44,14 +44,14 @@
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 
-	<bean id="dao" class="admin.db.adminDao">
+	<bean id="dao" class="admin.db.AdminDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
-	<bean id="adminController" class="admin.controller.adminController"
+	<bean id="adminController" class="admin.controller.AdminController"
 		p:dao-ref="dao" />
 
-	<bean id="admin_comSelect" class="admin.controller.admin_comSelect"
+	<bean id="admin_comSelect" class="admin.controller.Admin_comSelect"
 		p:dao-ref="dao" />
 
 </beans>
