@@ -7,6 +7,12 @@ public class adminInfo {
 	private String com_phone;
 	private String com_aff;
 
+	@Override
+	public String toString() {
+		return "com_num ::: " + com_num + "\n" + "com_name ::: " + com_name + "\n" + "com_add ::: " + com_add + "\n"
+				+ "com_phone ::: " + com_phone + "\n" + "com_aff ::: " + com_aff + "\n";
+	}
+
 	public int getCom_num() {
 		return com_num;
 	}

@@ -30,8 +30,8 @@
 		destroy-method="close">
 		<property name="driverClass" value="${driver}" />
 		<property name="jdbcUrl" value="${url}" />
-		<property name="user" value="${username}" />
-		<property name="password" value="${password}" />
+		<property name="user" value="honeycomb" />
+		<property name="password" value="honeycomb" />
 	</bean>
 
 	<!-- mybatis mapper파일설정 -->

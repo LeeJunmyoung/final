@@ -26,12 +26,15 @@ public class admin_comSelect {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView getadminList(HttpSession session, HttpServletRequest request) {
+		System.out.println("실행중");
 		int com_num = 0;
 		session = request.getSession();
 		session.setAttribute("com_num", 1);
 		com_num = (int) request.getSession().getAttribute("com_num");
 		List adminlist = dao.getadminList(com_num);
 		ModelAndView mav = new ModelAndView("admin_main", "adminlist", adminlist);
+		System.out.println(mav.getViewName());
+		
 		return mav;
 	}
 
