@@ -24,7 +24,7 @@ update members set passwd=#{passwd} where email=#{email}
 
 
 <!-- 
-<select id="getMembers" resultMap="MemberResultMap">
+<select id="getMembers" parameterType="login.controller.LogOnDataBean">
 select * from members
 </select>
 

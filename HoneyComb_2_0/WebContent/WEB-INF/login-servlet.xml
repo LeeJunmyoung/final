@@ -30,7 +30,7 @@
 	<bean id = "LoginMainFrameController" class="login.controller.LoginMainFrameController" />
 
 
-	<bean id = "SignInController" class="login.controller.SignInController" />
+	<bean id = "SignInController" class="login.controller.SignInController" p:dao-ref="dao"/>
 
 
 	<bean id = "LogInController" class="login.controller.LogInController" p:logindao-ref="logindao" />
@@ -41,7 +41,9 @@
 <bean id = "UpdatePasswd" class="login.controller.UpdatePasswd" p:logindao-ref="logindao"/>
 
 
-
+<bean id="dao" class="login.controller.SignInDAO">
+<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+</bean>
 	<bean id="logindao" class="login.controller.LoginDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
