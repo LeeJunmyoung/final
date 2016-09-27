@@ -18,7 +18,7 @@ public class SignInDAO extends SqlSessionDaoSupport {
 		logdb.setPhone_num("phone_num");
 		
 		getSqlSession().insert("insertMember",logdb);
-		
+	
 	}
 	
 	
