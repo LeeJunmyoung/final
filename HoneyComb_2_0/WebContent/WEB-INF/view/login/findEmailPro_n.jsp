@@ -76,13 +76,13 @@ width:155;
                 <div class="row">
                   <div class="col-md-12 text-center">
                     <div style="margin:auto; width:50%">
-	<h3> 존재하지 않는 이메일입니다.</h3>
-Email 또는 비밀번호를 확인해 주세요<br><br>
-<a href="logIn.do">뒤로가기</a>
+	<h3 align="center">해당 Email 은 존재하지 않습니다.</h3>
+	<a href="login.do">뒤로가기</a>
+</div>
                   </div>
                 </div>
               </div>
-           </div>
+            </div>
           </div>
 </body>
 </html>

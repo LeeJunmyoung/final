@@ -26,23 +26,24 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-
-	<bean id="LoginMainFrameController" class="login.controller.LoginMainFrameController" />
-
-
-	<bean id="SignInController" class="login.controller.SignInController" />
-
-
-	<bean id="LogInController" class="login.controller.LogInController"
-		p:logindao-ref="logindao" />
-
-
 	
+	<bean id = "LoginMainFrameController" class="login.controller.LoginMainFrameController" />
+
+
+	<bean id = "SignInController" class="login.controller.SignInController" />
+
+
+	<bean id = "LogInController" class="login.controller.LogInController" p:logindao-ref="logindao" />
+
+
+<bean id = "LoginFindMainNPasswd" class="login.controller.LoginFindMainNPasswd" p:logindao-ref="logindao"/>
 
 
 
-
-
+	<bean id="logindao" class="login.controller.LoginDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
 
 
 
@@ -68,13 +69,13 @@
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
+	
+	
+	
 
 
-	<bean id="logindao" class="login.controller.LoginDAO">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
 
 
 

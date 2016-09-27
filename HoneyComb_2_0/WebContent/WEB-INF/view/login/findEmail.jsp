@@ -7,7 +7,43 @@
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
-    <script src="/HoneyComb/view/script.js"  type="text/javascript" ></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<title>Email찾기</title>
+<script type="text/javascript">
+
+
+
+function filter(){
+	if($('#phone1').val().length==3){
+	
+		$('#phone2').focus();
+	 
+	
+	return false;
+
+	}
+	if($('#phone2').val().length==4){
+		
+		$('#phone3').focus();
+	 
+	
+	return false;
+
+	}
+}
+
+
+function filter1(){
+	if($('#phone2').val().length==4){
+		
+		$('#phone3').focus();
+	 
+	
+	return false;
+
+	}
+}
+</script>
 <style type="text/css">
 a:link {text-decoration: none; color: #333333;}
 a:visited {text-decoration: none; color: #333333;}
@@ -53,8 +89,18 @@ padding:0;
 #signButton{
 width:405;
 }
-#findpasswd{
-width:155;
+#name{
+width:200px;
+height:30px;
+text-align:center;
+}
+#phone input{
+text-align:center;
+width:60px;
+height:30px;
+}
+#findEmail{
+width:200;
 }
 
 
@@ -75,14 +121,24 @@ width:155;
              <div class="container" style="width:70%;">
                 <div class="row">
                   <div class="col-md-12 text-center">
-                    <div style="margin:auto; width:50%">
-	<h3> 존재하지 않는 이메일입니다.</h3>
-Email 또는 비밀번호를 확인해 주세요<br><br>
-<a href="logIn.do">뒤로가기</a>
+                  
+                    <form method="post">
+	<h4>이름을 입력해주세요</h4>
+	<input type="text"  placeholder="Name" name="name" id="name"/><br><br>
+	<h4>전화번호를 입력해주세요</h4>
+	<div id="phone">
+		<input type="text"  placeholder="phone1" id='phone1'  name="phone1" maxlength="3"  onkeyup='{filter();return false}' onkeypress='javascript:if(event.keyCode==3){ filter(); return false;}'/> -
+		<input	type="text"  placeholder="phone2" id='phone2' name="phone2" maxlength="4"  onkeyup='{filter1();return false}' onkeypress='javascript:if(event.keyCode==4){ filter1(); return false;}'/>  -
+		<input type="text"  placeholder="phone3" id='phone3' name="phone3" maxlength="4"/><br>
+    </div>
+    <br>
+	<input type="submit" class="btn btn-default" value="find Email" id="findEmail"/>
+	</form>
+            
                   </div>
                 </div>
               </div>
-           </div>
+            </div>
           </div>
 </body>
 </html>

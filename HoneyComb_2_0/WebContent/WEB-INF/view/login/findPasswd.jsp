@@ -75,14 +75,20 @@ width:155;
              <div class="container" style="width:70%;">
                 <div class="row">
                   <div class="col-md-12 text-center">
-                    <div style="margin:auto; width:50%">
-	<h3> 존재하지 않는 이메일입니다.</h3>
-Email 또는 비밀번호를 확인해 주세요<br><br>
-<a href="logIn.do">뒤로가기</a>
+                    <h3>비밀번호 찾기</h3><br>
+<form name="myform"  " onSubmit = "return checkEmail()"method="post">
+	Email을 입력해주세요<br>
+    <input type="text" placeholder="email" name="email"/>
+    <p id="textProp"></p>
+    <input type="hidden" id="mailtext" value="" name="test">
+
+    <input type="submit" class="btn btn-default" id="findpasswd"value="비밀번호 재설정"/>
+</form>
+            
                   </div>
                 </div>
               </div>
-           </div>
+            </div>
           </div>
 </body>
 </html>

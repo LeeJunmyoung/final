@@ -156,10 +156,10 @@ padding:0;
                   <button type="submit" class="btn btn-default">Sign in</button><p></p> <p></p>   
                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                   <a href="/HoneyComb/view/signIn.jsp">회원가입</a>
+                   <a href="signIn.do">회원가입</a>
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/HoneyComb/view/findEmail.jsp">Email</a>&nbsp;/&nbsp; 
-                 <a href="/HoneyComb/view/findPasswd.jsp">Passwd 찾기</a>          
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="findEmail.do">Email</a>&nbsp;/&nbsp; 
+                 <a href="findPasswd.do">Passwd 찾기</a>          
               </div>
             </form>
                   

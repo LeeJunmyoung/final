@@ -59,8 +59,8 @@ width:405;
   <body>
   <div id = "home_banner">
   <div id = "logo_wrapper">
-       <img id="logo_banner" src="/HoneyComb/page_layout/page_image/logo.png" width="100" height="100"onclick="location.href='/HoneyComb/index.jsp'">
- <a id="logo_a" href="login/LoginMainFrame.do"><p id="Honey_comB" >HONEYCOMB</p></a>
+       <img id="logo_banner" src="/HoneyComb/page_layout/page_image/logo.png" width="100" height="100"onclick="location.href='/HoneyComb_2_0/login/LoginMainFrame.do'">
+ <a id="logo_a" href="/HoneyComb_2_0/login/LoginMainFrame.do"><p id="Honey_comB" >HONEYCOMB</p></a>
   </div>
   </div>
       <div class="container" style="height:89%; width:80%;">

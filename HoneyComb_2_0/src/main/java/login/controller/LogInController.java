@@ -30,11 +30,14 @@ public class LogInController {
 		@RequestMapping(method = RequestMethod.POST)
 		public String submit(@RequestParam("email") String email,@RequestParam("passwd") String passwd) {
 			
+			System.out.println("email:::"+email+"passwd:::"+passwd);
+			
+			
 			
 			LogOnDataBean lodb = new LogOnDataBean(); 
-					lodb= logindao.Checkmembers(email, passwd);
+			lodb= logindao.Checkmembers(email, passwd);
 			if(lodb==null){
-				
+			System.out.println("실행함");	
 				return "logInpro";
 			}
 			

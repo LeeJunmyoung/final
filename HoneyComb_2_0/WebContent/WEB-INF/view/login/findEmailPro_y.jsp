@@ -75,14 +75,12 @@ width:155;
              <div class="container" style="width:70%;">
                 <div class="row">
                   <div class="col-md-12 text-center">
-                    <div style="margin:auto; width:50%">
-	<h3> 존재하지 않는 이메일입니다.</h3>
-Email 또는 비밀번호를 확인해 주세요<br><br>
-<a href="logIn.do">뒤로가기</a>
+                    <h3>고객님의 E-mail 은 ${email}입니다</h3>
+<a href="/HoneyComb_2_0/login/LoginMainFrame.do">메인으로</a>
                   </div>
                 </div>
               </div>
-           </div>
+            </div>
           </div>
 </body>
 </html>

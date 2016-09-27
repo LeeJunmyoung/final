@@ -10,12 +10,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 select * from members where email=#{email} and passwd=#{passwd}
 </select>
 
+<select id="FindEmail" resultType="String" resultSets="login.controller.LogOnDataBean" >
+select email from members where name=#{name} and phone_num=#{phone_num}
+</select>
+
+
+<!-- 
 <select id="getMembers" resultMap="MemberResultMap">
 select * from members
 </select>
 
 <insert id="insertMember" parameterType="login.controller.LogOnDataBean">
 insert into members value(#{email},#{passwd},#{name},#{phone_num})
-</insert>
+</insert> -->
 
 </mapper>
