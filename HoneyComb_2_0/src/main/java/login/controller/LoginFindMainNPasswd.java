@@ -1,5 +1,7 @@
 package login.controller;
 
+import javax.mail.MessagingException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -36,7 +38,7 @@ public class LoginFindMainNPasswd {
 		}
 
 		@RequestMapping(method = RequestMethod.POST,value="findEmail.do")
-		public String findEmail1(@RequestParam("name") String name,
+		public String findEmail(@RequestParam("name") String name,
 				@RequestParam("phone1") String phone1,
 				@RequestParam("phone2") String phone2,
 				@RequestParam("phone3") String phone3,ModelMap modelMap) {
@@ -46,7 +48,7 @@ public class LoginFindMainNPasswd {
 			email=logindao.findEmail(name, phone);
 			
 			
-            if(email.equals("")){
+            if(email==null){
             	return "findEmailPro_n";
             }else{
             	
@@ -69,14 +71,37 @@ public class LoginFindMainNPasswd {
 				return "findPasswd";
 		}
 
-		@RequestMapping(method = RequestMethod.POST,value="findEmail.do")
-		public String findPasswd(@RequestParam("email") String name,ModelMap modelMap) {
-
-		
+		@RequestMapping(method = RequestMethod.POST, value="findPasswd.do")
+		public String findPasswd(@RequestParam("email") String email, ModelMap modelMap) {
+			
+			System.out.println("실행함여");
+			
+			
+			MailSender sender = new MailSender();
+			String check = logindao.findPasswd(email);
+			
+			if(check==null){
+				return "findPasswdPro_n";
+			}else{
+				try {
+					int key =  sender.emailSender(email);
+					modelMap.addAttribute("email", check);
+					modelMap.addAttribute("key", key);
+					
+					
+					
+				} catch (MessagingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				return "findPasswdPro_y";
+				
+			}
 			
             	
 			
-			return "findEmailPro_y";
+		
             
 		}
 	

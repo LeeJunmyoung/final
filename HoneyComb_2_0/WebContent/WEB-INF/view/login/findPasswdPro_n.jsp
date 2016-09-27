@@ -63,23 +63,23 @@ width:155;
   <body>
   <div id = "home_banner">
   <div id = "logo_wrapper">
-       <img id="logo_banner" src="/HoneyComb/page_layout/page_image/logo.png" width="100" height="100"onclick="location.href='/HoneyComb/index.jsp'">
- <a id="logo_a" href="/HoneyComb/index.jsp"><p id="Honey_comB" >HONEYCOMB</p></a>
+       <img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png" width="100" height="100"onclick="location.href='LoginMainFrame.do'">
+ <a id="logo_a" href="LoginMainFrame.do"><p id="Honey_comB" >HONEYCOMB</p></a>
   </div>
   </div>
       <div class="container" style="height:89%; width:80%;">
             <div class="cover">
               <div class="navbar navbar-default" >
               </div>
-              <div class="cover-image" style="background-image :  url('/HoneyComb/view/img/background.png')" ></div>
+              <div class="cover-image" style="background-image :  url('/HoneyComb_2_0/resources/img/background.png')" ></div>
              <div class="container" style="width:70%;">
                 <div class="row">
                   <div class="col-md-12 text-center">
                     <h3>해당 E-mail 은 존재하지 않습니다</h3>
 	
-	<a href = "javascript:goback();">뒤로가기</a>
+	<a href = "findPasswd.do">뒤로가기</a>
 	&nbsp;&nbsp;&nbsp;
-	<a href = "/HoneyComb/index.jsp">메인으로</a>
+	<a href = "LoginMainFrame.do">메인으로</a>
             
                   </div>
                 </div>

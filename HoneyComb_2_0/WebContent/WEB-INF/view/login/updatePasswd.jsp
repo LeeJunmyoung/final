@@ -60,11 +60,11 @@ width:155;
 
 </style>
   </head>
-  <body>
+  <body onLoad="setTimeout('tomain()',5000)">
   <div id = "home_banner">
   <div id = "logo_wrapper">
-       <img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png" width="100" height="100"onclick="location.href='/HoneyComb_2_0/login/LoginMainFrame.do'">
- <a id="logo_a" href="/HoneyComb_2_0/login/LoginMainFrame.do"><p id="Honey_comB" >HONEYCOMB</p></a>
+       <img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png" width="100" height="100"onclick="location.href='LoginMainFrame.do'">
+ <a id="logo_a" href="LoginMainFrame.do"><p id="Honey_comB" >HONEYCOMB</p></a>
   </div>
   </div>
       <div class="container" style="height:89%; width:80%;">
@@ -75,16 +75,9 @@ width:155;
              <div class="container" style="width:70%;">
                 <div class="row">
                   <div class="col-md-12 text-center">
-                    <h3>비밀번호 찾기</h3><br>
-<form name="myform"   onSubmit = "return checkEmail()"method="post">
-	Email을 입력해주세요<br>
-    <input type="text" placeholder="email" name="email"/>
-    <p id="textProp"></p>
-    <input type="hidden" id="mailtext" value="" name="test">
-
-    <input type="submit" class="btn btn-default" id="findpasswd"value="비밀번호 재설정"/>
-</form>
-            
+                   <h3> 비밀번호가 변경되었습니다</h3><br>
+5초 후 로그인창으로 이동합니다.<br>
+<a href="logIn.do">이동</a>
                   </div>
                 </div>
               </div>

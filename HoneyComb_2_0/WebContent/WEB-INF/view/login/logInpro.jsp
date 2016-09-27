@@ -63,7 +63,7 @@ width:155;
   <body>
   <div id = "home_banner">
   <div id = "logo_wrapper">
-       <img id="logo_banner" src="/HoneyComb/page_layout/page_image/logo.png" width="100" height="100"onclick="location.href='/HoneyComb_2_0/login/LoginMainFrame.do'">
+       <img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png" width="100" height="100"onclick="location.href='/HoneyComb_2_0/login/LoginMainFrame.do'">
  <a id="logo_a" href="/HoneyComb_2_0/login/LoginMainFrame.do"><p id="Honey_comB" >HONEYCOMB</p></a>
   </div>
   </div>
@@ -71,7 +71,7 @@ width:155;
             <div class="cover">
               <div class="navbar navbar-default" >
               </div>
-              <div class="cover-image" style="background-image :  url('/HoneyComb/view/img/background.png')" ></div>
+              <div class="cover-image" style="background-image :  url('/HoneyComb_2_0/resources/img/background.png')" ></div>
              <div class="container" style="width:70%;">
                 <div class="row">
                   <div class="col-md-12 text-center">

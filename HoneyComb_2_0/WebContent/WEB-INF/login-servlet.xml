@@ -38,6 +38,8 @@
 
 <bean id = "LoginFindMainNPasswd" class="login.controller.LoginFindMainNPasswd" p:logindao-ref="logindao"/>
 
+<bean id = "UpdatePasswd" class="login.controller.UpdatePasswd" p:logindao-ref="logindao"/>
+
 
 
 	<bean id="logindao" class="login.controller.LoginDAO">

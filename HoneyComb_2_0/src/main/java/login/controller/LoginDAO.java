@@ -32,6 +32,23 @@ public class LoginDAO extends SqlSessionDaoSupport{
 		return email;
 	}
 	
+	public String findPasswd(String email){
+		String searchEmail="";
+		searchEmail= (String) getSqlSession().selectOne("login.FindPasswd",email);
+		
+		return searchEmail;
+	}
+	
+	public void updatePasswd(String email,String passwd){
+		LogOnDataBean lodb = getLodb();
+		lodb.setEmail(email);
+		lodb.setPasswd(passwd);
+		
+		
+		getSqlSession().update("login.UpdatePasswd", lodb);
+	}
+	
+	
 	
 	
 	
