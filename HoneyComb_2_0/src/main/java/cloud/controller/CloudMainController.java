@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import cloud.db.CloudDao;
@@ -45,8 +46,13 @@ public class CloudMainController {
 	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
-	public String upload(String folder) {
+	public String upload(@RequestParam("folder")String folder) {
 		System.out.println(folder);
 		return "upload";
+	}
+	@RequestMapping(value="/upload", method = RequestMethod.POST)
+	public String uploadfile(String folder){
+		
+		return null;
 	}
 }
