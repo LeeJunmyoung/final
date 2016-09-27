@@ -35,4 +35,8 @@ dependencies {
 	// tiles setting
     compile group: 'org.apache.tiles', name: 'tiles-jsp', version: '3.0.5'
     
+    
+    // https://mvnrepository.com/artifact/javax.mail/mail
+compile group: 'javax.mail', name: 'mail', version: '1.4.7'
+    
 }
