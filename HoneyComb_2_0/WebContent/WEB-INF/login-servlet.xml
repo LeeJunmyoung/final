@@ -3,14 +3,10 @@
 
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:jee="http://www.springframework.org/schema/jee"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
@@ -30,17 +26,18 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+
+	<bean id="LoginMainFrameController" class="login.controller.LoginMainFrameController" />
+
+
+	<bean id="SignInController" class="login.controller.SignInController" />
+
+
+	<bean id="LogInController" class="login.controller.LogInController"
+		p:logindao-ref="logindao" />
+
+
 	
-	<bean id = "LoginMainFrameController" class="login.controller.LoginMainFrameController" />
-
-
-	<bean id = "SignInController" class="login.controller.SignInController" />
-
-
-<bean id = "LogInController" class="login.controller.LogInController" p:logindao-ref="logindao" />
-
-
-
 
 
 
@@ -67,25 +64,19 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		  <property name="typeAliasesPackage" value="login.controller" />
 		<property name="mapperLocations" value="classpath:mapper/login.xml" />
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	
-	
+
+
 	<bean id="logindao" class="login.controller.LoginDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	
-	
-	<bean id="transactionManager"
-        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
- 
-    </bean>
+
+
 
 
 </beans>
