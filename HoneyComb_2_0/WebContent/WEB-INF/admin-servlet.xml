@@ -51,4 +51,7 @@
 	<bean id="adminController" class="admin.controller.adminController"
 		p:dao-ref="dao" />
 
+	<bean id="admin_comSelect" class="admin.controller.admin_comSelect"
+		p:dao-ref="dao" />
+
 </beans>
