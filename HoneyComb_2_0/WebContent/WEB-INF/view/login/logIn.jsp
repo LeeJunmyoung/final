@@ -140,7 +140,7 @@ padding:0;
                   <div class="col-md-12 text-center" id="col-md-12">
                     <h1>HONEYCOMB</h1>
             <p>로그인페이지</p>
-            <form class="form-horizontal text-center" action="/HoneyComb/coin/LogInPro.coin" method="post" onsubmit="return checkEmail()" name="myform">
+            <form class="form-horizontal text-center"  method="post" onsubmit="return checkEmail()" name="myform">
             
                  <input type="email"  name="email" id="email" placeholder="Email">
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -1,12 +1,15 @@
 package cloud.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,8 +28,10 @@ public class CloudMainController {
 		this.dao = dao;
 	}
 	
+	
 	//클라우드 메인리스트
 	@RequestMapping(method = RequestMethod.GET)
+	@ModelAttribute("test")
 	public ModelAndView getCloudList(HttpSession session, HttpServletRequest request, String folder){
 		int com_num = 0;
 		session = request.getSession();
@@ -36,7 +41,7 @@ public class CloudMainController {
 		/*session임시설정끝*/
 		
 		com_num = (int)request.getSession().getAttribute("com_num");
-		List cloudlist = dao.getcloudList(com_num);
+		List cloudlist = dao.getcloudList(com_num, folder);
 		ModelAndView mav = new ModelAndView("cloud_main","cloudlist",cloudlist);		
 		return mav;
 	}

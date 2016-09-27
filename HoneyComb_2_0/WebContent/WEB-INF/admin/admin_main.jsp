@@ -11,7 +11,7 @@
 <body>
 admin test
 <br>
-회사 확인
+  <a href="admin_comSelect">회사 확인</a>
 <br>
 회사 승인
 <br>

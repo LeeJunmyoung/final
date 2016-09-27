@@ -16,7 +16,6 @@
 	${adminlist.com_add}<br>
 	${adminlist.com_phone}<br>
 	${adminlist.com_aff}<br>
-	  
 	</div>
 </c:forEach>
 </body>

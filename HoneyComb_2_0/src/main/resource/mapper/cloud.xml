@@ -4,8 +4,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cloud">
-	<select id="getcloudlist" parameterType="int" resultType="cloud.db.CloudInfo">
-		select * from cloud where com_num = #{com_num} 
+<!--===================================================== 클라우드 나타내는 페이지 ======================================-->
+	<parameterMap id="listinfo" type="hashMap">
+		<parameter property="com_num"/>
+		<parameter property="folder"/>	
+	</parameterMap>
+	<select id="getcloudlist" parameterMap="listinfo" resultType="cloud.db.CloudInfo">
+	<choose>
+		<when test="folder == null">
+		select * from cloud where com_num = #{com_num} and folder is null
+		</when>
+		<otherwise>
+		select * from cloud where com_num = #{com_num} and folder = #{folder}
+		</otherwise>
+	</choose>
 	</select>
 
 

@@ -84,6 +84,13 @@ public class LogOnDataBean {
 	public void setCom_pos_num(int com_pos_num) {
 		this.com_pos_num = com_pos_num;
 	}
+	@Override
+	public String toString() {
+		return "LogOnDataBean [mem_num=" + mem_num + ", name=" + name + ", email=" + email + ", passwd=" + passwd
+				+ ", phone_num=" + phone_num + ", com_num=" + com_num + ", com_dept_num=" + com_dept_num
+				+ ", com_pos_num=" + com_pos_num + ", com_name=" + com_name + ", com_dept_name=" + com_dept_name
+				+ ", com_pos_name=" + com_pos_name + "]";
+	}
 	
 	
 	

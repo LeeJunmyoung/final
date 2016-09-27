@@ -16,30 +16,29 @@ import admin.db.adminDao;
 @Controller
 @RequestMapping("/admin")
 public class adminController {
-
+	
 	private adminDao dao;
-
+	
 	@Autowired
 	public void setDao(adminDao dao) {
 		this.dao = dao;
 	}
-
-	// @RequestMapping(method = RequestMethod.GET)
-	// public ModelAndView getadminList(HttpSession session, HttpServletRequest
-	// request, String folder){
-	// int com_num = 0;
-	// session = request.getSession();
-	// session.setAttribute("com_num", 1);
-	//
-	// com_num = (int)request.getSession().getAttribute("com_num");
-	// List adminlist = dao.getadminList(com_num);
-	// ModelAndView mav = new ModelAndView("admin_main","adminlist",adminlist);
-	// return mav;
-	// }
-
+	
 	@RequestMapping(method = RequestMethod.GET)
-	public String startMethod() {
+	public String startMethod(){
 		return "admin_main";
 	}
+	
+//	@RequestMapping(method = RequestMethod.GET)
+//	public ModelAndView getadminList(HttpSession session, HttpServletRequest request){
+//		int com_num = 0;
+//		session = request.getSession();
+//		session.setAttribute("com_num", 1);
+//		com_num = (int)request.getSession().getAttribute("com_num");
+//		List adminlist = dao.getadminList(com_num);
+//		ModelAndView mav = new ModelAndView("admin_main","adminlist",adminlist);		
+//		return mav;
+//	}
+	
 
 }
