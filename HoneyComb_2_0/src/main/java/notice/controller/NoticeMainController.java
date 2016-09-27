@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.LocaleResolver;
 
@@ -24,17 +25,11 @@ public class NoticeMainController {
 		this.dao = dao;
 	}
 
-	public String submit(MultipartHttpServletRequest request) {
-
-		String pageNum = request.getParameter("pageNum");
-		int com_num = (int) request.getSession().getAttribute("com_num");
-
-		if (pageNum == null) {
-			pageNum = "1";
-		}
+	public String submit(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+			@RequestParam("com_num") int com_num) {
 
 		int pageSize = 5;
-		int currentPage = Integer.parseInt(pageNum);
+		int currentPage = pageNum;
 		int startRow = (currentPage - 1) * pageSize + 1;
 		int endRow = 0;
 		endRow = currentPage * pageSize;
@@ -47,8 +42,8 @@ public class NoticeMainController {
 		notice_count = dao.getNoticeCount(com_num);
 
 		if (notice_count > 0) {
-			
-			articleList = dao.getNoticeItem(com_num, -1, endRow);
+
+			articleList = dao.getNoticeList(com_num, -1, endRow);
 
 			for (int i = 0; i < articleList.size(); i++) {
 

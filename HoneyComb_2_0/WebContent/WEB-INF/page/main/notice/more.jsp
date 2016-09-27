@@ -121,19 +121,19 @@
 				
 					<c:if test="${startPage > pageSize}">
 						<li>
-							<a href="/HoneyComb_2_0/notice/more.do?pageNum=${startPage - pageSize}">이전</a>
+							<a href="/more.do?pageNum=${startPage - pageSize}">이전</a>
 						</li>
 					</c:if>
 				
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
 						<li>
-							<a href="/HoneyComb_2_0/notice/more.do?pageNum=${i}">${i}</a>
+							<a href="/more.do?pageNum=${i}">${i}</a>
 						</li>
 					</c:forEach>
 					
 					<c:if test="${endPage < pageCount}">
 						<li>
-							<a href="/HoneyComb_2_0/notice/more.do?pageNum=${startPage + pageSize}">다음</a>
+							<a href="/more.do?pageNum=${startPage + pageSize}">다음</a>
 						</li>
 					</c:if>
 				

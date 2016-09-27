@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="promgr">
+
+	<insert id="item_add" parameterType="promgr.db.PromgrDataBean">
+		insert into
+		notice(notice_num,notice_title,notice_content,notice_member,notice_date,com_num)
+		values(notice_num.NEXTVAL,?,?,?,?,?)
+	</insert>
+
+	<select id="count" parameterType="hashmap" resultType="int">
+		select count(*) from promgr where com_num=#{com_num} and mem_num like %#{mem_num}%
+	</select>
+
+	<select id="list_main" parameterType="hashmap" resultType="promgr.db.PromgrDataBean">
+		<![CDATA[
+		select 
+		promgr_num,promgr_name,promgr_content,promgr_date,promgr_ing,mem_num,file_num,chklist_title_num,chklist_item_num,comment_num,com_num,r 
+		from (select 
+		promgr_num,promgr_name,promgr_content,promgr_date,promgr_ing,mem_num,file_num,chklist_title_num,chklist_item_num,comment_num,com_num,rownum r 
+		from (select 
+		promgr_num,promgr_name,promgr_content,promgr_date,promgr_ing,mem_num,file_num,chklist_title_num,chklist_item_num,comment_num,com_num 
+		from promgr where com_num=#{com_num} and mem_num like %#{mem_num}% order by promgr_num desc)) where r<=#{endRow}
+		]]>
+	</select>
+
+	<select id="list_all" parameterType="hashmap" resultType="promgr.db.PromgrDataBean">
+		<![CDATA[
+		select 
+		promgr_num,promgr_name,promgr_content,promgr_date,promgr_ing,mem_num,file_num,chklist_title_num,chklist_item_num,comment_num,com_num,r 
+		from ( select 
+		promgr_num,promgr_name,promgr_content,promgr_date,promgr_ing,mem_num,file_num,chklist_title_num,chklist_item_num,comment_num,com_num,rownum r 
+		from ( select 
+		promgr_num,promgr_name,promgr_content,promgr_date,promgr_ing,mem_num,file_num,chklist_title_num,chklist_item_num,comment_num,com_num 
+		from promgr where com_num=#{com_num} and mem_num like %#{mem_num}% order by promgr_num desc)) 
+		where r>=#{startRow} and r<=#{endRow}
+		]]>
+	</select>
+
+	<select id="set_mem_name" parameterType="int" resultType="String">
+		select name from members where mem_num=#{mem_num}
+	</select>
+
+	<select id="set_file_view" parameterType="int" resultType="cloud.db.CloudInfo">
+		select * from cloud where file_num=#{file_num}
+	</select>
+
+	<select id="set_comment_view" parameterType="int" resultType="promgr.db.CommentDataBean">
+		select * from promgr_comment where comment_num=#{comment_num}
+	</select>
+
+
+</mapper>

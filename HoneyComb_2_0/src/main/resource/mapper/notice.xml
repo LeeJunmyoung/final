@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		count(*) from notice where com_num=#{com_num}
 	</select>
 
-	<select id="item_main" parameterType="hashmap" resultType="notice.db.NoticeInfo">
+	<select id="list_main" parameterType="hashmap" resultType="notice.db.NoticeDataBean">
 		<![CDATA[
 		select
 		notice_num,notice_title,notice_content,notice_member,notice_date,r
@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 
-	<select id="item_all" parameterType="hashmap" resultType="notice.db.NoticeDataBean">
+	<select id="list_all" parameterType="hashmap" resultType="notice.db.NoticeDataBean">
 		<![CDATA[
 		select
 		notice_num,notice_title,notice_content,notice_member,notice_date,r
