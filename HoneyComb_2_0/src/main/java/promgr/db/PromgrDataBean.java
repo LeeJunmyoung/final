@@ -14,7 +14,8 @@ public class PromgrDataBean {
 	private String[] mem_name_arr; // 프로젝트 참여자 이름
 	private String file_num;
 	private List file_view;
-	private String chklist_num;
+	private String chklist_title_num;
+	private String chklist_item_num;
 	private List chklist_view; // 진행 상황 체크
 	private String comment_num;
 	private List comment_view; // 댓글 번호
@@ -92,12 +93,20 @@ public class PromgrDataBean {
 		this.file_view = file_view;
 	}
 
-	public String getChklist_num() {
-		return chklist_num;
+	public String getChklist_title_num() {
+		return chklist_title_num;
 	}
 
-	public void setChklist_num(String chklist_num) {
-		this.chklist_num = chklist_num;
+	public void setChklist_title_num(String chklist_title_num) {
+		this.chklist_title_num = chklist_title_num;
+	}
+
+	public String getChklist_item_num() {
+		return chklist_item_num;
+	}
+
+	public void setChklist_item_num(String chklist_item_num) {
+		this.chklist_item_num = chklist_item_num;
 	}
 
 	public List getChklist_view() {

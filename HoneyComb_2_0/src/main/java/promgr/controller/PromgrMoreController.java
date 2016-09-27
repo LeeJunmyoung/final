@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cloud.db.CloudInfo;
+import promgr.db.ChkItemDataBean;
+import promgr.db.ChkListViewDataBean;
 import promgr.db.CommentDataBean;
 import promgr.db.PromgrDao;
 import promgr.db.PromgrDataBean;
@@ -51,7 +53,7 @@ public class PromgrMoreController {
 			articleList = dao.getPromgrList(com_num, mem_num, startRow, endRow);
 
 			int[] num_arr = null;
-			
+
 			for (int i = 0; i < articleList.size(); i++) {
 
 				PromgrDataBean article = (PromgrDataBean) articleList.get(i);
@@ -67,17 +69,35 @@ public class PromgrMoreController {
 					mem_name_arr[j] = mem_name;
 
 				}
-				
+
 				article.setMem_name_arr(mem_name_arr);
-				
+
 				// chklist_view
-				
-				
+				if (article.getChklist_title_num() != null) {
+					num_arr = cut_num(article.getChklist_title_num());
+				}
+
+				List chkList_view = new ArrayList();
+
+				for (int j = 0; j < num_arr.length; j++) {
+
+					ChkListViewDataBean chkList = dao.setChklist_view(num_arr[j]);
+					
+					List chkItem = dao.setChkItem(num_arr[j]);
+					
+					chkList.setItem_bean(chkItem);
+					
+					chkList_view.add(chkList);
+
+				}
+
+				article.setChklist_view(chkList_view);
+
 				// file_view
-				if(article.getFile_num() != null) {
+				if (article.getFile_num() != null) {
 					num_arr = cut_num(article.getFile_num());
 				}
-				
+
 				List file_view = new ArrayList();
 
 				for (int j = 0; j < num_arr.length; j++) {
@@ -86,14 +106,14 @@ public class PromgrMoreController {
 					file_view.add(file);
 
 				}
-				
+
 				article.setFile_view(file_view);
-				
+
 				// comment_view
-				if(article.getComment_num() != null) {
+				if (article.getComment_num() != null) {
 					num_arr = cut_num(article.getComment_num());
 				}
-				
+
 				List comment_view = new ArrayList();
 
 				for (int j = 0; j < num_arr.length; j++) {
@@ -102,7 +122,7 @@ public class PromgrMoreController {
 					comment_view.add(comment);
 
 				}
-				
+
 				article.setComment_view(comment_view);
 
 			}

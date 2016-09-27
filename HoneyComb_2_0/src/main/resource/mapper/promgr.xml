@@ -43,6 +43,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="set_mem_name" parameterType="int" resultType="String">
 		select name from members where mem_num=#{mem_num}
 	</select>
+	
+	<select id="set_chkList_view" parameterType="int" resultType="promgr.db.ChkListViewDataBean">
+		select * from chklist_title where chklist_title_num=#{chkList_num}
+	</select>
+	
+	<select id="set_chkItem" parameterType="int" resultType="promgr.db.ChkItemDataBean">
+		select * from chklist_item where chklist_title_num=#{chkList_num}
+	</select>
+	
 
 	<select id="set_file_view" parameterType="int" resultType="cloud.db.CloudInfo">
 		select * from cloud where file_num=#{file_num}

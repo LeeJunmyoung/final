@@ -69,6 +69,20 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 	}
 	
+	public ChkListViewDataBean setChklist_view(int chkList_num) {
+
+		return getSqlSession().selectOne("promgr.set_chkList_view", chkList_num);
+
+	}
+	
+	public List setChkItem(int chkList_num) {
+
+		return getSqlSession().selectList("promgr.set_chkItem", chkList_num);
+
+	}
+	
+	
+	
 	/*
 	 * public int insertItem(NoticeDataBean article) {
 	 * 
