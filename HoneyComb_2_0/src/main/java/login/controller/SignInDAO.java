@@ -1,8 +1,25 @@
 package login.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public interface SignInDAO {
-	 public ArrayList<LogOnDataBean> getMembers();
-	 public void insertMember(LogOnDataBean logondb);
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+public class SignInDAO extends SqlSessionDaoSupport {
+	
+	public List<LogOnDataBean> getMembers(){
+		return getSqlSession().selectList("login.getMembers");
+	}
+	public void insert(){
+		LogOnDataBean logdb = new LogOnDataBean();
+		
+		logdb.setEmail("email");
+		logdb.setPasswd("password");
+		logdb.setName("name");
+		logdb.setPhone_num("phone_num");
+		
+		getSqlSession().insert("insertMember",logdb);
+		
+	}
+	
+	
 }
