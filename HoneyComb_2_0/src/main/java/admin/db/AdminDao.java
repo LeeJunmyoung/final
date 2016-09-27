@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
-import admin.db.adminInfo;
+import admin.db.AdminInfo;
 
-public class adminDao extends SqlSessionDaoSupport {
+public class AdminDao extends SqlSessionDaoSupport {
 
-	public List<adminInfo> getadminList(int com_num) {
-		List adminlist = new ArrayList<adminInfo>();
+	public List<AdminInfo> getadminList(int com_num) {
+		List adminlist = new ArrayList<AdminInfo>();
 		adminlist = getSqlSession().selectList("getadminlist", com_num);
 		System.out.println(adminlist);
 		return adminlist;
