@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cloud.db.CloudInfo;
-import promgr.db.ChkItemDataBean;
 import promgr.db.ChkListViewDataBean;
 import promgr.db.CommentDataBean;
 import promgr.db.PromgrDao;
