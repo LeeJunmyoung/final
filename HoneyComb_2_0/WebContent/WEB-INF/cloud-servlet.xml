@@ -19,11 +19,17 @@
 		<property name="preparerFactoryClass"
 			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
 	</bean>
-		<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="1"/>
 	</bean>
+	
+	<bean id="jspviewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	   <property name="prefix" value="/WEB-INF/page/cloud/" />
+	   <property name="suffix" value=".jsp" />
+	   <property name="order" value="2" />
+	</bean>
+	
 	
 	<!-- mybatis setting -->
 	<context:property-placeholder location="classpath:db.properties" />
@@ -32,8 +38,8 @@
 		destroy-method="close">
 		<property name="driverClass" value="${driver}" />
 		<property name="jdbcUrl" value="${url}" />
-		<property name="user" value="wgh17" />
-		<property name="password" value="wgh1188" />
+		<property name="user" value="honeycomb" />
+		<property name="password" value="honeycomb" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

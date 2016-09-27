@@ -17,33 +17,36 @@ import org.springframework.web.servlet.ModelAndView;
 import cloud.db.CloudDao;
 
 @Controller
-@RequestMapping("/cloud")
 public class CloudMainController {
-	//session 받기
-	/*HttpSession session;*/
+	// session 받기
+	/* HttpSession session; */
 	private CloudDao dao;
-	
+
 	@Autowired
 	public void setDao(CloudDao dao) {
 		this.dao = dao;
 	}
-	
-	
-	//클라우드 메인리스트
-	@RequestMapping(method = RequestMethod.GET)
-	@ModelAttribute("test")
-	public ModelAndView getCloudList(HttpSession session, HttpServletRequest request, String folder){
+
+	// 클라우드 메인리스트
+	@RequestMapping(value="/main", method = RequestMethod.GET)
+	public ModelAndView getCloudList(HttpSession session, HttpServletRequest request, String folder) {
 		int com_num = 0;
 		session = request.getSession();
-		/*session 임시설정*/
+		System.out.println(folder);
+		/* session 임시설정 */
 		System.out.println("test용com_num설정::1");
 		session.setAttribute("com_num", 1);
-		/*session임시설정끝*/
-		
-		com_num = (int)request.getSession().getAttribute("com_num");
+		/* session임시설정끝 */
+
+		com_num = (int) request.getSession().getAttribute("com_num");
 		List cloudlist = dao.getcloudList(com_num, folder);
-		ModelAndView mav = new ModelAndView("cloud_main","cloudlist",cloudlist);		
+		ModelAndView mav = new ModelAndView("cloud_main", "cloudlist", cloudlist);
 		return mav;
 	}
-	
+
+	@RequestMapping(value = "/upload", method = RequestMethod.GET)
+	public String upload(String folder) {
+		System.out.println(folder);
+		return "upload";
+	}
 }
