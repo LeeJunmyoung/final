@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import cloud.db.CloudInfo;
 import promgr.db.ChkListViewDataBean;
@@ -28,7 +29,7 @@ public class PromgrMoreController {
 		this.dao = dao;
 	}
 
-	public String submit(HttpServletRequest request) {
+	public ModelAndView submit(HttpServletRequest request) {
 
 		String pageNum = request.getParameter("pageNum");
 		int com_num = (int) request.getSession().getAttribute("com_num");
@@ -81,11 +82,11 @@ public class PromgrMoreController {
 				for (int j = 0; j < num_arr.length; j++) {
 
 					ChkListViewDataBean chkList = dao.setChklist_view(num_arr[j]);
-					
+
 					List chkItem = dao.setChkItem(num_arr[j]);
-					
+
 					chkList.setItem_bean(chkItem);
-					
+
 					chkList_view.add(chkList);
 
 				}
@@ -132,7 +133,16 @@ public class PromgrMoreController {
 
 		int number = promgr_count - (currentPage - 1) * pageSize;
 
-		return "more";
+		ModelAndView mav = new ModelAndView("more");
+		mav.addObject("currentPage", currentPage);
+		mav.addObject("startRow", startRow);
+		mav.addObject("promgr_count", promgr_count);
+		mav.addObject("pageSize", pageSize);
+		mav.addObject("number", number);
+		mav.addObject("articleList", articleList);
+		mav.addObject("mem_num", mem_num);
+
+		return mav;
 	}
 
 	public int[] cut_num(String num) {

@@ -1,15 +1,20 @@
 package promgr.controller;
 
+import java.sql.Timestamp;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import promgr.db.PromgrDao;
+import promgr.db.PromgrDataBean;
 
 @Controller
-public class PromgrDelController {
+public class PromgrCommentDelController {
 
 	private PromgrDao dao;
 
@@ -18,17 +23,10 @@ public class PromgrDelController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/promgrDel.do")
-	public String submit(HttpServletRequest request) {
+	@RequestMapping("/commentDelPro.do")
+	public String submit(@RequestParam("promgr_num") int promgr_num, @RequestParam("comment_num") int comment_num) {
 
-		String promgr_num = request.getParameter("promgr_num");
-		int com_num = (int) request.getSession().getAttribute("com_num");
-
-		dao.delchkItem(promgr_num);
-		dao.delchkList(promgr_num);
-		dao.delFile(promgr_num);
-		dao.delComment(promgr_num, com_num);
-		dao.delPromgr(promgr_num, com_num);
+		dao.delComment(promgr_num, comment_num);
 
 		return "redirect:/more.do";
 	}

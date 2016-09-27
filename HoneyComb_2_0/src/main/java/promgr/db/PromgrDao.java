@@ -1,5 +1,6 @@
 package promgr.db;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
@@ -92,7 +93,7 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		return getSqlSession().delete("promgr.del_chkList", promgr_num);
 
 	}
-	
+
 	public int delFile(String promgr_num) {
 
 		return getSqlSession().delete("promgr.del_file", promgr_num);
@@ -118,6 +119,35 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		map.put("com_num", com_num);
 
 		return getSqlSession().delete("promgr.del_promgr", map);
+
+	}
+
+	public int addComment(CommentDataBean article) {
+
+		return getSqlSession().insert("promgr.add_comment", article);
+
+	}
+
+	public int modComment(int comment_num, String comment_content, Timestamp update_time) {
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("comment_num", comment_num);
+		map.put("comment_content", comment_content);
+		map.put("update_time", update_time);
+
+		return getSqlSession().update("promgr.mod_comment", map);
+
+	}
+
+	public int delComment(int promgr_num, int comment_num) {
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("promgr_num", promgr_num);
+		map.put("comment_num", comment_num);
+
+		return getSqlSession().delete("promgr.del_comment", map);
 
 	}
 

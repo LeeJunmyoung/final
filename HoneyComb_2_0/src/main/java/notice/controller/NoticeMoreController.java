@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import notice.db.NoticeDao;
 import notice.db.NoticeDataBean;
@@ -22,7 +23,7 @@ public class NoticeMoreController {
 		this.dao = dao;
 	}
 
-	public String submit(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+	public ModelAndView submit(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
 			@RequestParam("com_num") int com_num) {
 
 		int pageSize = 5;
@@ -55,8 +56,17 @@ public class NoticeMoreController {
 		}
 
 		number = notice_count - (currentPage - 1) * pageSize;
+		
+		ModelAndView mav = new ModelAndView("more");
+		mav.addObject("currentPage", currentPage);
+		mav.addObject("startRow", startRow);
+		mav.addObject("endRow", endRow);
+		mav.addObject("notice_count", notice_count);
+		mav.addObject("pageSize", pageSize);
+		mav.addObject("number", number);
+		mav.addObject("articleList", articleList);
 
-		return "more";
+		return mav;
 	}
 
 }

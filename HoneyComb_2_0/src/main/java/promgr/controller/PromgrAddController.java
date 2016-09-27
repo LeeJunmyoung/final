@@ -21,14 +21,14 @@ public class PromgrAddController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/addForm.do")
+	@RequestMapping("/promgrAddForm.do")
 	public String form() {
 
-		return "addForm";
+		return "promgrAddForm";
 
 	}
 
-	@RequestMapping("/addPro.do")
+	@RequestMapping("/promgrAddPro.do")
 	public String submit(HttpServletRequest request) {
 
 		PromgrDataBean article = new PromgrDataBean();

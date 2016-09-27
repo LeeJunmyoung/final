@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import promgr.db.PromgrDao;
 
@@ -22,7 +23,7 @@ public class PromgrMainController {
 		this.dao = dao;
 	}
 
-	public String submit(HttpServletRequest request) {
+	public ModelAndView submit(HttpServletRequest request) {
 
 		int rowSize = 5;
 		int promgr_count = 0;
@@ -39,8 +40,12 @@ public class PromgrMainController {
 		} else {
 			articleList = Collections.EMPTY_LIST;
 		}
+		
+		ModelAndView mav = new ModelAndView("main");
+		mav.addObject("promgr_count", promgr_count);
+		mav.addObject("articleList", articleList);
 
-		return "main";
+		return mav;
 	}
 
 }
