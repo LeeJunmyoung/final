@@ -40,6 +40,11 @@
 		<put-attribute name="title" value="admin" />
 		<put-attribute name="body" value="/WEB-INF/admin/admin_main.jsp" />
 	</definition>
+	
+	<definition name="admin_comSelect" extends="base_layout">
+		<put-attribute name="title" value="admin" />
+		<put-attribute name="body" value="/WEB-INF/admin/admin_comSelect.jsp" />
+	</definition>
 
 
 </tiles-definitions>
