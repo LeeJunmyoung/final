@@ -40,7 +40,7 @@ public class NoticeWriteController {
 		article.setCom_num((int) request.getSession().getAttribute("com_num"));
 		article.setNotice_date(new Timestamp(System.currentTimeMillis()));
 
-		dao.insertItem(article);
+		dao.addNotice(article);
 
 		return "redirect:/main.do";
 	}

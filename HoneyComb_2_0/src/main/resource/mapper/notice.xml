@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="notice">
 
-	<insert id="item_add" parameterType="notice.db.NoticeDataBean">
+	<insert id="add" parameterType="notice.db.NoticeDataBean">
 		insert into
 		notice(notice_num,notice_title,notice_content,notice_member,notice_date,com_num)
 		values(notice_num.NEXTVAL,#{notice_title},#{notice_content},#{notice_member},#{notice_date},#{com_num})

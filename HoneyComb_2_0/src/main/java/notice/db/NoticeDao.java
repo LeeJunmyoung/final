@@ -48,9 +48,9 @@ public class NoticeDao extends SqlSessionDaoSupport {
 
 	}
 
-	public int insertItem(NoticeDataBean article) {
+	public int addNotice(NoticeDataBean article) {
 
-		return getSqlSession().insert("notice.item_add", article);
+		return getSqlSession().insert("notice.add", article);
 
 	}
 
