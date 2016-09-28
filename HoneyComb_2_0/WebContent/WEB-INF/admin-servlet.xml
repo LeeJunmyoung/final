@@ -48,10 +48,6 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
-	<bean id="dao1" class="login.controller.LogOnDataBean">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
-
 	<bean id="adminController" class="admin.controller.AdminController"
 		p:dao-ref="dao" />
 
@@ -59,6 +55,5 @@
 		p:dao-ref="dao" />
 
 	<bean id="admin_memList" class="admin.controller.Admin_memList"
-		p:dao-ref="dao1" />
-
+		p:dao-ref="dao" />
 </beans>
