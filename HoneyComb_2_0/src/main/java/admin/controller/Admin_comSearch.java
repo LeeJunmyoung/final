@@ -29,9 +29,10 @@ public class Admin_comSearch {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView getadminList(@RequestParam int com_num, HttpServletRequest request) {
 		List<LogOnDataBean> memlist = dao.memadminList(com_num);
-		ModelAndView mav = new ModelAndView("admin_memCheck", "memlist", memlist);
-		mav.setViewName("admin_comSearch");
-		mav.addObject("admin_comSearch", memlist);
+		ModelAndView mav = new ModelAndView("admin_comSearch", "memlist", memlist);
+		System.out.println("mav ::: "+mav);
+//		mav.setViewName("admin_comSearch");
+//		mav.adObject("admin_comSearch", memlist);
 		return mav;
 	}
 }

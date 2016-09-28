@@ -103,7 +103,6 @@ h1 {
 					<td width="70" class="title" align="center">position</td>
 				</tr>
 				<c:forEach var="memlist" items="${ memlist }">
-					<br>
 					<tr>
 						<td width="70" align="center">${ memlist.name }</td>
 						<td width="150" align="center">${ memlist.email }</td>
