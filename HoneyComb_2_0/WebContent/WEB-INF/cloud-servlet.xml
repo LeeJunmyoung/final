@@ -29,7 +29,7 @@
 	   <property name="suffix" value=".jsp" />
 	   <property name="order" value="2" />
 	</bean>
-	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	
 	<!-- mybatis setting -->
 	<context:property-placeholder location="classpath:db.properties" />

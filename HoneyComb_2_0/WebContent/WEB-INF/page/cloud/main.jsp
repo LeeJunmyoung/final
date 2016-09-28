@@ -12,13 +12,14 @@
 <script>
 	function openupload(folder){
 		var folder = folder;
-		window.open('upload?folder='+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
+		alert("jsvascript까지는 접근")
+		window.open("upload/"+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
 	}
 </script>
 </head>
 <body>
 <div>
-<input type="button" value="업로드" onclick="openupload(${param.folder})">
+<input type="button" value="업로드" onclick="openupload('${param.folder}')">
 <input type="button" value="다운로드">
 <input type="button" value="삭제">
 </div>
