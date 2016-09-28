@@ -9,7 +9,7 @@ select * from complete_com
 </select>
 
 <select id="memadminlist" resultType="login.controller.LogOnDataBean">
-select name, email, phone_num, com_dept_name, com_pos_name from members where com_num = ${com_num} order by com_pos_num
+select name, email, phone_num, com_dept_name, com_pos_name from members where com_num = #{com_num} order by com_pos_num
 </select>
 
 </mapper>

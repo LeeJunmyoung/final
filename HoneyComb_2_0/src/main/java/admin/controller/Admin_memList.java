@@ -33,8 +33,8 @@ public class Admin_memList {
 		com_num = (int) request.getSession().getAttribute("com_num");
 		List<LogOnDataBean> adminlist = dao.memadminList(com_num);
 		ModelAndView mav = new ModelAndView("admin_main", "adminlist", adminlist);
-		mav.setViewName("admin_comSelect");
-		mav.addObject("admin_comSelect", adminlist);
+		mav.setViewName("admin_memList");
+		mav.addObject("adminlist", adminlist);
 		return mav;
 	}
 	
