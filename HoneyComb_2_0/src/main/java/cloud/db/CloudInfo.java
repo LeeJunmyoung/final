@@ -13,7 +13,8 @@ public class CloudInfo {
 	private String folder;
 	private int promgr_num;
 	private int mem_num;
-	private String com_pos_name;
+	private int com_pos_num;
+	
 	public int getFile_num() {
 		return file_num;
 	}
@@ -74,11 +75,11 @@ public class CloudInfo {
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
-	public String getCom_pos_name() {
-		return com_pos_name;
+	public int getcom_pos_num() {
+		return com_pos_num;
 	}
-	public void setCom_pos_name(String com_pos_name) {
-		this.com_pos_name = com_pos_name;
+	public void setcom_pos_num(int com_pos_num) {
+		this.com_pos_num = com_pos_num;
 	}
 	
 	

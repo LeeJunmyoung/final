@@ -24,7 +24,7 @@
 <input type="button" value="삭제">
 </div>
 
-<c:if test="${param.folder ne null || param.folder != ''}">
+<c:if test="${param.folder ne null || !param.folder == ''}">
 	<div>상위폴더로</div>
 </c:if>
 

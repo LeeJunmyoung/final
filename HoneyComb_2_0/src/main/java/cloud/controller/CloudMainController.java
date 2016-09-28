@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import cloud.db.CloudDao;
+import cloud.db.CloudInfo;
 
 @Controller
 public class CloudMainController {
@@ -48,26 +49,26 @@ public class CloudMainController {
 		return mav;
 	}
 	/*----업로드폼으로 접근 RESTFul 사용------------*/
-		//메인에서 업로드
+		//메인에서 업로드폼 연결
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
 	public String goUploadMain(){
 		return("upload");
 	}
-		//폴더내부에서 업로드
+		//폴더내부에서 업로드폼 연결
 	@RequestMapping(value = "/upload/{folder}", method = RequestMethod.GET)
 	public String goUploadFolder(@PathVariable String folder) {
 		return "upload";
 	}
 
-	
+		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public void uploadMain(@RequestParam("uploadfile")MultipartFile mf){
-		String name = mf.getOriginalFilename();
-		System.out.println(name);
-		System.out.println("test");
+	public void uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request){
+		dao.uploadFile(uploadfile, null, request);
+
 	}
+		//폴더 내부에서 업로드
 	@RequestMapping(value="/upload/{folder}", method = RequestMethod.POST)
-	public void uploadFolder(MultipartFile mf){
-		System.out.println("test");
+	public void uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request){
+		dao.uploadFile(uploadfile, folder, request);
 	}
 }
