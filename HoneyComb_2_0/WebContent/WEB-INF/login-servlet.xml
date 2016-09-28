@@ -41,12 +41,22 @@
 <bean id = "UpdatePasswd" class="login.controller.UpdatePasswd" p:logindao-ref="logindao"/>
 
 
+<bean id = "CompanyCheckController" class="login.controller.CompanyCheckController" p:logindao-ref="logindao"/>
+
+
+
+
+
+
+
 <bean id="dao" class="login.controller.SignInDAO">
 <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 </bean>
 	<bean id="logindao" class="login.controller.LoginDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	
+	
 	
 
 
