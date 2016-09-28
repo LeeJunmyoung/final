@@ -8,6 +8,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>admin comSelect</title>
+
+<script>
+function memberList(com_num) {
+
+	 url = "admin_memList?com_num=" + com_num;
+	window.open(url, "post", "toolbar=no,width=1000,height=400,directories=no,status=yes,scrollbars=yes,menubar=no");
+}
+</script>
+
 </head>
 <body>
 	<table border='1px' id="memCheck_table">
