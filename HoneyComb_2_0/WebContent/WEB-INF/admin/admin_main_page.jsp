@@ -152,25 +152,25 @@ width: 100%;
 								<p>
 									<tr>
 										<td><a
-											href="javascript:window.location='/HoneyComb/memCheck/memCheck_Main.mc'"
-											class="myButton">Present Condition</a></td>
+											href="javascript:window.location='/HoneyComb_2_0/admin/admin_memCheck'"
+											class="myButton">회사 확인</a></td>
 									</tr>
 								<p>
 									<tr>
 										<td><a
 											href="javascript:window.location='/HoneyComb/complete/complete_com.admin'"
-											class="myButton">Company Approval</a></td>
+											class="myButton">회사 승인</a></td>
 									</tr>
 								<p>
 									<tr>
 										<td><a
 											href="javascript:window.location='/HoneyComb/admin/complete/complete_comNotice.jsp'"
-											class="myButton">Notice</a></td>
+											class="myButton">팝업 공지</a></td>
 									</tr>
 								<p>
 									<tr>
 										<td><a onclick="logout();return false;"
-											onkeypress="this.onclick;" class="myButton">Log Out</a></td>
+											onkeypress="this.onclick;" class="myButton">로그 아웃</a></td>
 									</tr>
 							</center>
 						</div>

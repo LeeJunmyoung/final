@@ -5,22 +5,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 	<context:annotation-config />
-
-	<!-- Tiles설정 -->
-	<bean id="tilesConfigurer"
-		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-		<property name="definitions">
-			<list>
-				<value>/WEB-INF/tiles/def.xml</value>
-			</list>
-		</property>
-		<property name="preparerFactoryClass"
-			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
-	</bean>
+	
 	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/admin/" />
+		<property name="suffix" value=".jsp" />
 	</bean>
 
 	<!-- db DataSource 설정 -->
@@ -48,12 +37,7 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
-	<bean id="adminController" class="admin.controller.AdminController"
+	<bean id="adminController" class="admin.controller.Admin_memCheck"
 		p:dao-ref="dao" />
 
-	<bean id="admin_comSelect" class="admin.controller.Admin_comSelect"
-		p:dao-ref="dao" />
-
-	<bean id="admin_memList" class="admin.controller.Admin_memList"
-		p:dao-ref="dao" />
 </beans>
