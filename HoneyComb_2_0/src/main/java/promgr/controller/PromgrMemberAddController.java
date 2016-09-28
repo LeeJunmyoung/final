@@ -19,10 +19,10 @@ public class PromgrMemberAddController {
 
 	@RequestMapping("/memberAdd.do")
 	public String submit(@RequestParam(value = "promgr_num") int promgr_num,
-			@RequestParam(value = "mem_del") String[] del_mem_num) {
+			@RequestParam(value = "mem_add") String[] add_mem_num) {
 
-		if (del_mem_num != null) {
-			dao.delMembers(promgr_num, del_mem_num);
+		if (add_mem_num != null) {
+			dao.addMembers(promgr_num, add_mem_num);
 		}
 
 		return "redirect:/more.do";

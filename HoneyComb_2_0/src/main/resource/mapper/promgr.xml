@@ -17,6 +17,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(comment_num.NEXTVAL,#{comment_content},#{mem_num},#{promgr_num},#{com_num},#{comment_date})
 	</insert>
 
+	<insert id="add_chkList" parameterType="promgr.db.ChkListDataBean">
+		insert into
+		chklist_title(chklist_title_num,chklist_title_name,promgr_num,com_num)
+		values(chklist_title_num.NEXTVAL,#{chklist_title_name},#{promgr_num},#{com_num})
+	</insert>
+
 	<update id="set_comment_num" parameterType="hashmap">
 		update promgr set
 		comment_num=#{comment_num_str} where promgr_num=#{promgr_num}
@@ -27,9 +33,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		comment_content=#{comment_content}, comment_date=#{update_time} where
 		comment_num=#{comment_num}
 	</update>
-	
+
 	<update id="set_mem_num" parameterType="hashmap">
-		update promgr set mem_num=#{new_mem_num} where promgr_num=#{promgr_num}
+		update promgr set
+		mem_num=#{new_mem_num} where promgr_num=#{promgr_num}
+	</update>
+
+	<update id="set_chkList_num" parameterType="hashmap">
+		update promgr set
+		chklist_title_num=#{chkList_num_str} where promgr_num=#{promgr_num}
 	</update>
 
 	<select id="count" parameterType="hashmap" resultType="int">
@@ -94,9 +106,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		by comment_num desc
 	</select>
 
-	<select id="get_comment_num" parameterType="int" resultType="String">
-		select comment_num from promgr where promgr_num=#{promgr_num}
-	</select>
+	<!-- <select id="get_comment_num" parameterType="int" resultType="String"> 
+		select comment_num from promgr where promgr_num=#{promgr_num} </select> -->
 
 	<select id="get_comment_num_all" parameterType="int" resultType="String">
 		select comment_num from promgr_comment where promgr_num=#{promgr_num}
@@ -115,8 +126,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="promgr.db.PromgrDataBean">
 		select * from members where com_num=#{com_num} and
 		<foreach collection="num_arr" index="i" separator="and">
-			not mem_num=#{num_arr[i]}
+			not
+			mem_num=#{num_arr[i]}
 		</foreach>
+	</select>
+
+	<select id="new_chkList_num" parameterType="String" resultType="String">
+		select chklist_title_num from chklist_title where
+		chklist_title_name=#{chkList_name} order by chklist_title_num desc
 	</select>
 
 	<delete id="del_promgr" parameterType="hashmap">

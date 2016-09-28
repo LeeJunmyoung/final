@@ -207,7 +207,10 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		String new_comment_num = getSqlSession().selectOne("promgr.new_comment_num", mem_num);
 
 		int promgr_num = article.getPromgr_num();
-		String old_comment_num = getSqlSession().selectOne("promgr.get_comment_num", promgr_num);
+		
+		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
+		
+		String old_comment_num = promgr.getComment_num();
 
 		String comment_num_str = "";
 
@@ -358,6 +361,35 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		map.put("new_mem_num", new_mem_num);
 
 		return getSqlSession().update("promgr.set_mem_num", map);
+
+	}
+
+	public int addChkList(ChkListDataBean article) {
+
+		getSqlSession().insert("promgr.add_chkList", article);
+
+		String chkList_name = article.getChklist_title_name();
+		String new_chkList_num = getSqlSession().selectOne("promgr.new_chkList_num", chkList_name);
+		
+		int promgr_num = article.getPromgr_num();
+		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
+		
+		String old_chklist_title_num = promgr.getChklist_title_num();
+		
+		String chkList_num_str = "";
+
+		if (old_chklist_title_num == null) {
+			chkList_num_str = new_chkList_num;
+		} else {
+			chkList_num_str = old_chklist_title_num + "/" + new_chkList_num;
+		}
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("chkList_num_str", chkList_num_str);
+		map.put("promgr_num", promgr_num);
+
+		return getSqlSession().update("promgr.set_chkList_num", map);
 
 	}
 
