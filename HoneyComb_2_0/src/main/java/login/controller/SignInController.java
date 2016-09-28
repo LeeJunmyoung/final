@@ -1,5 +1,6 @@
 package login.controller;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class SignInController {
+public class SignInController  {
 	
 	private static final Logger log = LoggerFactory.getLogger(SignInController.class);
 	
@@ -29,11 +30,20 @@ public class SignInController {
 		return "signIn";
 	}
 	@RequestMapping("/members.do")//DB에 insert하는 메소드
-	public ModelAndView members(LogOnDataBean logdb,HttpSession session){
+	public ModelAndView members(LogOnDataBean logdb, HttpSession session, HttpServletResponse response) throws Exception{
 		
-		ModelAndView mav= new ModelAndView();
+		System.out.println("실행");
+		ModelAndView mav = new ModelAndView();	
+		dao.insertMember(logdb);
+		System.out.println("insert");
+		mav.setViewName("redirect:/login/success.do");
 		
 		return mav;
+	}
+	@RequestMapping("/success.do")//회원가입 완료페이지
+	public String success(){
+		
+		return "success";
 	}
 	/*@RequestMapping("/overlaptest.do")//email 중복확인 하는 메소드
 	@ResponseBody
