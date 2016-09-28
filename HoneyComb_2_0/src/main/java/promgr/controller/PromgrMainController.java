@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import promgr.db.PromgrDao;
+import promgr.db.PromgrDataBean;
 
 @Controller
 @RequestMapping("/main.do")
@@ -30,7 +31,7 @@ public class PromgrMainController {
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
 
-		List articleList = null;
+		List<PromgrDataBean> articleList = null;
 		promgr_count = dao.getPromgrCount(com_num, mem_num); // row 갯수 호출
 
 		if (promgr_count > 0) {
@@ -38,7 +39,7 @@ public class PromgrMainController {
 			articleList = dao.getPromgrList(com_num, mem_num, -1, rowSize);
 
 		} else {
-			articleList = Collections.EMPTY_LIST;
+			articleList = Collections.emptyList();
 		}
 		
 		ModelAndView mav = new ModelAndView("main");

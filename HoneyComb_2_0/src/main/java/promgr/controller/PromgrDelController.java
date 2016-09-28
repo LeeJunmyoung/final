@@ -23,11 +23,7 @@ public class PromgrDelController {
 
 		String promgr_num = request.getParameter("promgr_num");
 		int com_num = (int) request.getSession().getAttribute("com_num");
-
-		dao.delchkItem(promgr_num);
-		dao.delchkList(promgr_num);
-		dao.delFile(promgr_num);
-		dao.delComment(promgr_num, com_num);
+		
 		dao.delPromgr(promgr_num, com_num);
 
 		return "redirect:/more.do";

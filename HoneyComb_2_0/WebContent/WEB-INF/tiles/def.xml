@@ -10,6 +10,8 @@
 		<put-attribute name="header" value="/WEB-INF/tiles/template/header.jsp" />
 
 		<put-attribute name="title" value="main" />
+		
+		<put-attribute name="menu" value="/WEB-INF/tiles/template/menu.jsp" />
 
 		<put-attribute name="notice" value="/WEB-INF/page/main/notice/main.jsp" />
 		<put-attribute name="promgr" value="/WEB-INF/page/main/promgr/main.jsp" />
@@ -22,6 +24,7 @@
 	<definition name="base_layout" template="/WEB-INF/tiles/template/layout_base.jsp">
 
 		<put-attribute name="header" value="/WEB-INF/tiles/template/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/tiles/template/menu.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
 
 	</definition>

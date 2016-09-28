@@ -25,7 +25,7 @@
 		<div class="row">
 
 			<div class="col-md-4">
-				<tiles:insertAttribute name="header" />
+				<tiles:insertAttribute name="menu" />
 			</div>
 
 			<div class="col-md-8">

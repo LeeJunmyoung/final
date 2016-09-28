@@ -20,7 +20,7 @@ public class PromgrCommentDelController {
 	@RequestMapping("/commentDelPro.do")
 	public String submit(@RequestParam("promgr_num") int promgr_num, @RequestParam("comment_num") int comment_num) {
 
-		dao.delComment(promgr_num, comment_num);
+		dao.delComment(comment_num, promgr_num);
 
 		return "redirect:/more.do";
 	}
