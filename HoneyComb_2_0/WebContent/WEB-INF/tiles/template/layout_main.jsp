@@ -7,58 +7,61 @@
 <title><tiles:getAsString name="title" /></title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="/HoneyComb_2_0/resources/css/home.css" rel="stylesheet"
+	type="text/css" />
 </head>
 <body>
 
-	<div class="container">
 
-		<div class="row">
-			<div class="col-md-12">
-				<tiles:insertAttribute name="header" />
-			</div>
+
+
+	<div id="page_container">
+
+		<div id="page_header">
+
+			<tiles:insertAttribute name="header" />
+
 		</div>
 
-		<div class="row">
+		<div id="page_center_contents">
 
-			<div class="col-md-4">
+			<div id="page_sidebar">
+
 				<tiles:insertAttribute name="menu" />
+
 			</div>
 
-			<div class="col-md-8">
+			<div id="page_content">
 
-				<div class="row">
-					<div class="col-md-12">
+				<div id="main_notice">
 						<tiles:insertAttribute name="notice" />
-					</div>
 				</div>
-
-				<div class="row">
-					<div class="col-md-12">
-						<tiles:insertAttribute name="promgr" />
-					</div>
+				<div id="main_project_manage">
+					<tiles:insertAttribute name="promgr" />
 				</div>
-
-				<div class="row">
-					<div class="col-md-12">
-						<tiles:insertAttribute name="calenar" />
-					</div>
+				<div id="main_cal">
+					<tiles:insertAttribute name="calenar" />
 				</div>
 
 			</div>
-
 		</div>
 
-		<div class="row">
-			<div class="col-md-12">
-				<tiles:insertAttribute name="footer" />
-			</div>
+
+		<div id="page_footer">
+
+			<tiles:insertAttribute name="footer" />
+
 		</div>
 
 	</div>
+
+
 
 </body>
 </html>

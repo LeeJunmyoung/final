@@ -48,6 +48,18 @@ public class LoginDAO extends SqlSessionDaoSupport{
 		getSqlSession().update("login.UpdatePasswd", lodb);
 	}
 	
+	public LogOnDataBean getUserInfo(String email){
+		
+		LogOnDataBean lodb = getLodb();
+	
+		lodb = (LogOnDataBean) getSqlSession().selectOne("login.getUserInfo", email);
+	
+
+		
+		
+		return lodb;
+	}
+	
 	
 	
 	

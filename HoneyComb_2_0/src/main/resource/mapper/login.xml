@@ -18,9 +18,17 @@ select email from members where name=#{name} and phone_num=#{phone_num}
 select email from members where email=#{email}
 </select>
 
+<select id="getUserInfo" resultSets="String" resultType="login.controller.LogOnDataBean">
+select * from members where email=#{email}
+</select>
+
+
+
 <update id="UpdatePasswd" parameterType="login.controller.LogOnDataBean" >
 update members set passwd=#{passwd} where email=#{email}
 </update>
+
+
 
 
 <!-- 

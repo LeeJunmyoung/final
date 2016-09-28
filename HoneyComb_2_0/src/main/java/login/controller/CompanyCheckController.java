@@ -47,20 +47,23 @@ public class CompanyCheckController {
 			}
 		
 		
+		LogOnDataBean lodb = logindao.getUserInfo(email);
+		
+
 		
 		
-		/*request.getSession().setAttribute("mem_num", Logindata.getMem_num());
-		request.getSession().setAttribute("com_num", Logindata.getCom_num());
-		request.getSession().setAttribute("com_dept_num", Logindata.getCom_dept_num());
-		request.getSession().setAttribute("com_pos_num", Logindata.getCom_pos_num());
-		request.getSession().setAttribute("name", Logindata.getName());
-		request.getSession().setAttribute("phone_num", Logindata.getPhone_num());
-		request.getSession().setAttribute("com_name", Logindata.getCom_name());
-		request.getSession().setAttribute("com_dept_name", Logindata.getCom_dept_name());
-		request.getSession().setAttribute("com_pos_name", Logindata.getCom_pos_name());*/
+		request.getSession().setAttribute("mem_num", lodb.getMem_num());
+		request.getSession().setAttribute("com_num", lodb.getCom_num());
+		request.getSession().setAttribute("com_dept_num", lodb.getCom_dept_num());
+		request.getSession().setAttribute("com_pos_num", lodb.getCom_pos_num());
+		request.getSession().setAttribute("name", lodb.getName());
+		request.getSession().setAttribute("phone_num", lodb.getPhone_num());
+		request.getSession().setAttribute("com_name", lodb.getCom_name());
+		request.getSession().setAttribute("com_dept_name", lodb.getCom_dept_name());
+		request.getSession().setAttribute("com_pos_name", lodb.getCom_pos_name());
 		
 		
-		return "../comCheck";
+		return "main_send";
 	}
 	
 	
