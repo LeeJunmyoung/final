@@ -265,4 +265,100 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 	}
 
+	public List<MemberListDataBean> getMemberJoinList(String promgr_num, int mem_num) {
+		// select * from promgr where promgr_num=?
+
+		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
+
+		int[] num_arr = cut_num(promgr.getMem_num());
+
+		List<MemberListDataBean> articleList = new ArrayList<MemberListDataBean>();
+
+		for (int i = 0; i < num_arr.length; i++) {
+
+			if (num_arr[i] != mem_num) {
+
+				MemberListDataBean article = getSqlSession().selectOne("promgr.get_member_join", mem_num);
+
+				articleList.add(article);
+
+			}
+
+		}
+
+		return articleList;
+
+	}
+
+	public List<MemberListDataBean> getMemberSearchList(String promgr_num) {
+
+		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
+
+		int com_num = promgr.getCom_num();
+		int[] num_arr = cut_num(promgr.getMem_num());
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("com_num", com_num);
+		map.put("num_arr", num_arr);
+
+		return getSqlSession().selectList("promgr.get_member_search", map);
+
+	}
+
+	public int addMembers(int promgr_num, String[] add_mem_num) {
+
+		String mem_num_str = "";
+		for (int i = 0; i < add_mem_num.length; i++) {
+			mem_num_str += "/" + add_mem_num[i];
+		}
+
+		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
+
+		String new_mem_num = promgr.getMem_num() + mem_num_str;
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("promgr_num", promgr_num);
+		map.put("new_mem_num", new_mem_num);
+
+		return getSqlSession().update("promgr.set_mem_num", map);
+
+	}
+
+	public int delMembers(int promgr_num, String[] del_mem_num) {
+
+		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
+
+		int[] num_arr = cut_num(promgr.getMem_num());
+
+		String new_mem_num = "";
+
+		for (int i = 0; i < del_mem_num.length; i++) {
+
+			for (int j = 0; j < num_arr.length; j++) {
+
+				if (!del_mem_num[i].equals(String.valueOf(num_arr[j]))) {
+
+					if (j == 0) {
+						new_mem_num += num_arr[j];
+					} else {
+						new_mem_num += "/" + num_arr[j];
+					}
+
+				}
+
+			}
+
+		}
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("promgr_num", promgr_num);
+		map.put("new_mem_num", new_mem_num);
+
+		return getSqlSession().update("promgr.set_mem_num", map);
+
+	}
+
 } // public class NoticeDao end

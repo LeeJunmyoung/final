@@ -16,13 +16,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		promgr_comment(comment_num,comment_content,mem_num,promgr_num,com_num,comment_date)
 		values(comment_num.NEXTVAL,#{comment_content},#{mem_num},#{promgr_num},#{com_num},#{comment_date})
 	</insert>
-	
+
 	<update id="set_comment_num" parameterType="hashmap">
-		update promgr set comment_num=#{comment_num_str} where promgr_num=#{promgr_num}
+		update promgr set
+		comment_num=#{comment_num_str} where promgr_num=#{promgr_num}
 	</update>
 
 	<update id="mod_comment" parameterType="hashmap">
-		update promgr_comment set comment_content=#{comment_content}, comment_date=#{update_time} where comment_num=#{comment_num}
+		update promgr_comment set
+		comment_content=#{comment_content}, comment_date=#{update_time} where
+		comment_num=#{comment_num}
+	</update>
+	
+	<update id="set_mem_num" parameterType="hashmap">
+		update promgr set mem_num=#{new_mem_num} where promgr_num=#{promgr_num}
 	</update>
 
 	<select id="count" parameterType="hashmap" resultType="int">
@@ -83,15 +90,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="new_comment_num" parameterType="int" resultType="String">
-		select comment_num from promgr_comment where mem_num=#{mem_num} order by comment_num desc
+		select comment_num from promgr_comment where mem_num=#{mem_num} order
+		by comment_num desc
 	</select>
-	
+
 	<select id="get_comment_num" parameterType="int" resultType="String">
 		select comment_num from promgr where promgr_num=#{promgr_num}
 	</select>
-	
+
 	<select id="get_comment_num_all" parameterType="int" resultType="String">
 		select comment_num from promgr_comment where promgr_num=#{promgr_num}
+	</select>
+
+	<select id="get_promgr" parameterType="String" resultType="promgr.db.PromgrDataBean">
+		select * from promgr where promgr_num=#{promgr_num}
+	</select>
+
+	<select id="get_member_join" parameterType="int"
+		resultType="promgr.db.MemberListDataBean">
+		select * from members where mem_num=#{mem_num}
+	</select>
+
+	<select id="get_member_search" parameterType="String"
+		resultType="promgr.db.PromgrDataBean">
+		select * from members where com_num=#{com_num} and
+		<foreach collection="num_arr" index="i" separator="and">
+			not mem_num=#{num_arr[i]}
+		</foreach>
 	</select>
 
 	<delete id="del_promgr" parameterType="hashmap">
@@ -100,12 +125,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 
 	<delete id="del_chkItem_all" parameterType="String">
-		delete from chklist_item
+		delete from
+		chklist_item
 		where promgr_num=#{promgr_num}
 	</delete>
 
 	<delete id="del_chkList_all" parameterType="String">
-		delete from chklist_title
+		delete from
+		chklist_title
 		where promgr_num=#{promgr_num}
 	</delete>
 
@@ -118,9 +145,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from
 		promgr_comment where promgr_num=#{promgr_num} and com_num=#{com_num}
 	</delete>
-	
+
 	<delete id="del_comment_item" parameterType="int">
-		delete from promgr_comment where comment_num=#{comment_num}
+		delete from
+		promgr_comment where comment_num=#{comment_num}
 	</delete>
 
 </mapper>
