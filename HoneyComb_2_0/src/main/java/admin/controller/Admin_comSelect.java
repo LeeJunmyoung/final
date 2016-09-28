@@ -33,15 +33,11 @@ public class Admin_comSelect {
 		session = request.getSession();
 		session.setAttribute("com_num", 1);
 		com_num = (int) request.getSession().getAttribute("com_num");
-
 		List adminlist = dao.getadminList(com_num);
-
 		ModelAndView mav = new ModelAndView("admin_main", "adminlist", adminlist);
-
 		System.out.println(mav.getViewName());
 		mav.setViewName("admin_comSelect");
 		mav.addObject("admin_comSelect", adminlist);
-
 		System.out.println(mav.getViewName());
 		return mav;
 	}
