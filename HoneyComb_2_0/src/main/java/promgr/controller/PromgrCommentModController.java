@@ -31,14 +31,18 @@ public class PromgrCommentModController {
 	}
 
 	@RequestMapping("/commentModPro.do")
-	public String submit(@RequestParam(value = "comment_num") int comment_num,
+	public ModelAndView submit(@RequestParam(value = "comment_num") int comment_num,
 			@RequestParam(value = "promgr_comment") String comment_content) {
 
 		Timestamp update_time = new Timestamp(System.currentTimeMillis());
 
-		dao.modComment(comment_num, comment_content, update_time);
+		int promgr_update_count = dao.modComment(comment_num, comment_content, update_time);
 
-		return "redirect:/more.do";
+		ModelAndView mav = new ModelAndView("pro");
+		mav.addObject("promgr_update_count", promgr_update_count);
+
+		return mav;
+		
 	}
 
 }

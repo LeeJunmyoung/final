@@ -43,4 +43,7 @@
 	<bean id="admincomSearch" class="admin.controller.Admin_comSearch"
 		p:dao-ref="dao" />
 
+	<bean id="adminComplete" class="admin.controller.Admin_complete"
+		p:dao-ref="dao" />
+
 </beans>

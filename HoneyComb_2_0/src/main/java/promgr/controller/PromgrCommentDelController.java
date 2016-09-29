@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import promgr.db.PromgrDao;
 
@@ -18,11 +19,16 @@ public class PromgrCommentDelController {
 	}
 
 	@RequestMapping("/commentDelPro.do")
-	public String submit(@RequestParam("promgr_num") int promgr_num, @RequestParam("comment_num") int comment_num) {
+	public ModelAndView submit(@RequestParam("promgr_num") int promgr_num,
+			@RequestParam("comment_num") int comment_num) {
 
-		dao.delComment(comment_num, promgr_num);
+		int promgr_update_count = dao.delComment(comment_num, promgr_num);
 
-		return "redirect:/more.do";
+		ModelAndView mav = new ModelAndView("pro");
+		mav.addObject("promgr_update_count", promgr_update_count);
+
+		return mav;
+		
 	}
 
 }

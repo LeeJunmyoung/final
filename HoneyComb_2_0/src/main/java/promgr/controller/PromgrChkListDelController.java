@@ -18,23 +18,17 @@ public class PromgrChkListDelController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/chkListModForm.do")
-	public ModelAndView form(@RequestParam(value = "list_num") int list_num) {
-
-		ModelAndView mav = new ModelAndView("chkListModForm");
-		mav.addObject("list_num", list_num);
-
-		return mav;
-
-	}
-
-	@RequestMapping("/chkListModPro.do")
-	public String submit(@RequestParam(value = "promgr_num") int promgr_num,
+	@RequestMapping("/chkListDelPro.do")
+	public ModelAndView submit(@RequestParam(value = "promgr_num") int promgr_num,
 			@RequestParam(value = "list_num") int list_num) {
 
-		dao.delChkList(promgr_num, list_num);
+		int promgr_update_count = dao.delChkList(promgr_num, list_num);
 
-		return "redirect:/more.do";
+		ModelAndView mav = new ModelAndView("pro");
+		mav.addObject("promgr_update_count", promgr_update_count);
+
+		return mav;
+		
 	}
 
 }

@@ -1,7 +1,5 @@
 package promgr.controller;
 
-import java.sql.Timestamp;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import promgr.db.CommentDataBean;
+import promgr.db.ChkItemDataBean;
 import promgr.db.PromgrDao;
 
 @Controller
-public class PromgrCommentAddController {
+public class PromgrChkItemAddController {
 
 	private PromgrDao dao;
 
@@ -23,28 +21,30 @@ public class PromgrCommentAddController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/commentAddForm.do")
-	public ModelAndView form(@RequestParam(value = "promgr_num") int promgr_num) {
+	@RequestMapping("/chkItemAddForm.do")
+	public ModelAndView form(@RequestParam(value = "promgr_num") String promgr_num,
+			@RequestParam(value = "list_num") int list_num) {
 
-		ModelAndView mav = new ModelAndView("commentAddForm");
+		ModelAndView mav = new ModelAndView("chkItemAddForm");
 		mav.addObject("promgr_num", promgr_num);
+		mav.addObject("list_num", list_num);
 
 		return mav;
 
 	}
 
-	@RequestMapping("/commentAddPro.do")
+	@RequestMapping("/chkItemAddPro.do")
 	public ModelAndView submit(HttpServletRequest request) {
 
-		CommentDataBean article = new CommentDataBean();
+		ChkItemDataBean article = new ChkItemDataBean();
 
-		article.setComment_content(String.valueOf(request.getParameter("promgr_comment")));
-		article.setMem_num((int) request.getSession().getAttribute("mem_num"));
+		article.setChklist_item_name(String.valueOf(request.getParameter("promgr_list_item")));
 		article.setPromgr_num(Integer.parseInt(request.getParameter("promgr_num")));
 		article.setCom_num((int) request.getSession().getAttribute("com_num"));
-		article.setComment_date(new Timestamp(System.currentTimeMillis()));
 
-		int promgr_insert_count = dao.addComment(article);
+		int list_num = Integer.parseInt(request.getParameter("list_num"));
+
+		int promgr_insert_count = dao.addChkItem(list_num, article);
 
 		ModelAndView mav = new ModelAndView("pro");
 		mav.addObject("promgr_insert_count", promgr_insert_count);

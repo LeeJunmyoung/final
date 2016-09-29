@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import promgr.db.PromgrDao;
 import promgr.db.PromgrDataBean;
@@ -29,7 +30,7 @@ public class PromgrAddController {
 	}
 
 	@RequestMapping("/promgrAddPro.do")
-	public String submit(HttpServletRequest request) {
+	public ModelAndView submit(HttpServletRequest request) {
 
 		PromgrDataBean article = new PromgrDataBean();
 		article.setPromgr_name(request.getParameter("promgr_title"));
@@ -38,9 +39,12 @@ public class PromgrAddController {
 		article.setMem_num(String.valueOf(request.getSession().getAttribute("mem_num")));
 		article.setCom_num((int) request.getSession().getAttribute("com_num"));
 
-		dao.addPromgr(article);
+		int promgr_insert_count = dao.addPromgr(article);
 
-		return "redirect:/more.do";
+		ModelAndView mav = new ModelAndView("pro");
+		mav.addObject("promgr_insert_count", promgr_insert_count);
+
+		return mav;
 	}
 
 }

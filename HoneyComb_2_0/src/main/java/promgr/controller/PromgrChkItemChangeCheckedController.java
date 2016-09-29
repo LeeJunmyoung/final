@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import promgr.db.PromgrDao;
 
 @Controller
-public class PromgrMemberAddController {
+public class PromgrChkItemChangeCheckedController {
 
 	private PromgrDao dao;
 
@@ -18,19 +18,16 @@ public class PromgrMemberAddController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/memberAdd.do")
+	@RequestMapping("/chkItemDelPro.do")
 	public ModelAndView submit(@RequestParam(value = "promgr_num") int promgr_num,
-			@RequestParam(value = "mem_add") String[] add_mem_num) {
+			@RequestParam(value = "list_num") int list_num, @RequestParam(value = "item_num") int item_num,
+			@RequestParam(value = "checked") int checked) {
 
-		int promgr_update_count = 0;
+		int promgr_update_count = dao.ChangeCheckedItem(promgr_num, list_num, item_num, checked);
 
-		if (add_mem_num != null) {
-			promgr_update_count = dao.addMembers(promgr_num, add_mem_num);
-		}
-
-		ModelAndView mav = new ModelAndView("memberPro");
+		ModelAndView mav = new ModelAndView("pro");
 		mav.addObject("promgr_update_count", promgr_update_count);
-		
+
 		return mav;
 
 	}
