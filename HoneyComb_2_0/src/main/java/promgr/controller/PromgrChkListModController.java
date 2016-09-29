@@ -32,6 +32,7 @@ public class PromgrChkListModController {
 	public String submit(@RequestParam(value = "list_num") int list_num,
 			@RequestParam(value = "promgr_list_title") String list_name) {
 
+		dao.modChkList(list_num, list_name);
 
 		return "redirect:/more.do";
 	}
