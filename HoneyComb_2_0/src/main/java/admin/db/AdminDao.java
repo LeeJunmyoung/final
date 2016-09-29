@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
+import admin.controller.Admin_comInsert;
 import admin.db.AdminInfo;
 import login.controller.LogOnDataBean;
 
@@ -26,5 +27,17 @@ public class AdminDao extends SqlSessionDaoSupport {
 		List completelist = new ArrayList<AdminInfo>();
 		completelist = getSqlSession().selectList("admincomplete", com_num);
 		return completelist;
+	}
+	
+	public int admincomInsert(int com_num){
+		int admincomInsert = 0;
+		admincomInsert = getSqlSession().insert("admincominsert", com_num);
+		return admincomInsert;
+	}
+	
+	public int admincomDelete(int com_num){
+		int admincomDelete = 0;
+		admincomDelete = getSqlSession().insert("admincomdelete", com_num);
+		return admincomDelete;
 	}
 }

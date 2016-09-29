@@ -46,4 +46,9 @@
 	<bean id="adminComplete" class="admin.controller.Admin_complete"
 		p:dao-ref="dao" />
 
+	<bean id="admincomInsert" class="admin.controller.Admin_comInsert"
+		p:dao-ref="dao" />
+
+	<bean id="admincomDelete" class="admin.controller.Admin_comDelete"
+		p:dao-ref="dao" />
 </beans>

@@ -125,11 +125,11 @@ height: 100%;
  
 	}
 
-	 function del(come_num) {;
-		var num = come_num;
+	 function del(com_num) {;
+		var num = com_num;
 		
 		
-		url = "complete_comDel.admin?com_num=" + num;
+		url = "admin_comDelete?com_num=" + num;
 
 			  window
 					.open(
@@ -139,10 +139,8 @@ height: 100%;
 			  
 	} 
 	 
-	 function submitCheck(come_num){;
-	 var num = come_num;
-	 
-	 url = "complete_comIn.admin?com_num="+num;
+	 function submitCheck(com_num){;
+	 url = "admin_comInsert?com_num="+com_num;
 	 window
 		.open(
 				url,
@@ -190,7 +188,7 @@ height: 100%;
 								class="btn btn-primary btn-xs" id="submit" value="등록"
 								onclick="submitCheck(${admincomplete.com_num})"> <input
 								type="button" class="btn btn-primary btn-xs" id="delete"
-								value="삭제" onclick="del(${admincomplete.com_num})"></td>
+								value="삭제" onclick="del(${admincomplete.com_num})"></td>g
 						</tr>
 					</c:forEach>
 				</c:if>
