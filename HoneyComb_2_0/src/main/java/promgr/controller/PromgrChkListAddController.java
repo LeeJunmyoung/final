@@ -32,7 +32,7 @@ public class PromgrChkListAddController {
 	}
 
 	@RequestMapping("/chkListAddPro.do")
-	public String submit(HttpServletRequest request) {
+	public ModelAndView submit(HttpServletRequest request) {
 
 		ChkListDataBean article = new ChkListDataBean();
 
@@ -40,9 +40,13 @@ public class PromgrChkListAddController {
 		article.setPromgr_num(Integer.parseInt(request.getParameter("promgr_num")));
 		article.setCom_num((int) request.getSession().getAttribute("com_num"));
 
-		dao.addChkList(article);
+		int promgr_insert_count = dao.addChkList(article);
 
-		return "redirect:/more.do";
+		ModelAndView mav = new ModelAndView("pro");
+		mav.addObject("promgr_insert_count", promgr_insert_count);
+
+		return mav;
+		
 	}
 
 }

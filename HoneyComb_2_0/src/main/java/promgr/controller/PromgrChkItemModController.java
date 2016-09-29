@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import promgr.db.PromgrDao;
 
 @Controller
-public class PromgrChkListModController {
+public class PromgrChkItemModController {
 
 	private PromgrDao dao;
 
@@ -18,22 +18,22 @@ public class PromgrChkListModController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/chkListModForm.do")
-	public ModelAndView form(@RequestParam(value = "list_num") int list_num) {
+	@RequestMapping("/chkItemModForm.do")
+	public ModelAndView form(@RequestParam(value = "item_num") int item_num) {
 
 		ModelAndView mav = new ModelAndView("chkListModForm");
-		mav.addObject("list_num", list_num);
+		mav.addObject("item_num", item_num);
 
 		return mav;
 
 	}
 
-	@RequestMapping("/chkListModPro.do")
-	public ModelAndView submit(@RequestParam(value = "list_num") int list_num,
-			@RequestParam(value = "promgr_list_title") String list_name) {
+	@RequestMapping("/chkItemModPro.do")
+	public ModelAndView submit(@RequestParam(value = "item_num") int item_num,
+			@RequestParam(value = "promgr_list_item") String item_name) {
 
-		int promgr_update_count = dao.modChkList(list_num, list_name);
-		
+		int promgr_update_count = dao.modChkItem(item_num, item_name);
+
 		ModelAndView mav = new ModelAndView("pro");
 		mav.addObject("promgr_update_count", promgr_update_count);
 
