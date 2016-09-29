@@ -31,13 +31,13 @@ update members set passwd=#{passwd} where email=#{email}
 
 
 
-<!-- 
+ 
 <select id="getMembers" parameterType="login.controller.LogOnDataBean">
 select * from members
 </select>
 
 <insert id="insertMember" parameterType="login.controller.LogOnDataBean">
-insert into members value(#{email},#{passwd},#{name},#{phone_num})
-</insert> -->
+insert into members(mem_num, name, email, phone_num, passwd) values(member_seq.NEXTVAL,#{name},#{email},#{phone_num},#{passwd})
+</insert> 
 
 </mapper>

@@ -19,7 +19,7 @@ public class SignInController  {
 	private static final Logger log = LoggerFactory.getLogger(SignInController.class);
 	
 	@Autowired
-	SignInDAO dao;
+	SignInDAO dao = new SignInDAO(); 
 	
 	public void setDao(SignInDAO dao) {
 		this.dao = dao;
@@ -31,12 +31,13 @@ public class SignInController  {
 	}
 	@RequestMapping("/members.do")//DB에 insert하는 메소드
 	public ModelAndView members(LogOnDataBean logdb, HttpSession session, HttpServletResponse response) throws Exception{
-		
 		System.out.println("실행");
-		ModelAndView mav = new ModelAndView();	
-		dao.insertMember(logdb);
+		ModelAndView mav = new ModelAndView();
 		System.out.println("insert");
+		dao.insertMember(logdb);
 		mav.setViewName("redirect:/login/success.do");
+		System.out.println("끝");
+		SignInDAO dao = new SignInDAO();
 		
 		return mav;
 	}
