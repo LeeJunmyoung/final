@@ -38,8 +38,8 @@
 		destroy-method="close">
 		<property name="driverClass" value="${driver}" />
 		<property name="jdbcUrl" value="${url}" />
-		<property name="user" value="honeycomb" />
-		<property name="password" value="honeycomb" />
+		<property name="user" value="wgh17" />
+		<property name="password" value="wgh1188" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -5,15 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SelectUploadFile</title>
+<script src="/HoneyComb/cloudview/cloudScript.js"  type="text/javascript">
+
+
+
+</script>
 </head>
 <body>
-	folder:::${folder}
 	<form name="form"	enctype="multipart/form-data" method="post">
 		<input type="file" name="uploadfile">
 		<c:if test="${com_pos_num < 3}">
 			보안설정<input type="checkbox" name="security">
 		</c:if>
-		<input type="submit">
+		<input type="submit" id="submit">
 	</form>
 	
 </body>
