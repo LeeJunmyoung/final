@@ -37,7 +37,6 @@ public class SignInController  {
 		dao.insertMember(logdb);
 		mav.setViewName("redirect:/login/success.do");
 		System.out.println("끝");
-		SignInDAO dao = new SignInDAO();
 		
 		return mav;
 	}
