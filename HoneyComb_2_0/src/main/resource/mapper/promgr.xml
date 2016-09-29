@@ -81,6 +81,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		chklist_item_name=#{item_name} where chklist_item_num=#{item_num}
 	</update>
 
+	<update id="set_checked" parameterType="hashmap">
+		update chklist_item set chklist_item_chk=#{checked} where
+		chklist_item_num=#{item_num}
+	</update>
+
 	<select id="count_promgr" parameterType="hashmap" resultType="int">
 		select
 		count(*) from promgr where com_num=#{com_num} and mem_num like
@@ -242,14 +247,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		promgr_comment where comment_num=#{comment_num}
 	</delete>
 
-	<delete id="del_chkItem" parameterType="int">
-		delete from chklist_item
+	<delete id="del_chkItem_list_num" parameterType="int">
+		delete from
+		chklist_item
 		where chklist_title_num=#{list_num}
 	</delete>
 
 	<delete id="del_chkList" parameterType="int">
 		delete from chklist_title
 		where chklist_title_num=#{list_num}
+	</delete>
+
+	<delete id="del_chkItem_item_num" parameterType="int">
+		delete from
+		chklist_item where chklist_item_num=#{item_num}
 	</delete>
 
 </mapper>
