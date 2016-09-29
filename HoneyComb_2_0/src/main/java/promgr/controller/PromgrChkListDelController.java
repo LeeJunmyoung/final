@@ -18,7 +18,7 @@ public class PromgrChkListDelController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/chkListDelPro.do")
+	@RequestMapping("/chkListDel.do")
 	public ModelAndView submit(@RequestParam(value = "promgr_num") int promgr_num,
 			@RequestParam(value = "list_num") int list_num) {
 

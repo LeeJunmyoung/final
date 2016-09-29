@@ -28,7 +28,7 @@
 <body style="background-color: #e9ebee;">
 
 	<form class="col-sm-10" role="form" method="post" name="chkItemAddform" 
-		action="/HoneyComb/promgr/promgrChkItemAddPro.promgr?promgr_num=${promgr_num}&list_num=${list_num}" 
+		action="/HoneyComb_2_0/promgr/chkItemAddPro.do?promgr_num=${promgr_num}&list_num=${list_num}" 
 		onsubmit="return writeSave()" >
 		
 		<div class="form-group" style="margin-top: 10px;">

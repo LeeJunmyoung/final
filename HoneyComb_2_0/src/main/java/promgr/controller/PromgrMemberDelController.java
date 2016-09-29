@@ -18,7 +18,7 @@ public class PromgrMemberDelController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/memberAdd.do")
+	@RequestMapping("/memberDel.do")
 	public ModelAndView submit(@RequestParam(value = "promgr_num") int promgr_num,
 			@RequestParam(value = "mem_del") String[] del_mem_num) {
 

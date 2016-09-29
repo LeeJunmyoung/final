@@ -18,7 +18,7 @@ public class PromgrCommentDelController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/commentDelPro.do")
+	@RequestMapping("/commentDel.do")
 	public ModelAndView submit(@RequestParam("promgr_num") int promgr_num,
 			@RequestParam("comment_num") int comment_num) {
 

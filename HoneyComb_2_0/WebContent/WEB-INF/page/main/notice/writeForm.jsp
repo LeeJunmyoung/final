@@ -34,7 +34,7 @@
 <body style="background-color: #e9ebee;">
 
 	<form class="col-sm-10" role="form" method="post" name="noticeWriteform" 
-		action="/HoneyComb/notice/noticeWritePro.notice" onsubmit="return writeSave()" >
+		action="/HoneyComb_2_0/notice/writePro.do" onsubmit="return writeSave()" >
 		
 		<div class="form-group" style="margin-top: 10px;">
 			<label for="notice_title">공지제목:</label>

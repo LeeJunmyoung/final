@@ -38,8 +38,8 @@
 
 	function addView() {
 		
-		if(document.getElementById("mem_list").style.display == "block") {
-			document.getElementById("mem_list").style.display = "none"
+		if(document.getElementById("mem_join_list").style.display == "block") {
+			document.getElementById("mem_join_list").style.display = "none"
 			document.getElementById("mem_search_input").style.display = "block"
 			document.getElementById("mem_search_result").style.display = "block"
 		}
@@ -47,8 +47,8 @@
 	}
 
 	function delView() {
-		if(document.getElementById("mem_list").style.display == "none") {
-			document.getElementById("mem_list").style.display = "block"
+		if(document.getElementById("mem_join_list").style.display == "none") {
+			document.getElementById("mem_join_list").style.display = "block"
 			document.getElementById("mem_search_input").style.display = "none"
 			document.getElementById("mem_search_result").style.display = "none"
 		}
@@ -86,7 +86,7 @@
 	</div>
 	
 	<form class="col-sm-10" role="form" id="mem_search_result" name="mem_search_result" method="post"
-		action="/HoneyComb/promgr/promgrMemberEditorAdd.promgr?promgr_num=${promgr_num}">
+		action="/HoneyComb_2_0/promgr/memberAdd.do?promgr_num=${promgr_num}">
 
 		<c:forEach var="item" items="${ memberSearchList }">
 
@@ -105,10 +105,10 @@
 
 	</form>
 
-	<form class="col-sm-10" role="form" id="mem_list" method="post" style="display: none;"
-		action="/HoneyComb/promgr/promgrMemberEditorDel.promgr?promgr_num=${promgr_num}">
+	<form class="col-sm-10" role="form" id="mem_join_list" method="post" style="display: none;"
+		action="/HoneyComb_2_0/promgr/memberDel.do?promgr_num=${promgr_num}">
 
-		<c:forEach var="item" items="${ memberList }">
+		<c:forEach var="item" items="${ memberJoinList }">
 
 			<div class="row">
 				<span class="col-md-1">

@@ -83,7 +83,7 @@
 	}
 	
 	function addProject() { // project 생성
-		url = "/HoneyComb/promgr/promgrAddForm.promgr?";
+		url = "/HoneyComb_2_0/promgr/promgrAddForm.do";
 		window
 				.open(
 						url,
@@ -93,7 +93,7 @@
 	
 	function delProject(promgr_num) { // 프로젝트 삭제
 			
-			url = "/HoneyComb/promgr/promgrDel.promgr?promgr_num="+promgr_num;
+			url = "/HoneyComb_2_0/promgr/promgrDel.do?promgr_num="+promgr_num;
 			window
 					.open(
 							url,
@@ -102,7 +102,7 @@
 	}
 	
 	function memberEditor(promgr_num) { // 참여자 관리
-		url = "/HoneyComb/promgr/promgrMemberEditorForm.promgr?mem_num="+${my_mem_num}+"&promgr_num="+promgr_num;
+		url = "/HoneyComb_2_0/promgr/memberForm.do?mem_num="+${mem_num}+"&promgr_num="+promgr_num;
 		window
 				.open(
 						url,
@@ -111,7 +111,7 @@
 	}
 	
 	function AddChkList(promgr_num) { // checklist 생성
-		url = "/HoneyComb/promgr/promgrChkListAddForm.promgr?promgr_num="+promgr_num;
+		url = "/HoneyComb_2_0/promgr/chkListAddForm.do?promgr_num="+promgr_num;
 		window
 				.open(
 						url,
@@ -121,7 +121,7 @@
 	
 	function ModChkList(list_num) { // checklist명 수정
 		
-		url = "/HoneyComb/promgr/promgrChkListModForm.promgr?list_num="+list_num;
+		url = "/HoneyComb_2_0/promgr/chkListModForm.do?list_num="+list_num;
 		window
 				.open(
 						url,
@@ -130,7 +130,7 @@
 	}
 	
 	function DelChkList(promgr_num, list_num) { // checklist 삭제
-		url = "/HoneyComb/promgr/promgrChkListDel.promgr?promgr_num="+promgr_num+"&list_num="+list_num;
+		url = "/HoneyComb_2_0/promgr/chkListDel.do?promgr_num="+promgr_num+"&list_num="+list_num;
 		window
 				.open(
 						url,
@@ -140,7 +140,7 @@
 	
 	function AddItem(promgr_num, list_num) { // checkitem 생성
 		
-		url = "/HoneyComb/promgr/promgrChkItemAddForm.promgr?promgr_num="+promgr_num+"&list_num="+list_num;
+		url = "/HoneyComb_2_0/promgr/chkItemAddForm.do?promgr_num="+promgr_num+"&list_num="+list_num;
 		window
 				.open(
 						url,
@@ -150,7 +150,7 @@
 	
 	function ModItem(item_num) { // checkitem명 수정
 		
-		url = "/HoneyComb/promgr/promgrChkItemModForm.promgr?item_num="+item_num;
+		url = "/HoneyComb_2_0/promgr/chkItemModForm.do?item_num="+item_num;
 		window
 				.open(
 						url,
@@ -160,7 +160,7 @@
 	
 	function DelItem(promgr_num, list_num, item_num) { // checkitem 삭제
 		
-		url = "/HoneyComb/promgr/promgrChkItemDel.promgr?promgr_num="+promgr_num+"&list_num="+list_num+"&item_num="+item_num;
+		url = "/HoneyComb_2_0/promgr/chkItemDel.do?promgr_num="+promgr_num+"&list_num="+list_num+"&item_num="+item_num;
 		window
 				.open(
 						url,
@@ -169,7 +169,7 @@
 	}
 	
 	function AddComment(promgr_num) { // comment 생성
-		url = "/HoneyComb/promgr/promgrCommentAddForm.promgr?promgr_num="+promgr_num;
+		url = "/HoneyComb_2_0/promgr/commentAddForm.do?promgr_num="+promgr_num;
 		window
 				.open(
 						url,
@@ -178,7 +178,7 @@
 	}
 	
 	function ModComment(comment_num) { // comment 생성
-		url = "/HoneyComb/promgr/promgrCommentModForm.promgr?comment_num="+comment_num;
+		url = "/HoneyComb_2_0/promgr/commentModForm.do?comment_num="+comment_num;
 		window
 				.open(
 						url,
@@ -188,7 +188,7 @@
 	
 	function DelComment(promgr_num, comment_num) { // comment 삭제
 		
-		url = "/HoneyComb/promgr/promgrCommentDel.promgr?promgr_num="+promgr_num+"&comment_num="+comment_num;
+		url = "/HoneyComb_2_0/promgr/commentDel.do?promgr_num="+promgr_num+"&comment_num="+comment_num;
 		window
 				.open(
 						url,
@@ -200,7 +200,7 @@
 		
 		if(document.getElementById(item_num).checked == true) {
 			
-			url = "/HoneyComb/promgr/promgrChkItemChangeChecked.promgr?promgr_num="+promgr_num+"&list_num="+list_num+"&item_num="+item_num+"&checked=1";
+			url = "/HoneyComb_2_0/promgr/chkItemChangeChecked.do?promgr_num="+promgr_num+"&list_num="+list_num+"&item_num="+item_num+"&checked=1";
 			window
 					.open(
 							url,
@@ -211,7 +211,7 @@
 		
 		if(document.getElementById(item_num).checked == false) {
 			
-			url = "/HoneyComb/promgr/promgrChkItemChangeChecked.promgr?promgr_num="+promgr_num+"&list_num="+list_num+"&item_num="+item_num+"&checked=0";
+			url = "/HoneyComb_2_0/promgr/chkItemChangeChecked.do?promgr_num="+promgr_num+"&list_num="+list_num+"&item_num="+item_num+"&checked=0";
 			window
 					.open(
 							url,

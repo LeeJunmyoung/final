@@ -29,7 +29,7 @@
 <body style="background-color: #e9ebee;">
 
 	<form class="col-sm-10" role="form" method="post" name="commentAddform" 
-		action="/HoneyComb/promgr/promgrCommentAddPro.promgr?promgr_num=${promgr_num}"  
+		action="/HoneyComb_2_0/promgr/commentAddPro.do?promgr_num=${promgr_num}"  
 		onsubmit="return writeSave()" >
 		
 		<div class="form-group" style="margin-top: 10px;">
