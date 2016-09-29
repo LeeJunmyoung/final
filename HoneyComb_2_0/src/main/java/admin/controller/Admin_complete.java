@@ -3,6 +3,7 @@ package admin.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import admin.db.AdminDao;
+import admin.db.AdminInfo;
 import login.controller.LogOnDataBean;
 
 @Controller
-@RequestMapping("/admin_comSearch")
-public class Admin_comSearch {
+@RequestMapping("/admin_complete")
+public class Admin_complete {
 
 	private AdminDao dao;
 
@@ -26,9 +28,15 @@ public class Admin_comSearch {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView getadminList(@RequestParam int com_num, HttpServletRequest request) {
-		List<LogOnDataBean> memlist = dao.memadminList(com_num);
-		ModelAndView mav = new ModelAndView("admin_comSearch", "memlist", memlist);
+	public ModelAndView getadmincomplete(HttpSession session, HttpServletRequest request) {
+		int com_num = 1;
+		session = request.getSession();
+		session.setAttribute("com_num", 1);
+		com_num = (int) request.getSession().getAttribute("com_num");
+		List<AdminInfo> admincomplete = dao.adminComplete(com_num);
+		ModelAndView mav = new ModelAndView("admin_main_page", "admincomplete", admincomplete);
+		mav.setViewName("admin_complete");
+		mav.addObject("admin_complete", admincomplete);
 		return mav;
 	}
 }

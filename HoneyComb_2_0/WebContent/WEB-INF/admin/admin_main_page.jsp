@@ -158,7 +158,7 @@ width: 100%;
 								<p>
 									<tr>
 										<td><a
-											href="javascript:window.location='/HoneyComb/complete/complete_com.admin'"
+											href="javascript:window.location='/HoneyComb_2_0/admin/admin_complete'"
 											class="myButton">회사 승인</a></td>
 									</tr>
 								<p>
