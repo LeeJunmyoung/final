@@ -9,8 +9,7 @@ public class SignInDAO extends SqlSessionDaoSupport {
 	public List<LogOnDataBean> getMembers(){
 		return getSqlSession().selectList("login.getMembers");
 	}
-	public void insert(){
-		LogOnDataBean logdb = new LogOnDataBean();
+	public void insertMember(LogOnDataBean logdb){
 		
 		logdb.setEmail("email");
 		logdb.setPasswd("password");
@@ -20,6 +19,7 @@ public class SignInDAO extends SqlSessionDaoSupport {
 		getSqlSession().insert("insertMember",logdb);
 	
 	}
+	
 	
 	
 }
