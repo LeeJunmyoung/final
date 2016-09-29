@@ -19,7 +19,7 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		map.put("com_num", com_num);
 		map.put("mem_num", mem_num);
 
-		return getSqlSession().selectOne("promgr.count", map);
+		return getSqlSession().selectOne("promgr.count_promgr", map);
 
 	}
 
@@ -207,9 +207,9 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		String new_comment_num = getSqlSession().selectOne("promgr.new_comment_num", mem_num);
 
 		int promgr_num = article.getPromgr_num();
-		
+
 		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
-		
+
 		String old_comment_num = promgr.getComment_num();
 
 		String comment_num_str = "";
@@ -370,12 +370,12 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 		String chkList_name = article.getChklist_title_name();
 		String new_chkList_num = getSqlSession().selectOne("promgr.new_chkList_num", chkList_name);
-		
+
 		int promgr_num = article.getPromgr_num();
 		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
-		
+
 		String old_chklist_title_num = promgr.getChklist_title_num();
-		
+
 		String chkList_num_str = "";
 
 		if (old_chklist_title_num == null) {
@@ -390,6 +390,92 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		map.put("promgr_num", promgr_num);
 
 		return getSqlSession().update("promgr.set_chkList_num", map);
+
+	}
+
+	public int modChkList(int list_num, String list_name) {
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("list_num", list_num);
+		map.put("list_name", list_name);
+
+		return getSqlSession().update("promgr.mod_chkList", map);
+
+	}
+
+	public int delChkList(int promgr_num, int list_num) {
+
+		delChkItem(promgr_num, list_num);
+
+		getSqlSession().delete("promgr.del_chkList", list_num);
+
+		List<String> all_chkList_num = getSqlSession().selectList("promgr.get_chkList_num_all", promgr_num);
+
+		String chkList_num_str = "";
+
+		for (int i = 0; i < all_chkList_num.size(); i++) {
+
+			if (chkList_num_str.equals("")) {
+				chkList_num_str += all_chkList_num.get(i);
+			} else {
+				chkList_num_str += "/" + all_chkList_num.get(i);
+			}
+
+		}
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("promgr_num", promgr_num);
+		map.put("chkList_num_str", chkList_num_str);
+
+		return getSqlSession().update("promgr.set_chkList_num", map);
+
+	}
+
+	public int delChkItem(int promgr_num, int list_num) {
+
+		// chkItem del
+		getSqlSession().delete("promgr.del_chkItem", list_num);
+
+		List<String> all_chkItem_num = getSqlSession().selectList("promgr.get_chkItem_num_all", promgr_num);
+
+		String chkItem_num_str = "";
+
+		for (int i = 0; i < all_chkItem_num.size(); i++) {
+
+			if (chkItem_num_str.equals("")) {
+				chkItem_num_str += all_chkItem_num.get(i);
+			} else {
+				chkItem_num_str += "/" + all_chkItem_num.get(i);
+			}
+
+		}
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("promgr_num", promgr_num);
+		map.put("chkItem_num_str", chkItem_num_str);
+
+		getSqlSession().update("promgr.set_chkItem_num", promgr_num);
+
+		return promgrIng(promgr_num);
+
+	}
+
+	public int promgrIng(int promgr_num) {
+
+		int promgr_chkitem_all = getSqlSession().selectOne("promgr.count_promgr_chkItem_all", promgr_num);
+		int promgr_chkitem_chk = getSqlSession().selectOne("promgr.count_promgr_chkItem_chk", promgr_num);
+
+		int promgr_ing = (int) ((double) promgr_chkitem_chk / (double) promgr_chkitem_all * 100);
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("promgr_num", promgr_num);
+		map.put("promgr_ing", promgr_ing);
+
+		return getSqlSession().update("promgr.set_promgr_ing", map);
 
 	}
 
