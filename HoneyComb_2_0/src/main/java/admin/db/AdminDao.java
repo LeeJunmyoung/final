@@ -21,4 +21,10 @@ public class AdminDao extends SqlSessionDaoSupport {
 		memlist = getSqlSession().selectList("memadminlist",com_num);
 		return memlist;
 	}
+	
+	public List<AdminInfo> adminComplete(int com_num){
+		List completelist = new ArrayList<AdminInfo>();
+		completelist = getSqlSession().selectList("admincomplete", com_num);
+		return completelist;
+	}
 }
