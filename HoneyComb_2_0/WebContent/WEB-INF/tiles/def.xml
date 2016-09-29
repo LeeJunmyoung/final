@@ -31,12 +31,12 @@
 
 	<definition name="notice_more" extends="base_layout">
 		<put-attribute name="title" value="more" />
-		<put-attribute name="body" value="/WEB-INF/page/main/notice/more.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/main/notice/more.jsp" />
 	</definition>
 	
 	<definition name="cloud_main" extends="base_layout">
 		<put-attribute name="title" value="cloud" />
-		<put-attribute name="body" value="/WEB-INF/page/cloud/main.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/cloud/main.jsp" />
 	</definition>
 	
 </tiles-definitions>
