@@ -41,6 +41,9 @@ public class CloudMainController {
 		/* session 임시설정 */
 		System.out.println("test용com_num설정::1");
 		session.setAttribute("com_num", 1);
+		session.setAttribute("com_pos_num", 1);
+		session.setAttribute("name", "tester");
+		session.setAttribute("mem_num", 1);
 		/* session임시설정끝 */
 
 		com_num = (int) request.getSession().getAttribute("com_num");
@@ -62,13 +65,23 @@ public class CloudMainController {
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public void uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request){
-		dao.uploadFile(uploadfile, null, request);
+	public void uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request, String security){
+		
+		int com_pos_num = 0;
+		if(security != null){
+			com_pos_num = 1;
+		}
+		dao.uploadFile(uploadfile, "", request, com_pos_num);
 
 	}
 		//폴더 내부에서 업로드
 	@RequestMapping(value="/upload/{folder}", method = RequestMethod.POST)
-	public void uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request){
-		dao.uploadFile(uploadfile, folder, request);
+	public void uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request, String security){
+		int com_pos_num = 0;
+		if(security != null ){
+			com_pos_num = 1;
+		}
+		dao.uploadFile(uploadfile, folder, request, com_pos_num);
 	}
+	
 }

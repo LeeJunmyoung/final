@@ -19,6 +19,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</otherwise>
 	</choose>
 	</select>
-
+	
+	<insert id="upload" parameterType="cloud.db.CloudInfo">
+		insert into cloud values(cloud_seq.NEXTVAL, #{file_name}, #{file_path}, #{file_uploader}, #{file_size}, sysdate, #{com_num},#{com_pos_num}, #{folder},#{mem_num},'')
+	</insert>
 
 </mapper>

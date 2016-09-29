@@ -12,7 +12,6 @@
 <script>
 	function openupload(folder){
 		var folder = folder;
-		alert("jsvascript까지는 접근")
 		window.open("upload/"+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
 	}
 </script>
@@ -40,7 +39,7 @@
 	  folder :::${cloudlist.folder}<br>
 	  promgr_num :::${cloudlist.promgr_num}<br>
 	  mem_num :::${cloudlist.mem_num}<br>
-	  com_pos_name :::${cloudlist.com_pos_name}<br>
+	  com_pos_num :::${cloudlist.com_pos_num}<br>
 	</div>
 </c:forEach>
 

@@ -1,5 +1,7 @@
 package cloud.db;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,18 +24,27 @@ public class CloudDao extends SqlSessionDaoSupport{
 		
 		return cloudlist;
 	}
-	public void uploadFile(MultipartFile uploadfile, String folder, HttpServletRequest request){
+	public void uploadFile(MultipartFile uploadfile, String folder, HttpServletRequest request, int com_pos_num){
 		HttpSession session = request.getSession();
 		String file_name = uploadfile.getOriginalFilename();
 		String file_path = makeFilePath(uploadfile, file_name);
 		String file_uploader = (String)session.getAttribute("name");
-		String file_Size = String.valueOf(uploadfile.getSize());
+		String file_size = String.valueOf(uploadfile.getSize());
 		int com_num = (int)session.getAttribute("com_num");
 		int mem_num = (int)session.getAttribute("mem_num");
 		
-		
-		
-		
+		CloudInfo info = new CloudInfo();
+		info.setFile_name(file_name);
+		info.setFile_path(file_path);
+		info.setFile_size(file_size);
+		info.setCom_num(com_num);
+		info.setFolder(folder);
+		info.setMem_num(mem_num);
+		info.setcom_pos_num(com_pos_num);
+		info.setFile_uploader(file_uploader);
+		System.out.println("folder::"+folder);
+		getSqlSession().insert("cloud.upload", info);
+		uploadFile(file_path, uploadfile);
 	}
 	private String makeFilePath(MultipartFile file, String file_name){
 		String temp_path = "";
@@ -52,8 +63,21 @@ public class CloudDao extends SqlSessionDaoSupport{
 			}
 			temp_path +=str;
 		}
-		String file_path = "E:/cloud"+temp_path + timepath + file_name;
+		String file_path = "E:/cloud/"+temp_path + timepath + file_name;
 		return file_path;
+	}
+	
+	private void uploadFile(String file_path, MultipartFile uploadfile){
+		File file = new File(file_path);
+		try{
+			uploadfile.transferTo(file);
+		} catch(IllegalStateException e){
+			e.printStackTrace();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 }
