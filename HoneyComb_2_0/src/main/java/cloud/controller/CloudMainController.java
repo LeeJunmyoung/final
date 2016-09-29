@@ -84,4 +84,10 @@ public class CloudMainController {
 		dao.uploadFile(uploadfile, folder, request, com_pos_num);
 	}
 	
+	/*프로젝트 업로드 컨트롤러*/
+	@RequestMapping(value="/uploadPromgr")
+	public void uploadPromgr(String promgrname, int promgrnum){
+		
+		
+	}
 }
