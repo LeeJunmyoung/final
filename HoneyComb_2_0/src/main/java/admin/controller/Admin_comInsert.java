@@ -27,10 +27,8 @@ public class Admin_comInsert {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public int admincomInsert(@RequestParam int com_num, HttpServletRequest request) {
-		int admincomInsert = 0;
-		admincomInsert = dao.admincomInsert(com_num);
+	public void admincomInsert(@RequestParam int com_num, HttpServletRequest request) {
+		int admincomInsert = dao.admincomInsert(com_num);
 		admincomInsert = dao.admincomDelete(com_num);
-		return admincomInsert;
 	}
 }
