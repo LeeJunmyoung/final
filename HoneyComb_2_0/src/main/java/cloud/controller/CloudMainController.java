@@ -66,7 +66,6 @@ public class CloudMainController {
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
 	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request, String security){
-		
 		int com_pos_num = 0;
 		if(security != null){
 			com_pos_num = 1;
@@ -74,7 +73,6 @@ public class CloudMainController {
 		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, "", request, com_pos_num);
 		dao.uploadFile(info);
 		return "/upload";
-
 	}
 		//폴더 내부에서 업로드
 	@RequestMapping(value="/upload/{folder}", method = RequestMethod.POST)
@@ -98,6 +96,16 @@ public class CloudMainController {
 	/*다운로드 처리*/
 	@RequestMapping(value = "/download")
 	public String downloadFile(int[] selectedFiles){
+		System.out.println(selectedFiles[0]);
+		String filePathes[] = null;
+		System.out.println("selectedFiles.length:"+selectedFiles.length);
+		for(int i = 0; i < selectedFiles.length; i++){
+			int file_num = selectedFiles[i];
+			 String tempPath = dao.getFilePath(file_num);
+			 System.out.println(tempPath);
+			 filePathes[i] = tempPath;
+			System.out.println("last::"+filePathes[i]);
+		}
 		
 		return "redirect:/cloud/main";
 	}

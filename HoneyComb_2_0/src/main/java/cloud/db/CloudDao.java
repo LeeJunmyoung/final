@@ -25,8 +25,11 @@ public class CloudDao extends SqlSessionDaoSupport{
 		return cloudlist;
 	}
 	public void uploadFile(CloudInfo info){
-
 		getSqlSession().insert("cloud.upload", info);
 	}
 	
+	public String getFilePath(int file_num){
+		String file_path = getSqlSession().selectOne("cloud.getFilePath",file_num);
+		return file_path;
+	}
 }
