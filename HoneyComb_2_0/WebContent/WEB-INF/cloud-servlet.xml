@@ -25,7 +25,7 @@
 	</bean>
 	
 	<bean id="jspviewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	   <property name="prefix" value="/WEB-INF/page/cloud/" />
+	   <property name="prefix" value="/WEB-INF/view/cloud" />
 	   <property name="suffix" value=".jsp" />
 	   <property name="order" value="2" />
 	</bean>
@@ -38,8 +38,8 @@
 		destroy-method="close">
 		<property name="driverClass" value="${driver}" />
 		<property name="jdbcUrl" value="${url}" />
-		<property name="user" value="wgh17" />
-		<property name="password" value="wgh1188" />
+		<property name="user" value="honeycomb" />
+		<property name="password" value="honeycomb" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

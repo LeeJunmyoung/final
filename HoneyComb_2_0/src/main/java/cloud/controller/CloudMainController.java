@@ -38,13 +38,13 @@ public class CloudMainController {
 	public ModelAndView getCloudList(HttpSession session, HttpServletRequest request, String folder) {
 		int com_num = 0;
 		session = request.getSession();
-		/* session 임시설정 */
+/*		 session 임시설정 
 		System.out.println("test용com_num설정::1");
 		session.setAttribute("com_num", 1);
 		session.setAttribute("com_pos_num", 1);
 		session.setAttribute("name", "tester");
 		session.setAttribute("mem_num", 1);
-		/* session임시설정끝 */
+		 session임시설정끝 */
 
 		com_num = (int) request.getSession().getAttribute("com_num");
 		List cloudlist = dao.getcloudList(com_num, folder);
@@ -55,33 +55,35 @@ public class CloudMainController {
 		//메인에서 업로드폼 연결
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
 	public String goUploadMain(){
-		return("upload");
+		return("/upload");
 	}
 		//폴더내부에서 업로드폼 연결
 	@RequestMapping(value = "/upload/{folder}", method = RequestMethod.GET)
 	public String goUploadFolder(@PathVariable String folder) {
-		return "upload";
+		return "/upload";
 	}
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public void uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request, String security){
+	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request, String security){
 		
 		int com_pos_num = 0;
 		if(security != null){
 			com_pos_num = 1;
 		}
 		dao.uploadFile(uploadfile, "", request, com_pos_num);
+		return "/upload";
 
 	}
 		//폴더 내부에서 업로드
 	@RequestMapping(value="/upload/{folder}", method = RequestMethod.POST)
-	public void uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request, String security){
+	public String uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request, String security){
 		int com_pos_num = 0;
 		if(security != null ){
 			com_pos_num = 1;
 		}
 		dao.uploadFile(uploadfile, folder, request, com_pos_num);
+		return "/upload";
 	}
 	
 	/*프로젝트 업로드 컨트롤러*/
@@ -90,4 +92,13 @@ public class CloudMainController {
 		
 		
 	}
+	
+	/*다운로드 처리*/
+	@RequestMapping(value = "/download")
+	public String downloadFile(String[] selectedFiles){
+		System.out.println("연결성공!");
+		System.out.println("selectedFiles:"+selectedFiles);
+		return "redirect:cloud_main";
+	}
+	
 }

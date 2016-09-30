@@ -9,17 +9,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
 	function openupload(folder){
 		var folder = folder;
 		window.open("upload/"+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
 	}
+	
+	$(function(){	
+	$("#download").click(function(){
+		alert("되기는합니다")
+		$(":checkbox[name='selectedFiles']:checked").each(function(){
+			alert(this.val())
+		});
+		
+	});
+	});
 </script>
 </head>
 <body>
 <div>
 <input type="button" value="업로드" onclick="openupload('${param.folder}')">
-<input type="button" value="다운로드">
+<input type="button" value="다운로드" id="download">
 <input type="button" value="삭제">
 </div>
 
@@ -28,19 +39,22 @@
 </c:if>
 
 <c:forEach var="cloudlist" items="${cloudlist}">
-	<div style="border:5px solid">
-	  file_num :::${cloudlist.file_num}<br>
-	  file_name :::${cloudlist.file_name}<br>
-	  file_path:::${cloudlist.file_path}<br>
-	  file_uploader :::${cloudlist.file_uploader}<br>
-	  file_size :::${cloudlist.file_size}<br>
-	  file_date :::${cloudlist.file_date}<br>
-	  com_num :::${cloudlist.com_num}<br>
-	  folder :::${cloudlist.folder}<br>
-	  promgr_num :::${cloudlist.promgr_num}<br>
-	  mem_num :::${cloudlist.mem_num}<br>
-	  com_pos_num :::${cloudlist.com_pos_num}<br>
-	</div>
+<input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}">
+	<label for="${cloudlist.file_num}">
+		<div style="border:5px solid">
+		  file_num :::${cloudlist.file_num}<br>
+		  file_name :::${cloudlist.file_name}<br>
+		  file_path:::${cloudlist.file_path}<br>
+		  file_uploader :::${cloudlist.file_uploader}<br>
+		  file_size :::${cloudlist.file_size}<br>
+		  file_date :::${cloudlist.file_date}<br>
+		  com_num :::${cloudlist.com_num}<br>
+		  folder :::${cloudlist.folder}<br>
+		  promgr_num :::${cloudlist.promgr_num}<br>
+		  mem_num :::${cloudlist.mem_num}<br>
+		  com_pos_num :::${cloudlist.com_pos_num}<br>
+		</div>
+	</label>
 </c:forEach>
 
 </body>
