@@ -45,7 +45,7 @@ public class CloudMainController {
 		session.setAttribute("mem_num", 1);
 		 session임시설정끝 */
 
-		com_num = (int) request.getSession().getAttribute("com_num");
+		int com_num = (int) request.getSession().getAttribute("com_num");
 		List cloudlist = dao.getcloudList(com_num, folder);
 		ModelAndView mav = new ModelAndView("cloud_main", "cloudlist", cloudlist);
 		return mav;
