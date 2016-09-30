@@ -66,4 +66,22 @@
 	<bean id="promgrDelController" class="promgr.controller.PromgrDelController"
 		p:dao-ref="dao" />
 
+	<bean id="promgrMemberFormController" class="promgr.controller.PromgrMemberFormController"
+		p:dao-ref="dao" />
+
+	<bean id="promgrMemberAddController" class="promgr.controller.PromgrMemberAddController"
+		p:dao-ref="dao" />
+
+	<bean id="promgrMemberDelController" class="promgr.controller.PromgrMemberDelController"
+		p:dao-ref="dao" />
+
+	<bean id="promgrChkListAddController" class="promgr.controller.PromgrChkListAddController"
+		p:dao-ref="dao" />
+		
+	<bean id="promgrChkListModController" class="promgr.controller.PromgrChkListModController"
+		p:dao-ref="dao" />
+		
+	<bean id="promgrChkListDelController" class="promgr.controller.PromgrChkListDelController"
+		p:dao-ref="dao" />
+
 </beans>

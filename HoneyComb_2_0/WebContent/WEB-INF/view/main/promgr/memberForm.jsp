@@ -90,13 +90,13 @@
 
 		<c:forEach var="item" items="${ memberSearchList }">
 
-			<div id="mem_search_item" name="${item.mem_name}" class="row">
+			<div id="mem_search_item" name="${item.name}" class="row">
 				<span class="col-md-1">
 					<input type="checkbox" name="mem_add" value="${item.mem_num}" />
 				</span>
-				<span class="col-md-3">${item.mem_name}</span>
-				<span class="col-md-6">${item.mem_email}</span>
-				<span class="col-md-2">${item.mem_pos}</span>
+				<span class="col-md-3">${item.name}</span>
+				<span class="col-md-6">${item.email}</span>
+				<span class="col-md-2">${item.com_pos_num}</span>
 			</div>
 
 		</c:forEach>
@@ -114,9 +114,9 @@
 				<span class="col-md-1">
 					<input type="checkbox" name="mem_del" value="${item.mem_num}" />
 				</span>
-				<span class="col-md-3">${item.mem_name}</span>
-				<span class="col-md-6">${item.mem_email}</span>
-				<span class="col-md-2">${item.mem_pos}</span>
+				<span class="col-md-3">${item.name}</span>
+				<span class="col-md-6">${item.email}</span>
+				<span class="col-md-2">${item.com_pos_num}</span>
 			</div>
 
 		</c:forEach>

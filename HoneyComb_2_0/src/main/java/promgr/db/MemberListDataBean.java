@@ -1,13 +1,11 @@
 package promgr.db;
 
-import java.sql.Timestamp;
-
 public class MemberListDataBean {
 
 	private int mem_num; // 회원 번호
-	private String mem_name; // 회원 이름
-	private String mem_email; // 회원 이메일
-	private String mem_pos; // 회원 부서
+	private String name; // 회원 이름
+	private String email; // 회원 이메일
+	private String com_pos_num; // 회원 부서
 
 	public int getMem_num() {
 		return mem_num;
@@ -17,28 +15,28 @@ public class MemberListDataBean {
 		this.mem_num = mem_num;
 	}
 
-	public String getMem_name() {
-		return mem_name;
+	public String getName() {
+		return name;
 	}
 
-	public void setMem_name(String mem_name) {
-		this.mem_name = mem_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getMem_email() {
-		return mem_email;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setMem_email(String mem_email) {
-		this.mem_email = mem_email;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getMem_pos() {
-		return mem_pos;
+	public String getCom_pos_num() {
+		return com_pos_num;
 	}
 
-	public void setMem_pos(String mem_pos) {
-		this.mem_pos = mem_pos;
+	public void setCom_pos_num(String com_pos_num) {
+		this.com_pos_num = com_pos_num;
 	}
 
 } // public class ProMgrDataBean end

@@ -19,7 +19,7 @@ public class PromgrMemberAddController {
 	}
 
 	@RequestMapping("/memberAdd.do")
-	public ModelAndView submit(@RequestParam(value = "promgr_num") int promgr_num,
+	public ModelAndView submit(@RequestParam(value = "promgr_num") String promgr_num,
 			@RequestParam(value = "mem_add") String[] add_mem_num) {
 
 		int promgr_update_count = 0;

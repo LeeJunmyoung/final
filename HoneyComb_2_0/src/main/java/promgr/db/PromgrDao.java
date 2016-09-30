@@ -130,12 +130,12 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		for (int j = 0; j < num_arr.length; j++) {
 
 			int chkList_num = num_arr[j];
-			
+
 			ChkListViewDataBean chkList = getSqlSession().selectOne("promgr.get_chkList_view", chkList_num);
 
 			List<ChkItemDataBean> chkItem = getSqlSession().selectList("promgr.get_chkItem", chkList_num);
 
-			if(chkList != null) {
+			if (chkList != null) {
 				chkList.setItem_bean(chkItem);
 			}
 
@@ -284,9 +284,9 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 		for (int i = 0; i < num_arr.length; i++) {
 
-			if (num_arr[i] != mem_num) {
+			if (mem_num != num_arr[i]) {
 
-				MemberListDataBean article = getSqlSession().selectOne("promgr.get_member_join", mem_num);
+				MemberListDataBean article = getSqlSession().selectOne("promgr.get_member_join", num_arr[i]);
 
 				articleList.add(article);
 
@@ -303,18 +303,18 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
 
 		int com_num = promgr.getCom_num();
-		int[] num_arr = cut_num(promgr.getMem_num());
+		int[] mem_num_arr = cut_num(promgr.getMem_num());
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		map.put("com_num", com_num);
-		map.put("num_arr", num_arr);
+		map.put("mem_num_arr", mem_num_arr);
 
 		return getSqlSession().selectList("promgr.get_member_search", map);
 
 	}
 
-	public int addMembers(int promgr_num, String[] add_mem_num) {
+	public int addMembers(String promgr_num, String[] add_mem_num) {
 
 		String mem_num_str = "";
 		for (int i = 0; i < add_mem_num.length; i++) {
@@ -376,7 +376,7 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		String chkList_name = article.getChklist_title_name();
 		String new_chkList_num = getSqlSession().selectOne("promgr.new_chkList_num", chkList_name);
 
-		int promgr_num = article.getPromgr_num();
+		String promgr_num = article.getPromgr_num();
 		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
 
 		String old_chklist_title_num = promgr.getChklist_title_num();

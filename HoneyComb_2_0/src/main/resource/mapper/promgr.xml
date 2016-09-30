@@ -158,12 +158,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from members where mem_num=#{mem_num}
 	</select>
 
-	<select id="get_member_search" parameterType="String"
-		resultType="promgr.db.PromgrDataBean">
+	<select id="get_member_search" parameterType="hashmap"
+		resultType="promgr.db.MemberListDataBean">
 		select * from members where com_num=#{com_num} and
-		<foreach collection="num_arr" index="i" separator="and">
+		<foreach collection="mem_num_arr" item="mem_num" separator="and">
 			not
-			mem_num=#{num_arr[i]}
+			mem_num=#{mem_num}
 		</foreach>
 	</select>
 
@@ -234,7 +234,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		promgr_num=#{promgr_num}
 	</delete>
 
-	<delete id="del_comment_all" parameterType="String">
+	<delete id="del_comment_all" parameterType="hashmap">
 		delete from
 		promgr_comment where promgr_num=#{promgr_num} and com_num=#{com_num}
 	</delete>
