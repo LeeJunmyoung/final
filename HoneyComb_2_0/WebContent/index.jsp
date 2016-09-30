@@ -10,5 +10,6 @@
 	<a href="notice/more">notice/more</a> <br>
 	<a href="cloud/main">cloud</a> <br>
 	<a href="login/signIn.do">SignIn</a>
+	<a href="cal/cal_main.do">cal</a>
 </body>   
 </html>

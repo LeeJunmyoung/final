@@ -165,7 +165,7 @@ top:50px;
 		<div class="col-md-1">
 		
 			<input type="button" class="btn btn-primary btn-xs" value="더보기"
-		  		onclick="location.href='/HoneyComb/page_layout/Calendar/Calendar_home.jsp'">
+		  		onclick="location.href='/HoneyComb_2_0/cal/cal_main.do'">
 			
 		</div>
 	
