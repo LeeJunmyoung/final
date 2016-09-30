@@ -37,9 +37,7 @@ public class AdminDao extends SqlSessionDaoSupport {
 	
 	public int admincomDelete(int com_num){
 		int admincomDelete = 0;
-		System.out.println("com_num::::::::::::"+com_num);
-		
-		admincomDelete = getSqlSession().insert("admincomdelete", com_num);
+		admincomDelete = getSqlSession().delete("admincomdelete", com_num);
 		return admincomDelete;
 	}
 }
