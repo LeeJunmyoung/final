@@ -49,7 +49,7 @@ public class NoticeDao extends SqlSessionDaoSupport {
 	}
 
 	public int addNotice(NoticeDataBean article) {
-
+		
 		return getSqlSession().insert("notice.add", article);
 
 	}

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import notice.db.NoticeDao;
 import notice.db.NoticeDataBean;
@@ -29,7 +30,7 @@ public class NoticeWriteController {
 	}
 
 	@RequestMapping("/writePro.do")
-	public String submit(HttpServletRequest request) {
+	public ModelAndView submit(HttpServletRequest request) {
 
 		NoticeDataBean article = new NoticeDataBean();
 
@@ -39,9 +40,13 @@ public class NoticeWriteController {
 		article.setCom_num((int) request.getSession().getAttribute("com_num"));
 		article.setNotice_date(new Timestamp(System.currentTimeMillis()));
 
-		dao.addNotice(article);
+		int notice_insert_count =  dao.addNotice(article);
+		
+		ModelAndView mav = new ModelAndView("writePro");
+		mav.addObject("notice_insert_count", notice_insert_count);
+		
+		return mav;
 
-		return "redirect:/main.do";
 	}
 
 }

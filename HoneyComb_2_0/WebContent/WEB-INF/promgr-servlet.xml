@@ -49,9 +49,6 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
-	<bean id="promgrMainController" class="promgr.controller.PromgrMainController"
-		p:dao-ref="dao" />
-
 	<bean id="promgrMoreController" class="promgr.controller.PromgrMoreController"
 		p:dao-ref="dao" />
 
