@@ -11,11 +11,6 @@ public class SignInDAO extends SqlSessionDaoSupport {
 	}
 	public void insertMember(LogOnDataBean logdb){
 		
-		logdb.setEmail("email");
-		logdb.setPasswd("password");
-		logdb.setName("name");
-		logdb.setPhone_num("phone_num");
-		
 		getSqlSession().insert("insertMember",logdb);
 	
 	}

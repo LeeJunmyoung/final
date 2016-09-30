@@ -24,7 +24,9 @@ $(function(){
 });
 /* 이메일인증후 확인  끝*/
 
-/* 패스워드 일치확인  */
+
+
+/* /* 패스워드 일치확인  */
 $(function(){
 $('#passfunc').keyup(function(){
 	if($('#passwd').val() == ""){
@@ -45,12 +47,6 @@ $('#passfunc').keyup(function(){
 	});
 });
 /* 패스워드 일치 확인끝 */
-
-
-
-
-
-
 
 function filter(){
 	if($('#phone1').val().length==3){
@@ -196,10 +192,12 @@ width:250;
                 <div class="row">
                   <div class="col-md-12 text-center">
                     <h1>HONEYCOMB</h1><p></p><p></p>
-            <form name="myform" id="myform"   method="post"><!-- OnSubmit="return checkIt()" -->
+            <form  action="members.do" method="post" name="myform" id="myform"><!-- OnSubmit="return checkIt()" -->
 	<!-- 이메일 입력창 -->
-	
-    <input type="text" value="${email}" placeholder="email" name="email" id="email"/>
+    <input type="text" value="${LogOnDataBean.email}" placeholder="email" name="email" id="email"/>
+    <span id="duplicateResult">
+    <c:out value=""/>
+    </span>    
     <input type="button"  id="mailcheck" class=" btn btn-default" value="Email확인" OnClick="checkmail(this.form)">
     <p id="textProp"></p>
     <input type="hidden" id="mailtext" value="" name="test">
