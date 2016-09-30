@@ -14,7 +14,6 @@ import promgr.db.PromgrDao;
 import promgr.db.PromgrDataBean;
 
 @Controller
-@RequestMapping("/more.do")
 public class PromgrMoreController {
 
 	private PromgrDao dao;
@@ -24,6 +23,7 @@ public class PromgrMoreController {
 		this.dao = dao;
 	}
 
+	@RequestMapping("/more.do")
 	public ModelAndView submit(HttpServletRequest request) {
 
 		String pageNum = request.getParameter("pageNum");
@@ -55,7 +55,7 @@ public class PromgrMoreController {
 
 		int number = promgr_count - (currentPage - 1) * pageSize;
 
-		ModelAndView mav = new ModelAndView("more");
+		ModelAndView mav = new ModelAndView("promgr_more");
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("startRow", startRow);
 		mav.addObject("promgr_count", promgr_count);

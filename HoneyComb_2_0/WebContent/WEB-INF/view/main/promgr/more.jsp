@@ -255,7 +255,12 @@
 
 			<b>PROJECT MANAGER <span class="badge">${promgr_count}</span></b> <input
 				type="button" class="btn btn-primary btn-xs"
-				style="margin-left: 10px;" value="프로젝트생성" onclick="addProject()">
+				style="margin-left: 10px;
+				<c:if test="${sessionScope.com_pos_num>4}">
+				display: none;
+					</c:if>
+				"
+				value="프로젝트생성" onclick="addProject()" />
 
 		</div>
 
@@ -264,7 +269,7 @@
 		<div class="col-md-1">
 
 			<input type="button" class="btn btn-primary btn-xs" value="뒤로가기"
-				onclick="location.href='/HoneyComb/index.jsp'">
+				onclick="location.href='/HoneyComb_2_0/index.jsp'">
 
 		</div>
 
@@ -292,7 +297,10 @@
 							<span class="col-md-8"> ${article.promgr_name} </span> <span
 								class="col-md-4 text-right"> <input type="button"
 								class="btn btn-primary btn-xs" value="프로젝트삭제"
-								onclick="delProject(${article.promgr_num})">
+								onclick="delProject(${article.promgr_num})"
+								<c:if test="${sessionScope.com_pos_num>4}">
+				style="display: none;"
+			</c:if> />
 							</span>
 						</dt>
 
@@ -337,7 +345,7 @@
 													<div class="btn-group" id="list_btn_group_${view.list_num}"
 														style="visibility: hidden;">
 
-													<input type="button" class="btn btn-default btn-xs"
+														<input type="button" class="btn btn-default btn-xs"
 															value="MOD" onclick="ModChkList(${view.list_num})">
 
 														<input type="button" class="btn btn-default btn-xs"
@@ -431,9 +439,7 @@
 
 												<label id="file_lab_${view.file_num}"
 													ondblclick="AppearFile(${mem_num}, ${view.mem_num},'file_btn_group_${view.file_num}')">
-													${view.file_name} </label>
-													
-												<input type="button"
+													${view.file_name} </label> <input type="button"
 													class="btn btn-default btn-xs" value="down"
 													onclick="DownFile('${view.file_name}', '${view.file_path}')">
 
@@ -471,7 +477,8 @@
 										value="CHECKLIST" onclick="AddChkList(${article.promgr_num})">
 
 									<input type="button" class="btn btn-primary btn-xs"
-										value="FILE" onclick="AddFile(${article.promgr_num}, ${article.promgr_name} })">
+										value="FILE"
+										onclick="AddFile(${article.promgr_num}, ${article.promgr_name} })">
 
 								</div>
 
@@ -565,20 +572,16 @@
 				<ul class="pagination pagination-sm">
 
 					<c:if test="${startPage > pageSize}">
-						<li><a
-							href="/more.do?pageNum=${startPage - pageSize}">이전</a>
+						<li><a href="/more.do?pageNum=${startPage - pageSize}">이전</a>
 						</li>
 					</c:if>
 
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
-						<li><a
-							href="/more.do?pageNum=${i}">${i}</a>
-						</li>
+						<li><a href="/more.do?pageNum=${i}">${i}</a></li>
 					</c:forEach>
 
 					<c:if test="${endPage < pageCount}">
-						<li><a
-							href="/more.do?pageNum=${startPage + pageSize}">다음</a>
+						<li><a href="/more.do?pageNum=${startPage + pageSize}">다음</a>
 						</li>
 					</c:if>
 

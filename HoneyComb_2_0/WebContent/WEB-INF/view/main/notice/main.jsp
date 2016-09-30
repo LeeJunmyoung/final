@@ -9,53 +9,57 @@
 <title>notice</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <script>
-	
- 	function writeView() { // 공지 작성
+	function writeView() { // 공지 작성
 		url = "/HoneyComb_2_0/notice/writeForm.do";
-		window.open(
+		window
+				.open(
 						url,
 						"post",
-						"toolbar=no ,width=550 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no"
-					);
+						"toolbar=no ,width=550 ,height=300,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
-	
 </script>
 
 </head>
 <body>
 	<div class="row">
-	
+
 		<div class="col-md-9">
-		
+
 			<b>NOTICE <span class="badge">${notice_count}</span></b>
-			
+
 		</div>
-		
-		<div class="col-md-1" style="margin-right: 3px;">	
-		
-			<input type="button" class="btn btn-primary btn-xs btn-lg" value="공지작성"
-				onclick="writeView()" >
-					
+
+		<div class="col-md-1" style="margin-right: 3px;">
+
+			<input type="button" class="btn btn-primary btn-xs btn-lg"
+				value="공지작성" onclick="writeView()"
+				<c:if test="${sessionScope.com_pos_num>3}">
+				style="display: none;"
+			</c:if> />
+
 		</div>
-		
+
 		<div class="col-md-1">
-		
-				<input type="button" class="btn btn-primary btn-xs" value="더보기"
-			  		onclick="location.href='/HoneyComb_2_0/notice/more.do'">
-			
+
+			<input type="button" class="btn btn-primary btn-xs" value="더보기"
+				onclick="location.href='/HoneyComb_2_0/notice/more.do'">
+
 		</div>
-		
+
 	</div>
 
 	<div class="row">
-	
+
 		<div class="col-md-11">
-			
+
 			<c:if test="${notice_count == 0}">
 				<table class="table table-hover">
 					<thead>
@@ -74,9 +78,9 @@
 					</tbody>
 				</table>
 			</c:if>
-		
+
 			<c:if test="${notice_count > 0}">
-			
+
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -87,11 +91,10 @@
 					</thead>
 					<tbody>
 						<c:forEach var="article" items="${notice_articleList}">
-							<tr data-toggle="modal" 
-							data-target="#notice_content_${article.notice_num}" >
-								<th class="col-md-6">
-									${article.notice_title}
-									<c:if test="${article.isNew == 0}">
+							<tr data-toggle="modal"
+								data-target="#notice_content_${article.notice_num}">
+								<th class="col-md-6">${article.notice_title}<c:if
+										test="${article.isNew == 0}">
 										<span class="badge">new</span>
 									</c:if>
 								</th>
@@ -101,37 +104,41 @@
 						</c:forEach>
 					</tbody>
 				</table>
-			
+
 				<c:forEach var="article" items="${notice_articleList}">
-				  <div class="modal fade" id="notice_content_${article.notice_num}" role="dialog">
-				    <div class="modal-dialog modal-sm">
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <button type="button" class="close" data-dismiss="modal" onclick="location.reload()">&times;</button>
-				          <h4 class="modal-title">${article.notice_title}
-				          	<c:if test="${article.isNew == 0}">
-								<span class="badge">new</span>
-							</c:if>
-				          </h4>
-				        </div>
-				        <div class="modal-body">
-				          <p>${article.notice_content}</p> <br>
-				          <p>작성일 : ${article.notice_date}</p>
-				        </div>
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-primary btn-xs" data-dismiss="modal" onclick="location.reload()">Close</button>
-				        </div>
-				      </div>
-				    </div>
-				  </div>
+					<div class="modal fade" id="notice_content_${article.notice_num}"
+						role="dialog">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										onclick="location.reload()">&times;</button>
+									<h4 class="modal-title">${article.notice_title}
+										<c:if test="${article.isNew == 0}">
+											<span class="badge">new</span>
+										</c:if>
+									</h4>
+								</div>
+								<div class="modal-body">
+									<p>${article.notice_content}</p>
+									<br>
+									<p>작성일 : ${article.notice_date}</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary btn-xs"
+										data-dismiss="modal" onclick="location.reload()">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</c:forEach>
-				
-				
+
+
 			</c:if>
-			
+
 		</div>
-		
+
 	</div>
-	
+
 </body>
 </html>

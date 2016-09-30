@@ -3,6 +3,8 @@ package notice.controller;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,10 +26,10 @@ public class NoticeMoreController {
 
 	@RequestMapping("/more.do")
 	public ModelAndView submit(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
-			@RequestParam("com_num") int com_num) {
+			HttpServletRequest request) {
 
-		System.out.println("NoticeMoreController");
-		
+		int com_num = (int) request.getSession().getAttribute("com_num");
+
 		int pageSize = 5;
 		int currentPage = pageNum;
 		int startRow = (currentPage - 1) * pageSize + 1;
@@ -58,7 +60,7 @@ public class NoticeMoreController {
 		}
 
 		number = notice_count - (currentPage - 1) * pageSize;
-		
+
 		ModelAndView mav = new ModelAndView("notice_more");
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("startRow", startRow);

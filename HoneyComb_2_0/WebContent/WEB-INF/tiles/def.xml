@@ -9,13 +9,14 @@
 
 		<put-attribute name="header" value="/WEB-INF/tiles/template/header.jsp" />
 
-		<put-attribute name="title" value="main" />
-		
+		<put-attribute name="title" value="HONEYCOMB" />
+
 		<put-attribute name="menu" value="/WEB-INF/tiles/template/menu.jsp" />
 
 		<put-attribute name="notice" value="/WEB-INF/view/main/notice/main.jsp" />
 		<put-attribute name="promgr" value="/WEB-INF/view/main/promgr/main.jsp" />
-		<put-attribute name="calenar" value="/WEB-INF/view/main/calendar/cal_user_main.jsp" />
+		<put-attribute name="calenar"
+			value="/WEB-INF/view/main/calendar/cal_user_main.jsp" />
 
 		<put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
 
@@ -30,13 +31,18 @@
 	</definition>
 
 	<definition name="notice_more" extends="base_layout">
-		<put-attribute name="title" value="more" />
+		<put-attribute name="title" value="NOTICE" />
 		<put-attribute name="body" value="/WEB-INF/view/main/notice/more.jsp" />
 	</definition>
-	
+
 	<definition name="cloud_main" extends="base_layout">
 		<put-attribute name="title" value="cloud" />
 		<put-attribute name="body" value="/WEB-INF/view/cloud/main.jsp" />
 	</definition>
-	
+
+	<definition name="promgr_more" extends="base_layout">
+		<put-attribute name="title" value="PROJECT MANAGER" />
+		<put-attribute name="body" value="/WEB-INF/view/main/promgr/more.jsp" />
+	</definition>
+
 </tiles-definitions>

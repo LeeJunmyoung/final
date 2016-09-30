@@ -7,7 +7,7 @@ public class ChkListViewDataBean {
 	private String list_num; // 진행 상황 체트 제목 번호
 	private String list_name; // 진행 상황 체크 제목 이름
 	private int list_ing; // 진행 상황 진행률
-	private List item_bean; // 진행 상황 체크 항목 list
+	private List<ChkItemDataBean> item_bean; // 진행 상황 체크 항목 list
 
 	public String getList_num() {
 		return list_num;
@@ -33,11 +33,11 @@ public class ChkListViewDataBean {
 		this.list_ing = list_ing;
 	}
 
-	public List getItem_bean() {
+	public List<ChkItemDataBean> getItem_bean() {
 		return item_bean;
 	}
 
-	public void setItem_bean(List item_bean) {
+	public void setItem_bean(List<ChkItemDataBean> item_bean) {
 		this.item_bean = item_bean;
 	}
 

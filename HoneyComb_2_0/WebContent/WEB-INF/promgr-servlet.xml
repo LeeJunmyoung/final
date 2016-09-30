@@ -23,6 +23,14 @@
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="1" />
+	</bean>
+
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/main/promgr/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="2" />
 	</bean>
 
 	<!-- mybatis setting -->
@@ -52,5 +60,10 @@
 	<bean id="promgrMoreController" class="promgr.controller.PromgrMoreController"
 		p:dao-ref="dao" />
 
+	<bean id="promgrAddController" class="promgr.controller.PromgrAddController"
+		p:dao-ref="dao" />
+
+	<bean id="promgrDelController" class="promgr.controller.PromgrDelController"
+		p:dao-ref="dao" />
 
 </beans>

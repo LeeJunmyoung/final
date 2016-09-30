@@ -17,7 +17,7 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		map.put("com_num", com_num);
-		map.put("mem_num", "%"+mem_num+"%");
+		map.put("mem_num", "%" + mem_num + "%");
 
 		return getSqlSession().selectOne("promgr.count_promgr", map);
 
@@ -25,24 +25,26 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 	public List<PromgrDataBean> getPromgrList(int com_num, int mem_num, int startRow, int endRow) {
 
-		HashMap<String, Object> map = new HashMap<String, Object>();
-
 		if (startRow == -1) {
 
+			HashMap<String, Object> map = new HashMap<String, Object>();
+
 			map.put("com_num", com_num);
-			map.put("mem_num", mem_num);
+			map.put("mem_num", "%" + mem_num + "%");
 			map.put("endRow", endRow);
 
 			return getSqlSession().selectList("promgr.list_main", map);
 
 		} else {
 
+			HashMap<String, Object> map = new HashMap<String, Object>();
+
 			map.put("com_num", com_num);
-			map.put("mem_num", mem_num);
+			map.put("mem_num", "%" + mem_num + "%");
 			map.put("startRow", startRow);
 			map.put("endRow", endRow);
 
-			return getSqlSession().selectList("promgr.list_all", com_num);
+			return getSqlSession().selectList("promgr.list_all", map);
 
 		}
 
@@ -113,7 +115,7 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		for (int j = 0; j < num_arr.length; j++) {
 
 			int mem_num = num_arr[j];
-			String mem_name = getSqlSession().selectOne("promgr.set_mem_name", mem_num);
+			String mem_name = getSqlSession().selectOne("promgr.get_mem_name", mem_num);
 			mem_name_arr[j] = mem_name;
 
 		}
@@ -128,11 +130,14 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		for (int j = 0; j < num_arr.length; j++) {
 
 			int chkList_num = num_arr[j];
-			ChkListViewDataBean chkList = getSqlSession().selectOne("promgr.set_chkList_view", chkList_num);
+			
+			ChkListViewDataBean chkList = getSqlSession().selectOne("promgr.get_chkList_view", chkList_num);
 
-			List<ChkItemDataBean> chkItem = getSqlSession().selectList("promgr.set_chkItem", chkList_num);
+			List<ChkItemDataBean> chkItem = getSqlSession().selectList("promgr.get_chkItem", chkList_num);
 
-			chkList.setItem_bean(chkItem);
+			if(chkList != null) {
+				chkList.setItem_bean(chkItem);
+			}
 
 			chkList_view.add(chkList);
 
@@ -149,7 +154,7 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		for (int j = 0; j < num_arr.length; j++) {
 
 			int file_num = num_arr[j];
-			CloudInfo file = getSqlSession().selectOne("promgr.set_file_view", file_num);
+			CloudInfo file = getSqlSession().selectOne("promgr.get_file_view", file_num);
 			file_view.add(file);
 
 		}
@@ -165,7 +170,7 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		for (int j = 0; j < num_arr.length; j++) {
 
 			int comment_num = num_arr[j];
-			CommentDataBean comment = getSqlSession().selectOne("promgr.set_comment_view", comment_num);
+			CommentDataBean comment = getSqlSession().selectOne("promgr.get_comment_view", comment_num);
 			comment_view.add(comment);
 
 		}
@@ -549,14 +554,14 @@ public class PromgrDao extends SqlSessionDaoSupport {
 	}
 
 	public int ChangeCheckedItem(int promgr_num, int list_num, int item_num, int checked) {
-		
+
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		map.put("item_num", item_num);
 		map.put("checked", checked);
-		
+
 		getSqlSession().update("promgr.set_checked", map);
-		
+
 		chkListIng(list_num);
 
 		return promgrIng(promgr_num);
