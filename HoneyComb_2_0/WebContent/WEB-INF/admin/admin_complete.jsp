@@ -128,7 +128,7 @@ height: 100%;
 	 function del(com_num) {;
 		var num = com_num;
 		
-		
+		alert(com_num);
 		url = "admin_comDelete?com_num=" + num;
 
 			  window
@@ -183,12 +183,13 @@ height: 100%;
 				<c:if test="${ !empty admincomplete }">
 					<c:forEach var="admincomplete" items="${admincomplete}">
 						<tr>
-							<td><a onclick="listCheck(${admincomplete.com_num})" id="compl">${admincomplete.com_name}</a></td>
+							<td><a onclick="listCheck(${admincomplete.com_num})" id="compl">${admincomplete.com_name} ${admincomplete.com_num}</a></td>
 							<td id="compl_button"><input type="submit"
 								class="btn btn-primary btn-xs" id="submit" value="등록"
-								onclick="submitCheck(${admincomplete.com_num})"> <input
+								onclick="submitCheck('${admincomplete.com_num}')"> 
+								<input
 								type="button" class="btn btn-primary btn-xs" id="delete"
-								value="삭제" onclick="del(${admincomplete.com_num})"></td>g
+								value="삭제" onclick="del('${admincomplete.com_num}')"></td>
 						</tr>
 					</c:forEach>
 				</c:if>
