@@ -18,12 +18,6 @@
 </head>
 <body>
 
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> branch 'master' of https://github.com/LimSunhwa/final.git
 	<div id="page_container">
 
 		<div id="page_header">
@@ -36,26 +30,10 @@
 	
 		<div id="page_sidebar_more">
 
-<<<<<<< HEAD
 			<tiles:insertAttribute name="menu" />
-=======
-		<div id="page_center_contents">
 
-			<div id="page_sidebar">
-
-				<tiles:insertAttribute name="menu" />
-
-			</div>
-
-			<div id="page_content">
-
-				<tiles:insertAttribute name="body" />
->>>>>>> branch 'master' of https://github.com/LimSunhwa/final.git
-
-			</div>
 		</div>
 
-<<<<<<< HEAD
 		<div id="page_content_more">
 
 			<tiles:insertAttribute name="body" />
@@ -64,9 +42,6 @@
 	</div>
 	
 	
-=======
-
->>>>>>> branch 'master' of https://github.com/LimSunhwa/final.git
 		<div id="page_footer">
 
 			<tiles:insertAttribute name="footer" />
@@ -74,12 +49,7 @@
 		</div>
 
 	</div>
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> branch 'master' of https://github.com/LimSunhwa/final.git
 </body>
 </html>
 
