@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="admincomplete" resultType="admin.db.AdminInfo">
-		select com_name from temp_com 
+		select com_name from temp_com
 	</select>
 
 	<delete id="admincomdelete" parameterType="admin.db.AdminInfo">

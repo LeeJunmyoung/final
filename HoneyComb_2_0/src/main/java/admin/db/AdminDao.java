@@ -23,9 +23,9 @@ public class AdminDao extends SqlSessionDaoSupport {
 		return memlist;
 	}
 	
-	public List<AdminInfo> adminComplete(int com_num){
+	public List<AdminInfo> adminComplete(){
 		List completelist = new ArrayList<AdminInfo>();
-		completelist = getSqlSession().selectList("admincomplete", com_num);
+		completelist = getSqlSession().selectList("admincomplete");
 		return completelist;
 	}
 	
@@ -37,6 +37,8 @@ public class AdminDao extends SqlSessionDaoSupport {
 	
 	public int admincomDelete(int com_num){
 		int admincomDelete = 0;
+		System.out.println("com_num::::::::::::"+com_num);
+		
 		admincomDelete = getSqlSession().insert("admincomdelete", com_num);
 		return admincomDelete;
 	}
