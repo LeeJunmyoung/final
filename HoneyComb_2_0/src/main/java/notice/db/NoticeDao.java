@@ -13,7 +13,7 @@ public class NoticeDao extends SqlSessionDaoSupport {
 
 	}
 
-	public List getNoticeList(int com_num, int startRow, int endRow) {
+	public List<NoticeDataBean> getNoticeList(int com_num, int startRow, int endRow) {
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
