@@ -9,7 +9,7 @@ public class NoticeDao extends SqlSessionDaoSupport {
 
 	public int getNoticeCount(int com_num) {
 
-		return getSqlSession().selectOne("notice.count", com_num);
+		return getSqlSession().selectOne("notice.count_notice", com_num);
 
 	}
 

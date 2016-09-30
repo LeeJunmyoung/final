@@ -57,7 +57,7 @@ public class NoticeMoreController {
 
 		number = notice_count - (currentPage - 1) * pageSize;
 		
-		ModelAndView mav = new ModelAndView("more");
+		ModelAndView mav = new ModelAndView("notice_more");
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("startRow", startRow);
 		mav.addObject("endRow", endRow);

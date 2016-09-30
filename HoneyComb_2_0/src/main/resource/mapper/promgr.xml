@@ -65,11 +65,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		promgr_ing=#{promgr_ing} where promgr_num=#{promgr_num}
 	</update>
 
-	<update id="set_chkItem_num" parameterType="hashmap">
-		update promgr set
-		chklist_item_num=#{chkItem_num_str} where promgr_num=#{promgr_num}
-	</update>
-
 	<update id="set_list_ing" parameterType="hashmap">
 		update chklist_title set
 		chklist_title_ing=#{list_ing} where
@@ -82,14 +77,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<update id="set_checked" parameterType="hashmap">
-		update chklist_item set chklist_item_chk=#{checked} where
+		update chklist_item set
+		chklist_item_chk=#{checked} where
 		chklist_item_num=#{item_num}
 	</update>
 
 	<select id="count_promgr" parameterType="hashmap" resultType="int">
 		select
 		count(*) from promgr where com_num=#{com_num} and mem_num like
-		%#{mem_num}% </select>
+		#{mem_num}
+	</select>
 
 	<select id="list_main" parameterType="hashmap" resultType="promgr.db.PromgrDataBean">
 		<![CDATA[

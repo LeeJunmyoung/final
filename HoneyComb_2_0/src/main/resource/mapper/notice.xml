@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(notice_num.NEXTVAL,#{notice_title},#{notice_content},#{notice_member},#{notice_date},#{com_num})
 	</insert>
 
-	<select id="count" parameterType="int" resultType="int">
+	<select id="count_notice" parameterType="int" resultType="int">
 		select
 		count(*) from notice where com_num=#{com_num}
 	</select>

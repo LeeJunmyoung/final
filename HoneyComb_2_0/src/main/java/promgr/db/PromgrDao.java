@@ -17,7 +17,7 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		map.put("com_num", com_num);
-		map.put("mem_num", mem_num);
+		map.put("mem_num", "%"+mem_num+"%");
 
 		return getSqlSession().selectOne("promgr.count_promgr", map);
 

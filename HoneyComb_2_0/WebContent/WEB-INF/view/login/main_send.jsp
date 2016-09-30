@@ -20,6 +20,6 @@ ${com_pos_name }com_pos_name<br>
 
 
 
- <% response.sendRedirect("/HoneyComb_2_0/main/main"); %>   
+ <% response.sendRedirect("/HoneyComb_2_0/main/main.do"); %>   
 </body>
 </html>

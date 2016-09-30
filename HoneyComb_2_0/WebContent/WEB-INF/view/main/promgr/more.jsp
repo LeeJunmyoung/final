@@ -222,11 +222,11 @@
 		
 	}
 	
-	function AddFile(promgr_num){
-		url = "/HoneyComb/cloudview/uploadForm.jsp?promgr_num="+promgr_num;
+	function AddFile(promgr_num, promgr_name){
+		url = "/HoneyComb_2_0/cloud/uploadPromgr/promgr_num/"+promgr_num+"/promgr_name/"+promgr_name;
 		window.open(url,
 				"post",
-				"toolbar=no ,width=450 ,height=250,directories=no,status=yes,scrollbars=yes,menubar=no");
+				"toolbar=no ,width=450, height=250,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 	
  	function DownFile(file_name, file_path){
@@ -471,7 +471,7 @@
 										value="CHECKLIST" onclick="AddChkList(${article.promgr_num})">
 
 									<input type="button" class="btn btn-primary btn-xs"
-										value="FILE" onclick="AddFile(${article.promgr_num})">
+										value="FILE" onclick="AddFile(${article.promgr_num}, ${article.promgr_name} })">
 
 								</div>
 

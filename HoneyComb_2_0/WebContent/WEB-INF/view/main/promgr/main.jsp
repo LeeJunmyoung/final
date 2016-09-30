@@ -70,7 +70,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="article" items="${ pro_articleList}">
+						<c:forEach var="article" items="${promgr_articleList}">
 							<tr>
 								<td class="col-md-2 text-center">${article.promgr_name}</td>
 								<td class="col-md-4 text-center">${article.promgr_date}</td>

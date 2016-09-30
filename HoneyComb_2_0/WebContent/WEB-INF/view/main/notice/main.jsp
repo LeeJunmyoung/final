@@ -86,7 +86,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="article" items="${articleList}">
+						<c:forEach var="article" items="${notice_articleList}">
 							<tr data-toggle="modal" 
 							data-target="#notice_content_${article.notice_num}" >
 								<th class="col-md-6">
@@ -102,7 +102,7 @@
 					</tbody>
 				</table>
 			
-				<c:forEach var="article" items="${articleList}">
+				<c:forEach var="article" items="${notice_articleList}">
 				  <div class="modal fade" id="notice_content_${article.notice_num}" role="dialog">
 				    <div class="modal-dialog modal-sm">
 				      <div class="modal-content">

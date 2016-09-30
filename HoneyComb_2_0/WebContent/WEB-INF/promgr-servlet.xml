@@ -32,13 +32,13 @@
 		destroy-method="close">
 		<property name="driverClass" value="${driver}" />
 		<property name="jdbcUrl" value="${url}" />
-		<property name="user" value="${username}" />
-		<property name="password" value="${password}" />
+		<property name="user" value="honeycomb" />
+		<property name="password" value="honeycomb" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:mapper/notice.xml" />
+		<property name="mapperLocations" value="classpath:mapper/promgr.xml" />
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

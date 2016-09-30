@@ -6,7 +6,7 @@
 </head>
 <body>
 	<a href="login/LoginMainFrame.do">test.do</a>
-	<a href="main/main">main</a> <br>
+	<a href="main/main.do">main</a> <br>
 	<a href="notice/more">notice/more</a> <br>
 	<a href="cloud/main">cloud</a> <br>
 	<a href="login/signIn.do">SignIn</a>
