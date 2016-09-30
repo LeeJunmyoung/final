@@ -27,10 +27,9 @@
 	<ul>     
 
 		<li><a href="/HoneyComb/Chatting/Chat_main.chat">MESSAGE</a></li>
-		<li><a href="/HoneyComb/cloud/cloudForm.cloud">CLOUD</a></li>
+		<li><a href="/HoneyComb_2_0/cloud/main">CLOUD</a></li>
 		<li><a href="/HoneyComb/page_layout/Option/Option_home.jsp">OPTION</a></li>
 		<li><a href="#logout" onclick="logout();return false;" onkeypress="this.onclick;">LOG OUT</a></li>
-		<!-- <a href="/HoneyComb/Option_user/logout_page.jsp"> -->
 	
 	</ul>
 	

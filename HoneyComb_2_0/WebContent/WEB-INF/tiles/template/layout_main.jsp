@@ -40,7 +40,7 @@
 			<div id="page_content">
 
 				<div id="main_notice">
-						<tiles:insertAttribute name="notice" />
+					<tiles:insertAttribute name="notice" />
 				</div>
 				<div id="main_project_manage">
 					<tiles:insertAttribute name="promgr" />

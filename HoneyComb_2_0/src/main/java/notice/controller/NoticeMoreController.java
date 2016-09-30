@@ -13,7 +13,6 @@ import notice.db.NoticeDao;
 import notice.db.NoticeDataBean;
 
 @Controller
-@RequestMapping("/more.do")
 public class NoticeMoreController {
 
 	private NoticeDao dao;
@@ -23,9 +22,12 @@ public class NoticeMoreController {
 		this.dao = dao;
 	}
 
+	@RequestMapping("/more.do")
 	public ModelAndView submit(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
 			@RequestParam("com_num") int com_num) {
 
+		System.out.println("NoticeMoreController");
+		
 		int pageSize = 5;
 		int currentPage = pageNum;
 		int startRow = (currentPage - 1) * pageSize + 1;
@@ -35,7 +37,7 @@ public class NoticeMoreController {
 		int notice_count = 0;
 		int number = 0;
 
-		List articleList = null;
+		List<NoticeDataBean> articleList = null;
 
 		notice_count = dao.getNoticeCount(com_num);
 
@@ -52,7 +54,7 @@ public class NoticeMoreController {
 			}
 
 		} else {
-			articleList = Collections.EMPTY_LIST;
+			articleList = Collections.emptyList();
 		}
 
 		number = notice_count - (currentPage - 1) * pageSize;
