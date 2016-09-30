@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.naming.Context;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 
+import org.apache.catalina.core.ApplicationContext;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +27,6 @@ import cloud.db.CloudInfo;
 @Controller
 public class CloudMainController {
 	// session 받기
-	/* HttpSession session; */
 	private CloudDao dao;
 
 	@Autowired
@@ -70,7 +71,8 @@ public class CloudMainController {
 		if(security != null){
 			com_pos_num = 1;
 		}
-		dao.uploadFile(uploadfile, "", request, com_pos_num);
+		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, "", request, com_pos_num);
+		dao.uploadFile(info);
 		return "/upload";
 
 	}
@@ -81,7 +83,8 @@ public class CloudMainController {
 		if(security != null ){
 			com_pos_num = 1;
 		}
-		dao.uploadFile(uploadfile, folder, request, com_pos_num);
+		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, folder, request, com_pos_num);
+		dao.uploadFile(info);
 		return "/upload";
 	}
 	
@@ -94,10 +97,9 @@ public class CloudMainController {
 	
 	/*다운로드 처리*/
 	@RequestMapping(value = "/download")
-	public String downloadFile(String[] selectedFiles){
-		System.out.println("연결성공!");
-		System.out.println("selectedFiles:"+selectedFiles);
-		return "redirect:cloud_main";
+	public String downloadFile(int[] selectedFiles){
+		
+		return "redirect:/cloud/main";
 	}
 	
 }

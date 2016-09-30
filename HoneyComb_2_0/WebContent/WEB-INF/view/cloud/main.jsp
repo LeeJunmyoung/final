@@ -18,10 +18,14 @@
 	
 	$(function(){	
 	$("#download").click(function(){
-		alert("되기는합니다")
-		$(":checkbox[name='selectedFiles']:checked").each(function(){
-			alert(this.val())
+		var selectedFiles = new Array();
+		var i =0;
+		$("input:checkbox[name='selectedFiles']:checked").each(function(){
+			selectedFiles[i] = this.value;
+			i++
 		});
+		console.log(selectedFiles);
+		$(location).attr('href',"download?selectedFiles="+selectedFiles); 
 		
 	});
 	});

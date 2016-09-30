@@ -57,5 +57,6 @@
 
 	<bean id="cloudMainController" class="cloud.controller.CloudMainController"
 		p:dao-ref="dao" />
+	<bean id="cloud_uploadFile" class="cloud.controller.Cloud_uploadFile"/>
 		
 </beans>
