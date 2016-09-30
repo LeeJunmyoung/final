@@ -27,11 +27,9 @@ public class Admin_comDelete {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public int admincomDelete(@RequestParam int com_num, HttpServletRequest request) {
-		System.out.println("dddd:::::::::"+com_num);
-		int admincomdelete = 0;
-		admincomdelete = dao.admincomDelete(com_num);
-		return admincomdelete;
+	public void admincomDelete(@RequestParam int com_num, HttpServletRequest request) {
+		int admincomdelete = dao.admincomDelete(com_num);
+		System.out.println("com_num ::::: "+com_num);
 	}
 
 }

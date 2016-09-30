@@ -29,9 +29,7 @@ public class Admin_complete {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView getadmincomplete(HttpSession session, HttpServletRequest request) {
 		List<AdminInfo> admincomplete = dao.adminComplete();
-		ModelAndView mav = new ModelAndView("admin_main_page", "admincomplete", admincomplete);
-		mav.setViewName("admin_complete");
-		mav.addObject("admin_complete", admincomplete);
+		ModelAndView mav = new ModelAndView("admin_complete", "admincomplete", admincomplete);
 		return mav;
 	}
 }
