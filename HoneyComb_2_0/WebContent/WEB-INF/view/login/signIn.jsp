@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,10 +47,7 @@ $('#passfunc').keyup(function(){
 	});
 });
 /* 패스워드 일치 확인끝 */
-
-
-
-
+    
 
 
 
@@ -81,7 +80,9 @@ function filter1(){
 	return false;
 
 	}
+
 }
+    
 </script>
 
 <style type="text/css">
@@ -198,9 +199,8 @@ width:250;
                     <h1>HONEYCOMB</h1><p></p><p></p>
             <form action="members.do" method="post" name="myform" id="myform"><!-- OnSubmit="return checkIt()" -->
 	<!-- 이메일 입력창 -->
-	<input type="hidden" id="idChk" value="N" />
     <input type="text" value="${email}" placeholder="email" name="email" id="email"/>
-    <input type="button"  id="mailcheck" class=" btn btn-default" value="Email확인" OnClick="checkEmail()">
+    <input type="button"  id="mailcheck" class=" btn btn-default" value="Email확인" OnClick="checkEmail(this.form)">
     <p id="textProp"></p>
     <input type="hidden" id="mailtext" value="" name="test">
      	
@@ -209,13 +209,21 @@ width:250;
    <input type="password" placeholder="passwd" name="passwd" id="passwd"/><br><br>
    <input type="password" placeholder="checkpasswd" name="checkpasswd" id="checkpasswd"><br>
     <p id="passwdcheck"/>
-    </div>
+    </div>       	
+    <!-- 생년월일 입력창 -->	
+    <input type="text" placeholder="생년월일(6 자리)" name="birth_date" id="birth_date" maxlength="6"/><br><br>
     
-   	
-    	
+    <!-- 성별 선책창 -->
+<<!-- FORM name=chkForm >
+    <input type="checkbox" name="chkbox" id="man" value="chk1" onclick="check_only(this)" checked>Man
+    <input type="checkbox" name="chkbox" id="woman" value="chk2" onclick="check_only(this)">Woman
+</FORM> -->
+    
+    <!-- 이름 입력창 -->
+    <input type="text" placeholder="name" name="name" id="name" /><br><br>
+    
+     
     <!-- 전화번호 입력창 -->
-    
-    <input type="text" placeholder="name" name="name" id="name"/><br><br>
     <div id="phone">
     <input type="text" placeholder="phone1" name="pnum1" maxlength="3" id='phone1' onkeyup='{filter();return false}' onkeypress='javascript:if(event.keyCode==3){ filter(); return false;}' /> - 
        <input type="text" placeholder="phone2" name="pnum2" maxlength="4" id='phone2' onkeyup='{filter1();return false}' onkeypress='javascript:if(event.keyCode==4){ filter1(); return false;}' /> - 

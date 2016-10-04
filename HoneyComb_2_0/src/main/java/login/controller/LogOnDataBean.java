@@ -15,10 +15,25 @@ public class LogOnDataBean {
 	private String com_dept_name;
 	private String com_pos_name;
 	private String profile_img;
+	private String birth_date;
+	private String gender;
 	
 	private String pnum1;
 	private String pnum2;
 	private String pnum3;
+	
+	public String getBirth_date() {
+		return birth_date;
+	}
+	public void setBirth_date(String birth_date) {
+		this.birth_date = birth_date;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public int getMem_num() {
 		return mem_num;
 	}
