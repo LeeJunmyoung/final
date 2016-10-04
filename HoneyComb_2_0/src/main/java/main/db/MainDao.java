@@ -25,24 +25,38 @@ public class MainDao extends SqlSessionDaoSupport {
 
 	public List<NoticeDataBean> getNoticeList(int com_num, int startRow, int endRow) {
 
-		HashMap<String, Object> map = new HashMap<String, Object>();
+		List<NoticeDataBean> articleList = null;
 
 		if (startRow == -1) {
+
+			HashMap<String, Object> map = new HashMap<String, Object>();
 
 			map.put("com_num", com_num);
 			map.put("endRow", endRow);
 
-			return getSqlSession().selectList("notice.list_main", map);
+			articleList = getSqlSession().selectList("notice.list_main", map);
 
 		} else {
+
+			HashMap<String, Object> map = new HashMap<String, Object>();
 
 			map.put("com_num", com_num);
 			map.put("startRow", startRow);
 			map.put("endRow", endRow);
 
-			return getSqlSession().selectList("notice.list_all", com_num);
+			articleList = getSqlSession().selectList("notice.list_all", com_num);
 
 		}
+
+		for (int i = 0; i < articleList.size(); i++) {
+
+			NoticeDataBean article = (NoticeDataBean) articleList.get(i);
+			int isNew = setIsNew(article.getNotice_num());
+			article.setIsNew(isNew);
+
+		}
+
+		return articleList;
 
 	}
 
@@ -60,11 +74,11 @@ public class MainDao extends SqlSessionDaoSupport {
 
 	// promgr
 	public int getPromgrCount(int com_num, int mem_num) {
-		
+
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		map.put("com_num", com_num);
-		map.put("mem_num", "%"+mem_num+"%");
+		map.put("mem_num", "%" + mem_num + "%");
 
 		return getSqlSession().selectOne("promgr.count_promgr", map);
 
@@ -220,31 +234,20 @@ public class MainDao extends SqlSessionDaoSupport {
 		return comment_view;
 
 	}
-	
-	public List viewCal(int mem_num){
-		
+
+	public List viewCal(int mem_num) {
+
 		List totalCal = new ArrayList<>();
-		totalCal = getSqlSession().selectList("cal.viewCal",mem_num);
-		
-		for(Object c : totalCal){
+		totalCal = getSqlSession().selectList("cal.viewCal", mem_num);
+
+		for (Object c : totalCal) {
 			Cal_DataBean cal = (Cal_DataBean) c;
 			System.out.println(cal.toString());
-			
+
 		}
-		
-		
-		
+
 		return totalCal;
-		
-		
-		
-		
+
 	}
-	
-	
-	
-	
-	
-	
 
 }
