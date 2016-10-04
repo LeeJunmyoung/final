@@ -3,6 +3,8 @@ package promgr.db;
 import java.sql.Timestamp;
 import java.util.List;
 
+import cloud.db.CloudInfo;
+
 public class PromgrDataBean {
 
 	private int promgr_num; // 프로젝트 번호
@@ -13,12 +15,12 @@ public class PromgrDataBean {
 	private String mem_num; // 프로젝트 참여자 번호
 	private String[] mem_name_arr; // 프로젝트 참여자 이름
 	private String file_num;
-	private List file_view;
+	private List<CloudInfo> file_view;
 	private String chklist_title_num;
 	private String chklist_item_num;
-	private List chklist_view; // 진행 상황 체크
+	private List<ChkListViewDataBean> chklist_view; // 진행 상황 체크
 	private String comment_num;
-	private List comment_view; // 댓글 번호
+	private List<CommentDataBean> comment_view; // 댓글 번호
 	private int com_num; // 회사 번호
 
 	public int getPromgr_num() {
@@ -85,11 +87,11 @@ public class PromgrDataBean {
 		this.file_num = file_num;
 	}
 
-	public List getFile_view() {
+	public List<CloudInfo> getFile_view() {
 		return file_view;
 	}
 
-	public void setFile_view(List file_view) {
+	public void setFile_view(List<CloudInfo> file_view) {
 		this.file_view = file_view;
 	}
 
@@ -109,11 +111,11 @@ public class PromgrDataBean {
 		this.chklist_item_num = chklist_item_num;
 	}
 
-	public List getChklist_view() {
+	public List<ChkListViewDataBean> getChklist_view() {
 		return chklist_view;
 	}
 
-	public void setChklist_view(List chklist_view) {
+	public void setChklist_view(List<ChkListViewDataBean> chklist_view) {
 		this.chklist_view = chklist_view;
 	}
 
@@ -125,11 +127,11 @@ public class PromgrDataBean {
 		this.comment_num = comment_num;
 	}
 
-	public List getComment_view() {
+	public List<CommentDataBean> getComment_view() {
 		return comment_view;
 	}
 
-	public void setComment_view(List comment_view) {
+	public void setComment_view(List<CommentDataBean> comment_view) {
 		this.comment_view = comment_view;
 	}
 

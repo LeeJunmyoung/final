@@ -19,13 +19,13 @@ public class PromgrMemberDelController {
 	}
 
 	@RequestMapping("/memberDel.do")
-	public ModelAndView submit(@RequestParam(value = "promgr_num") int promgr_num,
+	public ModelAndView submit(@RequestParam(value = "promgr_num") String promgr_num,
 			@RequestParam(value = "mem_del") String[] del_mem_num) {
 
 		int promgr_update_count = 0;
 		
 		if (del_mem_num != null) {
-			dao.delMembers(promgr_num, del_mem_num);
+			promgr_update_count = dao.delMembers(promgr_num, del_mem_num);
 		}
 		
 		ModelAndView mav = new ModelAndView("memberPro");

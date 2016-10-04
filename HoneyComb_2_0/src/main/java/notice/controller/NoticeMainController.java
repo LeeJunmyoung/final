@@ -43,14 +43,6 @@ public class NoticeMainController {
 
 			articleList = dao.getNoticeList(com_num, -1, endRow);
 
-			for (int i = 0; i < articleList.size(); i++) {
-
-				NoticeDataBean article = (NoticeDataBean) articleList.get(i);
-				int isNew = dao.setIsNew(article.getNotice_num());
-				article.setIsNew(isNew);
-
-			}
-
 		} else {
 			articleList = Collections.EMPTY_LIST;
 		}

@@ -334,7 +334,7 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 	}
 
-	public int delMembers(int promgr_num, String[] del_mem_num) {
+	public int delMembers(String promgr_num, String[] del_mem_num) {
 
 		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
 

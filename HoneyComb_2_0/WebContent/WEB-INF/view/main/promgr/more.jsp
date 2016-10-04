@@ -332,98 +332,108 @@
 
 									<div id="content_chklist">
 
-										<c:forEach var="view" items="${article.chklist_view}">
+										<c:if test="${article.chklist_title_num != null}">
 
-											<div id="${view.list_num}" style="margin-top: 10px;">
+											<c:forEach var="view" items="${article.chklist_view}">
 
-												<div id="chklist_${view.list_num}">
+												<div id="${view.chklist_title_num}"
+													style="margin-top: 10px;">
 
-													<label id="chkList_lab_${view.list_num}"
-														ondblclick="AppearList('list_btn_group_${view.list_num}')">
-														${view.list_name} </label>
+													<div id="chklist_${view.chklist_title_num}">
 
-													<div class="btn-group" id="list_btn_group_${view.list_num}"
-														style="visibility: hidden;">
+														<label id="chkList_lab_${view.chklist_title_num}"
+															ondblclick="AppearList('list_btn_group_${view.chklist_title_num}')">
+															${view.chklist_title_name} </label>
 
-														<input type="button" class="btn btn-default btn-xs"
-															value="MOD" onclick="ModChkList(${view.list_num})">
+														<div class="btn-group"
+															id="list_btn_group_${view.chklist_title_num}"
+															style="visibility: hidden;">
 
-														<input type="button" class="btn btn-default btn-xs"
-															value="DEL"
-															onclick="DelChkList(${article.promgr_num}, ${view.list_num})">
+															<input type="button" class="btn btn-default btn-xs"
+																value="MOD"
+																onclick="ModChkList(${view.chklist_title_num})">
 
-														<input type="button" class="btn btn-default btn-xs"
-															value="X"
-															onclick="HiddenList('list_btn_group_${view.list_num}')">
+															<input type="button" class="btn btn-default btn-xs"
+																value="DEL"
+																onclick="DelChkList(${article.promgr_num}, ${view.chklist_title_num})">
 
-													</div>
-
-												</div>
-
-												<div id="chklist_ing">
-
-													<div class="progress">
-														<div class="progress-bar" role="progressbar"
-															aria-valuenow="${view.list_ing}" aria-valuemin="0"
-															aria-valuemax="100" style="width:${view.list_ing}%">
-															${view.list_ing}%</div>
-													</div>
-
-												</div>
-
-												<form role="form" method="post" name="chkItemform">
-
-													<c:forEach var="bean" items="${view.item_bean}">
-
-														<div id="chkitem_${bean.chklist_item_num}">
-
-															<c:if test="${bean.chklist_item_chk == 1}">
-																<input type="checkbox" name="chkitem"
-																	id="${bean.chklist_item_num}"
-																	onchange="ChangeCheckedItem(${article.promgr_num}, ${view.list_num}, ${bean.chklist_item_num})"
-																	checked="checked" />
-															</c:if>
-
-															<c:if test="${bean.chklist_item_chk == 0}">
-																<input type="checkbox" name="chkitem"
-																	id="${bean.chklist_item_num}"
-																	onchange="ChangeCheckedItem(${article.promgr_num}, ${view.list_num}, ${bean.chklist_item_num})" />
-															</c:if>
-
-															<label id="chkItem_lab_${bean.chklist_item_num}"
-																ondblclick="AppearList('item_btn_group_${bean.chklist_item_num}')">
-																${bean.chklist_item_name} </label>
-
-															<div class="btn-group"
-																id="item_btn_group_${bean.chklist_item_num}"
-																style="visibility: hidden;">
-
-																<input type="button" class="btn btn-default btn-xs"
-																	value="MOD" onclick="ModItem(${bean.chklist_item_num})">
-
-																<input type="button" class="btn btn-default btn-xs"
-																	value="DEL"
-																	onclick="DelItem(${article.promgr_num}, ${view.list_num}, ${bean.chklist_item_num})">
-
-																<input type="button" class="btn btn-default btn-xs"
-																	value="X"
-																	onclick="HiddenList('item_btn_group_${bean.chklist_item_num}')">
-
-															</div>
+															<input type="button" class="btn btn-default btn-xs"
+																value="X"
+																onclick="HiddenList('list_btn_group_${view.chklist_title_num}')">
 
 														</div>
 
-													</c:forEach>
+													</div>
 
-												</form>
+													<div id="chklist_ing">
 
-												<input type="button" class="btn btn-default btn-xs"
-													value="add item"
-													onclick="AddItem(${article.promgr_num}, ${view.list_num})" />
+														<div class="progress">
+															<div class="progress-bar" role="progressbar"
+																aria-valuenow="${view.chklist_title_ing}"
+																aria-valuemin="0" aria-valuemax="100"
+																style="width:${view.chklist_title_ing}%">
+																${view.chklist_title_ing}%</div>
+														</div>
 
-											</div>
+													</div>
 
-										</c:forEach>
+													<form role="form" method="post" name="chkItemform">
+
+														<c:forEach var="bean" items="${view.item_bean}">
+
+															<div id="chkitem_${bean.chklist_item_num}">
+
+																<c:if test="${bean.chklist_item_chk == 1}">
+																	<input type="checkbox" name="chkitem"
+																		id="${bean.chklist_item_num}"
+																		onchange="ChangeCheckedItem(${article.promgr_num}, ${view.chklist_title_num}, ${bean.chklist_item_num})"
+																		checked="checked" />
+																</c:if>
+
+																<c:if test="${bean.chklist_item_chk == 0}">
+																	<input type="checkbox" name="chkitem"
+																		id="${bean.chklist_item_num}"
+																		onchange="ChangeCheckedItem(${article.promgr_num}, ${view.chklist_title_num}, ${bean.chklist_item_num})" />
+																</c:if>
+
+																<label id="chkItem_lab_${bean.chklist_item_num}"
+																	ondblclick="AppearList('item_btn_group_${bean.chklist_item_num}')">
+																	${bean.chklist_item_name} </label>
+
+																<div class="btn-group"
+																	id="item_btn_group_${bean.chklist_item_num}"
+																	style="visibility: hidden;">
+
+																	<input type="button" class="btn btn-default btn-xs"
+																		value="MOD"
+																		onclick="ModItem(${bean.chklist_item_num})"> <input
+																		type="button" class="btn btn-default btn-xs"
+																		value="DEL"
+																		onclick="DelItem(${article.promgr_num}, ${view.chklist_title_num}, ${bean.chklist_item_num})">
+
+																	<input type="button" class="btn btn-default btn-xs"
+																		value="X"
+																		onclick="HiddenList('item_btn_group_${bean.chklist_item_num}')">
+
+																</div>
+
+															</div>
+
+														</c:forEach>
+
+													</form>
+
+													<input type="button" class="btn btn-default btn-xs"
+														value="add item"
+														onclick="AddItem(${article.promgr_num}, ${view.chklist_title_num})" />
+
+												</div>
+
+											</c:forEach>
+
+										</c:if>
+
+										<!-- chklist -->
 
 									</div>
 
@@ -433,32 +443,38 @@
 
 									<div id="content_file" style="margin-top: 10px;">
 
-										<c:forEach var="view" items="${article.file_view}">
+										<c:if test="${article.file_num != null}">
 
-											<div id="${view.file_num}">
+											<c:forEach var="view" items="${article.file_view}">
 
-												<label id="file_lab_${view.file_num}"
-													ondblclick="AppearFile(${mem_num}, ${view.mem_num},'file_btn_group_${view.file_num}')">
-													${view.file_name} </label> <input type="button"
-													class="btn btn-default btn-xs" value="down"
-													onclick="DownFile('${view.file_name}', '${view.file_path}')">
+												<div id="${view.file_num}">
 
-												<div class="btn-group" id="file_btn_group_${view.file_num}"
-													style="visibility: hidden;">
+													<label id="file_lab_${view.file_num}"
+														ondblclick="AppearFile(${mem_num}, ${view.mem_num},'file_btn_group_${view.file_num}')">
+														${view.file_name} </label> <input type="button"
+														class="btn btn-default btn-xs" value="down"
+														onclick="DownFile('${view.file_name}', '${view.file_path}')">
 
-													<input type="button" class="btn btn-default btn-xs"
-														value="DEL"
-														onclick="DelFile('${article.promgr_num}', '${view.file_path}')">
+													<div class="btn-group" id="file_btn_group_${view.file_num}"
+														style="visibility: hidden;">
 
-													<input type="button" class="btn btn-default btn-xs"
-														value="X"
-														onclick="HiddenFile(${mem_num}, ${view.mem_num},'file_btn_group_${view.file_num}')">
+														<input type="button" class="btn btn-default btn-xs"
+															value="DEL"
+															onclick="DelFile('${article.promgr_num}', '${view.file_path}')">
+
+														<input type="button" class="btn btn-default btn-xs"
+															value="X"
+															onclick="HiddenFile(${mem_num}, ${view.mem_num},'file_btn_group_${view.file_num}')">
+
+													</div>
 
 												</div>
 
-											</div>
+											</c:forEach>
 
-										</c:forEach>
+										</c:if>
+
+										<!-- file -->
 
 									</div>
 
