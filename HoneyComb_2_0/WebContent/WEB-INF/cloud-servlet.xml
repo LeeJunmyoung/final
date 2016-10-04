@@ -27,7 +27,10 @@
 	<bean id="jspviewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	   <property name="prefix" value="/WEB-INF/view/cloud" />
 	   <property name="suffix" value=".jsp" />
-	   <property name="order" value="2" />
+	   <property name="order" value="3" />
+	</bean>
+	<bean id="beanviewREsolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="2"/>
 	</bean>
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	
@@ -58,5 +61,7 @@
 	<bean id="cloudMainController" class="cloud.controller.CloudMainController"
 		p:dao-ref="dao" />
 	<bean id="cloud_uploadFile" class="cloud.controller.Cloud_uploadFile"/>
-		
+	
+	<!-- 다운로드 전용 bean 생성 -->
+	<bean id="downloadFiles" class="cloud.controller.Cloud_downloadFile"/>
 </beans>

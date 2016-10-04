@@ -1,5 +1,6 @@
 package cloud.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,13 +12,16 @@ import javax.websocket.server.PathParam;
 
 import org.apache.catalina.core.ApplicationContext;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,7 +29,15 @@ import cloud.db.CloudDao;
 import cloud.db.CloudInfo;
 
 @Controller
-public class CloudMainController {
+public class CloudMainController implements ApplicationContextAware{
+	/*Download용 ViewResolver 받기*/
+	private WebApplicationContext context = null;
+	@Override
+	public void setApplicationContext(org.springframework.context.ApplicationContext applicationContext)
+			throws BeansException {
+		// TODO Auto-generated method stub
+		
+	}
 	// session 받기
 	private CloudDao dao;
 
@@ -95,19 +107,12 @@ public class CloudMainController {
 	
 	/*다운로드 처리*/
 	@RequestMapping(value = "/download")
-	public String downloadFile(int[] selectedFiles){
-		System.out.println(selectedFiles[0]);
-		String filePathes[] = null;
-		System.out.println("selectedFiles.length:"+selectedFiles.length);
-		for(int i = 0; i < selectedFiles.length; i++){
-			int file_num = selectedFiles[i];
-			 String tempPath = dao.getFilePath(file_num);
-			 System.out.println(tempPath);
-			 filePathes[i] = tempPath;
-			System.out.println("last::"+filePathes[i]);
-		}
-		
-		return "redirect:/cloud/main";
+	public ModelAndView downloadFile(String selectedFiles){
+		String[] fileNums = selectedFiles.split(",");
+		List downloadInfo = dao.getFileInfo(fileNums);
+		return new ModelAndView("downloadFiles", "downloadInfo", downloadInfo);
 	}
+
+
 	
 }

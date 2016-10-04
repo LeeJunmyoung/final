@@ -28,8 +28,16 @@ public class CloudDao extends SqlSessionDaoSupport{
 		getSqlSession().insert("cloud.upload", info);
 	}
 	
-	public String getFilePath(int file_num){
-		String file_path = getSqlSession().selectOne("cloud.getFilePath",file_num);
-		return file_path;
+	public List getFileInfo(String[] fileNums){
+		List downloadinfo = new ArrayList();
+		for(int i = 0; i < fileNums.length; i++){
+			int file_num = Integer.parseInt(fileNums[i]);
+			String file_path = getSqlSession().selectOne("cloud.getFilePath",file_num);
+			downloadinfo.add(file_path);
+			String file_name = getSqlSession().selectOne("cloud.getFileName", file_num);
+			downloadinfo.add(file_name);
+		}
+		
+		return downloadinfo;
 	}
 }

@@ -24,7 +24,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into cloud values(cloud_seq.NEXTVAL, #{file_name}, #{file_path}, #{file_uploader}, #{file_size}, sysdate, #{com_num},#{com_pos_num}, #{folder},#{mem_num},'')
 	</insert>
 	<select id="getFilePath" parameterType="int" resultType="String">
-		select File_path from cloud where file_num = #{file_num}
+		select file_path from cloud where file_num = #{file_num}
+	</select>
+	<select id="getFileName" parameterType="int" resultType="String">
+		select file_name from cloud where file_num = #{file_num}
 	</select>
 
 </mapper>
