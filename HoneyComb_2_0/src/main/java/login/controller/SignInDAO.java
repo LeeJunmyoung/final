@@ -14,6 +14,9 @@ public class SignInDAO extends SqlSessionDaoSupport {
 		getSqlSession().insert("insertMember",logdb);
 	
 	}
+	public String getCheckUserId(String email) {
+		return this.getSqlSession().selectOne("mailCheck", email);
+	}
 	
 	
 	
