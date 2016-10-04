@@ -138,9 +138,11 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 			if (chkList != null) {
 				chkList.setItem_bean(chkItem);
+				
+				chkList_view.add(chkList);
 			}
 
-			chkList_view.add(chkList);
+
 
 		}
 
@@ -172,8 +174,16 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 			int comment_num = num_arr[j];
 			CommentDataBean comment = getSqlSession().selectOne("promgr.get_comment_view", comment_num);
-			comment_view.add(comment);
-
+			
+			if(comment != null) {
+				
+				int mem_num = comment.getMem_num();
+				String mem_name = getSqlSession().selectOne("promgr.get_mem_name", mem_num);
+				comment.setMem_name(mem_name);
+				
+				comment_view.add(comment);
+			}
+			
 		}
 
 		return comment_view;
@@ -210,9 +220,9 @@ public class PromgrDao extends SqlSessionDaoSupport {
 		getSqlSession().insert("promgr.add_comment", article);
 
 		int mem_num = article.getMem_num();
-		String new_comment_num = getSqlSession().selectOne("promgr.new_comment_num", mem_num);
+		String new_comment_num = getSqlSession().selectList("promgr.new_comment_num", mem_num).get(0).toString();
 
-		int promgr_num = article.getPromgr_num();
+		String promgr_num = String.valueOf(article.getPromgr_num());
 
 		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
 

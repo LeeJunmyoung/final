@@ -23,6 +23,8 @@ public class PromgrChkItemModController {
 
 		System.out.println("/chkItemModForm.do");
 		
+		System.out.println("item_num : " + item_num);
+		
 		ModelAndView mav = new ModelAndView("chkListModForm");
 		mav.addObject("item_num", item_num);
 
