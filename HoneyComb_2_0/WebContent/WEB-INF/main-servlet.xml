@@ -42,6 +42,7 @@
 			<list>
 				<value>classpath:mapper/notice.xml</value>
 				<value>classpath:mapper/promgr.xml</value>
+				<value>classpath:mapper/cal.xml</value>
 			</list>
 		</property>
 	</bean>

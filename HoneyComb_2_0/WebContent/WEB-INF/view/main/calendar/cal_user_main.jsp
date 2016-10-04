@@ -100,11 +100,11 @@ top:50px;
 
 						function viewScaduel() {
 
-							if ('${count}' > 0) {
+							if ('${cal_count}' > 0) {
 								var newEvent = new Object();
 								var start ;
 								var end;
-								<c:forEach items = "${total}" var="total">
+								<c:forEach items = "${totalCal}" var="total">
 								start='${total.cal_start}'+"";
 								end ='${total.cal_end}'+"";
 								newEvent.title = '${total.cal_subject}';

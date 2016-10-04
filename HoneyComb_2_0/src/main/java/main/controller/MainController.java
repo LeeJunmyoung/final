@@ -90,6 +90,21 @@ public class MainController {
 		mav.addObject("promgr_count", promgr_count);
 		mav.addObject("promgr_articleList", promgr_articleList);
 
+		
+		
+		/* calendar 소스코드 입니다*/
+		
+		List totalCal =  dao.viewCal(mem_num);
+		
+		mav.addObject("totalCal", totalCal);
+		mav.addObject("cal_count",totalCal.size());
+		
+		
+		
+		
+		
+		
+		/* calendar 소스코드 입니다		*/
 		return mav;
 		
 	}

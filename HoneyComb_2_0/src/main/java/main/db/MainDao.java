@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
+import cal.db.Cal_DataBean;
 import cloud.db.CloudInfo;
 import promgr.db.ChkItemDataBean;
 import promgr.db.ChkListViewDataBean;
@@ -219,5 +220,31 @@ public class MainDao extends SqlSessionDaoSupport {
 		return comment_view;
 
 	}
+	
+	public List viewCal(int mem_num){
+		
+		List totalCal = new ArrayList<>();
+		totalCal = getSqlSession().selectList("cal.viewCal",mem_num);
+		
+		for(Object c : totalCal){
+			Cal_DataBean cal = (Cal_DataBean) c;
+			System.out.println(cal.toString());
+			
+		}
+		
+		
+		
+		return totalCal;
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }

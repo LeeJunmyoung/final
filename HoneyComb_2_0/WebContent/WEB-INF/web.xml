@@ -93,5 +93,16 @@
 		<url-pattern>/main/*</url-pattern>
 	</servlet-mapping>
 	
+	
+	<servlet>
+		<servlet-name>cal</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>cal</servlet-name>
+		<url-pattern>/cal/*</url-pattern>
+	</servlet-mapping>
+	
 
 </web-app>
