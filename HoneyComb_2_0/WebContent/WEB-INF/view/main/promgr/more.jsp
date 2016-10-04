@@ -379,47 +379,53 @@
 
 													<form role="form" method="post" name="chkItemform">
 
-														<c:forEach var="bean" items="${view.item_bean}">
+														<c:if test="${!empty view.item_bean}">
 
-															<div id="chkitem_${bean.chklist_item_num}">
+															<c:forEach var="bean" items="${view.item_bean}">
 
-																<c:if test="${bean.chklist_item_chk == 1}">
-																	<input type="checkbox" name="chkitem"
-																		id="${bean.chklist_item_num}"
-																		onchange="ChangeCheckedItem(${article.promgr_num}, ${view.chklist_title_num}, ${bean.chklist_item_num})"
-																		checked="checked" />
-																</c:if>
+																<div id="chkitem_${bean.chklist_item_num}">
 
-																<c:if test="${bean.chklist_item_chk == 0}">
-																	<input type="checkbox" name="chkitem"
-																		id="${bean.chklist_item_num}"
-																		onchange="ChangeCheckedItem(${article.promgr_num}, ${view.chklist_title_num}, ${bean.chklist_item_num})" />
-																</c:if>
+																	<c:if test="${bean.chklist_item_chk == 1}">
+																		<input type="checkbox" name="chkitem"
+																			id="${bean.chklist_item_num}"
+																			onchange="ChangeCheckedItem(${article.promgr_num}, ${view.chklist_title_num}, ${bean.chklist_item_num})"
+																			checked="checked" />
+																	</c:if>
 
-																<label id="chkItem_lab_${bean.chklist_item_num}"
-																	ondblclick="AppearList('item_btn_group_${bean.chklist_item_num}')">
-																	${bean.chklist_item_name} </label>
+																	<c:if test="${bean.chklist_item_chk == 0}">
+																		<input type="checkbox" name="chkitem"
+																			id="${bean.chklist_item_num}"
+																			onchange="ChangeCheckedItem(${article.promgr_num}, ${view.chklist_title_num}, ${bean.chklist_item_num})" />
+																	</c:if>
 
-																<div class="btn-group"
-																	id="item_btn_group_${bean.chklist_item_num}"
-																	style="visibility: hidden;">
+																	<label id="chkItem_lab_${bean.chklist_item_num}"
+																		ondblclick="AppearList('item_btn_group_${bean.chklist_item_num}')">
+																		${bean.chklist_item_name} </label>
 
-																	<input type="button" class="btn btn-default btn-xs"
-																		value="MOD"
-																		onclick="ModItem(${bean.chklist_item_num})"> <input
-																		type="button" class="btn btn-default btn-xs"
-																		value="DEL"
-																		onclick="DelItem(${article.promgr_num}, ${view.chklist_title_num}, ${bean.chklist_item_num})">
+																	<div class="btn-group"
+																		id="item_btn_group_${bean.chklist_item_num}"
+																		style="visibility: hidden;">
 
-																	<input type="button" class="btn btn-default btn-xs"
-																		value="X"
-																		onclick="HiddenList('item_btn_group_${bean.chklist_item_num}')">
+																		<input type="button" class="btn btn-default btn-xs"
+																			value="MOD"
+																			onclick="ModItem(${bean.chklist_item_num})">
+																		<input type="button" class="btn btn-default btn-xs"
+																			value="DEL"
+																			onclick="DelItem(${article.promgr_num}, ${view.chklist_title_num}, ${bean.chklist_item_num})">
+
+																		<input type="button" class="btn btn-default btn-xs"
+																			value="X"
+																			onclick="HiddenList('item_btn_group_${bean.chklist_item_num}')">
+
+																	</div>
 
 																</div>
 
-															</div>
+															</c:forEach>
 
-														</c:forEach>
+														</c:if>
+
+														<!-- chkItem -->
 
 													</form>
 

@@ -41,10 +41,9 @@ public class PromgrChkItemAddController {
 		article.setChklist_item_name(String.valueOf(request.getParameter("promgr_list_item")));
 		article.setPromgr_num(Integer.parseInt(request.getParameter("promgr_num")));
 		article.setCom_num((int) request.getSession().getAttribute("com_num"));
+		article.setChklist_title_num(Integer.parseInt(request.getParameter("list_num")));
 
-		int list_num = Integer.parseInt(request.getParameter("list_num"));
-
-		int promgr_insert_count = dao.addChkItem(list_num, article);
+		int promgr_insert_count = dao.addChkItem(article);
 
 		ModelAndView mav = new ModelAndView("pro");
 		mav.addObject("promgr_insert_count", promgr_insert_count);

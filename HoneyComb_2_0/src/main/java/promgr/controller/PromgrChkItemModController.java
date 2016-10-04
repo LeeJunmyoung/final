@@ -21,6 +21,8 @@ public class PromgrChkItemModController {
 	@RequestMapping("/chkItemModForm.do")
 	public ModelAndView form(@RequestParam(value = "item_num") int item_num) {
 
+		System.out.println("/chkItemModForm.do");
+		
 		ModelAndView mav = new ModelAndView("chkListModForm");
 		mav.addObject("item_num", item_num);
 
@@ -31,6 +33,8 @@ public class PromgrChkItemModController {
 	@RequestMapping("/chkItemModPro.do")
 	public ModelAndView submit(@RequestParam(value = "item_num") int item_num,
 			@RequestParam(value = "promgr_list_item") String item_name) {
+
+		System.out.println("/chkItemModPro.do");
 
 		int promgr_update_count = dao.modChkItem(item_num, item_name);
 

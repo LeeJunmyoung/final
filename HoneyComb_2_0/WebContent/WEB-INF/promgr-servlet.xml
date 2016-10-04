@@ -77,11 +77,20 @@
 
 	<bean id="promgrChkListAddController" class="promgr.controller.PromgrChkListAddController"
 		p:dao-ref="dao" />
-		
+
 	<bean id="promgrChkListModController" class="promgr.controller.PromgrChkListModController"
 		p:dao-ref="dao" />
-		
+
 	<bean id="promgrChkListDelController" class="promgr.controller.PromgrChkListDelController"
+		p:dao-ref="dao" />
+
+	<bean id="promgrChkItemAddController" class="promgr.controller.PromgrChkItemAddController"
+		p:dao-ref="dao" />
+
+	<bean id="promgrChkItemModController" class="promgr.controller.PromgrChkItemModController"
+		p:dao-ref="dao" />
+
+	<bean id="promgrChkItemDelController" class="promgr.controller.PromgrChkItemDelController"
 		p:dao-ref="dao" />
 
 </beans>

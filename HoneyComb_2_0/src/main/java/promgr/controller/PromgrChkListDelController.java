@@ -19,7 +19,7 @@ public class PromgrChkListDelController {
 	}
 
 	@RequestMapping("/chkListDel.do")
-	public ModelAndView submit(@RequestParam(value = "promgr_num") int promgr_num,
+	public ModelAndView submit(@RequestParam(value = "promgr_num") String promgr_num,
 			@RequestParam(value = "list_num") int list_num) {
 
 		int promgr_update_count = dao.delChkList(promgr_num, list_num);

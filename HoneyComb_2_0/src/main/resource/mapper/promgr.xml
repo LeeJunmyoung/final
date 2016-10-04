@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="add_chkItem" parameterType="promgr.db.ChkItemDataBean">
 		insert into
 		chklist_item(chklist_item_num,chklist_item_name,chklist_item_chk,chklist_title_num,promgr_num,com_num)
-		values(chklist_item_num.NEXTVAL,#{chklist_item_name},0,#{list_num},#{promgr_num},#{com_num})";
+		values(chklist_item_num.NEXTVAL,#{chklist_item_name},0,#{chklist_title_num},#{promgr_num},#{com_num})
 	</insert>
 
 	<update id="set_comment_num" parameterType="hashmap">
@@ -172,23 +172,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		chklist_title_name=#{chkList_name} order by chklist_title_num desc
 	</select>
 
-	<select id="get_chkItem_num_all" parameterType="int" resultType="String">
+	<select id="get_chkItem_num_all" parameterType="String" resultType="String">
 		select chklist_item_num from chklist_item where
 		promgr_num=#{promgr_num}
 	</select>
 
-	<select id="get_chkList_num_all" parameterType="int" resultType="String">
+	<select id="get_chkList_num_all" parameterType="String" resultType="String">
 		select chklist_title_num from chklist_title where
 		promgr_num=#{promgr_num}
 	</select>
 
-	<select id="count_promgr_chkItem_all" parameterType="int"
+	<select id="count_promgr_chkItem_all" parameterType="String"
 		resultType="int">
 		select count(*) from chklist_item where
 		promgr_num=#{promgr_num}
 	</select>
 
-	<select id="count_promgr_chkItem_chk" parameterType="int"
+	<select id="count_promgr_chkItem_chk" parameterType="String"
 		resultType="int">
 		select count(*) from chklist_item where
 		promgr_num=#{promgr_num} and chklist_item_chk=1
@@ -196,7 +196,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="new_chkItem_num" parameterType="String" resultType="String">
 		select chklist_item_num from chklist_item where
-		chklist_item_name=#{#{chkItem_name}} order by chklist_item_num desc
+		chklist_item_name=#{chkItem_name} order by chklist_item_num desc
 	</select>
 
 	<select id="count_list_chkItem_all" parameterType="int"
