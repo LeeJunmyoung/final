@@ -24,4 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="admincominsert" parameterType="admin.db.AdminInfo">
 		insert into complete_com select * from temp_com where com_num = #{com_num}
 	</insert>
+	
+	<select id="comadminlist" resultType="admin.db.AdminInfo">
+		select * from complete_com where com_num = #{com_num}
+	</select>
 </mapper>

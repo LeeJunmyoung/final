@@ -113,10 +113,8 @@ height: 100%;
 
 </style>
 <script>
-	function listCheck(come_num) {;
-		var num = come_num;
-		
-		url = "complete_comPro.admin?com_num=" + num;
+	function listCheck(com_num) {;		
+		url = "admin_comCheck?com_num=" + com_num;
 		window
 				.open(
 						url,
@@ -180,7 +178,7 @@ height: 100%;
 				<c:if test="${ !empty admincomplete }">
 					<c:forEach var="admincomplete" items="${admincomplete}">
 						<tr>
-							<td><a onclick="listCheck(${admincomplete.com_num})" id="compl">${admincomplete.com_name}</a></td>
+							<td><a onclick="listCheck('${admincomplete.com_num}')" id="compl">${admincomplete.com_name}</a></td>
 							<td id="compl_button"><input type="submit"
 								class="btn btn-primary btn-xs" id="submit" value="등록"
 								onclick="submitCheck('${admincomplete.com_num}')"> 

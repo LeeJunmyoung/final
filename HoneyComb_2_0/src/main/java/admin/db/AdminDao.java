@@ -40,4 +40,10 @@ public class AdminDao extends SqlSessionDaoSupport {
 		admincomDelete = getSqlSession().delete("admincomdelete", com_num);
 		return admincomDelete;
 	}
+	
+	public List<AdminInfo> comadminList(int com_num) {
+		List adminlist = new ArrayList<AdminInfo>();
+		adminlist = getSqlSession().selectList("comadminlist", com_num);
+		return adminlist;
+	}
 }
