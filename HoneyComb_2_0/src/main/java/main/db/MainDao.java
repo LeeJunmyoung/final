@@ -1,5 +1,6 @@
 package main.db;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -112,15 +113,26 @@ public class MainDao extends SqlSessionDaoSupport {
 	public List viewCal(int mem_num) {
 
 		List totalCal = new ArrayList<>();
+		List totalCal1 = new ArrayList<>();
+		
 		totalCal = getSqlSession().selectList("cal.viewCal", mem_num);
-
+		
 		for (Object c : totalCal) {
 			Cal_DataBean cal = (Cal_DataBean) c;
-			System.out.println(cal.toString());
+			
+			Date formatdate = new Date(cal.getCal_end().getYear(),cal.getCal_end().getMonth(),cal.getCal_end().getDate()+1);
+			
+			
+			cal.setCal_end(formatdate);
+			formatdate= new Date(cal.getCal_start().getYear(),cal.getCal_start().getMonth(),cal.getCal_start().getDate());
+			cal.setCal_start(formatdate);
+			//System.out.println(cal.toString());
+			
 
+			totalCal1.add(cal);
 		}
 
-		return totalCal;
+		return totalCal1;
 
 	}
 

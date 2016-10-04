@@ -4,9 +4,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cal">
 
-<select id="viewCal" resultSets="Integer" resultType="cal.db.Cal_DataBean" >
-select * from calendar where mem_num = #{mem_num}
-</select>
+	<select id="viewCal" resultSets="Integer" resultType="cal.db.Cal_DataBean">
+		select * from calendar where mem_num = #{mem_num}
+	</select>
+
+	<update id="cal_modify"   parameterType="hashmap" >
+		update calendar set cal_subject=#{cal_subject} , cal_contents=#{cal_contents},cal_start=#{cal_start},cal_end=#{cal_end}  where cal_num=#{cal_num}
+	</update>
 
 
 </mapper>
+ <!-- cal_start = #{cal_start} ,cal_end = #{cal_end} -->

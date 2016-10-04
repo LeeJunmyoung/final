@@ -60,13 +60,13 @@ top:50px;
 													}
 													var end = datetoHtml(Number(event.end)-86400000);
 													
-													var url = "/HoneyComb/Calendar/main_curd_cal_page.jsp?num="+event.number+"&title="
+													var url = "/HoneyComb_2_0/cal/curd_cal_page/getpage?cal_num="+event.number+"&cal_subject="
 															+ event.title
-															+ "&start="
+															+ "&cal_start="
 															+ start
-															+ "&end="
+															+ "&cal_end="
 															+ end
-															+ "&contents="
+															+ "&cal_contents="
 															+ event.Contents;
 															+ "&type=nonono"
 
@@ -74,7 +74,7 @@ top:50px;
 															url,
 															"confirm",
 															"toolbar=no,location=no,status=no,menubar=no,"
-																	+ "scrollbars=no,resizable=no,width=450,height=300,left=400,top=200");
+																	+ "scrollbars=no,resizable=no,width=500,height=300,left=400,top=200");
 
 												}
 
@@ -99,8 +99,9 @@ top:50px;
 						viewScaduel();
 
 						function viewScaduel() {
-
+							
 							if ('${cal_count}' > 0) {
+								
 								var newEvent = new Object();
 								var start ;
 								var end;
@@ -131,11 +132,11 @@ top:50px;
 							var date = new Date(time);
 							
 							time_temp=(Number(date.getYear())+1900)+"-";
-							if(date.getMonth()<10){
+							if(date.getMonth()<9){
 								time_temp=time_temp+"0";
 							}
 							time_temp=time_temp+(Number(date.getMonth())+1)+"-";
-							if(date.getDate()<10){
+							if(date.getDate()<=9){
 								time_temp=time_temp+"0";
 							}
 							time_temp=time_temp+date.getDate();

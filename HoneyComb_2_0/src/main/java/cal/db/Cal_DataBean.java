@@ -7,14 +7,15 @@ public class Cal_DataBean {
 	private int cal_num;
 	private String cal_subject;
 	private String cal_contents;
+
 	private Date cal_start;
 	private Date cal_end;
+	
+	
 	private int com_num;
 	private int com_dept_num;
 	private int category;
 	private int mem_num;
-	
-	
 	public int getCal_num() {
 		return cal_num;
 	}
@@ -75,6 +76,9 @@ public class Cal_DataBean {
 				+ ", cal_start=" + cal_start + ", cal_end=" + cal_end + ", com_num=" + com_num + ", com_dept_num="
 				+ com_dept_num + ", category=" + category + ", mem_num=" + mem_num + "]";
 	}
+	
+	
+	
 
 	
 }
