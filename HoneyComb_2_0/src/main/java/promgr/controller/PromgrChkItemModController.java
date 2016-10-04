@@ -25,7 +25,7 @@ public class PromgrChkItemModController {
 		
 		System.out.println("item_num : " + item_num);
 		
-		ModelAndView mav = new ModelAndView("chkListModForm");
+		ModelAndView mav = new ModelAndView("chkItemModForm");
 		mav.addObject("item_num", item_num);
 
 		return mav;
