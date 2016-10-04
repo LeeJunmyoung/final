@@ -93,6 +93,9 @@
 	<bean id="promgrChkItemDelController" class="promgr.controller.PromgrChkItemDelController"
 		p:dao-ref="dao" />
 
+	<bean id="promgrChkItemChangeCheckedController" class="promgr.controller.PromgrChkItemChangeCheckedController"
+		p:dao-ref="dao" />
+
 	<bean id="promgrCommentAddController" class="promgr.controller.PromgrCommentAddController"
 		p:dao-ref="dao" />
 
