@@ -40,7 +40,7 @@ select count(email) from members where email = #{email}
 </select>
 
 <insert id="insertMember" parameterType="login.controller.LogOnDataBean">
-insert into members(mem_num, name, email, phone_num, passwd,birth_date) values(member_seq.NEXTVAL,#{name},#{email},#{phone_num},#{passwd},#{birth_date})
+insert into members(mem_num, name, email, phone_num, passwd,birth_date,gender) values(member_seq.NEXTVAL,#{name},#{email},#{phone_num},#{passwd},#{birth_date},#{gender})
 </insert> 
 
 </mapper>
