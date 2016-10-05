@@ -56,72 +56,28 @@ public class SignInController  {
 		
 		return "success";
 	}
-	@RequestMapping(value = "/EmailCheck.do", method= RequestMethod.POST)
-	public @ResponseBody Map<String, Integer> appidcheck(HttpServletResponse response, 
-	@RequestParam("email") String email) {
-
-	response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-	response.setHeader("Access-Control-Max-Age", "3600");
-	response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-	response.setHeader("Access-Control-Allow-Origin", "*");
-
-	response.setContentType("application/json");
-	response.setCharacterEncoding("UTF-8");
-
-	String retid = dao.getCheckUserId(email);
-	  
-	Map<String, Integer> map = new HashMap<String, Integer>();
-	  
-	map.put("ret", 1);
-	if(retid != null){
-	 if(retid.equals(email)){
-	 map.put("ret", 0);
-	 }
-	}
-	 
-	return map;
-	 }
-	
-
-
-	
-
-	/*@RequestMapping(value = "/chkDupId.do")
-	 public void checkId(HttpServletRequest req, HttpServletResponse res,
-	   ModelMap model) throws Exception {
-	  PrintWriter out = res.getWriter();
-	  try {
-
-	   // 넘어온 ID를 받는다.
-	   String paramId = (req.getParameter("prmId") == null) ? "" : String
-	     .valueOf(req.getParameter("prmId"));
-
-	   LogOnDataBean logdb = new LogOnDataBean();
-	   logdb.setEmail(paramId.trim());
-	   int chkPoint = SignInService.chkDupId(logdb);
-
-	   out.print(chkPoint);
-	   out.flush();
-	   out.close();
-	  } catch (Exception e) {
-	   e.printStackTrace();
-	   out.print("1");
-	  }
-	 }*/
-	
-	
+	@RequestMapping(value = "/checkEmail.do", method= RequestMethod.POST)
+	@ResponseBody
+	public String mailCheck(HttpServletRequest request,HttpServletResponse response){
 		
+		String email = request.getParameter("email");
+		
+		String db = dao.CheckEmail(email);
+		
+		return "checkEmail_"+db+".do";
 	}
-		/*@RequestMapping(method = RequestMethod.GET)
-		public String form() {
-			return "signIn";
-		}
 
-		@RequestMapping(method = RequestMethod.POST)
-		public String submit() {
-			
-			
-				return "signIn";*/						
+	@RequestMapping("mailCheck.do")
+	@ResponseBody
+	public String CheckEmail(String email){
+		
+		String chkMail = dao.CheckEmail(email);
+		
+		return chkMail;
+	}
+	
+}
+							
 		
 
 	

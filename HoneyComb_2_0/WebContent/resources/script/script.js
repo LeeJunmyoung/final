@@ -52,26 +52,56 @@ function checkIt() {
 	}
 
 };
-
-function checkmail(myform) {
-	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+var count =0;
+function checkEmail(myform) {
+	var text = $("#email").val();	
+	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;	
+	
 	if (myform.email.value == "") {
 		alert("E-mail을 입력하지 않았습니다.");
-		return;
-	}
+		return false;
+	}	
 	if (!regExp.test(myform.email.value)) {
 		alert("E-mail 형식이 아닙니다");
 		document.myform.email.focus();
-		return false;
-	}
+		return false;	
+    }   
+    overlapCheck();    
+}
 
-	url = "/HoneyComb/coin/MailCheck.coin?email=" + myform.email.value;
+function overlapCheck(){
+	var param = "email" + "=" + $("#email").val();
+	
+	$.ajax({
+		url : "mailCheck.do",
+		type : "GET",
+		data : param,
+		cache : false,
+		async : false,
+		dataType : "text",
 
-	open(url, "confirm", "toolbar=no, location=no,status=no,menubar=no,"
-			+ "scrollbars=no,resizable=no,width=550, height=200");
+		success : function(response) {				
+			if(response=='0')
+			{
+				count = 1;
+				alert("이메일이 중복이 되지 않습니다. 쓰셔도 됩니다.")		
+			}
+			else
+			{
+				alert("이메일이 중복이 됩니다. 다시 입력 해주세요");
+				return false;
+			}	
+		},
+		error : function(request, status, error) {
+			if (request.status != '0') {
+				alert("code : " + request.status + "\r\nmessage : "
+						+ request.reponseText + "\r\nerror : " + error);
+			}
+		}
+	});
+}
 
-};
-function checkEmail() {
+function checkmail() {
 	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	if (myform.email.value == "") {
 		alert("E-mail을 입력하지 않았습니다.");
@@ -87,9 +117,7 @@ function checkEmail() {
 		return false
 	}
 };
-
-
-function frameclose() {
+function frameclose() {s
 	window.close();
 }
 function recieveChildVAlue() {
