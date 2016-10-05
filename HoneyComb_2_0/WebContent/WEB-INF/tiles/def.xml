@@ -44,5 +44,11 @@
 		<put-attribute name="title" value="PROJECT MANAGER" />
 		<put-attribute name="body" value="/WEB-INF/view/main/promgr/more.jsp" />
 	</definition>
+	
+	
+	<definition name="cal_more" extends="base_layout">
+		<put-attribute name="title" value="CALENDAR" />
+		<put-attribute name="body" value="/WEB-INF/view/main/calendar/cal_more.jsp" />
+	</definition>
 
 </tiles-definitions>

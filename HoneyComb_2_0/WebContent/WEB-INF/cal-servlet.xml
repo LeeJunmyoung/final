@@ -17,6 +17,7 @@
 		</property>
 		<property name="preparerFactoryClass"
 			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
+			
 	</bean>
 
 
@@ -24,6 +25,7 @@
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+			<property name="order" value="1" />
 	</bean>
 
 
@@ -35,7 +37,7 @@
 	</bean>
 
 
-	<bean id="CalMainController" class="cal.controller.CalMainController"></bean>
+	<bean id="CalMainController" class="cal.controller.CalMainController" p:dao-ref="Cal_DAO"></bean>
 
 	<bean id="Curd_cal_page" class="cal.controller.Curd_cal_pageController"
 		p:dao-ref="Cal_DAO"></bean>
