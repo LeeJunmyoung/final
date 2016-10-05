@@ -10,10 +10,11 @@
 		var out = confirm("정말 로그아웃 하시겠습니까?");
 
 		if (out) {
-			location.href = "/HoneyComb/Option_user/logout_page.jsp";
+			location.href = "/HoneyComb_2_0/main/logout.do";
 		} else {
 			return false;
 		}
+		
 	}
 </script>
 <body>

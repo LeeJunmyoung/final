@@ -23,6 +23,14 @@
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="1" />
+	</bean>
+
+ 	<bean id="jspviewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/main/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="2" />
 	</bean>
 
 	<!-- mybatis setting -->

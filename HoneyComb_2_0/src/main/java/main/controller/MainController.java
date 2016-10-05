@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,7 +16,7 @@ import main.db.NoticeDataBean;
 import promgr.db.PromgrDataBean;
 
 @Controller
-@RequestMapping("/main.do")
+
 public class MainController {
 
 	private MainDao dao;
@@ -27,7 +26,7 @@ public class MainController {
 		this.dao = dao;
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping("/main.do")
 	public ModelAndView form(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, HttpServletRequest request) {
 
 		int com_num = (int) request.getSession().getAttribute("com_num");
@@ -92,9 +91,9 @@ public class MainController {
 		
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public String submit() {
-		return "main";
+	@RequestMapping("/logout.do")
+	public String logout() {
+		return "logout";
 	}
 
 }
