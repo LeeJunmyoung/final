@@ -269,7 +269,7 @@
 		<div class="col-md-1">
 
 			<input type="button" class="btn btn-primary btn-xs" value="뒤로가기"
-				onclick="location.href='/HoneyComb_2_0/index.jsp'">
+				onclick="location.href='/HoneyComb_2_0/main/main.do'">
 
 		</div>
 
@@ -594,16 +594,16 @@
 				<ul class="pagination pagination-sm">
 
 					<c:if test="${startPage > pageSize}">
-						<li><a href="/more.do?pageNum=${startPage - pageSize}">이전</a>
+						<li><a href="/HoneyComb_2_0/promgr/more.do?pageNum=${startPage - pageSize}">이전</a>
 						</li>
 					</c:if>
 
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
-						<li><a href="/more.do?pageNum=${i}">${i}</a></li>
+						<li><a href="/HoneyComb_2_0/promgr/more.do?pageNum=${i}">${i}</a></li>
 					</c:forEach>
 
 					<c:if test="${endPage < pageCount}">
-						<li><a href="/more.do?pageNum=${startPage + pageSize}">다음</a>
+						<li><a href="/HoneyComb_2_0/promgr/more.do?pageNum=${startPage + pageSize}">다음</a>
 						</li>
 					</c:if>
 

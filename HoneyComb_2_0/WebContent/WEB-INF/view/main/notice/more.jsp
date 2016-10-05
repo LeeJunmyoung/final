@@ -40,7 +40,7 @@
 		<div class="col-md-1">
 
 			<input type="button" class="btn btn-primary btn-xs" value="뒤로가기"
-				onclick="location.href='/HoneyComb_2_0/index.jsp'">
+				onclick="location.href='/HoneyComb_2_0/main/main.do'">
 
 		</div>
 

@@ -87,26 +87,21 @@ public class MainDao extends SqlSessionDaoSupport {
 
 	public List<PromgrDataBean> getPromgrList(int com_num, int mem_num, int startRow, int endRow) {
 
-		HashMap<String, Object> map = new HashMap<String, Object>();
-
+		List<PromgrDataBean> articleList = null;
+		
 		if (startRow == -1) {
 
-			map.put("com_num", com_num);
-			map.put("mem_num", mem_num);
-			map.put("endRow", endRow);
-
-			return getSqlSession().selectList("promgr.list_main", map);
-
-		} else {
+			HashMap<String, Object> map = new HashMap<String, Object>();
 
 			map.put("com_num", com_num);
-			map.put("mem_num", mem_num);
-			map.put("startRow", startRow);
+			map.put("mem_num", "%" + mem_num + "%");
 			map.put("endRow", endRow);
 
-			return getSqlSession().selectList("promgr.list_all", com_num);
+			articleList = getSqlSession().selectList("promgr.list_main", map);
 
 		}
+		
+		return articleList;
 
 	}
 

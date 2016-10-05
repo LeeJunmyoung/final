@@ -27,7 +27,7 @@ public class MainController {
 	}
 
 	@RequestMapping("/main.do")
-	public ModelAndView form(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, HttpServletRequest request) {
+	public ModelAndView form(HttpServletRequest request) {
 
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
@@ -35,11 +35,10 @@ public class MainController {
 		
 		// notice
 		int rowSize = 5;
-		int notice_count = 0;
 
 		List<NoticeDataBean> notice_articleList = null;
 
-		notice_count = dao.getNoticeCount(com_num);
+		int notice_count = dao.getNoticeCount(com_num);
 
 		if (notice_count > 0) {
 
@@ -50,10 +49,9 @@ public class MainController {
 		}
 
 		// promgr
-		int promgr_count = 0;
-
 		List<PromgrDataBean> promgr_articleList = null;
-		promgr_count = dao.getPromgrCount(com_num, mem_num); // row 갯수 호출
+		
+		int promgr_count = dao.getPromgrCount(com_num, mem_num); // row 갯수 호출
 
 		if (promgr_count > 0) {
 

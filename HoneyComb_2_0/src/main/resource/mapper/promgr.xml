@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="add_promgr" parameterType="promgr.db.PromgrDataBean">
 		insert into
-		promgr(promgr_num,promgr_name,promgr_content,promgr_date,mem_num,com_num)
-		values(promgr_num.NEXTVAL,#{promgr_name},#{promgr_content},#{promgr_date},#{mem_num},#{com_num})
+		promgr(promgr_num,promgr_name,promgr_content,promgr_date,promgr_ing,mem_num,com_num)
+		values(promgr_num.NEXTVAL,#{promgr_name},#{promgr_content},#{promgr_date},0,#{mem_num},#{com_num})
 	</insert>
 
 	<insert id="add_comment" parameterType="promgr.db.CommentDataBean">
@@ -91,11 +91,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="list_main" parameterType="hashmap" resultType="promgr.db.PromgrDataBean">
 		<![CDATA[
 		select 
-		promgr_num,promgr_name,promgr_content,promgr_date,promgr_ing,com_num,r 
+		promgr_num,promgr_name,promgr_date,promgr_ing,com_num,r 
 		from (select 
-		promgr_num,promgr_name,promgr_content,promgr_date,promgr_ing,com_num,rownum r 
+		promgr_num,promgr_name,promgr_date,promgr_ing,com_num,rownum r 
 		from (select 
-		promgr_num,promgr_name,promgr_content,promgr_date,promgr_ing,com_num 
+		promgr_num,promgr_name,promgr_date,promgr_ing,com_num 
 		from promgr where com_num=#{com_num} and mem_num like #{mem_num} order by promgr_num desc)) where r<=#{endRow}
 		]]>
 	</select>

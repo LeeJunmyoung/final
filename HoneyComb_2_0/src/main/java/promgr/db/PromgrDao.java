@@ -25,28 +25,18 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 	public List<PromgrDataBean> getPromgrList(int com_num, int mem_num, int startRow, int endRow) {
 
-		if (startRow == -1) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
 
-			HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("com_num", com_num);
+		map.put("mem_num", "%" + mem_num + "%");
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
 
-			map.put("com_num", com_num);
-			map.put("mem_num", "%" + mem_num + "%");
-			map.put("endRow", endRow);
+		List<PromgrDataBean> articleList = getSqlSession().selectList("promgr.list_all", map);
 
-			return getSqlSession().selectList("promgr.list_main", map);
+		articleList = setView(articleList);
 
-		} else {
-
-			HashMap<String, Object> map = new HashMap<String, Object>();
-
-			map.put("com_num", com_num);
-			map.put("mem_num", "%" + mem_num + "%");
-			map.put("startRow", startRow);
-			map.put("endRow", endRow);
-
-			return getSqlSession().selectList("promgr.list_all", map);
-
-		}
+		return articleList;
 
 	}
 
@@ -126,8 +116,8 @@ public class PromgrDao extends SqlSessionDaoSupport {
 	private List<ChkListViewDataBean> setChklist(int[] num_arr) {
 
 		List<ChkListViewDataBean> chkList_view = new ArrayList<ChkListViewDataBean>();
-		List<ChkItemDataBean> chkItem = new ArrayList<ChkItemDataBean>();		
-		
+		List<ChkItemDataBean> chkItem = new ArrayList<ChkItemDataBean>();
+
 		for (int j = 0; j < num_arr.length; j++) {
 
 			int chkList_num = num_arr[j];
@@ -138,11 +128,9 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 			if (chkList != null) {
 				chkList.setItem_bean(chkItem);
-				
+
 				chkList_view.add(chkList);
 			}
-
-
 
 		}
 
@@ -174,16 +162,16 @@ public class PromgrDao extends SqlSessionDaoSupport {
 
 			int comment_num = num_arr[j];
 			CommentDataBean comment = getSqlSession().selectOne("promgr.get_comment_view", comment_num);
-			
-			if(comment != null) {
-				
+
+			if (comment != null) {
+
 				int mem_num = comment.getMem_num();
 				String mem_name = getSqlSession().selectOne("promgr.get_mem_name", mem_num);
 				comment.setMem_name(mem_name);
-				
+
 				comment_view.add(comment);
 			}
-			
+
 		}
 
 		return comment_view;
@@ -546,7 +534,7 @@ public class PromgrDao extends SqlSessionDaoSupport {
 			}
 
 		}
-		
+
 		chkListIng(list_num);
 
 		promgrIng(promgr_num);

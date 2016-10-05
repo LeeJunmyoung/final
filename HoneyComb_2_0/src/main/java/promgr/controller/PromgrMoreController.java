@@ -34,7 +34,7 @@ public class PromgrMoreController {
 			pageNum = "1";
 		}
 
-		int pageSize = 3;
+		int pageSize = 2;
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage - 1) * pageSize + 1;
 		int endRow = 0;
@@ -47,8 +47,6 @@ public class PromgrMoreController {
 
 			articleList = dao.getPromgrList(com_num, mem_num, startRow, endRow);
 			
-			articleList = dao.setView(articleList);
-
 		} else {
 			articleList = Collections.emptyList();
 		}

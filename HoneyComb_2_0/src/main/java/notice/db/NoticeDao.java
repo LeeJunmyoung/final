@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
-
 public class NoticeDao extends SqlSessionDaoSupport {
 
 	public int getNoticeCount(int com_num) {
@@ -15,30 +14,15 @@ public class NoticeDao extends SqlSessionDaoSupport {
 	}
 
 	public List<NoticeDataBean> getNoticeList(int com_num, int startRow, int endRow) {
-		
-		List<NoticeDataBean> articleList = null;
 
-		if (startRow == -1) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
 
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			
-			map.put("com_num", com_num);
-			map.put("endRow", endRow);
+		map.put("com_num", com_num);
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
 
-			articleList = getSqlSession().selectList("notice.list_main", map);
+		List<NoticeDataBean> articleList = getSqlSession().selectList("notice.list_all", map);
 
-		} else {
-
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			
-			map.put("com_num", com_num);
-			map.put("startRow", startRow);
-			map.put("endRow", endRow);
-
-			articleList =  getSqlSession().selectList("notice.list_all", com_num);
-
-		}
-		
 		for (int i = 0; i < articleList.size(); i++) {
 
 			NoticeDataBean article = (NoticeDataBean) articleList.get(i);
@@ -46,7 +30,7 @@ public class NoticeDao extends SqlSessionDaoSupport {
 			article.setIsNew(isNew);
 
 		}
-		
+
 		return articleList;
 
 	}
