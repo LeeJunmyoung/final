@@ -14,26 +14,31 @@
 		} else {
 			return false;
 		}
-		
+
 	}
 </script>
 <body>
-<div id ="menu_div">
-<h1 align="center">${ sessionScope.com_name }</h1>
+	<div id="menu_div">
+		<h1 align="center">${ sessionScope.com_name }</h1>
 
-		<h2 ><img src="${ sessionScope.profile_img }"  width="150" height="153" onerror="this.src='/HoneyComb_2_0/resources/images/user.png'" title="내 프로필 사진"></h2>
-		
+		<h2>
+			<img src="${ sessionScope.profile_img }" width="150" height="153"
+				onerror="this.src='/HoneyComb_2_0/resources/images/user.png'"
+				title="내 프로필 사진">
+		</h2>
+
 		<h2 id="my_profile">${ sessionScope.name }</h2>
 
-	<ul>     
+		<ul>
 
-		<li><a href="/HoneyComb/Chatting/Chat_main.chat">MESSAGE</a></li>
-		<li><a href="/HoneyComb_2_0/cloud/main">CLOUD</a></li>
-		<li><a href="/HoneyComb/page_layout/Option/Option_home.jsp">OPTION</a></li>
-		<li><a href="#logout" onclick="logout();return false;" onkeypress="this.onclick;">LOG OUT</a></li>
-	
-	</ul>
-	
-</div>
+			<li><a href="/HoneyComb/Chatting/Chat_main.chat">MESSAGE</a></li>
+			<li><a href="/HoneyComb_2_0/cloud/main">CLOUD</a></li>
+			<li><a href="/HoneyComb/page_layout/Option/Option_home.jsp">OPTION</a></li>
+			<li><a href="/HoneyComb_2_0/salary/main.do">SALARY</a></li>
+			<li><a href="#logout" onclick="logout();return false;" onkeypress="this.onclick;">LOG OUT</a></li>
+
+		</ul>
+
+	</div>
 </body>
 </html>
