@@ -156,6 +156,13 @@ width:250px;
 height:35px;
 text-align:center;
 }
+#birth_date{
+position:relative;
+left:-2px;
+width:250px;
+height:35px;
+text-align:center;
+}
 #name{
 position:relative;
 left:-3px;
@@ -214,10 +221,10 @@ width:250;
     <input type="text" placeholder="생년월일(6 자리)" name="birth_date" id="birth_date" maxlength="6"/><br><br>
     
     <!-- 성별 선책창 -->
-<<!-- FORM name=chkForm >
-    <input type="checkbox" name="chkbox" id="man" value="chk1" onclick="check_only(this)" checked>Man
-    <input type="checkbox" name="chkbox" id="woman" value="chk2" onclick="check_only(this)">Woman
-</FORM> -->
+<div>성별을 선택해주세요<br>
+    <input type="radio" name="gender" id="gender" value="남자" onclick="check_only(this)" checked>Man
+    <input type="radio" name="gender" id="gender" value="여자" onclick="check_only(this)">Woman
+</div><br>
     
     <!-- 이름 입력창 -->
     <input type="text" placeholder="name" name="name" id="name" /><br><br>
