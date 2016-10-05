@@ -16,6 +16,10 @@ public class Cal_DataBean {
 	private int com_dept_num;
 	private int category;
 	private int mem_num;
+	
+	
+	
+	
 	public int getCal_num() {
 		return cal_num;
 	}

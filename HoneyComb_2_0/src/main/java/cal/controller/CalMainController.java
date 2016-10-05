@@ -30,10 +30,13 @@ public class CalMainController {
 	public ModelAndView calMain(HttpServletRequest request){
 		
 		int mem_num =(int) request.getSession().getAttribute("mem_num");
+		int com_num = (int) request.getSession().getAttribute("com_num");
+		int com_dept_num = (int) request.getSession().getAttribute("com_dept_num");
+		
 		
 		ModelAndView mav = new ModelAndView("cal_more");
 		
-		List totalCal =  dao.viewCal(mem_num);
+		List totalCal =  dao.viewCal(mem_num,com_num,com_dept_num);
 		
 		mav.addObject("totalCal", totalCal);
 		mav.addObject("cal_count",totalCal.size());

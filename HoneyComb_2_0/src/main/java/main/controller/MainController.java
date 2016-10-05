@@ -31,6 +31,7 @@ public class MainController {
 
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
+		int com_dept_num = (int) request.getSession().getAttribute("com_dept_num");
 		
 		// notice
 		int rowSize = 5;
@@ -76,7 +77,7 @@ public class MainController {
 		
 		/* calendar 소스코드 입니다*/
 		
-		List totalCal =  dao.viewCal(mem_num);
+		List totalCal =  dao.viewCal(mem_num,com_num,com_dept_num);
 		
 		mav.addObject("totalCal", totalCal);
 		mav.addObject("cal_count",totalCal.size());

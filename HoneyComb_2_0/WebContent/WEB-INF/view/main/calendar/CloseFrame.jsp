@@ -8,7 +8,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){  //모든 Jquery함수는 document.ready 안에 존재함.
-	opener.location.href='/HoneyComb_2_0/main/main.do';   	
+	opener.location.href='/HoneyComb_2_0/cal/cal_main.do';   	
 	window.close();
 
 	});

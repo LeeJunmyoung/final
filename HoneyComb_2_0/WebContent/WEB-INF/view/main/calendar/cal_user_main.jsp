@@ -114,7 +114,15 @@ top:50px;
 								newEvent.Contents = '${total.cal_contents}';
 								newEvent.number = '${total.cal_num}'
 								newEvent.allDay = false;
-								
+								if('${total.category}'==1){
+									newEvent.color="#008299";
+								}
+								if('${total.category}'==2){
+									newEvent.color="#990085";
+								}
+								if('${total.category}'==3){
+									newEvent.color="#993800";
+								}
 								
 								
 								$('#calendar').fullCalendar('renderEvent',

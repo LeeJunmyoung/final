@@ -110,12 +110,19 @@ public class MainDao extends SqlSessionDaoSupport {
 
 	}
 
-	public List viewCal(int mem_num) {
+	public List viewCal(int mem_num,int com_num,int com_dept_num) {
 
-		List totalCal = new ArrayList<>();
-		List totalCal1 = new ArrayList<>();
+		List<Object> totalCal = new ArrayList<Object>();
+		List<Object> totalCal1 = new ArrayList<Object>();
 		
-		totalCal = getSqlSession().selectList("cal.viewCal", mem_num);
+		HashMap< String, Integer> map = new HashMap< String, Integer>();
+		map.put("mem_num", mem_num);
+		map.put("com_num", com_num);
+		map.put("com_dept_num", com_dept_num);
+		
+		
+		
+		totalCal = getSqlSession().selectList("cal.viewCal", map);
 		
 		for (Object c : totalCal) {
 			Cal_DataBean cal = (Cal_DataBean) c;

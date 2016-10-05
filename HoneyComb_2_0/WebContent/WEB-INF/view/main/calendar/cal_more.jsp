@@ -104,6 +104,14 @@
 .fc-scroller {
    overflow-y: hidden !important;
 }
+
+#category{
+position: relative;
+top:5px;
+left :247px;
+width: 50px;
+height:23px;
+}
 </style>
 <script type="text/javascript">
 	$(document)
@@ -124,6 +132,11 @@
 
 											},
 											height : 500,
+											
+											
+											
+											
+											
 											eventClick : function(event) {
 
 												if (event.title) {
@@ -134,24 +147,23 @@
 													}
 													var end = datetoHtml(Number(event.end) - 86400000);
 
-													var url = "/HoneyComb/Calendar/curd_cal_page.jsp?num="
-															+ event.number
-															+ "&title="
-															+ event.title
-															+ "&start="
-															+ start
-															+ "&end="
-															+ end
-															+ "&contents="
-															+ event.Contents;
+													var url = "/HoneyComb_2_0/cal/curd_cal_page/getmorepage?cal_num="+event.number+"&cal_subject="
+													+ event.title
+													+ "&cal_start="
+													+ start
+													+ "&cal_end="
+													+ end
+													+ "&cal_contents="
+													+ event.Contents;
+													+ "&type=nonono"
 
-													open(
-															url,
-															"confirm",
-															"toolbar=no,location=no,status=no,menubar=no,"
-																	+ "scrollbars=no,resizable=no,width=450,height=300,left=400,top=200");
+											open(
+													url,
+													"confirm",
+													"toolbar=no,location=no,status=no,menubar=no,"
+															+ "scrollbars=no,resizable=no,width=500,height=300,left=400,top=200");
 
-												}
+										}
 
 											}
 
@@ -174,11 +186,11 @@
 
 						function viewScaduel() {
 
-							if ('${count}' > 0) {
+							if ('${cal_count}' > 0) {
 								var newEvent = new Object();
 								var start;
 								var end;
-								<c:forEach items = "${total}" var="total">
+								<c:forEach items = "${totalCal}" var="total">
 								start = '${total.cal_start}' + "";
 								end = '${total.cal_end}' + "";
 								newEvent.title = '${total.cal_subject}';
@@ -187,7 +199,16 @@
 								newEvent.Contents = '${total.cal_contents}';
 								newEvent.number = '${total.cal_num}'
 								newEvent.allDay = false;
-
+								if('${total.category}'==1){
+									newEvent.color="#008299";
+								}
+								if('${total.category}'==2){
+									newEvent.color="#990085";
+								}
+								if('${total.category}'==3){
+									newEvent.color="#993800";
+								}
+								//newEvent.color="red";
 								$('#calendar').fullCalendar('renderEvent',
 										newEvent);
 
@@ -197,20 +218,19 @@
 
 						}
 						function datetoHtml(time) {
-
+							
 							var time_temp;//13자리
 							var date = new Date(time);
-
-							time_temp = (Number(date.getYear()) + 1900) + "-";
-							if (date.getMonth() < 10) {
-								time_temp = time_temp + "0";
+							
+							time_temp=(Number(date.getYear())+1900)+"-";
+							if(date.getMonth()<9){
+								time_temp=time_temp+"0";
 							}
-							time_temp = time_temp
-									+ (Number(date.getMonth()) + 1) + "-";
-							if (date.getDate() < 10) {
-								time_temp = time_temp + "0";
+							time_temp=time_temp+(Number(date.getMonth())+1)+"-";
+							if(date.getDate()<=9){
+								time_temp=time_temp+"0";
 							}
-							time_temp = time_temp + date.getDate();
+							time_temp=time_temp+date.getDate();
 							//alert(time_temp);
 							return time_temp;
 
@@ -236,7 +256,7 @@
 		<div class="col-md-1">
 
 			<input type="button" class="btn btn-primary btn-xs" value="뒤로가기"
-				onclick="location.href='/HoneyComb/index.jsp'">
+				onclick="location.href='/HoneyComb_2_0/main/main.do'">
 
 		</div>
 
@@ -255,9 +275,16 @@
 	<div id='write_cal' align="center">
 
 		<div id='write_cal_form'>
-
-			<form action="/HoneyComb/Calendar/insert.cal" method="post">
-
+		
+			<form action="cal_insert.do" method="post">
+				
+						<select id="category" name="category">
+				<option value="1">개인</option>
+				<option value="2">부서</option>
+				<option value="3">회사</option>
+					</select>
+				
+				
 				<div id='title_form'>
 					제 목 : <input type="text" name="title" placeholder="SUBJECT"
 						class="form-control" id='title' />

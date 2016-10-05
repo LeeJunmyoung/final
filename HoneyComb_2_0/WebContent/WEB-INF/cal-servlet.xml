@@ -47,6 +47,12 @@
 	</bean>
 
 
+	<bean id="Insert_Cal_Controller" class="cal.controller.Insert_Cal_Controller" p:dao-ref="Cal_DAO" ></bean>
+
+<bean id="Delete_Cal_Controller" class="cal.controller.Delete_Cal_Controller" p:dao-ref="Cal_DAO" ></bean>
+
+
+
 
 	
 

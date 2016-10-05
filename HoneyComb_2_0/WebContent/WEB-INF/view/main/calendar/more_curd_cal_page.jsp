@@ -29,6 +29,19 @@ function deleteCal() {
 	
 	
 }
+function delCal(num) {
+
+	var out = confirm("삭제하시겠습니까?");
+
+	if (out) {
+		location.href = "/HoneyComb_2_0/cal/del_cal.do?num="+num;
+	} else {
+		return false;
+	}
+	
+}
+
+
 
 
 </script>
@@ -124,7 +137,7 @@ left:308px;
 <div id= 'form_button'>
 			 
 			 <input type="submit" class="btn btn-primary btn-xs" id="modify" value="수정"/>
-			 <input type="button" class="btn btn-primary btn-xs" id ="del" value = "삭제" onclick="location.href='del_cal.cal?number=${param.num}'"/>
+			 <input type="button" class="btn btn-primary btn-xs" id ="del" value = "삭제"  onclick="delCal('${cal_num}');return false;"/>
 			 
 			 
 			 <input type="button" class="btn btn-primary btn-xs" value="닫기" onclick="window.close()">

@@ -14,7 +14,7 @@ public class Cal_DAO extends SqlSessionDaoSupport{
 	public void cal_modify(Cal_DataBean cdb){
 		
 		
-		HashMap map = new HashMap<>();
+		HashMap<String,Object> map = new HashMap<String,Object>();
 		
 		
 		
@@ -39,12 +39,19 @@ public class Cal_DAO extends SqlSessionDaoSupport{
 		
 	}
 
-	public List viewCal(int mem_num) {
+	public List<Object> viewCal(int mem_num ,int com_num,int com_dept_num) {
 
-		List totalCal = new ArrayList<>();
-		List totalCal1 = new ArrayList<>();
+		List<Object> totalCal = new ArrayList<Object>();
+		List<Object> totalCal1 = new ArrayList<Object>();
 		
-		totalCal = getSqlSession().selectList("cal.viewCal", mem_num);
+		HashMap< String, Integer> map = new HashMap< String, Integer>();
+		map.put("mem_num", mem_num);
+		map.put("com_num", com_num);
+		map.put("com_dept_num", com_dept_num);
+		
+		
+		
+		totalCal = getSqlSession().selectList("cal.viewCal", map);
 		
 		for (Object c : totalCal) {
 			Cal_DataBean cal = (Cal_DataBean) c;
@@ -63,6 +70,37 @@ public class Cal_DAO extends SqlSessionDaoSupport{
 
 		return totalCal1;
 
+	}
+	
+	
+	
+	public void insertCal(Cal_DataBean calbean){
+		
+		HashMap<String,Object> map = new HashMap<String,Object>();
+		map.put("cal_subject", calbean.getCal_subject());
+		map.put("cal_contents", calbean.getCal_contents());
+		map.put("com_num", calbean.getCom_num());
+		map.put("com_dept_num", calbean.getCom_dept_num());
+		map.put("category",calbean.getCategory());
+		map.put("mem_num", calbean.getMem_num());
+		
+		map.put("cal_start", new java.sql.Date(calbean.getCal_start().getTime()));
+		map.put("cal_end",  new java.sql.Date(calbean.getCal_end().getTime()));
+		
+		
+		
+		
+		getSqlSession().insert("cal.cal_insert",map);
+		
+	}
+	
+	public void delCal(int cal_num){
+		
+		getSqlSession().delete("cal.cal_del",cal_num);
+		
+		
+		
+		
 	}
 	
 	

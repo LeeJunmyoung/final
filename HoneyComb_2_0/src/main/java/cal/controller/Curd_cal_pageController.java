@@ -80,12 +80,12 @@ public class Curd_cal_pageController {
 	
 	
 	@RequestMapping(value="/getpage",method=RequestMethod.GET)
-	public String curd_cal_page(@RequestParam int cal_num,@RequestParam String cal_subject
+	public String mainpage_get(@RequestParam int cal_num,@RequestParam String cal_subject
 			,@RequestParam String cal_start,@RequestParam String cal_end,
 			@RequestParam String cal_contents,ModelMap map){
 		
 		
-		System.out.println("실행");
+	
 		
 		if(map.isEmpty()){
 		
@@ -100,6 +100,29 @@ public class Curd_cal_pageController {
 		
 
 		return "main_curd_cal_page";	
+	}
+	
+	@RequestMapping(value="/getmorepage",method=RequestMethod.GET)
+	public String morepage_get(@RequestParam int cal_num,@RequestParam String cal_subject
+			,@RequestParam String cal_start,@RequestParam String cal_end,
+			@RequestParam String cal_contents,ModelMap map){
+		
+		
+		
+		
+		if(map.isEmpty()){
+		
+		map.addAttribute("cal_num", cal_num);
+		map.addAttribute("cal_subject", cal_subject);
+		map.addAttribute("cal_start",cal_start);
+		map.addAttribute("cal_end", cal_end);
+		map.addAttribute("cal_contents", cal_contents);
+		}
+		
+		
+		
+
+		return "more_curd_cal_page";	
 	}
 	
 	
