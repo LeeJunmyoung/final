@@ -112,6 +112,15 @@ left :247px;
 width: 50px;
 height:23px;
 }
+.row .select_button_cal {
+position: relative;
+float:right;
+top: 10px;
+right: 150px;
+margin: 0px;
+
+
+}
 </style>
 <script type="text/javascript">
 	$(document)
@@ -128,7 +137,7 @@ height:23px;
 											header : {
 												left : 'prev,next,today,myCustomButton',
 												center : 'title',
-												right : ' '
+												right : '',
 
 											},
 											height : 500,
@@ -171,16 +180,35 @@ height:23px;
 
 						$('.fc-prev-button').click(function() {
 							//alert('prev is clicked');
-							viewScaduel();
+							
+							if(check==0){
+								viewScaduel();
+								}else{
+									selectScaduel(check);
+								}
+							
 						});
 
 						$('.fc-next-button').click(function() {
 							//alert('next is clicked');
-							viewScaduel();
+							
+							if(check==0){
+								viewScaduel();
+								}else{
+									selectScaduel(check);
+								}
+							
+							
 						});
 						$('.fc-today-button').click(function() {
 							//alert('next is clicked');
+							if(check==0){
 							viewScaduel();
+							}else{
+								selectScaduel(check);
+							}
+						
+							
 						});
 						viewScaduel();
 
@@ -217,6 +245,75 @@ height:23px;
 							}
 
 						}
+						var check=0;
+						
+						$("#selectCalButton1").click(function(){
+							
+							check =$(this).attr("name");
+
+							$('#calendar').fullCalendar('removeEvents');
+								selectScaduel(check);	
+							
+						});
+					$("#selectCalButton2").click(function(){
+							
+							check =$(this).attr("name");
+
+							$('#calendar').fullCalendar('removeEvents');
+								selectScaduel(check);	
+							
+						});
+					$("#selectCalButton3").click(function(){
+						
+						check =$(this).attr("name");
+
+						$('#calendar').fullCalendar('removeEvents');
+							selectScaduel(check);	
+						
+					});
+					$("#selectCalButton0").click(function(){
+						check =$(this).attr("name");
+						$('#calendar').fullCalendar('removeEvents');
+						viewScaduel();
+						
+					});
+						function selectScaduel(check) {
+
+							if ('${cal_count}' > 0) {
+								var newEvent = new Object();
+								var start;
+								var end;
+								<c:forEach items = "${totalCal}" var="total">
+								start = '${total.cal_start}' + "";
+								end = '${total.cal_end}' + "";
+								newEvent.title = '${total.cal_subject}';
+								newEvent.start = start;
+								newEvent.end = end;
+								newEvent.Contents = '${total.cal_contents}';
+								newEvent.number = '${total.cal_num}'
+								newEvent.allDay = false;
+								if('${total.category}'==1){
+									newEvent.color="#008299";
+								}
+								if('${total.category}'==2){
+									newEvent.color="#990085";
+								}
+								if('${total.category}'==3){
+									newEvent.color="#993800";
+								}
+								//newEvent.color="red";
+								if(check=='${total.category}')
+								$('#calendar').fullCalendar('renderEvent',
+										newEvent);
+
+								</c:forEach>
+
+							}
+
+						}
+						
+						
+						
 						function datetoHtml(time) {
 							
 							var time_temp;//13자리
@@ -247,7 +344,7 @@ height:23px;
 
 		<div class="col-md-9">
 
-			<b>CALENDAR<%-- <span class="badge">${promgr_count}</span> --%></b>
+			<b>CALENDAR<%-- <span class="badge">${promgr_count}</span> --%>  </b>
 
 		</div>
 
@@ -261,14 +358,20 @@ height:23px;
 		</div>
 
 	</div>
+	
+	<div class="row">
+	<input class="select_button_cal fc-state-default " type = "button" value="개인" id="selectCalButton1" name='1'/>
+	<input class="select_button_cal fc-state-default" type = "button" value="부서" id="selectCalButton2" name='2' />
+	<input class="select_button_cal fc-state-default" type = "button" value="회사" id="selectCalButton3" name='3'/>
+	<input class="select_button_cal fc-state-default" type = "button" value="전체" id="selectCalButton0" name='0'/>
+	</div>
 
 
 
 	<div id='calendar_more_div'>
 
 
-		<div id='calendar'
-			style='margin: auto; font-size: 13px; width: 700px;'></div>
+		<div id='calendar' style='margin: auto; font-size: 13px; width: 700px;'></div>
 
 
 	</div>
