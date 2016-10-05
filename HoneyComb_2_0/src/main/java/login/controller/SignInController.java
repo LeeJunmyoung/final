@@ -40,7 +40,7 @@ public class SignInController  {
 		return "signIn";
 	}
 	@RequestMapping(value="members.do")//DB에 insert하는 메소드
-	public ModelAndView members(/*@RequestParam(value="valueArrTest[]")List<String> valueArr, */LogOnDataBean logdb, HttpSession session, HttpServletResponse response) throws Exception{
+	public ModelAndView members(LogOnDataBean logdb, HttpSession session, HttpServletResponse response) throws Exception{
 		System.out.println("실행");
 		ModelAndView mav = new ModelAndView();
 		System.out.println("insert");
@@ -56,24 +56,29 @@ public class SignInController  {
 		
 		return "success";
 	}
-	@RequestMapping(value = "/checkEmail.do", method= RequestMethod.POST)
-	@ResponseBody
-	public String mailCheck(HttpServletRequest request,HttpServletResponse response){
-		
-		String email = request.getParameter("email");
-		
-		String db = dao.CheckEmail(email);
-		
-		return "checkEmail_"+db+".do";
-	}
-
-	@RequestMapping("mailCheck.do")
+	
+	@RequestMapping("mailCheck.do")//이메일 중복확인
 	@ResponseBody
 	public String CheckEmail(String email){
 		
 		String chkMail = dao.CheckEmail(email);
 		
 		return chkMail;
+	}
+	@RequestMapping("checkEmail_y.do") //이메일이 중복되지않을 경우
+	public String checkEmail_y(String email){
+		System.out.println("email_y::"+email);
+		return "checkEmail_y";
+	}
+	@RequestMapping("checkEmail_n.do") //이메일이 중복될 경우
+	public String checkEmail_n(String email){
+		System.out.println("email_n::"+email);
+		return "checkEmail_n";
+	}
+	@RequestMapping("checkEmailPro.do")
+	public String checkEmailPro(){
+		
+		return "checkEmailPro";
 	}
 	
 }

@@ -71,10 +71,10 @@ function checkEmail(myform) {
 
 function overlapCheck(){
 	var param = "email" + "=" + $("#email").val();
-	
+		
 	$.ajax({
 		url : "mailCheck.do",
-		type : "GET",
+		type : "POST",
 		data : param,
 		cache : false,
 		async : false,
@@ -84,11 +84,16 @@ function overlapCheck(){
 			if(response=='0')
 			{
 				count = 1;
-				alert("이메일이 중복이 되지 않습니다. 쓰셔도 됩니다.")		
+				
+				url = "checkEmail_y.do?email="+$("#email").val();
+				open(url, "confirm", "toolbar=no, location=no,status=no,menubar=no,"
+						+ "scrollbars=no,resizable=no,width=550, height=200");	
 			}
 			else
 			{
-				alert("이메일이 중복이 됩니다. 다시 입력 해주세요");
+				url = "checkEmail_n.do?email="+$("#email").val();
+					open(url, "confirm", "toolbar=no, location=no,status=no,menubar=no,"
+							+ "scrollbars=no,resizable=no,width=550, height=200");	
 				return false;
 			}	
 		},
@@ -117,7 +122,7 @@ function checkmail() {
 		return false
 	}
 };
-function frameclose() {s
+function frameclose() {
 	window.close();
 }
 function recieveChildVAlue() {

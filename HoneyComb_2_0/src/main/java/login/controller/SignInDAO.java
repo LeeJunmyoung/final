@@ -11,13 +11,12 @@ public class SignInDAO extends SqlSessionDaoSupport {
 	}
 	public void insertMember(LogOnDataBean logdb){
 		
-		getSqlSession().insert("insertMember",logdb);
+		getSqlSession().insert("login.insertMember",logdb);
 	
 	}
 	public String CheckEmail(String email) {
-		 
-	String mailCheck = getSqlSession().selectOne("mailCheck", email);
-		
+		 //이메일 select count로 개수 받아옴(0이면 중복x, 1> 중복)
+	String mailCheck = getSqlSession().selectOne("login.mailCheck", email);
 		return mailCheck;
 	}
 	
