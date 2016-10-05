@@ -9,6 +9,10 @@
 function reload(){
 opener.location.reload()
 }
+if(${close}){
+	reload();
+	window.close();
+}
 </script>
 </head>
 <body onload="javascript:reload()">

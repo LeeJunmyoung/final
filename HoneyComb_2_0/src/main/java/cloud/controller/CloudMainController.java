@@ -77,25 +77,27 @@ public class CloudMainController implements ApplicationContextAware{
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request, String security){
+	public ModelAndView uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request, String security){
 		int com_pos_num = 0;
 		if(security != null){
 			com_pos_num = 1;
 		}
 		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, "", request, com_pos_num);
 		dao.uploadFile(info);
-		return "/upload";
+		ModelAndView mav = new ModelAndView("/upload","close",true);
+		return mav;
 	}
 		//폴더 내부에서 업로드
 	@RequestMapping(value="/upload/{folder}", method = RequestMethod.POST)
-	public String uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request, String security){
+	public ModelAndView uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request, String security){
 		int com_pos_num = 0;
 		if(security != null ){
 			com_pos_num = 1;
 		}
 		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, folder, request, com_pos_num);
 		dao.uploadFile(info);
-		return "/upload";
+		ModelAndView mav = new ModelAndView("/upload","close",true);
+		return mav;
 	}
 	
 	/*프로젝트 업로드 컨트롤러*/
