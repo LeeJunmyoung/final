@@ -34,14 +34,8 @@ public class MainController {
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		
 		// notice
-		int pageSize = 5;
-		int currentPage = pageNum;
-		int startRow = (currentPage - 1) * pageSize + 1;
-		int endRow = 0;
-		endRow = currentPage * pageSize;
-
+		int rowSize = 5;
 		int notice_count = 0;
-		int number = 0;
 
 		List<NoticeDataBean> notice_articleList = null;
 
@@ -49,16 +43,13 @@ public class MainController {
 
 		if (notice_count > 0) {
 
-			notice_articleList = dao.getNoticeList(com_num, -1, endRow);
+			notice_articleList = dao.getNoticeList(com_num, -1, rowSize);
 
 		} else {
 			notice_articleList = Collections.emptyList();
 		}
 
-		number = notice_count - (currentPage - 1) * pageSize;
-
 		// promgr
-		int rowSize = 5;
 		int promgr_count = 0;
 
 		List<PromgrDataBean> promgr_articleList = null;
