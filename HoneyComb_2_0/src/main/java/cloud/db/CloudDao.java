@@ -49,4 +49,12 @@ public class CloudDao extends SqlSessionDaoSupport{
 	public void DeleteFiles(int[] file_num){
 		getSqlSession().delete("cloud.deleteFiles",file_num);
 	}
+	public String duplicateCheck(String item, String folder,int com_num){
+		Map<String, Object> map =  new HashMap<String, Object>();
+		map.put("item", item);
+		map.put("folder", folder);
+		map.put("com_num", com_num);
+		String dupli = getSqlSession().selectOne("cloud.dupliCk",map);
+		return dupli;
+	}
 }

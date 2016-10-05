@@ -20,7 +20,8 @@
 		window.open("delete?selectedFiles="+selectedFiles,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=800,height=400");
 	}
 	function openMakeFolder(folder){
-		window.open("makeFolder/"+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
+		folder = folder ? '/'+folder : '';
+		window.open("makeFolder"+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
 	}
 	
 	$(function(){	

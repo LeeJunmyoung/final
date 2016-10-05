@@ -47,4 +47,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</foreach>
 		</where>
 	</delete>
+	<select id="dupliCk" parameterType="hashmap" resultType="String">
+		select count(*) from cloud
+		<where>
+		 file_name = #{item} and com_num= #{com_num} and
+			<choose>
+				<when test="#{folder == ''}" >
+					 folder is null
+				</when>
+				<otherwise>
+					folder = #{folder}
+				</otherwise>
+			</choose>
+		
+		</where>
+	</select>
 </mapper>

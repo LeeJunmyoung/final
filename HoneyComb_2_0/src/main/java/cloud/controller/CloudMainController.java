@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -50,13 +51,13 @@ public class CloudMainController implements ApplicationContextAware{
 	@RequestMapping(value="/main", method = RequestMethod.GET)
 	public ModelAndView getCloudList(HttpSession session, HttpServletRequest request, String folder) {
 		session = request.getSession();
-/*		 session 임시설정 
+		/* session 임시설정 */
 		System.out.println("test용com_num설정::1");
 		session.setAttribute("com_num", 1);
 		session.setAttribute("com_pos_num", 1);
 		session.setAttribute("name", "tester");
 		session.setAttribute("mem_num", 1);
-		 session임시설정끝 */
+		/* session임시설정끝 */
 
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		List cloudlist = dao.getcloudList(com_num, folder);
@@ -135,13 +136,22 @@ public class CloudMainController implements ApplicationContextAware{
 	/*폴더 만들기*/
 	@RequestMapping(value = "/makeFolder/{folder}")
 	public ModelAndView makeFilder(@PathVariable String folder){
-		ModelAndView mav =  new ModelAndView("/makeFolder");
+		ModelAndView mav =  new ModelAndView("/makeFolder","folder",folder);
 		return mav;
 	}
 	@RequestMapping(value = "/makeFolder")
 	public ModelAndView makeFilder(){
 		ModelAndView mav =  new ModelAndView("/makeFolder");
 		return mav;
+	}
+	@RequestMapping(value = "/dupleCk")
+	@ResponseBody
+	public String duplicateCheck(@RequestParam(value="item",defaultValue = "")String item,@RequestParam(value = "folder", required = false) String folder, HttpServletRequest request){
+		System.out.println("item:"+item);
+		int com_num = (int)request.getSession().getAttribute("com_num");
+		String dupli = dao.duplicateCheck(item, folder, com_num); 
+		
+		return dupli;
 	}
 
 
