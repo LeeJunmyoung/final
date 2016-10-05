@@ -222,8 +222,8 @@ width:250;
     
     <!-- 성별 선책창 -->
 <div>성별을 선택해주세요<br>
-    <input type="radio" name="gender" id="gender" value="Male" onclick="check_only(this)" checked>Male
-    <input type="radio" name="gender" id="gender" value="Female" onclick="check_only(this)">Female
+    <input type="radio" name="gender" id="gender" value="남자" onclick="check_only(this)" checked>Male
+    <input type="radio" name="gender" id="gender" value="여자" onclick="check_only(this)">Female
 </div><br>
     
     <!-- 이름 입력창 -->
