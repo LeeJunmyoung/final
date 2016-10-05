@@ -99,7 +99,7 @@ public class Curd_cal_pageController {
 		
 		
 
-		return "curd_cal_page";	
+		return "main_curd_cal_page";	
 	}
 	
 	

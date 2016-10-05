@@ -48,8 +48,6 @@ width: auto;
 #form_title input{
 display: inline;
 width: 250px;
-
-background: white;
 }
 
 
@@ -69,8 +67,6 @@ display: inline;
 #form_date input{
 display: inline;
 width: 155px;
-
-background: white;
 }
  
 #form_contents{
@@ -88,7 +84,6 @@ position: relative;
 
 display: inline;
 width: 355px;
-background: white;
 }
 #form_contents p{
 position:relative;
@@ -103,6 +98,8 @@ top: 225px;
 left:388px;
 
 }
+
+
  
 </style>
 
@@ -110,31 +107,31 @@ left:388px;
 
 
 </head>
-<body style="background: #e9ebee" >
-	<form action="/HoneyComb/Calendar/modify.cal" method="post"  >
+<body style="background: #e9ebee">
+	<form  >
 	
 	
-<div id = "form_title">		<p>제목 :</p> <input type="text" id='title' readonly="readonly" name="title" placeholder="SUBJECT" value="${param.title }" class="form-control"/>
+<div id = "form_title">		<p>제목 :</p> <input type="text"  name="subject" placeholder="SUBJECT" value="${cal_subject }" class="form-control" readonly="readonly" style="background-color: #fff;"/>
 	</div>		 
- <div id = "form_date">	<p>	시작 :</p> <input type="date"	readonly="readonly" id='startDate' name="startDate" placeholder="일" value="${param.start}" class="form-control"/> 
-	<p>	종료 : </p> <input type="date" readonly="readonly"	id='endDate' name="endDate" placeholder="일" value="${param.end}" class="form-control"/>
+ <div id = "form_date">	<p>	시작 :</p> <input type="date"	 name="start" placeholder="일" value="${cal_start}" class="form-control" readonly="readonly" style="background-color: #fff;"/> 
+	<p>	종료 : </p> <input type="date"	 name="end" placeholder="일" value="${cal_end}" class="form-control" readonly="readonly" style="background-color: #fff;"/>
 			 </div>
 			 
 			 
-<div id = "form_contents">		<p>내용 :</p> <textarea rows="3" id='contents' cols="30" name="contents" placeholder="CONTENTS"  readonly="readonly" class="form-control">${param.contents}</textarea>
+<div id = "form_contents">		<p>내용 :</p> <textarea rows="3"  cols="30" name="contents" placeholder="CONTENTS"  class="form-control" readonly="readonly" style="background-color: #fff;" >${cal_contents}</textarea>
 			 </div>
 			 
 		
 <div id= 'form_button'>
 			 
-			 <input type="hidden" id="modify" value="수정" />
-			 <input type="hidden" id ="del" value = "삭제" onclick="location.href='del_cal.cal?number=${param.num}'"/>
+			 <input type="hidden" class="btn btn-primary btn-xs" id="modify" value="수정"/>
+			 <input type="hidden" class="btn btn-primary btn-xs" id ="del" value = "삭제" onclick="location.href='del_cal.cal?number=${param.num}'"/>
 			 
 			 
-			 <input type="button" class="btn btn-primary btn-xs" value="닫기" onclick="window.close()">
+			 <input type="button" class="btn btn-primary btn-xs" value="닫기" onclick="window.close()" >
 	</div>		 
 			 
-			  <input type="hidden" name = "cal_num" value="${param.num}">
+			  <input type="hidden"  name = "num" value="${cal_num}">
 			 
 </form>
 
