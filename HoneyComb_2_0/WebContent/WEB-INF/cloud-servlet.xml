@@ -19,19 +19,19 @@
 		<property name="preparerFactoryClass"
 			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
 	</bean>
-		<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
 		<property name="order" value="1"/>
 	</bean>
-	
+	<bean id="beanviewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="2"/>
+	</bean>
 	<bean id="jspviewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	   <property name="prefix" value="/WEB-INF/view/cloud" />
 	   <property name="suffix" value=".jsp" />
 	   <property name="order" value="3" />
 	</bean>
-	<bean id="beanviewREsolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
-		<property name="order" value="2"/>
-	</bean>
+
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	
 	<!-- mybatis setting -->

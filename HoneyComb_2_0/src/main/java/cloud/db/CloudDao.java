@@ -40,4 +40,13 @@ public class CloudDao extends SqlSessionDaoSupport{
 		
 		return downloadinfo;
 	}
+	public List<CloudInfo> getDeleteList(String[] fileNums){
+		List deleteInfo =  new ArrayList<CloudInfo>();
+		deleteInfo = getSqlSession().selectList("cloud.getDeleteList",fileNums);
+		/*System.out.println(deleteInfo);*/
+		return deleteInfo;
+	}
+	public void DeleteFiles(int[] file_num){
+		getSqlSession().delete("cloud.deleteFiles",file_num);
+	}
 }

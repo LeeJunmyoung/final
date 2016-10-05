@@ -15,6 +15,10 @@
 		var folder = folder;
 		window.open("upload/"+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
 	}
+	function openDelete(selectedFiles){
+		var selectedFiles = selectedFiles;
+		window.open("delete?selectedFiles="+selectedFiles,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=800,height=400");
+	}
 	
 	$(function(){	
 	$("#download").click(function(){
@@ -24,10 +28,19 @@
 			selectedFiles[i] = this.value;
 			i++
 		});
-		console.log(selectedFiles);
 		$(location).attr('href',"download?selectedFiles="+selectedFiles); 
 		
 	});
+	$("#delete").click(function(){
+		var selectedFiles =  new Array();
+		var i = 0;
+		$("input:checkbox[name='selectedFiles']:checked").each(function(){
+			selectedFiles[i] = this.value;
+			i++
+		});
+		openDelete(selectedFiles); 
+		
+	})
 	});
 </script>
 </head>
@@ -35,7 +48,7 @@
 <div>
 <input type="button" value="업로드" onclick="openupload('${param.folder}')">
 <input type="button" value="다운로드" id="download">
-<input type="button" value="삭제">
+<input type="button" value="삭제" id="delete">
 </div>
 
 <c:if test="${param.folder ne null || !param.folder == ''}">

@@ -5,13 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SelectUploadFile</title>
-<script src="/HoneyComb/cloudview/cloudScript.js"  type="text/javascript">
-
-
-
+<script  type="text/javascript">
+function reload(){
+opener.location.reload()
+}
 </script>
 </head>
-<body>
+<body onload="javascript:reload()">
 	<form name="form"	enctype="multipart/form-data" method="post">
 		<input type="file" name="uploadfile">
 		<c:if test="${com_pos_num < 3}">

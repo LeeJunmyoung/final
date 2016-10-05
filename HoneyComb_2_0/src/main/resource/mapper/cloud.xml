@@ -29,5 +29,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getFileName" parameterType="int" resultType="String">
 		select file_name from cloud where file_num = #{file_num}
 	</select>
-
+	<select id="getDeleteList" resultType="cloud.db.CloudInfo">
+		select * from cloud 
+		<where>
+		file_num in
+			<foreach collection="array" item="file_num" index="index" separator="," open="(" close=")">
+				#{file_num}
+			</foreach>
+		</where>
+	</select>
+	<delete id="deleteFiles">
+		delete from cloud
+		<where>
+			file_num in
+			<foreach collection="array" item="file_num" index="index" separator="," open="(" close=")">
+				#{file_num}
+			</foreach>
+		</where>
+	</delete>
 </mapper>

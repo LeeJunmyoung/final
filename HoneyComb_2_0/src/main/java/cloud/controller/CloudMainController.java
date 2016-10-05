@@ -112,6 +112,24 @@ public class CloudMainController implements ApplicationContextAware{
 		List downloadInfo = dao.getFileInfo(fileNums);
 		return new ModelAndView("downloadFiles", "downloadInfo", downloadInfo);
 	}
+	/*삭제처리*/
+	@RequestMapping(value = "/delete")
+	public ModelAndView deleteFiles(String selectedFiles){
+		ModelAndView mav = null;
+		try{
+		String[] fileNums = selectedFiles.split(",");
+		List deleteInfo = dao.getDeleteList(fileNums);
+		mav =  new ModelAndView("/delete", "deleteInfo",deleteInfo);
+		} catch (NullPointerException e) {
+			mav = new ModelAndView("/delete");
+		}		
+		return mav;
+	}
+	@RequestMapping(value="/deletePro")
+	public String deletePro(int[] file_num){
+		dao.DeleteFiles(file_num);
+		return"redirect:delete";
+	}
 
 
 	
