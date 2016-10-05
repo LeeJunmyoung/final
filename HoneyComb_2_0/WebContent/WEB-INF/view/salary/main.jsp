@@ -31,7 +31,7 @@
 
 		<div class="col-md-9">
 
-			<b>SALARY</b>
+			<b>SALARY <span class="badge">월 : 200만원</span></b>
 
 		</div>
 
