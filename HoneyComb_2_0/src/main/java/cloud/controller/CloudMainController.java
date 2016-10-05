@@ -132,6 +132,17 @@ public class CloudMainController implements ApplicationContextAware{
 		dao.DeleteFiles(file_num);
 		return"redirect:delete";
 	}
+	/*폴더 만들기*/
+	@RequestMapping(value = "/makeFolder/{folder}")
+	public ModelAndView makeFilder(@PathVariable String folder){
+		ModelAndView mav =  new ModelAndView("/makeFolder");
+		return mav;
+	}
+	@RequestMapping(value = "/makeFolder")
+	public ModelAndView makeFilder(){
+		ModelAndView mav =  new ModelAndView("/makeFolder");
+		return mav;
+	}
 
 
 	
