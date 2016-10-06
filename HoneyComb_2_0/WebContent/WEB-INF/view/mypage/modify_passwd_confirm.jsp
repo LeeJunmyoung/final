@@ -14,6 +14,7 @@
 	function PW_Check(pw) {
 
 		var passwd = pw;
+		alert(passwd);
 		check_pw = 0;
 		if (document.pwChange.pw.value == "") {
 			alert("비밀번호를 입력하세요");
@@ -57,6 +58,10 @@
 	}
 </script>
 <style>
+body {
+	top: 2%;
+}
+
 .button {
 	background-color: #4367b0;
 	-moz-border-radius: 5px;
@@ -128,14 +133,14 @@ table td {
 				action="/HoneyComb_2_0/mypage/passwd_ch_view"
 				onsubmit="return PW_Same()">
 				<h3>비밀번호 변경</h3>
-				<hr>
+				<p>
 				<table align="center">
 					<tr>
 						<td class="pw_text">현재 비밀번호</td>
-						<td><input width="100" height="50" type="password" id="pw"
+						<td><input width="100" height="50" type="password" id="pw" name="pw"
 							placeholder="PASSWORD"></td>
 						<td><input type="button" class="button"
-							onclick="return PW_Check('${passwd}')" value="검사"></td>
+							onclick="return PW_Check('${sessionScope.passwd}')" value="확인"></td>
 					</tr>
 					<tr>
 						<td class="pw_text">새로운 비밀번호</td>

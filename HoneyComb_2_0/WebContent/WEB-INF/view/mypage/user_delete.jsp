@@ -33,6 +33,10 @@
 	}
 </script>
 <style>
+body {
+	top: 2%;
+}
+
 #title {
 	font-size: 25px;
 }
@@ -81,8 +85,7 @@ input[type=password], input[type=text] {
 
 			<form name="user" align="center" onsubmit="return user_check()"
 				method="post" action="/HoneyComb_2_0/mypage/user_del_compl">
-				<h1 id="title">Delete Account</h1>
-				<hr>
+				<h3>계정 삭제</h3>
 				<p>
 				<table align="center">
 					<tr>

@@ -47,7 +47,7 @@ public class MyPage_Controller {
 		System.out.println("mem_num:::" + mem_num + "  passwd:::" + passwd);
 		dao.passwd_Change(mem_num, passwd);
 
-		return "/mypage";
+		return "myPage";
 	}
 
 	@RequestMapping("/profile_img_up")

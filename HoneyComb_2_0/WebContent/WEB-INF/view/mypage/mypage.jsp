@@ -13,23 +13,32 @@
 		window.location.reload(true);
 	}
 
-	/* 	function passwd_confirm() {
-	 // 비밀번호 변경 폼
+	function passwd_confirm() {
+		// 비밀번호 변경 폼
 
-	 var url = '/Final_Testing/option/passwd_ch_view';
-	 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"
-	 + "scrollbars=no,left=100,top=100,width=400,height=170");
+		var url = '/HoneyComb_2_0/mypage/passwd_ch_view';
+		open(url, "비밀번호 변경", "toolbar=no,location=no,status=no,menubar=no,"
+				+ "scrollbars=no,left=400,top=200,width=500,height=300");
 
-	 }
+	}
 
-	 function user_del() {
-	 // 계정 삭제 폼
+	function view_resume() {
 
-	 var url = '/HoneyComb/Option_user/user_delete.option';
-	 open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"
-	 + "scrollbars=no,left=100,top=100,width=400,height=170");
+		/* "final_test/mem_resume.do?mem_num=" + mem_num */
+		var url = '/HoneyComb_2_0/mypage/my_resume';
+		open(url, "이력서",
+				"toolbar=no,location=no,status=no,menubar=no scrollbars=no,resizable=no,"
+						+ "left=600, top=200,width=700,height=920");
+	}
 
-	 } */
+	function user_del() {
+		// 계정 삭제 폼
+
+		var url = '/HoneyComb_2_0/mypage/account_drop';
+		open(url, "계정 삭제", "toolbar=no,location=no,status=no,menubar=no,"
+				+ "scrollbars=no,left=400,top=20,width=500,height=300");
+
+	}
 
 	function file_extension(form) {
 		// img파일인지 확인
@@ -70,7 +79,6 @@
 </script>
 
 <style>
-
 table, tr, th, td {
 	margin: 0 auto;
 	border-collapse: collapse;
@@ -437,10 +445,11 @@ a#account span {
 			</div>
 			<div class="div_img_map">
 				<div class="div_img">
-					<img src="/HoneyComb_2_0/resources/images/click.png" class="click_img" />
+					<img src="/HoneyComb_2_0/resources/images/click.png"
+						class="click_img" />
 				</div>
 				<div id="passwd_ch">
-					<a href="/HoneyComb_2_0/mypage/passwd_ch_view" id="pw"
+					<a onclick="passwd_confirm()" id="pw"
 						title="password change"><span>pwChange</span></a>
 				</div>
 			</div>
@@ -454,10 +463,11 @@ a#account span {
 			</div>
 			<div class="div_img_map">
 				<div class="div_img">
-					<img src="/HoneyComb_2_0/resources/images/click.png" class="click_img" />
+					<img src="/HoneyComb_2_0/resources/images/click.png"
+						class="click_img" />
 				</div>
 				<div id="resume_ch">
-					<a href="/HoneyComb_2_0/mypage/my_resume" id="resume"
+					<a onclick="view_resume()" id="resume"
 						title="my resume view"><span>resumeView</span></a>
 				</div>
 			</div>
@@ -465,15 +475,16 @@ a#account span {
 		</div>
 
 		<div class="functions">
-			<div class="div_text" >
+			<div class="div_text">
 				<p>HoneyComb 계정을 삭제할 수 있습니다</p>
 			</div>
 			<div class="div_img_map">
 				<div class="div_img">
-					<img src="/HoneyComb_2_0/resources/images/click.png" class="click_img" />
+					<img src="/HoneyComb_2_0/resources/images/click.png"
+						class="click_img" />
 				</div>
 				<div id="account_drop">
-					<a href="/HoneyComb_2_0/mypage/account_drop" id="account"
+					<a onclick="user_del()" id="account"
 						title="account drop"><span>accountDrop</span></a>
 				</div>
 			</div>
