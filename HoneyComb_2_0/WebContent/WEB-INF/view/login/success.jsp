@@ -140,7 +140,6 @@ a:hover {
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<h3>회원가입완료</h3><br> <a href="LoginMainFrame.do">메인으로</a>
-
 					</div>
 				</div>
 			</div>

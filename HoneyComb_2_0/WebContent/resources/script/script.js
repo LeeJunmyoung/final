@@ -12,7 +12,6 @@ function checkIt() {
 		return false;
 
 	}
-
 	if (myform.passwd.value == "") {
 
 		alert("password를 입력하지 않았습니다.");
