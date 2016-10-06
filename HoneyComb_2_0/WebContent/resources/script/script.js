@@ -68,6 +68,14 @@ function checkEmail(myform) {
     }   
     overlapCheck();    
 }
+//screen.width  : 현재 운영체제의 너비
+//screen.height : 현재 운영체제의 높이
+w = 550;    //팝업창의 너비
+h = 180;    //팝업창의 높이
+
+//중앙위치 구해오기
+LeftPosition=(screen.width-w)/2;
+TopPosition=(screen.height-h)/2;
 
 function overlapCheck(){
 	var param = "email" + "=" + $("#email").val();
@@ -86,14 +94,12 @@ function overlapCheck(){
 				count = 1;
 				
 				url = "checkEmail_y.do?email="+$("#email").val();
-				open(url, "confirm", "toolbar=no, location=no,status=no,menubar=no,"
-						+ "scrollbars=no,resizable=no,width=550, height=200");	
+				window.open(url, "confirm", "width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");	
 			}
 			else
 			{
 				url = "checkEmail_n.do?email="+$("#email").val();
-					open(url, "confirm", "toolbar=no, location=no,status=no,menubar=no,"
-							+ "scrollbars=no,resizable=no,width=550, height=200");	
+					window.open(url, "confirm", "width="+w+",height="+h+",top="+TopPosition+",left="+LeftPosition+", scrollbars=no");	
 				return false;
 			}	
 		},
