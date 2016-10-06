@@ -137,7 +137,9 @@ function sendChildValue() {
 };
 
 function tomain(){
-	location="/HoneyComb/coin/LogOnCheck.coin"
+	
+	
+	location="/HoneyComb_2_0/index.jsp"
 }
 function goback(){
 	history.go(-1);

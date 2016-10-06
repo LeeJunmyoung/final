@@ -121,6 +121,8 @@ margin: 0px;
 
 
 }
+
+
 </style>
 <script type="text/javascript">
 	$(document)
@@ -360,9 +362,9 @@ margin: 0px;
 	</div>
 	
 	<div class="row">
-	<input class="select_button_cal fc-state-default " type = "button" value="개인" id="selectCalButton1" name='1'/>
-	<input class="select_button_cal fc-state-default" type = "button" value="부서" id="selectCalButton2" name='2' />
 	<input class="select_button_cal fc-state-default" type = "button" value="회사" id="selectCalButton3" name='3'/>
+	<input class="select_button_cal fc-state-default" type = "button" value="부서" id="selectCalButton2" name='2' />
+	<input class="select_button_cal fc-state-default " type = "button" value="개인" id="selectCalButton1" name='1'/>
 	<input class="select_button_cal fc-state-default" type = "button" value="전체" id="selectCalButton0" name='0'/>
 	</div>
 
