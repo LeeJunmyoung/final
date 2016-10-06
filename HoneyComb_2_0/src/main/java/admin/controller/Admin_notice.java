@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import admin.db.AdminDao;
-import admin.notice.db.AdminNoticeInfo;
+import admin.db.AdminNoticeInfo;
 
 @Controller
 @RequestMapping("/admin_notice")

@@ -1,4 +1,4 @@
-package admin.notice.db;
+package admin.db;
 
 import java.sql.Timestamp;
 

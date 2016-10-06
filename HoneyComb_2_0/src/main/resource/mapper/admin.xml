@@ -33,14 +33,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where com_num = #{com_num}
 	</select>
 
-	<select id="getadminNotice" resultType="admin.notice.db.AdminNoticeInfo">
+	<select id="getadminNotice" resultType="admin.db.AdminNoticeInfo">
 		select * from (select *
 		from notice_admin order by notice_admin_num desc) where rownum = 1
 	</select>
 
-	<insert id="adminNoticeInsert" parameterType="admin.notice.db.AdminNoticeInfo">
+	<insert id="adminNoticeInsert" parameterType="admin.db.AdminNoticeInfo">
 		insert into
 		notice_admin(notice_admin_num,notice_admin_title,notice_admin_content,notice_admin_date)
 		values(notice_admin_num.NEXTVAL,#{notice_admin_title},#{notice_admin_content},#{notice_admin_date})
 	</insert>
+
+	<update id="adminupdate" parameterType="int">
+		update members set com_num= #{com_num} where com_num = 0-#{com_num}
+	</update>
 </mapper>

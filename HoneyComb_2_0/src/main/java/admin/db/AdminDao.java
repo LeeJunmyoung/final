@@ -7,7 +7,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import admin.controller.Admin_comInsert;
 import admin.db.AdminInfo;
-import admin.notice.db.AdminNoticeInfo;
+import admin.db.AdminNoticeInfo;
 import login.controller.LogOnDataBean;
 
 public class AdminDao extends SqlSessionDaoSupport {
@@ -31,15 +31,18 @@ public class AdminDao extends SqlSessionDaoSupport {
 	}
 
 	public int admincomInsert(int com_num) {
-		int admincomInsert = 0;
-		admincomInsert = getSqlSession().insert("admincominsert", com_num);
+		int admincomInsert = getSqlSession().insert("admincominsert", com_num);
 		return admincomInsert;
 	}
 
 	public int admincomDelete(int com_num) {
-		int admincomDelete = 0;
-		admincomDelete = getSqlSession().delete("admincomdelete", com_num);
+		int admincomDelete = getSqlSession().delete("admincomdelete", com_num);
 		return admincomDelete;
+	}
+	
+	public int adminUpdate(int com_num) {
+		int adminUpdate = getSqlSession().update("adminupdate", com_num);
+		return adminUpdate;
 	}
 
 	public List<AdminInfo> comadminList(int com_num) {
