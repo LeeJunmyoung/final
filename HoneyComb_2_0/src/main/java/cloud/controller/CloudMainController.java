@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cloud.db.CloudDao;
 import cloud.db.CloudInfo;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 public class CloudMainController implements ApplicationContextAware{
@@ -51,13 +52,13 @@ public class CloudMainController implements ApplicationContextAware{
 	@RequestMapping(value="/main", method = RequestMethod.GET)
 	public ModelAndView getCloudList(HttpSession session, HttpServletRequest request, String folder) {
 		session = request.getSession();
-		/* session 임시설정 */
+		/* session 임시설정 
 		System.out.println("test용com_num설정::1");
 		session.setAttribute("com_num", 1);
 		session.setAttribute("com_pos_num", 1);
 		session.setAttribute("name", "tester");
 		session.setAttribute("mem_num", 1);
-		/* session임시설정끝 */
+		session임시설정끝 */
 
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		List cloudlist = dao.getcloudList(com_num, folder);
@@ -78,27 +79,25 @@ public class CloudMainController implements ApplicationContextAware{
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public ModelAndView uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request, String security){
+	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request, String security){
 		int com_pos_num = 0;
 		if(security != null){
 			com_pos_num = 1;
 		}
 		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, "", request, com_pos_num);
 		dao.uploadFile(info);
-		ModelAndView mav = new ModelAndView("/upload","close",true);
-		return mav;
+		return "redirect:upload?upload=ok";
 	}
 		//폴더 내부에서 업로드
 	@RequestMapping(value="/upload/{folder}", method = RequestMethod.POST)
-	public ModelAndView uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request, String security){
+	public String uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request, String security){
 		int com_pos_num = 0;
 		if(security != null ){
-			com_pos_num = 1;
+			com_pos_num = 1;	
 		}
 		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, folder, request, com_pos_num);
 		dao.uploadFile(info);
-		ModelAndView mav = new ModelAndView("/upload","close",true);
-		return mav;
+				return "redirect:upload?upload=ok";
 	}
 	
 	/*프로젝트 업로드 컨트롤러*/
@@ -144,14 +143,22 @@ public class CloudMainController implements ApplicationContextAware{
 		ModelAndView mav =  new ModelAndView("/makeFolder");
 		return mav;
 	}
+	/*ajax 로 중복체크*/
 	@RequestMapping(value = "/dupleCk")
 	@ResponseBody
-	public String duplicateCheck(@RequestParam(value="item",defaultValue = "")String item,@RequestParam(value = "folder", required = false) String folder, HttpServletRequest request){
+	public String duplicateCheck(@RequestParam(value="item")String item,@RequestParam(value = "folder", required = false) String folder, HttpServletRequest request){
 		System.out.println("item:"+item);
 		int com_num = (int)request.getSession().getAttribute("com_num");
 		String dupli = dao.duplicateCheck(item, folder, com_num); 
 		
 		return dupli;
+	}
+	/*폴더업로드*/
+	@RequestMapping(value="/makeFolder", method=RequestMethod.POST)
+	public String makeFolderPro(String folder, String item, HttpServletRequest request){
+		CloudInfo info =  new Cloud_makeFolder().uploadFolder(request, item, folder,0);
+		dao.uploadFile(info);
+		return "redirect:makeFolder?upload=ok";
 	}
 
 

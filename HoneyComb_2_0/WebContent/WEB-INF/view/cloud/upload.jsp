@@ -5,17 +5,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SelectUploadFile</title>
-<script  type="text/javascript">
-function reload(){
-opener.location.reload()
-}
-if(${close}){
-	reload();
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/HoneyComb_2_0/resources/script/cloudScript.js"></script>
+<script>
+if('${param.upload}'){
+	opener.location.reload();
 	window.close();
-}
+}; 
+function done(){
+	if('${param.upload}'){
+		opener.location.reload();
+		window.close();
+	};
+};
 </script>
+
 </head>
-<body onload="javascript:reload()">
+<body>
 	<form name="form"	enctype="multipart/form-data" method="post">
 		<input type="file" name="uploadfile">
 		<c:if test="${com_pos_num < 3}">

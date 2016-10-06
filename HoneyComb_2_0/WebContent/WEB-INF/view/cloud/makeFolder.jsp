@@ -6,46 +6,42 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/HoneyComb_2_0/resources/script/cloudScript.js"></script>
 <script>
 $(function(){
-	$("#folder").keyup(function(){
-		var regExp = /^[^\|/*?<>:]$/
+if('${param.upload}'){
+		opener.location.reload();
+		window.close();
+	}; 
+$("#folder").keyup(function(){
+		var regExp = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+		$("#submit").attr("disabled",false);
 		if($("#folder").val() ==""){
-			$("#dupli").html("")			
+			$("#dupli").html("")
+			$("#submit").attr("disabled",true);
 		}
 		else if(regExp.test($("#folder").val())){
-			$("#dupli").html("<font color=red size=2>특수문자 (\\ , | , / , * , ? , < , > , : )는 사용하실 수 없습니다..")
+			
+			$("#dupli").html("<font color=red size=2>특수문자 (\\ , | , / , * , ? , < , > , :, ;, `, ~, !, @, #, $, %, ^, & )는 사용하실 수 없습니다..")
+			$("#submit").attr("disabled",true);
 		}else{
-		$.ajax({
-			type:"POST",
-			url:"dupleCk",
-			data:{
-				"item":$("#folder").val(),
-				"folder":'${folder}'
-			},
-			success:function(data){
-				if(data == 0){
-					$("#dupli").html("<font color=#344D91>사용가능한 이름 입니다.")
-				}else{
-					$("#dupli").html("<font color=red>사용불가능한 이름 입니다.")
-				}
-				
-			}
-		})
+			var item = $("#folder").val();
+			var folder = '${folder}';
+			dupliCk(item ,folder)
 		}
-		
-	})
-})
-
+	});
+});
+			
 </script>
 
 
 </head>
 <body>
  생성할 폴더명을 입력해 주세요
- <form action="makeFolderPro">
- 	<input type="text" name="folder" id="folder">
- 	<input type="submit" value="확인">
+ <form method="post">
+ 	<input type="text" name="item" id="folder">
+ 	<input type="hidden" name="folder" value="${folder}">
+ 	<input type="submit" value="확인" id="submit" disabled="disabled">
  	<p id="dupli"/>
  </form>
  

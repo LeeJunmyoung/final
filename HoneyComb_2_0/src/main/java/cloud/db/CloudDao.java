@@ -57,4 +57,5 @@ public class CloudDao extends SqlSessionDaoSupport{
 		String dupli = getSqlSession().selectOne("cloud.dupliCk",map);
 		return dupli;
 	}
+	
 }

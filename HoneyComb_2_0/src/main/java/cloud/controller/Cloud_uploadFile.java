@@ -30,7 +30,6 @@ public class Cloud_uploadFile {
 		info.setMem_num(mem_num);
 		info.setcom_pos_num(com_pos_num);
 		info.setFile_uploader(file_uploader);
-		System.out.println("folder::"+folder);
 		uploadFile(file_path, uploadfile);
 		
 		return info;

@@ -12,8 +12,8 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	function openupload(folder){
-		var folder = folder;
-		window.open("upload/"+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
+		folder = folder ? '/'+folder : '';
+		window.open("upload"+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
 	}
 	function openDelete(selectedFiles){
 		var selectedFiles = selectedFiles;
