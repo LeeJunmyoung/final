@@ -66,7 +66,7 @@
 
 	function companyCheck() {
 
-		url = "/Final_Testing/company/com_searchForm";
+		url = "/HoneyComb_2_0/company/com_searchForm";
 
 		window
 				.open(
@@ -239,13 +239,13 @@ a.search {
 	display: inline-block;
 	width: 25px;
 	height: 30px;
-	background: url(/Final_Testing/resources/images/search_one.png)
+	background: url(/HoneyComb_2_0/resources/images/search_one.png)
 		no-repeat;
 	background-size: 25px;
 }
 
 a:HOVER.search {
-	background: url(/Final_Testing/resources/images/search_two.png)
+	background: url(/HoneyComb_2_0/resources/images/search_two.png)
 		no-repeat;
 	background-size: 25px;
 }
@@ -351,7 +351,7 @@ h3 {
 			<div id="company_contents">
 				<div id="company_form">
 					<form name="com_regi" method="post"
-						action="/Final_Testing/company/temp_com">
+						action="/HoneyComb_2_0/company/temp_com">
 						<h3>사업장 등록</h3>
 						<hr class="subject">
 						<input type="text" placeholder="COMPANY NAME" name="com_name"
@@ -379,7 +379,7 @@ h3 {
 
 				<div id="company_find_form">
 					<form name="com_search" method="post"
-						action="/Final_Testing/company/mem_com_update">
+						action="/HoneyComb_2_0/company/mem_com_update">
 						<!-- onSubmit="return searchCheck()" -->
 						<h3>내 회사 등록</h3>
 						<hr class="subject">

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -90,23 +91,24 @@ public class CompanyMainView_Controller {
 
 	}
 
-	@RequestMapping(value = "/temp_com.do", method = RequestMethod.POST)
-	public String temp_Com_Submit(@ModelAttribute TempComDTO temp, HttpSession request) {
+	@RequestMapping(value = "/temp_com", method = RequestMethod.POST)
+	public String temp_Com_Submit(@ModelAttribute TempComDTO temp, HttpServletRequest request) {
 		// 사업장 등록 submit
-		
+
 		temp.setCom_phone(temp.getCom_phone1() + temp.getCom_phone2() + temp.getCom_phone3());
 		int x = dao.temp_Insert(temp);
-		int mem_num = Integer.parseInt((String) request.getAttribute("mem_num"));
+		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		String com_name = temp.getCom_name();
 		int y = dao.temp_ceo_Update(com_name, mem_num);
 
 		return "wait_accept_company";
 
 	}
-	
-	@RequestMapping(value = "/mem_com_update.do" , method = RequestMethod.POST)
-	public String mem_Comapny_Submit(@ModelAttribute MembersDTO mem, HttpSession session) {
-		int mem_num = Integer.parseInt((String) session.getAttribute("mem_num"));
+
+	@RequestMapping(value = "/mem_com_update" , method = RequestMethod.POST)
+	public String mem_Comapny_Submit(@ModelAttribute MembersDTO mem, HttpServletRequest request) {
+		
+		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		
 		Map dept_map = deptMap();
 		Map pos_map = posMap();

@@ -37,10 +37,10 @@ public class CompanyCheckController {
 		
 		else{
 			if(com_num == 0 ){
-				return "../company/mainForm";
+				return "../company/com_main_send";
 			}else if(com_num<0){
 			
-				return "/temp_accept_page/wait_accept_company";
+				return "../company/wait_accept_company";
 				
 			}
 			

@@ -80,12 +80,12 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 
-						<h3>승인 대기중입니다</h3>
-						<img src="/HoneyComb/temp_accept_page/img/wait.gif" width="600px"
-							height="400px">
+						<h3>승인 대기중</h3>
+						<img src="/HoneyComb_2_0/resources/images/wait.gif" width="430px"
+							height="300px">
 						<p>
 						<p>
-							<button onclick="location.href='/HoneyComb/index.jsp'"
+							<button onclick="location.href='/HoneyComb_2_0/login/LoginMainFrame.do'"
 								class="btn btn-default">확인</button>
 					</div>
 				</div>

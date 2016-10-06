@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="company">
+
+	<!-- temp_com select <select id="temp_com_select" parameterType="String" 
+		resultType="company.MembersDTO"> select com_num,com_name, com_add, com_phone, 
+		com_aff from temp_com where com_name = #{com_name} </select> -->
+	<!-- complete_com search -->
+
+	<select id="complete_com_search" parameterType="String" resultType="company.db.Company">
+		select * from complete_com where com_name like #{com_name}
+	</select>
+
+	<select id="com_ceo_search" parameterType="int" resultType="String">
+		select name from members where com_num=#{com_num} and com_pos_num=1
+	</select>
+
+	<!-- temp_com insert -->
+	<insert id="temp_com_insert" parameterType="company.db.TempComDTO">
+		insert into
+		temp_com(com_num, com_name, com_add, com_phone, com_aff)
+		values(temp_com_num.NEXTVAL, #{com_name}, #{com_add},
+		#{com_phone},
+		#{com_aff})
+	</insert>
+
+	<!-- temp_com ceo -->
+	<update id="temp_com_ceo" parameterType="Map">
+		update members set
+		com_num=(0-temp_com_num.CURRVAL), com_name=#{com_name},
+		com_dept_num=0,
+		com_dept_name='ceo', com_pos_num=1, com_pos_name='대표이사'
+		where
+		mem_num=#{mem_num}
+	</update>
+
+	<!-- temp_mem update -->
+	<update id="temp_mem_update" parameterType="company.db.MembersDTO">
+		update members set
+		com_num = #{com_num}, com_name =
+		#{com_name},
+		com_dept_name = #{com_dept_name},
+		com_dept_num =
+		#{com_dept_num},
+		com_pos_name = #{com_pos_name},
+		com_pos_num =
+		#{com_pos_num}
+		where mem_num = #{mem_num}
+	</update>
+
+</mapper>
