@@ -102,27 +102,24 @@
 }
 
 .fc-scroller {
-   overflow-y: hidden !important;
+	overflow-y: hidden !important;
 }
 
-#category{
-position: relative;
-top:5px;
-left :247px;
-width: 50px;
-height:23px;
+#category {
+	position: relative;
+	top: 5px;
+	left: 247px;
+	width: 50px;
+	height: 23px;
 }
+
 .row .select_button_cal {
-position: relative;
-float:right;
-top: 10px;
-right: 150px;
-margin: 0px;
-
-
+	position: relative;
+	float: right;
+	top: 10px;
+	right: 150px;
+	margin: 0px;
 }
-
-
 </style>
 <script type="text/javascript">
 	$(document)
@@ -143,11 +140,7 @@ margin: 0px;
 
 											},
 											height : 500,
-											
-											
-											
-											
-											
+
 											eventClick : function(event) {
 
 												if (event.title) {
@@ -158,23 +151,25 @@ margin: 0px;
 													}
 													var end = datetoHtml(Number(event.end) - 86400000);
 
-													var url = "/HoneyComb_2_0/cal/curd_cal_page/getmorepage?cal_num="+event.number+"&cal_subject="
-													+ event.title
-													+ "&cal_start="
-													+ start
-													+ "&cal_end="
-													+ end
-													+ "&cal_contents="
-													+ event.Contents;
-													+ "&type=nonono"
+													var url = "/HoneyComb_2_0/cal/curd_cal_page/getmorepage?cal_num="
+															+ event.number
+															+ "&cal_subject="
+															+ event.title
+															+ "&cal_start="
+															+ start
+															+ "&cal_end="
+															+ end
+															+ "&cal_contents="
+															+ event.Contents;
+													+"&type=nonono"
 
-											open(
-													url,
-													"confirm",
-													"toolbar=no,location=no,status=no,menubar=no,"
-															+ "scrollbars=no,resizable=no,width=500,height=300,left=400,top=200");
+													open(
+															url,
+															"confirm",
+															"toolbar=no,location=no,status=no,menubar=no,"
+																	+ "scrollbars=no,resizable=no,width=500,height=300,left=400,top=200");
 
-										}
+												}
 
 											}
 
@@ -182,35 +177,33 @@ margin: 0px;
 
 						$('.fc-prev-button').click(function() {
 							//alert('prev is clicked');
-							
-							if(check==0){
+
+							if (check == 0) {
 								viewScaduel();
-								}else{
-									selectScaduel(check);
-								}
-							
+							} else {
+								selectScaduel(check);
+							}
+
 						});
 
 						$('.fc-next-button').click(function() {
 							//alert('next is clicked');
-							
-							if(check==0){
+
+							if (check == 0) {
 								viewScaduel();
-								}else{
-									selectScaduel(check);
-								}
-							
-							
+							} else {
+								selectScaduel(check);
+							}
+
 						});
 						$('.fc-today-button').click(function() {
 							//alert('next is clicked');
-							if(check==0){
-							viewScaduel();
-							}else{
+							if (check == 0) {
+								viewScaduel();
+							} else {
 								selectScaduel(check);
 							}
-						
-							
+
 						});
 						viewScaduel();
 
@@ -229,14 +222,14 @@ margin: 0px;
 								newEvent.Contents = '${total.cal_contents}';
 								newEvent.number = '${total.cal_num}'
 								newEvent.allDay = false;
-								if('${total.category}'==1){
-									newEvent.color="#008299";
+								if ('${total.category}' == 1) {
+									newEvent.color = "#008299";
 								}
-								if('${total.category}'==2){
-									newEvent.color="#990085";
+								if ('${total.category}' == 2) {
+									newEvent.color = "#990085";
 								}
-								if('${total.category}'==3){
-									newEvent.color="#993800";
+								if ('${total.category}' == 3) {
+									newEvent.color = "#993800";
 								}
 								//newEvent.color="red";
 								$('#calendar').fullCalendar('renderEvent',
@@ -247,38 +240,38 @@ margin: 0px;
 							}
 
 						}
-						var check=0;
-						
-						$("#selectCalButton1").click(function(){
-							
-							check =$(this).attr("name");
+						var check = 0;
+
+						$("#selectCalButton1").click(function() {
+
+							check = $(this).attr("name");
 
 							$('#calendar').fullCalendar('removeEvents');
-								selectScaduel(check);	
-							
+							selectScaduel(check);
+
 						});
-					$("#selectCalButton2").click(function(){
-							
-							check =$(this).attr("name");
+						$("#selectCalButton2").click(function() {
+
+							check = $(this).attr("name");
 
 							$('#calendar').fullCalendar('removeEvents');
-								selectScaduel(check);	
-							
-						});
-					$("#selectCalButton3").click(function(){
-						
-						check =$(this).attr("name");
+							selectScaduel(check);
 
-						$('#calendar').fullCalendar('removeEvents');
-							selectScaduel(check);	
-						
-					});
-					$("#selectCalButton0").click(function(){
-						check =$(this).attr("name");
-						$('#calendar').fullCalendar('removeEvents');
-						viewScaduel();
-						
-					});
+						});
+						$("#selectCalButton3").click(function() {
+
+							check = $(this).attr("name");
+
+							$('#calendar').fullCalendar('removeEvents');
+							selectScaduel(check);
+
+						});
+						$("#selectCalButton0").click(function() {
+							check = $(this).attr("name");
+							$('#calendar').fullCalendar('removeEvents');
+							viewScaduel();
+
+						});
 						function selectScaduel(check) {
 
 							if ('${cal_count}' > 0) {
@@ -294,42 +287,41 @@ margin: 0px;
 								newEvent.Contents = '${total.cal_contents}';
 								newEvent.number = '${total.cal_num}'
 								newEvent.allDay = false;
-								if('${total.category}'==1){
-									newEvent.color="#008299";
+								if ('${total.category}' == 1) {
+									newEvent.color = "#008299";
 								}
-								if('${total.category}'==2){
-									newEvent.color="#990085";
+								if ('${total.category}' == 2) {
+									newEvent.color = "#990085";
 								}
-								if('${total.category}'==3){
-									newEvent.color="#993800";
+								if ('${total.category}' == 3) {
+									newEvent.color = "#993800";
 								}
 								//newEvent.color="red";
-								if(check=='${total.category}')
-								$('#calendar').fullCalendar('renderEvent',
-										newEvent);
+								if (check == '${total.category}')
+									$('#calendar').fullCalendar('renderEvent',
+											newEvent);
 
 								</c:forEach>
 
 							}
 
 						}
-						
-						
-						
+
 						function datetoHtml(time) {
-							
+
 							var time_temp;//13자리
 							var date = new Date(time);
-							
-							time_temp=(Number(date.getYear())+1900)+"-";
-							if(date.getMonth()<9){
-								time_temp=time_temp+"0";
+
+							time_temp = (Number(date.getYear()) + 1900) + "-";
+							if (date.getMonth() < 9) {
+								time_temp = time_temp + "0";
 							}
-							time_temp=time_temp+(Number(date.getMonth())+1)+"-";
-							if(date.getDate()<=9){
-								time_temp=time_temp+"0";
+							time_temp = time_temp
+									+ (Number(date.getMonth()) + 1) + "-";
+							if (date.getDate() <= 9) {
+								time_temp = time_temp + "0";
 							}
-							time_temp=time_temp+date.getDate();
+							time_temp = time_temp + date.getDate();
 							//alert(time_temp);
 							return time_temp;
 
@@ -346,7 +338,8 @@ margin: 0px;
 
 		<div class="col-md-9">
 
-			<b>CALENDAR<%-- <span class="badge">${promgr_count}</span> --%>  </b>
+			<b>CALENDAR<%-- <span class="badge">${promgr_count}</span> --%>
+			</b>
 
 		</div>
 
@@ -360,12 +353,16 @@ margin: 0px;
 		</div>
 
 	</div>
-	
+
 	<div class="row">
-	<input class="select_button_cal fc-state-default" type = "button" value="회사" id="selectCalButton3" name='3'/>
-	<input class="select_button_cal fc-state-default" type = "button" value="부서" id="selectCalButton2" name='2' />
-	<input class="select_button_cal fc-state-default " type = "button" value="개인" id="selectCalButton1" name='1'/>
-	<input class="select_button_cal fc-state-default" type = "button" value="전체" id="selectCalButton0" name='0'/>
+		<input class="select_button_cal fc-state-default" type="button"
+			value="회사" id="selectCalButton3" name='3' /> <input
+			class="select_button_cal fc-state-default" type="button" value="부서"
+			id="selectCalButton2" name='2' /> <input
+			class="select_button_cal fc-state-default " type="button" value="개인"
+			id="selectCalButton1" name='1' /> <input
+			class="select_button_cal fc-state-default" type="button" value="전체"
+			id="selectCalButton0" name='0' />
 	</div>
 
 
@@ -373,23 +370,24 @@ margin: 0px;
 	<div id='calendar_more_div'>
 
 
-		<div id='calendar' style='margin: auto; font-size: 13px; width: 700px;'></div>
+		<div id='calendar'
+			style='margin: auto; font-size: 13px; width: 700px;'></div>
 
 
 	</div>
 	<div id='write_cal' align="center">
 
 		<div id='write_cal_form'>
-		
+
 			<form action="cal_insert.do" method="post">
-				
-						<select id="category" name="category">
-				<option value="1">개인</option>
-				<option value="2">부서</option>
-				<option value="3">회사</option>
-					</select>
-				
-				
+
+				<select id="category" name="category">
+					<option value="1">개인</option>
+					<option value="2">부서</option>
+					<option value="3">회사</option>
+				</select>
+
+
 				<div id='title_form'>
 					제 목 : <input type="text" name="title" placeholder="SUBJECT"
 						class="form-control" id='title' />

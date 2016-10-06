@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ include file="view/color.jsp"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,13 +50,13 @@
 			return false;
 		}
 
-		if (document.com_search.com_dept_num.value == "-1") {
-			alert("부서를 입력하세요");
+		if (document.com_search.com_dept_num.value == "선택하세요") {
+			alert("부서를 선택하세요");
 			return false;
 		}
 
-		if (document.com_search.com_pos_name.value == "선택하세요") {
-			alert("직급을 입력하세요");
+		if (document.com_search.com_pos_num.value == "선택하세요") {
+			alert("직급을 선택하세요");
 			return false;
 		}
 
@@ -65,7 +66,7 @@
 
 	function companyCheck() {
 
-		url = "/HoneyComb/company/companyCheck.jsp";
+		url = "/Final_Testing/company/com_searchForm";
 
 		window
 				.open(
@@ -79,10 +80,10 @@
 <script>
 	$(document).ready(function() {
 		$("#one").click(function() {
-/* 			$("#one").css("background", "#fff");
-			$("#one").css("color", "black");
-			$("#two").css("background", "#344d91");
-			$("#two").css("color", "white"); */
+			/* 			$("#one").css("background", "#fff");
+			 $("#one").css("color", "black");
+			 $("#two").css("background", "#344d91");
+			 $("#two").css("color", "white"); */
 			$("#company_form").css("display", "block");
 			$("#company_find_form").css("display", "none");
 		});
@@ -94,13 +95,12 @@
 			$("#one").css("background", "#344d91");
 			$("#one").css("color", "#fff");
 		});
-		
-		
+
 		$("#two").mouseenter(function() {
 			$("#two").css("background", "#fff");
 			$("#two").css("color", "black");
 		});
-		
+
 		$("#two").mouseleave(function() {
 			$("#two").css("background", "#344d91");
 			$("#two").css("color", "#fff");
@@ -213,6 +213,49 @@ input[type=radio].ch {
 #search {
 	width: 20px;
 	height: 20px;
+	cursor: pointer;
+}
+
+#search_map {
+	width: 450px;
+	height: 50px;
+}
+
+#div_text {
+	float: left;
+	width: 365px;
+	height: 50px;
+	margin-left: 22px;
+}
+
+.search {
+	top: 4px;
+	float: right;
+	margin-right: 33px;
+	margin-top: 15px;
+}
+
+a.search {
+	display: inline-block;
+	width: 25px;
+	height: 30px;
+	background: url(/Final_Testing/resources/images/search_one.png)
+		no-repeat;
+	background-size: 25px;
+}
+
+a:HOVER.search {
+	background: url(/Final_Testing/resources/images/search_two.png)
+		no-repeat;
+	background-size: 25px;
+}
+
+a:HOVER.search #div_search {
+	border: 2px solid black;
+}
+
+a.search span {
+	display: none;
 }
 
 .submit {
@@ -287,33 +330,13 @@ h3 {
 	font-size: 18px;
 	font-weight: 700;
 }
-
-.subject {
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
+
 </head>
 <body>
 
-
-
-
 	<div id="content">
-	
+
 		<div id="main">
 
 
@@ -327,8 +350,8 @@ h3 {
 
 			<div id="company_contents">
 				<div id="company_form">
-					<form name="com_regi"
-						action="/HoneyComb/company/companyPro.company">
+					<form name="com_regi" method="post"
+						action="/Final_Testing/company/temp_com">
 						<h3>사업장 등록</h3>
 						<hr class="subject">
 						<input type="text" placeholder="COMPANY NAME" name="com_name"
@@ -341,14 +364,9 @@ h3 {
 							maxlength="4"><br> <br> AFFILIATE<select
 							name="com_aff">
 							<option value="선택하세요">선택하세요</option>
-							<option value="IT">IT</option>
-							<option value="Design">Design</option>
-							<option value="Logistics">Logistics</option>
-							<option value="Fashion">Fashion</option>
-							<option value="Food">Food</option>
-							<option value="Accountant">Accountant</option>
-							<option value="Cosmetics">Cosmetics</option>
-							<option value="etc">etc</option>
+							<c:forEach var="aff_list" items="${ aff_list }">
+								<option value="${ aff_list }">${ aff_list }</option>
+							</c:forEach>
 						</select>
 						<hr>
 						<br> <br> <a href="javascript:com_regi.submit();"
@@ -357,39 +375,33 @@ h3 {
 					</form>
 				</div>
 
+				<!-- <img src="/Final_Testing/view/search.png" id="search" value="찾기" onClick="companyCheck();"> -->
 
 				<div id="company_find_form">
 					<form name="com_search" method="post"
-						action="/HoneyComb/company/Company_Temp_Join.company">
+						action="/Final_Testing/company/mem_com_update">
 						<!-- onSubmit="return searchCheck()" -->
 						<h3>내 회사 등록</h3>
 						<hr class="subject">
-						<input type="text" placeholder="COMPANY NAME SEARCH" name="com_name"
-							class="cname" readonly> <img src="/HoneyComb/company/view/search.png"
-							id="search" value="찾기" onClick="companyCheck();"><br>
-						<input type="hidden" name="com_num" />DEPARTMENT<select
+						<div id="search_map">
+							<div id="div_text"><input type="text" placeholder="COMPANY NAME SEARCH"
+								name="com_name" class="cname" readonly></div> <a
+								href="#companyCheck" onclick="companyCheck();return false;"
+								onkeypress="this.onclick" class="search"><span>search</span></a>
+						</div>
+
+						<br> <input type="hidden" name="com_num" /> DEPARTMENT <select
 							name="com_dept_num">
-							<option value="-1">선택하세요</option>
-							<option value="0">총무</option>
-							<option value="1">경리(회계)</option>
-							<option value="2">경영</option>
-							<option value="3">인사</option>
-							<option value="4">재경</option>
-							<option value="5">고객만족</option>
-							<option value="6">구매</option>
-							<option value="7">관리</option>
-							<option value="8">기술지원</option>
-							<option value="9">기획</option>
-							<option value="10">비서</option>
-							<option value="11">생산</option>
-							<option value="12">etc</option>
-						</select><br>POSITION<select name="com_pos_name">
 							<option value="선택하세요">선택하세요</option>
-							<option value="사원">사원</option>
-							<option value="대리">대리</option>
-							<option value="팀장">팀장</option>
-							<option value="부장">부장</option>
-							<option value="과장">과장</option>
+							<c:forEach var="dept" items="${ dept_map }">
+								<option value="${dept.key}">${ dept.value }</option>
+
+							</c:forEach>
+						</select> <br> POSITION <select name="com_pos_num">
+							<option value="선택하세요">선택하세요</option>
+							<c:forEach var="pos" items="${ pos_map }">
+								<option value="${ pos.key }">${ pos.value }</option>
+							</c:forEach>
 						</select>
 						<hr>
 						<br> <br> <a href="javascript:com_search.submit();"

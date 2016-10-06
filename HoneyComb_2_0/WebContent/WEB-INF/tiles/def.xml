@@ -62,5 +62,9 @@
 		<put-attribute name="body" value="/WEB-INF/view/chat/Chat_main.jsp" />
 	</definition>
 	
-
+   <definition name="myPage" extends="base_layout">
+		<put-attribute name="title" value="MYPAGE" />
+		<put-attribute name="body" value="/WEB-INF/view/mypage/mypage.jsp" />
+	</definition>
+	
 </tiles-definitions>

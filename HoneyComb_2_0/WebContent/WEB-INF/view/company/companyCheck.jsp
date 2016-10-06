@@ -1,7 +1,5 @@
-
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="view/color.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +9,7 @@
 	function in_focus() {
 		document.comSearch.com_name.focus();
 	}
-	
+
 	function comCheck() {
 		if (document.comSearch.com_name.value == "") {
 			alert("검색할 사업장명을 입력하세요");
@@ -175,8 +173,15 @@ h3 {
 }
 
 #search {
-	width: 20px;
-	height: 20px;
+	width: 25px;
+	height: 25px;
+	top: 7px;
+}
+
+#search:HOVER {
+	background: url(/Final_Testing/resources/images/search_two.png)
+		no-repeat;
+	background-size: 25px;
 }
 
 #com_name {
@@ -198,12 +203,15 @@ h3 {
 
 			<div class="down">
 				<form name="comSearch" method="post"
-					action="/HoneyComb/company/companyCheckPro.company"
+					action="/Final_Testing/company/company_search"
 					onsubmit="return comCheck()">
 					<h3>사업장 검색</h3>
 					<hr class="subject">
-					<input type="text" name="com_name" placeholder="COMPANY NAME SEARCH" class="s">
-					<input type="image" value="찾기" src="view/search.png" id="search" class="s">
+					<input type="text" name="com_name"
+						placeholder="COMPANY NAME SEARCH" class="s"> <input
+						type="image" value="찾기"
+						src="/Final_Testing/resources/images/search_one.png" id="search"
+						class="s">
 					<!-- <table width="300" border="1" cellspacing="0" cellpadding="3"
 				align="center"> -->
 				</form>
@@ -211,11 +219,11 @@ h3 {
 
 
 			<div class="down">
-				<c:if test="${ empty comList }">
+				<c:if test="${ empty search_list }">
 					<br>
 					<p>검색된 결과가 없습니다</p>
 				</c:if>
-				<c:if test="${ !empty comList }">
+				<c:if test="${ !empty search_list }">
 					<br>
 					<p>※ 아래 회사명을 클릭하면 자동으로 입력됩니다</p>
 					<br>
@@ -226,11 +234,11 @@ h3 {
 							<td class="title">Affiliate</td>
 							<td class="title" id="phone">Phone</td>
 						</tr>
-						<c:forEach var="search" items="${ comList }">
+						<c:forEach var="search" items="${ search_list }">
 							<tbody>
 								<tr id="text">
 									<td><a
-										href="javascript:send_com_name('${search.com_name}','${search.com_num}' )"
+										href="javascript:send_com_name('${search.com_name}','${search.com_num}')"
 										id="com_name"> ${search.com_name} </a></td>
 									<td id="com_add">${search.com_add}</td>
 									<td>${search.com_aff}</td>

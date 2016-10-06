@@ -114,6 +114,14 @@
 		<url-pattern>/chatting/*</url-pattern>
 	</servlet-mapping>
 	
-	
+		<servlet>
+		<servlet-name>mypage</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>mypage</servlet-name>
+		<url-pattern>/mypage/*</url-pattern>
+	</servlet-mapping>
 
 </web-app>
