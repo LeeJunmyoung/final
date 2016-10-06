@@ -54,4 +54,10 @@
 
 	<bean id="admincomCheck" class="admin.controller.Admin_comCheck"
 		p:dao-ref="dao" />
+
+	<bean id="adminNotice" class="admin.controller.Admin_notice"
+		p:dao-ref="dao" />
+
+	<bean id="adminNoticeInsert" class="admin.controller.Admin_noticeInsert"
+		p:dao-ref="dao" />
 </beans>

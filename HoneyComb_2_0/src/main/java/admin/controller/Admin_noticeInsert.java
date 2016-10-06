@@ -14,23 +14,27 @@ import admin.db.AdminDao;
 import admin.notice.db.AdminNoticeInfo;
 
 @Controller
-@RequestMapping("/admin_notice")
-public class Admin_notice {
-	
+@RequestMapping("/admin_noticeInsert")
+public class Admin_noticeInsert {
+
 	private AdminDao dao;
-	
+
 	@Autowired
 	public void setDao(AdminDao dao) {
 		this.dao = dao;
-		
-	}	
-	
+	}
+
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView submit(HttpServletRequest request) {
-		int notice_admin_num = 1;
-		notice_admin_num = (int) request.getSession().getAttribute("notice_admin_num");
-		List<AdminNoticeInfo> noticelist = dao.getadminNotice(notice_admin_num);
-		ModelAndView mav = new ModelAndView("admin_notice","noticelist",noticelist);
+	public String adminNoticeGet() {
+		return "/admin_noticeInsert";
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView adminNoticePost(HttpServletRequest request) {
+		int notice_admin_num = (int) request.getSession().getAttribute("notice_admin_num");
+		int noticelist = dao.adminNoticeInsert(notice_admin_num);
+		ModelAndView mav = new ModelAndView("admin_notice", "noticelist", noticelist);
 		return mav;
 	}
+
 }

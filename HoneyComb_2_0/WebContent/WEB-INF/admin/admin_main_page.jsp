@@ -164,7 +164,7 @@ width: 100%;
 								<p>
 									<tr>
 										<td><a
-											href="javascript:window.location='/HoneyComb_2_0/admin/admin_notice.jsp'"
+											href="javascript:window.location='/HoneyComb_2_0/admin/admin_noticeInsert'"
 											class="myButton">팝업 공지</a></td>
 									</tr>
 								<p>
