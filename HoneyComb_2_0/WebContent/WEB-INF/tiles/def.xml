@@ -56,5 +56,11 @@
 		<put-attribute name="title" value="SALARY" />
 		<put-attribute name="body" value="/WEB-INF/view/salary/main.jsp" />
 	</definition>
+	
+	<definition name="chat_main" extends="base_layout">
+		<put-attribute name="title" value="CHAT" />
+		<put-attribute name="body" value="/WEB-INF/view/chat/Chat_main.jsp" />
+	</definition>
+	
 
 </tiles-definitions>
