@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<select id="comadminlist" resultType="admin.db.AdminInfo">
-		select * from complete_com
+		select * from temp_com
 		where com_num = #{com_num}
 	</select>
 
