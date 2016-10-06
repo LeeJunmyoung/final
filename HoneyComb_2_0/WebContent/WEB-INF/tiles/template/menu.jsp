@@ -31,7 +31,7 @@
 
 		<ul>
 
-			<li><a href="/HoneyComb/Chatting/Chat_main.chat">MESSAGE</a></li>
+			<li><a href="/HoneyComb_2_0/chatting/mainchat.do">MESSAGE</a></li>
 			<li><a href="/HoneyComb_2_0/cloud/main">CLOUD</a></li>
 			<li><a href="/HoneyComb/page_layout/Option/Option_home.jsp">OPTION</a></li>
 			<li><a href="/HoneyComb_2_0/salary/main.do">SALARY</a></li>

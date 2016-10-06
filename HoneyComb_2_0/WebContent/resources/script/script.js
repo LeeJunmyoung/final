@@ -137,10 +137,9 @@ function sendChildValue() {
 };
 
 function tomain(){
-	
-	
 	location="/HoneyComb_2_0/index.jsp"
 }
 function goback(){
 	history.go(-1);
 }
+
