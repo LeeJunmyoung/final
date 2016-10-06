@@ -8,22 +8,25 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="/HoneyComb_2_0/resources/script/cloudScript.js"></script>
 <script>
-if('${param.upload}'){
-	opener.location.reload();
-	window.close();
-}; 
-function done(){
-	if('${param.upload}'){
-		opener.location.reload();
-		window.close();
-	};
-};
+$(function(){
+	if ('${param.upload}') {
+			opener.location.reload();
+			window.close();
+		};
+		$("#uploadFile").change(function(){
+			fullPath = $("#uploadFile").val();
+			cPath = fullPath.lastIndexOf("\\");
+			fName = fullPath.substring(cPath+1);
+			folder = ${folder};
+			alert(fName)
+		})
+	});
 </script>
 
 </head>
 <body>
 	<form name="form"	enctype="multipart/form-data" method="post">
-		<input type="file" name="uploadfile">
+		<input type="file" name="uploadfile" id="uploadFile">
 		<c:if test="${com_pos_num < 3}">
 			보안설정<input type="checkbox" name="security">
 		</c:if>
