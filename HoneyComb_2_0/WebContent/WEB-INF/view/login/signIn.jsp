@@ -204,7 +204,7 @@ width:250;
                 <div class="row">
                   <div class="col-md-12 text-center">
                     <h1>HONEYCOMB</h1><p></p><p></p>
-            <form action="members.do" method="post" name="myform" id="myform" <%-- OnSubmit="return checkIt()" --%>>
+            <form action="members.do" method="post" name="myform" id="myform"  OnSubmit="return checkIt()" >
 	<!-- 이메일 입력창 -->
     <input type="text" value="${email}" placeholder="email" name="email" id="email"/>
     <input type="button"  id="mailcheck" class=" btn btn-default" value="Email확인" OnClick="checkEmail(this.form)">

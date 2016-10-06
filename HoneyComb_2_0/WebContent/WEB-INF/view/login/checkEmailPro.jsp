@@ -24,7 +24,7 @@ text-align: center;
 cursor: pointer;
 }
 </style>
-<script type="text/javascript" src="/HoneyComb/view/script.js"></script>
+<script type="text/javascript" src="/HoneyComb_2_0/resources/script/script.js"></script>
 <script src=" https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 <script type="text/javascript">
@@ -32,7 +32,7 @@ $(function() {
 
 $('#insertKey').keyup(function(){
 	var key = $('#insertKey').val();
-	var key2 = '${numcheck}';
+	var key2 = '${numCheck}';
 	$('ok').attr('disabled', true);
 	$('#keyCheck').text('');
 		if(key == key2){

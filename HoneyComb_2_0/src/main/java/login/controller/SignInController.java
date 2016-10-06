@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -65,6 +66,16 @@ public class SignInController  {
 		
 		return chkMail;
 	}
+	@RequestMapping("checkEmailPro.do")//회원가입 이메일 인증
+	public String checkEmailPro(Model model,HttpServletRequest request, HttpServletResponse response) throws MessagingException{
+		
+		MailSender mailsender = new MailSender();
+		String email = request.getParameter("email");
+		int numCheck = mailsender.emailSender(email);
+		model.addAttribute("numCheck", numCheck);
+		
+		return "checkEmailPro";
+	}
 	@RequestMapping("checkEmail_y.do") //이메일이 중복되지않을 경우
 	public String checkEmail_y(String email){
 		System.out.println("email_y::"+email);
@@ -74,11 +85,6 @@ public class SignInController  {
 	public String checkEmail_n(String email){
 		System.out.println("email_n::"+email);
 		return "checkEmail_n";
-	}
-	@RequestMapping("checkEmailPro.do")
-	public String checkEmailPro(){
-		
-		return "checkEmailPro";
 	}
 	
 }
