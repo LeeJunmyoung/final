@@ -62,6 +62,9 @@ public class CompanyCheckController {
 		request.getSession().setAttribute("com_dept_name", lodb.getCom_dept_name());
 		request.getSession().setAttribute("com_pos_name", lodb.getCom_pos_name());
 		
+		System.out.println("lodb:::"+lodb.toString());
+		
+		
 		
 		return "main_send";
 	}

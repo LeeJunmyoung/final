@@ -26,6 +26,9 @@ public class Chat_Main_Controller {
 		
 		
 		
+		
+		
+		
 		return "chat_main";
 	}
 	

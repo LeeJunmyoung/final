@@ -4,6 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="chat">
 
+<select id="view_my_chatroom" parameterType="String" resultSets="chat.db.ChatRoomDataBean" >
+select * from chat where chat_member_participation like #{mem_num}
+</select>
 
 
 

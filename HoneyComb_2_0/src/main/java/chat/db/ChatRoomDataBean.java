@@ -2,11 +2,15 @@ package chat.db;
 
 public class ChatRoomDataBean {
 	private int chat_Num;
-	private String chat_mem_name;
 	private String chat_Member_Participation;
 	private String last_Chat_Date;
 	private String last_Chat_Conversation;
-	private String chat_partner;
+	private String chat_mem_name;
+
+
+	
+
+	
 	private String last_Chat_Member;
 	private String last_Chat_Read;
 	private String profile_IMG;
@@ -31,12 +35,7 @@ public class ChatRoomDataBean {
 	public void setLast_Chat_Read(String last_Chat_Read) {
 		this.last_Chat_Read = last_Chat_Read;
 	}
-	public String getChat_partner() {
-		return chat_partner;
-	}
-	public void setChat_partner(String chat_partner) {
-		this.chat_partner = chat_partner;
-	}
+	
 	public int getChat_Num() {
 		return chat_Num;
 	}

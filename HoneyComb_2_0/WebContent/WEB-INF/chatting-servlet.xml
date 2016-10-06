@@ -9,6 +9,40 @@
 
 
 
+	<context:annotation-config />
+	
+	
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles/def.xml</value>
+			</list>
+		</property>
+		<property name="preparerFactoryClass"
+			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
+			
+	</bean>
+
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+			<property name="order" value="1" />
+	</bean>
+
+
+	<bean id="jspviewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/chat/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="2" />
+	</bean>
+
+
+
+<bean id="Chat_Main_Controller" class="chat.controller.Chat_Main_Controller" ></bean>
 
 
 
