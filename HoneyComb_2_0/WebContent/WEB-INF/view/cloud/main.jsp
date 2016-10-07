@@ -64,17 +64,19 @@
 <input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}">
 	<label for="${cloudlist.file_num}">
 		<div style="border:5px solid">
-		  file_num :::${cloudlist.file_num}<br>
+		  
 		  file_name :::${cloudlist.file_name}<br>
-		  file_path:::${cloudlist.file_path}<br>
 		  file_uploader :::${cloudlist.file_uploader}<br>
 		  file_size :::${cloudlist.file_size}<br>
 		  file_date :::${cloudlist.file_date}<br>
+		  
+<%-- 		  file_num :::${cloudlist.file_num}<br>
 		  com_num :::${cloudlist.com_num}<br>
 		  folder :::${cloudlist.folder}<br>
+		  file_path:::${cloudlist.file_path}<br>
 		  promgr_num :::${cloudlist.promgr_num}<br>
 		  mem_num :::${cloudlist.mem_num}<br>
-		  com_pos_num :::${cloudlist.com_pos_num}<br>
+		  com_pos_num :::${cloudlist.com_pos_num}<br> --%>
 		</div>
 	</label>
 </c:forEach>
