@@ -125,7 +125,7 @@ public class LogOnDataBean {
 		this.pnum3 = pnum3;
 	}
 
-	
+
 	
 	
 	
