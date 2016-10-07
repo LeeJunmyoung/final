@@ -5,13 +5,16 @@
 <html>
 <head>
 <title>Insert title here</title>
-
+<script type='text/javascript'
+	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script>
 
 function view_resume(mem_num) {
 
 	/* "final_test/mem_resume.do?mem_num=" + mem_num */
-	window.open("/Final_Testing/option/mem_resume?mem_num=" + mem_num, "", "toolbar=no,location=no,status=no,menubar=no scrollbars=no,resizable=no,left=600, top=20,width=700,height=920");
+	window.open("/HoneyComb_2_0/dept/mem_resume?mem_num=" + mem_num, "", "toolbar=no,location=no,status=no,menubar=no scrollbars=no,resizable=no,left=600, top=20,width=700,height=920");
 }
 
 </script>
@@ -68,11 +71,24 @@ tr, td {
 #email {
 	width: 210px;
 }
+
+#h2_title {
+	font-size: 30px;
+	text-align: center;
+}
 </style>
 
 </head>
 <body onselectstart="return false" ondragstart="return false">
-
+<br>
+<br>
+<br>
+<br>
+<h2 id="h2_title">${ com_dept_name }</h2>
+<br>
+<br>
+<br>
+<br>
 	<table>
 		<tr>
 			<td class="title">직 급</td>

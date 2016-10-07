@@ -4,14 +4,19 @@
 <html>
 <head>
 <!-- <title>Insert title here</title> -->
+<script type='text/javascript'
+	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script>
 
-function chart_click(num) {
+function chart_click(num, name) {
 	// 해당 부서에 등록되어 있는 사원 리스트 조회
 	
 	var com_dept_num = num;
+	var com_dept_name = name;
 
-	location.href="/Final_Testing/option/dept_memList?com_dept_num=" + com_dept_num;
+	location.href="/HoneyComb_2_0/dept/dept_memList?com_dept_num=" + com_dept_num + "&com_dept_name=" + com_dept_name;
 	
 }
 
@@ -20,7 +25,6 @@ function chart_click(num) {
 <style>
 body {
 	width: 100%;
-	margin-top: 2%;
 }
 
 #chart {
@@ -50,6 +54,7 @@ tr, td {
 	margin: auto;
 	text-align: center;
 	font-size: 14px;
+	line-height: 40px;
 }
 
 .box_CEO {
@@ -58,6 +63,7 @@ tr, td {
 	margin: auto;
 	text-align: center;
 	font-size: 14px;
+	line-height: 40px;
 }
 
 .box_button {
@@ -67,9 +73,9 @@ tr, td {
 	text-align: center;
 	border: 2px solid white;
 	cursor: pointer;
-	line-height: 38px;
-	width: 89px;
-	height: 38px;
+	line-height: 40px;
+	width: 92px;
+	height: 40px;
 	margin-bottom: 20px;
 	font-size: 14px;
 }
@@ -130,27 +136,42 @@ tr, td {
 }
 
 #div_up_1 {
-	margin-right: 43px;
+	margin-left: 2px;
+	margin-right: 47px;
 }
 
 #div_up_2 {
-	margin-right: 46.5px;
+	margin-right: 45px;
 }
 
 #div_up_3 {
-	margin-right: 49.5px;
+	margin-right: 48px;
 }
 
 #div_up_4 {
-	margin-right: 50.5px;
+	margin-right: 47px;
 }
 
 #div_no_margin {
 	margin-right: 0px;
 }
+
+#h2_title {
+	font-size: 30px;
+	text-align: center;
+}
 </style>
 </head>
 <body onselectstart="return false" ondragstart="return false">
+<br>
+<br>
+<br>
+<br>
+<h2 id="h2_title">ORGANIZATION CHART</h2>
+<br>
+<br>
+<br>
+<br>
 	<div id="chart">
 
 		<div id="div_px">
@@ -221,7 +242,7 @@ tr, td {
 									<td></td>
 									<td></td>
 									<td colspan="2" rowspan="2" class="box_button"
-										onclick="chart_click(${ dept.key })">${ dept.value }</td>
+										onclick="chart_click(${ dept.key }, '${ dept.value }')">${ dept.value }</td>
 									<td></td>
 									<td></td>
 								</tr>
@@ -354,7 +375,7 @@ tr, td {
 					<div class="div_location" id="div_up_1">
 						<c:forEach var="dept" items="${ dept }">
 							<c:if test="${ dept.key gt 1 && dept.key lt 5 }">
-								<div class="box_button" onclick="chart_click(${ dept.key })">${ dept.value }</div>
+								<div class="box_button" onclick="chart_click(${ dept.key }, '${ dept.value }')">${ dept.value }</div>
 							</c:if>
 						</c:forEach>
 					</div>
@@ -362,7 +383,7 @@ tr, td {
 					<div class="div_location" id="div_up_2">
 						<c:forEach var="dept" items="${ dept }">
 							<c:if test="${ dept.key gt 4 && dept.key lt 8 }">
-								<div class="box_button" onclick="chart_click(${ dept.key })">${ dept.value }</div>
+								<div class="box_button" onclick="chart_click(${ dept.key }, '${ dept.value }')">${ dept.value }</div>
 							</c:if>
 						</c:forEach>
 					</div>
@@ -370,7 +391,7 @@ tr, td {
 					<div class="div_location" id="div_up_3">
 						<c:forEach var="dept" items="${ dept }">
 							<c:if test="${ dept.key gt 7 && dept.key lt 10 }">
-								<div class="box_button" onclick="chart_click(${ dept.key })">${ dept.value }</div>
+								<div class="box_button" onclick="chart_click(${ dept.key }, '${ dept.value }')">${ dept.value }</div>
 							</c:if>
 						</c:forEach>
 					</div>
@@ -378,7 +399,7 @@ tr, td {
 					<div class="div_location" id="div_up_4">
 						<c:forEach var="dept" items="${ dept }">
 							<c:if test="${ dept.key gt 9 && dept.key lt 12 }">
-								<div class="box_button" onclick="chart_click(${ dept.key })">${ dept.value }</div>
+								<div class="box_button" onclick="chart_click(${ dept.key }, '${ dept.value }')">${ dept.value }</div>
 							</c:if>
 						</c:forEach>
 					</div>
@@ -386,7 +407,7 @@ tr, td {
 					<div class="div_location" id="div_no_margin">
 						<c:forEach var="dept" items="${ dept }">
 							<c:if test="${ dept.key gt 11 && dept.key le 14 }">
-								<div class="box_button" onclick="chart_click(${ dept.key })">${ dept.value }</div>
+								<div class="box_button" onclick="chart_click(${ dept.key }, '${ dept.value }')">${ dept.value }</div>
 							</c:if>
 						</c:forEach>
 					</div>

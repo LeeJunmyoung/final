@@ -56,15 +56,27 @@
 		<put-attribute name="title" value="SALARY" />
 		<put-attribute name="body" value="/WEB-INF/view/salary/main.jsp" />
 	</definition>
-	
+
 	<definition name="chat_main" extends="base_layout">
 		<put-attribute name="title" value="CHAT" />
 		<put-attribute name="body" value="/WEB-INF/view/chat/Chat_main.jsp" />
 	</definition>
-	
-   <definition name="myPage" extends="base_layout">
+
+	<definition name="myPage" extends="base_layout">
 		<put-attribute name="title" value="MYPAGE" />
 		<put-attribute name="body" value="/WEB-INF/view/mypage/mypage.jsp" />
 	</definition>
-	
+
+	<definition name="dept" extends="base_layout">
+		<put-attribute name="title" value="DEPT" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/hr/dept/organization_chart.jsp" />
+	</definition>
+
+	<definition name="dept_mem" extends="base_layout">
+		<put-attribute name="title" value="DEPT MEMBER" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/hr/dept/dept_mem_list.jsp" />
+	</definition>
+
 </tiles-definitions>

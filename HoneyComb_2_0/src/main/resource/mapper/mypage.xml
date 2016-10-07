@@ -32,23 +32,23 @@
 		from members where mem_num=#{mem_num}
 	</select>
 
-	<select id="school_select" parameterType="int" resultType="dept_chart.db.Mem_School">
+	<select id="school_select" parameterType="int" resultType="dept.db.Mem_School">
 		select * from mem_school where mem_num=#{mem_num}
 	</select>
 
-	<select id="edu_select" parameterType="int" resultType="dept_chart.db.Mem_Edu">
+	<select id="edu_select" parameterType="int" resultType="dept.db.Mem_Edu">
 		select * from mem_edu where mem_num=#{mem_num}
 	</select>
 
-	<select id="certi_select" parameterType="int" resultType="dept_chart.db.Mem_Certi">
+	<select id="certi_select" parameterType="int" resultType="dept.db.Mem_Certi">
 		select * from mem_certi where mem_num=#{mem_num}
 	</select>
 
-	<select id="mili_select" parameterType="int" resultType="dept_chart.db.Mem_Mili">
+	<select id="mili_select" parameterType="int" resultType="dept.db.Mem_Mili">
 		select * from mem_mili where mem_num=#{mem_num}
 	</select>
 
-	<select id="career_select" parameterType="int" resultType="dept_chart.db.Mem_Career">
+	<select id="career_select" parameterType="int" resultType="dept.db.Mem_Career">
 		select * from mem_career where mem_num=#{mem_num}
 	</select>
 

@@ -54,12 +54,6 @@ li {
 					<li><a href="/HoneyComb_2_0/dept/chart">DEPT</a></li>
 				</ul></li>
 			<li><a href="/HoneyComb_2_0/mypage/mypage">MYPAGE</a></li>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
 			<li><a href="#logout" onclick="logout();return false;"
 				onkeypress="this.onclick;">LOG OUT</a></li>
 

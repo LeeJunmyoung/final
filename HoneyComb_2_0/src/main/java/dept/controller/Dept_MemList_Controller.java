@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -11,36 +12,31 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import dept.db.DeptDAO;
 
-
 @Controller
-@RequestMapping("/dept_memList")
 public class Dept_MemList_Controller {
-	
+
 	private DeptDAO dao;
-	
-	
+
 	public void setDao(DeptDAO dao) {
 		this.dao = dao;
 	}
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public String dept_ListView() {
-		
-		
-		return "dept_mem_list";
-	}
 
-	@ModelAttribute("dept_List")
-	public List dept_ListSQL(@RequestParam("com_dept_num") int com_dept_num, HttpSession session) {
+	@RequestMapping("/dept_memList")
+	public ModelAndView dept_ListSQL(@RequestParam("com_dept_num") int com_dept_num,
+			@RequestParam("com_dept_name") String com_dept_name, HttpServletRequest request) {
+
+		int com_num = (int) request.getSession().getAttribute("com_num");
+		List dept_List = dao.dept_List(com_num, com_dept_num);
 		
-		int com_num = (int) session.getAttribute("com_num");
-		List mem_List = new ArrayList<>();
-		mem_List = dao.dept_List(com_num, com_dept_num);
-		
-		return mem_List;
+		ModelAndView mav = new ModelAndView("dept_mem");
+		mav.addObject("dept_List", dept_List);
+		mav.addObject("com_dept_name", com_dept_name);
+
+		return mav;
 	}
 
 }

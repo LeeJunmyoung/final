@@ -25,7 +25,7 @@ public class Dept_Controller {
 	@RequestMapping("/chart")
 	public String dept_Main_View() {
 
-		return "organization_chart";
+		return "dept";
 	}
 
 	@ModelAttribute("dept")
