@@ -14,7 +14,7 @@ public class Cloud_makeZipFile {
 			String[] files = new String[(info.size() / 2)];
 			String zipName =  MakeTempPath();
 			try{
-			
+			System.out.println("zipfile 로 들어옴");
 			ZipOutputStream out =  new ZipOutputStream(new FileOutputStream(zipName));
 			byte[] buf = new byte[1024];
 			System.out.println("포문 들어감2");
@@ -54,7 +54,7 @@ public class Cloud_makeZipFile {
 			}
 			temp_path += str;
 		}
-		String file_path = "E:/cloud/" + temp_path + timepath + ".zip";
+		String file_path = "D:/cloud/" + temp_path + timepath + ".zip";
 		return file_path;
 	}
 

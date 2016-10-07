@@ -20,7 +20,7 @@ $(function(){
 		specialCharCk($("#folder").val());
 		cPath = fullPath.lastIndexOf("\\");
 		fName = fullPath.substring(cPath+1);
-		folder = '${folder}';
+		folder = '${param.folder}';
 		dupliCk(fName,folder);
 	})
 });

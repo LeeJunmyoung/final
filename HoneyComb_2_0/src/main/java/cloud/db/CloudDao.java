@@ -54,6 +54,7 @@ public class CloudDao extends SqlSessionDaoSupport{
 		map.put("item", item);
 		map.put("folder", folder);
 		map.put("com_num", com_num);
+		System.out.println("folder:"+folder);
 		String dupli = getSqlSession().selectOne("cloud.dupliCk",map);
 		return dupli;
 	}

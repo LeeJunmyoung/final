@@ -18,20 +18,19 @@ $("#folder").keyup(function(){
 	duplInit();
 	blankCk(item);
 	specialCharCk(item);
-	var folder = '${folder}';
+	var folder = '${param.folder}';
 	dupliCk(item ,folder)
 	});
 });
 			
 </script>
 
-
 </head>
 <body>
  생성할 폴더명을 입력해 주세요
- <form method="post">
+ <form method="post" action="/HoneyComb_2_0/cloud/makeFolder">
  	<input type="text" name="item" id="folder">
- 	<input type="hidden" name="folder" value="${folder}">
+ 	<input type="hidden" name="folder" value="${param.folder}">
  	<input type="submit" value="확인" id="submit" disabled="disabled">
  	<p id="dupli"/>
  </form>

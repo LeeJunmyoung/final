@@ -21,12 +21,13 @@ function dupliCk(item, folder) {
 	var folder = folder
 	$.ajax({
 		type : "POST",
-		url : "dupleCk",
+		url : "/HoneyComb_2_0/cloud/dupleCk",
 		data : {
 			"item" : item,
 			"folder" : folder
 		},
 		success : function(data) {
+			console.log(data);
 			if (data == 0) {
 				/*$("#submit").attr("disabled",false);*/
 			} else {
@@ -37,4 +38,19 @@ function dupliCk(item, folder) {
 		}
 	});
 };
+/*메인에서 쓰는 script*/
+function openupload(folder){
+	window.open("upload?folder="+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
+}
+function openDelete(selectedFiles){
+	var selectedFiles = selectedFiles;
+	window.open("delete?selectedFiles="+selectedFiles,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=800,height=400");
+}
+function openMakeFolder(folder){
+	
+	window.open("makeFolder?folder="+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
+}
 
+function changeFolder(folder){
+	location.href="main?folder="+folder;
+}

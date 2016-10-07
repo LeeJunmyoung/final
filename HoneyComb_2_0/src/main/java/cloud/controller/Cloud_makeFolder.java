@@ -30,8 +30,8 @@ public class Cloud_makeFolder {
 //파일경로 지정
 	private String makeFolderPath(int com_num){
 		String path = null;
-		path = "%"+String.valueOf(com_num);
-		for(int i = 0; i<20; i++){
+		path = "$"+String.valueOf(com_num);
+		for(int i = 0; i<15; i++){
 			int r = (int)(Math.random()*100);
 			String str = null;
 			if (r<=25){
