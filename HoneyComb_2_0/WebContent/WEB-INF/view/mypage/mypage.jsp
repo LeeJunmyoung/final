@@ -393,7 +393,7 @@ a#account span {
 		<div id="div_pro_search">
 
 			<form name="profile_img_upload" method="post"
-				enctype="multipart/form-data" action="#"
+				enctype="multipart/form-data" action="profile_img_up"
 				onsubmit="return file_extension(this);">
 				<div id="div_file">
 					<div id="div_file_search">

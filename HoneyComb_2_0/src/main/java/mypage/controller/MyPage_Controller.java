@@ -1,7 +1,8 @@
 package mypage.controller;
 
 import java.io.File;
-
+import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -51,13 +52,39 @@ public class MyPage_Controller {
 	}
 
 	@RequestMapping("/profile_img_up")
-	public void profile_Img_Upload(HttpServletRequest request, @RequestParam("profile_img") MultipartRequest pro) {
+	public String profile_Img_Upload(HttpServletRequest request, @RequestParam("profile_img") MultipartFile pro) {
 
-		String save_path = request.getServletContext().getRealPath("profile_img");
-		System.out.println("save_path(파일경로):::" + save_path);
+		int mem_num = (int) request.getSession().getAttribute("mem_num");
+		String savePath = request.getServletContext().getRealPath("profile_img");
+
+		System.out.println("profile_Img_Upload savePath ::: " + savePath);
 		
-		int sizeLimit = 1024 * 1024 * 15;
+		Date d = new Date();
+		String img_add_date = String.valueOf(d.getTime());
 		
+		String img_name = pro.getOriginalFilename();
+		String file_name=img_add_date+img_name;
+		String file_path= "C:\\Users\\user1\\git\\final\\HoneyComb_2_0\\WebContent\\honeycomb_profile\\"+file_name;
+		
+		File img = new File(savePath + file_name);
+		
+		String ss = "/HoneyComb_2_0/honeycomb_profile/" + file_name;
+		
+		try {
+			pro.transferTo(img);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		dao.profile_Change(mem_num, ss);
+		System.out.println(ss);
+		request.getSession().setAttribute("profile_img", ss);
+		
+		return "myPage";
 	}
 
 	@RequestMapping("/my_resume")

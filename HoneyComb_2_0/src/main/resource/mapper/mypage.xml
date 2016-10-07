@@ -15,7 +15,7 @@
 		com_num=#{com_num} where mem_num=#{mem_num}
 	</update>
 
-	<!-- !!! -->
+	<!-- 프로필 이미지 -->
 	<update id="profile_change" parameterType="Map">
 		update members set
 		profile_img=#{profile_img} where mem_num=#{mem_num}
