@@ -13,14 +13,17 @@ $(function(){
 			opener.location.reload();
 			window.close();
 		};
-		$("#uploadFile").change(function(){
-			fullPath = $("#uploadFile").val();
-			cPath = fullPath.lastIndexOf("\\");
-			fName = fullPath.substring(cPath+1);
-			folder = ${folder};
-			alert(fName)
-		})
-	});
+	$("#uploadFile").change(function(){
+		duplInit()
+		fullPath = $("#uploadFile").val();
+		blankCk(fullPath);
+		specialCharCk($("#folder").val());
+		cPath = fullPath.lastIndexOf("\\");
+		fName = fullPath.substring(cPath+1);
+		folder = '${folder}';
+		dupliCk(fName,folder);
+	})
+});
 </script>
 
 </head>
@@ -30,7 +33,8 @@ $(function(){
 		<c:if test="${com_pos_num < 3}">
 			보안설정<input type="checkbox" name="security">
 		</c:if>
-		<input type="submit" id="submit">
+		<input type="submit" id="submit" value="업로드" disabled="disabled">
+		<p id="dupli"/>
 	</form>
 	
 </body>

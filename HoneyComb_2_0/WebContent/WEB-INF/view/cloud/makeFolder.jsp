@@ -14,21 +14,12 @@ if('${param.upload}'){
 		window.close();
 	}; 
 $("#folder").keyup(function(){
-		var regExp = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
-		$("#submit").attr("disabled",false);
-		if($("#folder").val() ==""){
-			$("#dupli").html("")
-			$("#submit").attr("disabled",true);
-		}
-		else if(regExp.test($("#folder").val())){
-			
-			$("#dupli").html("<font color=red size=2>특수문자 (\\ , | , / , * , ? , < , > , :, ;, `, ~, !, @, #, $, %, ^, & )는 사용하실 수 없습니다..")
-			$("#submit").attr("disabled",true);
-		}else{
-			var item = $("#folder").val();
-			var folder = '${folder}';
-			dupliCk(item ,folder)
-		}
+	var item = $("#folder").val();
+	duplInit();
+	blankCk(item);
+	specialCharCk(item);
+	var folder = '${folder}';
+	dupliCk(item ,folder)
 	});
 });
 			
