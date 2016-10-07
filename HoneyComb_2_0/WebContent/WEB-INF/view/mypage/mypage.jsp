@@ -287,6 +287,7 @@ a#pw {
 a:HOVER#pw {
 	background: url(/HoneyComb_2_0/resources/images/pw_two.png) no-repeat;
 	background-size: 40px;
+	cursor: pointer;
 }
 
 a#pw span {
@@ -307,6 +308,7 @@ a:HOVER#resume {
 	background: url(/HoneyComb_2_0/resources/images/resume_two.png)
 		no-repeat;
 	background-size: 40px;
+	cursor: pointer;
 }
 
 a#resume span {
@@ -327,6 +329,7 @@ a:HOVER#account {
 	background: url(/HoneyComb_2_0/resources/images/account_two.png)
 		no-repeat;
 	background-size: 40px;
+	cursor: pointer;
 }
 
 a#account span {

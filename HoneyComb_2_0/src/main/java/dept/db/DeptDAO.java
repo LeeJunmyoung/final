@@ -1,4 +1,4 @@
-package dept_chart.db;
+package dept.db;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ public class DeptDAO extends SqlSessionDaoSupport {
 	public Map<Integer, String> dept_Mapping(int com_num) {
 		// com_dept_num, com_dept_name 매핑 (조직도)
 
-		ArrayList ddto = (ArrayList) getSqlSession().selectList("option.select", com_num);
+		ArrayList ddto = (ArrayList) getSqlSession().selectList("dept.select", com_num);
 		Map dept_map = new HashMap<Integer, String>();
 
 		for (Object dept : ddto) {
@@ -27,7 +27,7 @@ public class DeptDAO extends SqlSessionDaoSupport {
 	public String com_CEO(int com_num) {
 		// 회사대표 이름
 		
-		String ceo = getSqlSession().selectOne("option.ceoName", com_num);
+		String ceo = getSqlSession().selectOne("dept.ceoName", com_num);
 
 		return ceo;
 	}
@@ -38,7 +38,7 @@ public class DeptDAO extends SqlSessionDaoSupport {
 		Map map= new HashMap<>();
 		map.put("com_num", com_num);
 		map.put("com_dept_num", com_dept_num);
-		ArrayList mem_List = (ArrayList) getSqlSession().selectList("option.memList", map);
+		ArrayList mem_List = (ArrayList) getSqlSession().selectList("dept.memList", map);
 		
 		return mem_List;
 	}
@@ -46,7 +46,7 @@ public class DeptDAO extends SqlSessionDaoSupport {
 	public List base_Data(int mem_num) {
 		// 이력서 기본정보
 		
-		List base_list = getSqlSession().selectList("option.base_select", mem_num);
+		List base_list = getSqlSession().selectList("dept.base_select", mem_num);
 
 		return base_list;
 	}
@@ -54,7 +54,7 @@ public class DeptDAO extends SqlSessionDaoSupport {
 	public List school_Data(int mem_num) {
 		// 학력
 		
-		List school_list = getSqlSession().selectList("option.school_select", mem_num);
+		List school_list = getSqlSession().selectList("dept.school_select", mem_num);
 
 		return school_list;
 	}
@@ -62,7 +62,7 @@ public class DeptDAO extends SqlSessionDaoSupport {
 	public List edu_Data(int mem_num) {
 		// 교육이수
 		
-		List edu_list = getSqlSession().selectList("option.edu_select", mem_num);
+		List edu_list = getSqlSession().selectList("dept.edu_select", mem_num);
 
 		return edu_list;
 	}
@@ -70,7 +70,7 @@ public class DeptDAO extends SqlSessionDaoSupport {
 	public List certi_Data(int mem_num) {
 		// 자격증
 		
-		List certi_list = getSqlSession().selectList("option.certi_select", mem_num);
+		List certi_list = getSqlSession().selectList("dept.certi_select", mem_num);
 
 		return certi_list;
 	}
@@ -78,7 +78,7 @@ public class DeptDAO extends SqlSessionDaoSupport {
 	public List mili_Data(int mem_num) {
 		// 병역
 		
-		List mili_list = getSqlSession().selectList("option.mili_select", mem_num);
+		List mili_list = getSqlSession().selectList("dept.mili_select", mem_num);
 
 		return mili_list;
 	}
@@ -86,7 +86,7 @@ public class DeptDAO extends SqlSessionDaoSupport {
 	public List career_Data(int mem_num) {
 		// 경력
 		
-		List career_list = getSqlSession().selectList("option.career_select", mem_num);
+		List career_list = getSqlSession().selectList("dept.career_select", mem_num);
 
 		return career_list;
 	}

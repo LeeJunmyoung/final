@@ -82,7 +82,8 @@ table {
 }
 #header_honey_a{
 	color: #fff;
-	  text-decoration: none;	
+	text-decoration: none;
+		
 }
 #page_center_contents{
 position:relative;
@@ -253,3 +254,5 @@ display: block;
 	height: 900px;
 	margin:auto;
 }
+
+

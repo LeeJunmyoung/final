@@ -1,4 +1,4 @@
-package dept_chart.controller;
+package dept.controller;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dept_chart.db.DeptDAO;
+import dept.db.DeptDAO;
 
 @Controller
 public class Dept_MemResume_Controller {
@@ -23,7 +23,7 @@ public class Dept_MemResume_Controller {
 	@RequestMapping("/mem_resume")
 	public String mem_Data() {
 		
-		return "dept_chart/dept_mem_resume";
+		return "dept_mem_resume";
 	}
 	
 	@ModelAttribute("base_list")

@@ -1,4 +1,4 @@
-package dept_chart.controller;
+package dept.controller;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import dept_chart.db.DeptDAO;
+import dept.db.DeptDAO;
 
 
 @Controller
@@ -25,7 +25,7 @@ public class Dept_Controller {
 	@RequestMapping("/chart")
 	public String dept_Main_View() {
 
-		return "dept_chart/organization_chart";
+		return "organization_chart";
 	}
 
 	@ModelAttribute("dept")

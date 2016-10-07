@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dept">
+
+
+	<select id="select" parameterType="int" resultType="dept.db.DeptDTO">
+		select
+		distinct com_dept_num, com_dept_name from members where
+		com_num=#{com_num} order by com_dept_num
+	</select>
+
+	<select id="ceoName" parameterType="int" resultType="String">
+		select name
+		from members where com_num=#{com_num} and com_pos_num=1
+	</select>
+
+	<select id="memList" parameterType="Map"
+		resultType="dept.db.Dept_Person_InfoDataBean">
+		select com_pos_name, name, mem_num, phone_num, email from
+		members where com_dept_num=#{com_dept_num} and com_num=#{com_num}
+		order by com_pos_num
+	</select>
+
+	<select id="base_select" parameterType="int" resultType="company.db.MembersDTO">
+		select *
+		from members where mem_num=#{mem_num}
+	</select>
+
+	<select id="school_select" parameterType="int" resultType="dept.db.Mem_School">
+		select * from mem_school where mem_num=#{mem_num}
+	</select>
+
+	<select id="edu_select" parameterType="int" resultType="dept.db.Mem_Edu">
+		select * from mem_edu where mem_num=#{mem_num}
+	</select>
+
+	<select id="certi_select" parameterType="int" resultType="dept.db.Mem_Certi">
+		select * from mem_certi where mem_num=#{mem_num}
+	</select>
+
+	<select id="mili_select" parameterType="int" resultType="dept.db.Mem_Mili">
+		select * from mem_mili where mem_num=#{mem_num}
+	</select>
+
+	<select id="career_select" parameterType="int" resultType="dept.db.Mem_Career">
+		select * from mem_career where mem_num=#{mem_num}
+	</select>
+
+
+</mapper>

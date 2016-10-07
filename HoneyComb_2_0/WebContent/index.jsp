@@ -5,12 +5,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="login/LoginMainFrame.do">test.do</a>
-	<br>
-	<a href="login/signIn.do">SignIn</a>
-	
-	<a href="cal/cal_main.do">cal</a>
-</body>   
+	<%
+		response.sendRedirect("login/LoginMainFrame.do");
+	%>
+</body>
 
 </html>
- 

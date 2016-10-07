@@ -16,7 +16,7 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-	
+
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -92,8 +92,8 @@
 		<servlet-name>main</servlet-name>
 		<url-pattern>/main/*</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet>
 		<servlet-name>cal</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -103,7 +103,7 @@
 		<servlet-name>cal</servlet-name>
 		<url-pattern>/cal/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>chatting</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -113,8 +113,8 @@
 		<servlet-name>chatting</servlet-name>
 		<url-pattern>/chatting/*</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>mypage</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
@@ -123,8 +123,8 @@
 		<servlet-name>mypage</servlet-name>
 		<url-pattern>/mypage/*</url-pattern>
 	</servlet-mapping>
-	
-			<servlet>
+
+	<servlet>
 		<servlet-name>company</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
@@ -132,6 +132,16 @@
 	<servlet-mapping>
 		<servlet-name>company</servlet-name>
 		<url-pattern>/company/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>dept</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dept</servlet-name>
+		<url-pattern>/dept/*</url-pattern>
 	</servlet-mapping>
 
 </web-app>

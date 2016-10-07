@@ -1,4 +1,4 @@
-package dept_chart.db;
+package dept.db;
 
 public class Mem_Edu {
 
