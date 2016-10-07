@@ -50,7 +50,7 @@ li {
 			</a>
 				<ul class="dropdown-menu">
 					<li><a href="#">APPROVAL</a></li>
-					<li><a href="#">SALARY</a></li>
+					<li><a href="/HoneyComb_2_0/salary/main.do">SALARY</a></li>
 					<li><a href="/HoneyComb_2_0/dept/chart">DEPT</a></li>
 				</ul></li>
 			<li><a href="/HoneyComb_2_0/mypage/mypage">MYPAGE</a></li>

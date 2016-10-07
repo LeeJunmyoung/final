@@ -54,7 +54,7 @@
 
 	<definition name="salary_main" extends="base_layout">
 		<put-attribute name="title" value="SALARY" />
-		<put-attribute name="body" value="/WEB-INF/view/salary/main.jsp" />
+		<put-attribute name="body" value="/WEB-INF/view/hr/salary/main.jsp" />
 	</definition>
 
 	<definition name="chat_main" extends="base_layout">
