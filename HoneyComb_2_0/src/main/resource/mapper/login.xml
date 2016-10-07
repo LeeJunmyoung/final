@@ -31,7 +31,6 @@ update members set passwd=#{passwd} where email=#{email}
 
 
 
- 
 <select id="getMembers" parameterType="login.controller.LogOnDataBean">
 select * from members
 </select>
@@ -40,7 +39,7 @@ select count(email) from members where email = #{email}
 </select>
 
 <insert id="insertMember" parameterType="login.controller.LogOnDataBean">
-insert into members(mem_num, name, email, phone_num, passwd,birth_date,gender) values(member_seq.NEXTVAL,#{name},#{email},#{phone_num},#{passwd},#{birth_date},#{gender})
+insert into members(mem_num, name, email, phone_num, passwd, birth_date, gender) values(member_seq.NEXTVAL,#{name},#{email},#{phone_num},#{passwd},#{birth_date},#{gender})
 </insert> 
 
 </mapper>
