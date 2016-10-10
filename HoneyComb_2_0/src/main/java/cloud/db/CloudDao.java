@@ -25,6 +25,7 @@ public class CloudDao extends SqlSessionDaoSupport{
 		return cloudlist;
 	}
 	public void uploadFile(CloudInfo info){
+		getSqlSession().selectOne("cloud.promgrDupli", info);
 		getSqlSession().insert("cloud.upload", info);
 	}
 	

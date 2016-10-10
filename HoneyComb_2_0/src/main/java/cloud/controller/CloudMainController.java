@@ -80,28 +80,23 @@ public class CloudMainController implements ApplicationContextAware{
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,String folder,  HttpServletRequest request, String security, @RequestParam(value= "promgr_num",defaultValue = "0")int promgr_num, @RequestParam(required = false)String promgr_name){
+	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,@RequestParam(required = false)String folder,  HttpServletRequest request, String security, @RequestParam(value="promgr_num",defaultValue = "0")int promgr_num, @RequestParam(value = "promgr_name", defaultValue = "")String promgr_name){
+		System.out.println("넘어옴");
 		int com_pos_num = 0;
 		if(security != null){
 			com_pos_num = 1;
 		}
-		folder = (promgr_num > 0)?"%%promgrname":folder;
+		System.out.println("promgr_name::"+promgr_name);
+		if(promgr_num > 0){
+			folder = "%%"+promgr_name;
+			makeFolderPro("",folder,request,promgr_num);
+		};		
 		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, folder, request, com_pos_num, promgr_num);
 		dao.uploadFile(info);
+		
 		return "redirect:upload?upload=ok";
 	}
-		//폴더 내부에서 업로드
-/*	@RequestMapping(value="/upload/{folder}", method = RequestMethod.POST)
-	public String uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request, String security){
-		int com_pos_num = 0;
-		if(security != null ){
-			com_pos_num = 1;	
-		}
-		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, folder, request, com_pos_num);
-		dao.uploadFile(info);
-				return "redirect:upload?upload=ok";
-	}*/
-	
+		//폴더 내부에서 업로드	
 	/*프로젝트 업로드 컨트롤러*/
 	@RequestMapping(value="/uploadPromgr")
 	public ModelAndView uploadPromgr(@RequestParam("promgr_name")String promgr_name,@RequestParam("promgr_num") int promgr_num){
@@ -163,8 +158,8 @@ public class CloudMainController implements ApplicationContextAware{
 	}
 	/*폴더업로드*/
 	@RequestMapping(value="/makeFolder", method=RequestMethod.POST)
-	public String makeFolderPro(String folder, String item, HttpServletRequest request){
-		CloudInfo info =  new Cloud_makeFolder().uploadFolder(request, item, folder,0);
+	public String makeFolderPro(String folder, String item, HttpServletRequest request, @RequestParam(required = false) int promgr_num){
+		CloudInfo info =  new Cloud_makeFolder().uploadFolder(request, item, folder,promgr_num);
 		dao.uploadFile(info);
 		return "redirect:makeFolder?upload=ok";
 	}

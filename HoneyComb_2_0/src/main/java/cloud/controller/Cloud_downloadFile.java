@@ -24,10 +24,12 @@ public class Cloud_downloadFile extends AbstractView {
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		List info = (List) model.get("downloadInfo");
+		List info = (List)model.get("downloadInfo");
 		String file_name = null;
 		File file = null;
 		int toZip = 0;
+		System.out.println("info:"+info);
+		System.out.println("infosize:"+info.size());
 		if (info.size() > 3) {
 			Cloud_makeZipFile zipfile = new Cloud_makeZipFile();
 			file_name = zipfile.makeZipFile(info);
@@ -35,14 +37,15 @@ public class Cloud_downloadFile extends AbstractView {
 			response.setContentLength((int) file.length());
 			toZip = 1;
 		} else {
-
+			
 			String file_path = (String) info.get(0);
+			
 			file = new File(file_path);
 			response.setContentLength((int) file.length());
 			file_name = (String) info.get(1);
 		}
-		response.setHeader("Content-Disposition", "attatchment; filename = " + file_name);
-		response.setHeader("Content-Transfer-Encoding", "binary");
+		response.setHeader("Content-Disposition", "attatchment; filename = \"" + file_name+"\";");
+		System.out.println("filename::"+	file_name);
 		OutputStream out = response.getOutputStream();
 		FileInputStream fis = null;
 		

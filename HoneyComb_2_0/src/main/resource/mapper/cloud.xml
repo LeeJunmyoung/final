@@ -65,4 +65,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findUpper" parameterType="String" resultType="String">
 		select folder from cloud where file_path = #{folder}
 	</select>
+	<select id="promgrDupli" parameterType="cloud.db.CloudInfo" resultType="int">
+	 select count(*) from cloud
+	 <where>
+	 	com_num = #{com_num}
+	 	and promgr_num = #{promgr_num}
+	 	and folder = #{folder}
+	 </where>
+	
+	</select>
 </mapper>

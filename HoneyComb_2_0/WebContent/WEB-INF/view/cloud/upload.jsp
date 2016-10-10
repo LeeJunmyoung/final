@@ -28,17 +28,18 @@ $(function(){
 
 </head>
 <body>
-	<form name="form"	enctype="multipart/form-data" method="post">
+	<form name="form"	action="upload" enctype="multipart/form-data" method="post">
+		<c:if test="${promgrnum ne null|| promgrnum != 0}">
+			<input type="hidden" name="promgr_num" value="${promgr_num}">
+			<input type="hidden" name = "promgr_name" value="${promgr_name}"> 
+		</c:if>
 		<input type="file" name="uploadfile" id="uploadFile">
 		<c:if test="${com_pos_num < 3}">
 			보안설정<input type="checkbox" name="security">
 		</c:if>
 		<input type="submit" id="submit" value="업로드" disabled="disabled">
 		<p id="dupli"/>
-		<c:if test="${promgrnum ne null|| promgrnum != 0}">
-			<input type="hidden" name="promgr_num" value="${promgr_num}">
-			<input type="hidden" name = "promgr_name" value="${promgr_name}"> 
-		</c:if>
+	
 	</form>
 	
 </body>
