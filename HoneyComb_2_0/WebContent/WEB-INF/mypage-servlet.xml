@@ -72,6 +72,8 @@
 
 	<bean id="MyPage_Controller" class="mypage.controller.MyPage_Controller"
 		p:dao-ref="mypageDAO" />
-
+	
+	<!-- profile_img -->
+	<bean id="Profile_Img_Controller" class="mypage.controller.Profile_Img_Controller" p:dao-ref="mypageDAO" />
 
 </beans>

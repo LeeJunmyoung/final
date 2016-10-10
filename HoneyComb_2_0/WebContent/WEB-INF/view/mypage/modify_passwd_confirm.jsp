@@ -53,6 +53,7 @@
 			return false;
 		} else {
 			alert("비밀번호가 성공적으로 변경되었습니다");
+			//window.close();
 			return true;
 		}
 	}
@@ -130,7 +131,7 @@ table td {
 <body>
 
 			<form align="center" name="pwChange" method="post"
-				action="/HoneyComb_2_0/mypage/passwd_ch_view"
+				action="passwd_change"
 				onsubmit="return PW_Same()">
 				<h3>비밀번호 변경</h3>
 				<p>
@@ -140,7 +141,7 @@ table td {
 						<td><input width="100" height="50" type="password" id="pw" name="pw"
 							placeholder="PASSWORD"></td>
 						<td><input type="button" class="button"
-							onclick="return PW_Check('${sessionScope.passwd}')" value="확인"></td>
+							onclick="return PW_Check('${passwd}')" value="확인"></td>
 					</tr>
 					<tr>
 						<td class="pw_text">새로운 비밀번호</td>

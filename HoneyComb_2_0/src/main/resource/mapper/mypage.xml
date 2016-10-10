@@ -20,12 +20,16 @@
 		update members set
 		profile_img=#{profile_img} where mem_num=#{mem_num}
 	</update>
-
-	<!-- !!! -->
-	<delete id="com_delete_member" parameterType="int">
+	
+	<!-- 계정삭제 -->
+	<delete id="members_delete" parameterType="int">
 		delete from members
 		where mem_num=#{mem_num}
 	</delete>
+	
+	<select id="passwd_select" parameterType="int" resultType="String">
+		select passwd from members where mem_num=#{mem_num}
+	</select>
 
 	<select id="base_select" parameterType="int" resultType="company.db.MembersDTO">
 		select *

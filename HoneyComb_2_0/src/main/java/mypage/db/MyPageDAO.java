@@ -7,6 +7,13 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 public class MyPageDAO extends SqlSessionDaoSupport {
 	
+	public String passwd(int mem_num) {
+		
+		String passwd = getSqlSession().selectOne("mypage.passwd_select", mem_num);
+		
+		return passwd;
+	}
+	
 	public void passwd_Change(int mem_num, String passwd) {
 		// 비밀번호 바꾸기
 		
@@ -42,6 +49,13 @@ public class MyPageDAO extends SqlSessionDaoSupport {
 	
 	public void account_Delete(int mem_num) {
 		// 계정 탈퇴
+		
+		int members = getSqlSession().delete("mypage.members_delete", mem_num);
+		if (members >= 1) {
+			System.out.println("members table delete 성공");
+		} else {
+			System.out.println("members table delete 실패");
+		}
 		
 	}
 

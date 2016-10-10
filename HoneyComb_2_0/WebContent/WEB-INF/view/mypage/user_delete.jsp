@@ -1,11 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <html>
 <head>
-<title>relogin</title>
+<title>Account Drop</title>
 <script>
-	function user_check() {
+	function user_check(pw) {
 
-		var user_passwd = document.user.session.value; // user passwd
+		var user_passwd = pw; // user passwd
+		alert(user_passwd);
 		var pw1 = document.user.passwd1.value; // 입력 비밀번호
 		var pw2 = document.user.passwd2.value; // 입력 비밀번호 확인 
 
@@ -18,13 +19,13 @@
 		} else if (!(pw2 == user_passwd)) {
 			alert("비밀번호 확인이 틀렸습니다\n다시 입력해주세요");
 			return false;
-			;
 		}
 
 		if (pw1 == user_passwd && pw2 == user_passwd) {
 			var del = confirm("정말 삭제하시겠습니까?");
 			if (del) {
 				return true;
+				
 			} else {
 				return false;
 			}
@@ -83,8 +84,8 @@ input[type=password], input[type=text] {
 </head>
 <body>
 
-			<form name="user" align="center" onsubmit="return user_check()"
-				method="post" action="/HoneyComb_2_0/mypage/user_del_compl">
+			<form name="user" align="center" onsubmit="return user_check('${ passwd}')"
+				method="post" action="/HoneyComb_2_0/mypage/account_drop">
 				<h3>계정 삭제</h3>
 				<p>
 				<table align="center">
@@ -94,8 +95,7 @@ input[type=password], input[type=text] {
 					</tr>
 					<tr>
 						<td>비밀번호 확인</td>
-						<td><input type="Password" name="passwd2"><input
-							type="hidden" name="session" value="${ passwd }"></td>
+						<td><input type="Password" name="passwd2"></td>
 					</tr>
 				</table>
 				<br> <input type="submit" value="계정삭제" align="center"

@@ -28,15 +28,15 @@
 		var url = '/HoneyComb_2_0/mypage/my_resume';
 		open(url, "이력서",
 				"toolbar=no,location=no,status=no,menubar=no scrollbars=no,resizable=no,"
-						+ "left=600, top=200,width=700,height=920");
+						+ "left=600, top=50,width=700,height=920");
 	}
 
 	function user_del() {
 		// 계정 삭제 폼
 
-		var url = '/HoneyComb_2_0/mypage/account_drop';
+		var url = '/HoneyComb_2_0/mypage/account_drop_view';
 		open(url, "계정 삭제", "toolbar=no,location=no,status=no,menubar=no,"
-				+ "scrollbars=no,left=400,top=20,width=500,height=300");
+				+ "scrollbars=no,left=400,top=200,width=500,height=300");
 
 	}
 
@@ -133,12 +133,12 @@ input[type=text] {
 }
 
 #img_myprofile {
-	width: 100px;
-	height: 104px;
+	width: 96px;
+	height: 116px;
 	width: 100px;
 	margin-top: 20px;
-	border: 3px solid black;
-	border-radius: 80px;
+	border: 2px solid #848484;
+	/* border-radius: 50px; */
 }
 /* 상단 프로필 */
 
