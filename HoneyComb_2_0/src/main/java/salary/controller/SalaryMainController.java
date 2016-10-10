@@ -19,14 +19,27 @@ public class SalaryMainController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/main.do")
-	public ModelAndView form(HttpServletRequest request) {
+	@RequestMapping("/user_main.do")
+	public ModelAndView user_form(HttpServletRequest request) {
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
 
 //		int salary = dao.getSalary(mem_num);
 
-		ModelAndView mav = new ModelAndView("salary_main");
+		ModelAndView mav = new ModelAndView("salary_user_main");
+//		mav.addObject("salary", salary);
+
+		return mav;
+	}
+	
+	@RequestMapping("/management_main.do")
+	public ModelAndView management_form(HttpServletRequest request) {
+
+		int mem_num = (int) request.getSession().getAttribute("mem_num");
+
+//		int salary = dao.getSalary(mem_num);
+
+		ModelAndView mav = new ModelAndView("salary_management_main");
 //		mav.addObject("salary", salary);
 
 		return mav;

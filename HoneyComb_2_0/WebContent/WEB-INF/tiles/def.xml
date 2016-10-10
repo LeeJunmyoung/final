@@ -52,9 +52,10 @@
 			value="/WEB-INF/view/main/calendar/cal_more.jsp" />
 	</definition>
 
-	<definition name="salary_main" extends="base_layout">
+	<definition name="salary_user_main" extends="base_layout">
 		<put-attribute name="title" value="SALARY" />
-		<put-attribute name="body" value="/WEB-INF/view/hr/salary/main.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/hr/salary/user_main.jsp" />
 	</definition>
 
 	<definition name="chat_main" extends="base_layout">
@@ -77,6 +78,12 @@
 		<put-attribute name="title" value="DEPT MEMBER" />
 		<put-attribute name="body"
 			value="/WEB-INF/view/hr/dept/dept_mem_list.jsp" />
+	</definition>
+
+	<definition name="salary_management_main" extends="base_layout">
+		<put-attribute name="title" value="SALARY MANAGEMENT" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/hr/salary/management_main.jsp" />
 	</definition>
 
 </tiles-definitions>

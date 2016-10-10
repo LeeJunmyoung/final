@@ -40,7 +40,7 @@ blockquote:before, blockquote:after, q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-	border:1px;
+	border: 1px;
 }
 
 /* page layout */
@@ -48,134 +48,121 @@ table {
 	background: #e9ebee;
 	margin: 0;
 	width: 100%;
-	padding:0;
+	padding: 0;
 }
 
 #page_header {
-	position:static;
-	height : 11%;
+	position: static;
+	height: 11%;
 	background: #344d91;
-	
 }
-#header_wrapper{
+
+#header_wrapper {
 	width: 600px;
 	position: relative;
 	left: 250px;
 	z-index: 3;
-
 }
 
-#logo{
-	display: inline;	
-
+#logo {
+	display: inline;
 	width: 100px;
 	height: 100px;
 	margin: 0 auto;
 }
 
-#header_honey{
-	display:inline;
-	font-size:38pt;
+#header_honey {
+	display: inline;
+	font-size: 38pt;
 	color: #fff;
-    height:100px;
+	height: 100px;
 	vertical-align: middle;
 }
-#header_honey_a{
+
+#header_honey_a {
 	color: #fff;
 	text-decoration: none;
-		
-}
-#page_center_contents{
-position:relative;
-left:250px;
-width: 70%;
-height: 1500px;
-display: block;
 }
 
+#page_center_contents {
+	position: relative;
+	left: 250px;
+	width: 70%;
+	height: 1500px;
+	display: block;
+}
 
 #page_content {
-	position:relative;
+	position: relative;
 	width: 80%;
-	height:1500px;
+	height: 1500px;
 	padding: 2%;
 	float: left;
 	border: 1px solid #bcbcbc;
 	background: #fff;
 	border-left: 3px solid #bcbcbc;
-	border-bottom:  3px solid #344d91	;
+	border-bottom: 3px solid #344d91;
 }
 
 #page_sidebar {
-	position:relative;
+	position: relative;
 	width: 20%;
 	height: 1500px;
 	padding: 1%;
 	float: left;
 	border: 1px solid #bcbcbc;
 	background: #fff;
-	border-bottom:  3px solid #344d91;
+	border-bottom: 3px solid #344d91;
 }
 
 #page_footer {
-	position:relative;
+	position: relative;
 	clear: both;
-	width:100%;
+	width: 100%;
 	padding: 2%;
-	
-	
 }
 
-#main_notice{
+#main_notice {
 	border: 1px solid;
-	height : 400px;
-	margin : 5px;
-}
-#main_project_manage{
-	border: 1px solid;
-	height : 400px;
-	margin : 5px;
-}
-#main_cal{
-	border: 1px solid;
-	height : 600px;
-	margin : 5px;
+	height: 400px;
+	margin: 5px;
 }
 
-#notice_table{
+#main_project_manage {
+	border: 1px solid;
+	height: 400px;
+	margin: 5px;
+}
+
+#main_cal {
+	border: 1px solid;
+	height: 600px;
+	margin: 5px;
+}
+
+#notice_table {
 	border: 1px solid black;
 	margin: auto;
-
-	
 }
 
-#menu_div{
-	
-	width:148px;
-	height:1100px;
+#menu_div {
+	width: 148px;
+	height: 1100px;
 	margin: auto;
-	
-	
 }
-#my_profile{
+
+#my_profile {
 	margin: auto;
 	text-align: center;
-	
-	
 }
 
-#menu_link{
-	
+#menu_link {
 	font-size: 20pt;
-	
-	
-	
 }
 
-#notice_body{
+#notice_body {
+	
 }
-
-
 
 dl {
 	width: 400px;
@@ -194,65 +181,57 @@ dl dd {
 	height: 300px;
 }
 
-#chat_more{
-	
+#chat_more {
 	border: 1px solid;
-	height : 900px;
-	margin : 5px;
-	
+	height: 900px;
+	margin: 5px;
 }
-#page_center_contents_more{
-	position:relative;
-left:250px;
-width: 70%;
-height: 1000px;
-display: block;
-	
-	
+
+#page_center_contents_more {
+	position: relative;
+	left: 250px;
+	width: 70%;
+	height: 1000px;
+	display: block;
 }
+
 #page_sidebar_more {
-	position:relative;
+	position: relative;
 	width: 20%;
 	height: 1000px;
 	padding: 1%;
 	float: left;
 	border: 1px solid #bcbcbc;
 	background: #fff;
-	border-bottom:  3px solid #344d91;
+	border-bottom: 3px solid #344d91;
 }
 
 #page_content_more {
-	position:relative;
+	position: relative;
 	width: 80%;
-	height:1000px;
+	height: 1000px;
 	padding: 2%;
 	float: left;
 	border: 1px solid #bcbcbc;
 	background: #fff;
 	border-left: 3px solid #bcbcbc;
-	border-bottom:  3px solid #344d91	;
+	border-bottom: 3px solid #344d91;
 }
 
-#main_cal_more{
-	
+#main_cal_more {
 	border: 1px solid;
-	height : 930px;
-	margin : 5px;
-	
+	height: 930px;
+	margin: 5px;
 }
 
-#option_member_list{
+#option_member_list {
 	width: 680px;
 	height: 900px;
-	margin:auto;
-
-	
+	margin: auto;
 }
 
-#option_accept_member{
-		width: 680px;
+#option_accept_member {
+	width: 680px;
 	height: 900px;
-	margin:auto;
+	margin: auto;
 }
-
-

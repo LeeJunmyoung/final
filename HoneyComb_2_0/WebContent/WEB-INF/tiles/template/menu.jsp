@@ -5,10 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <script type='text/javascript'
 	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 <script>
 	function logout() {
 
@@ -21,12 +23,36 @@
 		}
 
 	}
+
+	$(function() {
+		$("#dropdown").click(function() {
+			if ($("#dropdown ul", this).css("display") == "none") {
+				$("#dropdown ul").slideUp("fast");
+			} else {
+				$("#dropdown ul").slideDown("fast");
+			}
+		});
+	});
 </script>
+
 <style>
 li {
 	font-size: 18px;
 }
+
+#dropdown {
+	cursor: pointer;
+}
+
+#dropdown ul {
+	display: none;
+}
+
+#dropdown ul li{
+	font-size: 7pt;
+}
 </style>
+
 </head>
 <body>
 	<div id="menu_div">
@@ -45,14 +71,18 @@ li {
 
 			<li><a href="/HoneyComb_2_0/chatting/mainchat.do">MESSAGE</a></li>
 			<li><a href="/HoneyComb_2_0/cloud/main">CLOUD</a></li>
-			<li class="dropdown"><a href="#" class="dropdown-toggle"
-				data-toggle="dropdown"> HR<span class="dropdown-menu"></span>
-			</a>
-				<ul class="dropdown-menu">
+
+			<li id="dropdown"><a>HR <span class="caret"></span></a>
+				<ul class="nav nav-pills nav-stacked">
 					<li><a href="#">APPROVAL</a></li>
-					<li><a href="/HoneyComb_2_0/salary/main.do">SALARY</a></li>
 					<li><a href="/HoneyComb_2_0/dept/chart">DEPT</a></li>
+					<li><a href="/HoneyComb_2_0/salary/user_main.do">SALARY</a></li>
+
+					<c:if test="${sessionScope.com_dept_num == 2}">
+						<li><a href="/HoneyComb_2_0/salary/management_main.do">SALARY MANAGEMENT</a></li>
+					</c:if>
 				</ul></li>
+
 			<li><a href="/HoneyComb_2_0/mypage/mypage">MYPAGE</a></li>
 			<li><a href="#logout" onclick="logout();return false;"
 				onkeypress="this.onclick;">LOG OUT</a></li>
