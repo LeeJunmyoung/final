@@ -52,13 +52,13 @@ public class CloudMainController implements ApplicationContextAware{
 	@RequestMapping(value="/main", method = RequestMethod.GET)
 	public ModelAndView getCloudList(HttpSession session, HttpServletRequest request, String folder) {
 		session = request.getSession();
-		/* session 임시설정 
+		/* session 임시설정 */
 		System.out.println("test용com_num설정::1");
 		session.setAttribute("com_num", 1);
 		session.setAttribute("com_pos_num", 1);
 		session.setAttribute("name", "tester");
 		session.setAttribute("mem_num", 1);
-		session임시설정끝 */
+		/*session임시설정끝 */
 
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		List cloudlist = dao.getcloudList(com_num, folder);
@@ -68,28 +68,28 @@ public class CloudMainController implements ApplicationContextAware{
 	/*----업로드폼으로 접근 RESTFul 사용------------*/
 		//메인에서 업로드폼 연결
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
-	public String goUploadMain(){
+	public String goUploadMain(String folder){
 		return("/upload");
 	}
 		//폴더내부에서 업로드폼 연결
-	@RequestMapping(value = "/upload/{folder}", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/upload/{folder}", method = RequestMethod.GET)
 	public String goUploadFolder(@PathVariable String folder) {
 		return "/upload";
-	}
+	}*/
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile, HttpServletRequest request, String security){
+	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,String folder,  HttpServletRequest request, String security){
 		int com_pos_num = 0;
 		if(security != null){
 			com_pos_num = 1;
 		}
-		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, "", request, com_pos_num);
+		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, folder, request, com_pos_num);
 		dao.uploadFile(info);
 		return "redirect:upload?upload=ok";
 	}
 		//폴더 내부에서 업로드
-	@RequestMapping(value="/upload/{folder}", method = RequestMethod.POST)
+/*	@RequestMapping(value="/upload/{folder}", method = RequestMethod.POST)
 	public String uploadFolder(@RequestParam("uploadfile")MultipartFile uploadfile, @PathVariable String folder, HttpServletRequest request, String security){
 		int com_pos_num = 0;
 		if(security != null ){
@@ -98,7 +98,7 @@ public class CloudMainController implements ApplicationContextAware{
 		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, folder, request, com_pos_num);
 		dao.uploadFile(info);
 				return "redirect:upload?upload=ok";
-	}
+	}*/
 	
 	/*프로젝트 업로드 컨트롤러*/
 	@RequestMapping(value="/uploadPromgr")
@@ -133,24 +133,25 @@ public class CloudMainController implements ApplicationContextAware{
 		return"redirect:delete";
 	}
 	/*폴더 만들기*/
-	@RequestMapping(value = "/makeFolder/{folder}")
+/*	@RequestMapping(value = "/makeFolder/{folder}", method=RequestMethod.GET)
 	public ModelAndView makeFilder(@PathVariable String folder){
 		ModelAndView mav =  new ModelAndView("/makeFolder","folder",folder);
+		System.out.println("folder::"+folder);;
 		return mav;
-	}
-	@RequestMapping(value = "/makeFolder")
+	}*/
+	@RequestMapping(value = "/makeFolder", method=RequestMethod.GET)
 	public ModelAndView makeFilder(){
 		ModelAndView mav =  new ModelAndView("/makeFolder");
+		
 		return mav;
 	}
 	/*ajax 로 중복체크*/
 	@RequestMapping(value = "/dupleCk")
 	@ResponseBody
 	public String duplicateCheck(@RequestParam(value="item")String item,@RequestParam(value = "folder", required = false) String folder, HttpServletRequest request){
-		System.out.println("item:"+item);
 		int com_num = (int)request.getSession().getAttribute("com_num");
+		System.out.println("중복체크 잘 안됨::"+folder);
 		String dupli = dao.duplicateCheck(item, folder, com_num); 
-		
 		return dupli;
 	}
 	/*폴더업로드*/

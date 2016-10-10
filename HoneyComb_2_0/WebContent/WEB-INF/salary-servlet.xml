@@ -28,7 +28,7 @@
 
  	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/salary/" />
+		<property name="prefix" value="/WEB-INF/view/hr/salary/" />
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="2" />
 	</bean>

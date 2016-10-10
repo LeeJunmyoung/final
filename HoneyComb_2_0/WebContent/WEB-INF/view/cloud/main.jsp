@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,20 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/HoneyComb_2_0/resources/script/cloudScript.js"></script>
 <script type="text/javascript">
-	function openupload(folder){
-		folder = folder ? '/'+folder : '';
-		window.open("upload"+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
-	}
-	function openDelete(selectedFiles){
-		var selectedFiles = selectedFiles;
-		window.open("delete?selectedFiles="+selectedFiles,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=800,height=400");
-	}
-	function openMakeFolder(folder){
-		folder = folder ? '/'+folder : '';
-		window.open("makeFolder"+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
-	}
-	
+
 	$(function(){	
 	$("#download").click(function(){
 		var selectedFiles = new Array();
@@ -61,20 +49,33 @@
 </c:if>
 
 <c:forEach var="cloudlist" items="${cloudlist}">
-<input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}">
+
+	<c:if test="${fn:substring(cloudlist.file_path,0,1)=='$'}">
+	<input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}" >
 	<label for="${cloudlist.file_num}">
-		<div style="border:5px solid">
-		  file_num :::${cloudlist.file_num}<br>
+			<div style="border:5px solid" ondblclick="changeFolder('${cloudlist.file_path}')">
+			this is folder
+	</c:if>
+
+	<c:if test="${fn:substring(cloudlist.file_path,0,1)!='$'}">
+	<input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}">
+	<label for="${cloudlist.file_num}">
+			<div style="border:5px solid">
+			this is file
+	</c:if>
+	
 		  file_name :::${cloudlist.file_name}<br>
-		  file_path:::${cloudlist.file_path}<br>
 		  file_uploader :::${cloudlist.file_uploader}<br>
 		  file_size :::${cloudlist.file_size}<br>
 		  file_date :::${cloudlist.file_date}<br>
+		  
+<%-- 		  file_num :::${cloudlist.file_num}<br>
 		  com_num :::${cloudlist.com_num}<br>
 		  folder :::${cloudlist.folder}<br>
+		  file_path:::${cloudlist.file_path}<br>
 		  promgr_num :::${cloudlist.promgr_num}<br>
 		  mem_num :::${cloudlist.mem_num}<br>
-		  com_pos_num :::${cloudlist.com_pos_num}<br>
+		  com_pos_num :::${cloudlist.com_pos_num}<br> --%>
 		</div>
 	</label>
 </c:forEach>

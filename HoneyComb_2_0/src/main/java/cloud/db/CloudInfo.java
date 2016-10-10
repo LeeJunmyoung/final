@@ -10,7 +10,7 @@ public class CloudInfo {
 	private String file_size;
 	private Date file_date;
 	private int com_num;
-	private String folder;
+	private String folder = null;
 	private int promgr_num;
 	private int mem_num;
 	private int com_pos_num;

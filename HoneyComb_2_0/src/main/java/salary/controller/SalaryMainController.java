@@ -21,12 +21,13 @@ public class SalaryMainController {
 
 	@RequestMapping("/main.do")
 	public ModelAndView form(HttpServletRequest request) {
-		
-		
+
+		int mem_num = (int) request.getSession().getAttribute("mem_num");
+
+//		int salary = dao.getSalary(mem_num);
 
 		ModelAndView mav = new ModelAndView("salary_main");
-		// mav.addObject("promgr_count", promgr_count);
-		// mav.addObject("articleList", articleList);
+//		mav.addObject("salary", salary);
 
 		return mav;
 	}
