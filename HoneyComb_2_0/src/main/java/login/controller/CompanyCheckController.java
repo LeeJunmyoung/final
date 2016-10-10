@@ -60,7 +60,7 @@ public class CompanyCheckController {
 		request.getSession().setAttribute("com_name", lodb.getCom_name());
 		request.getSession().setAttribute("com_dept_name", lodb.getCom_dept_name());
 		request.getSession().setAttribute("com_pos_name", lodb.getCom_pos_name());
-			
+		request.getSession().setAttribute("profile_img", lodb.getProfile_img());
 		
 		
 		return "main_send";

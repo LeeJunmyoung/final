@@ -55,12 +55,6 @@ public class MyPage_Controller {
 
 		return "mypage_close";
 	}
-
-	@RequestMapping("/my_resume")
-	public String my_Resume() {
-
-		return "resume_change";
-	}
 	
 	@RequestMapping("/account_drop_view")
 	public ModelAndView account_Drop_View(HttpServletRequest request) {

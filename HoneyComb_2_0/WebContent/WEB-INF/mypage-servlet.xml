@@ -65,6 +65,7 @@
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 
+
 	<!-- MyPage -->
 	<bean id="mypageDAO" class="mypage.db.MyPageDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
@@ -73,7 +74,16 @@
 	<bean id="MyPage_Controller" class="mypage.controller.MyPage_Controller"
 		p:dao-ref="mypageDAO" />
 	
+	
 	<!-- profile_img -->
 	<bean id="Profile_Img_Controller" class="mypage.controller.Profile_Img_Controller" p:dao-ref="mypageDAO" />
+	
+	
+	<!-- resume -->
+	<bean id="resumeDAO" class="mypage.db.ResumeDAO">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="Resume_Controller" class="mypage.controller.Resume_Controller" p:dao-ref="resumeDAO" />
 
 </beans>

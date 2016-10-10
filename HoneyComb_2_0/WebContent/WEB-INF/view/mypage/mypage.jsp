@@ -133,12 +133,12 @@ input[type=text] {
 }
 
 #img_myprofile {
-	width: 96px;
-	height: 116px;
+	width: 90px;
+	height: 120px;
 	width: 100px;
 	margin-top: 20px;
-	border: 2px solid #848484;
-	/* border-radius: 50px; */
+	border: 3px solid #848484;
+	border-radius: 5px;
 }
 /* 상단 프로필 */
 
@@ -380,7 +380,7 @@ a#account span {
 <body onselectstart="return false" ondragstart="return false">
 
 	<div id="top">
-		<h2 id="h2_title">My Page</h2>
+		<h2 id="h2_title">MY PAGE</h2>
 	</div>
 	<div id="div_pro_map">
 

@@ -139,12 +139,6 @@ h2 {
 				</tr>
 			</c:forEach>
 
-			<c:if test="${ empty school_list }">
-				<tr>
-					<td colspan="5">등록된 정보가 없습니다</td>
-				</tr>
-			</c:if>
-
 		</table>
 
 		<table>
@@ -169,12 +163,6 @@ h2 {
 				</tr>
 			</c:forEach>
 
-			<c:if test="${ empty edu_list }">
-				<tr>
-					<td colspan="5">등록된 정보가 없습니다</td>
-				</tr>
-			</c:if>
-
 		</table>
 
 		<table>
@@ -198,12 +186,6 @@ h2 {
 					<!-- <td></td> -->
 				</tr>
 			</c:forEach>
-
-			<c:if test="${ empty certi_list }">
-				<tr>
-					<td colspan="5">등록된 정보가 없습니다</td>
-				</tr>
-			</c:if>
 
 		</table>
 
@@ -256,12 +238,6 @@ h2 {
 					<!-- <td></td> -->
 				</tr>
 			</c:forEach>
-
-			<c:if test="${ empty career_list }">
-				<tr>
-					<td colspan="6">등록된 정보가 없습니다</td>
-				</tr>
-			</c:if>
 
 		</table>
 
