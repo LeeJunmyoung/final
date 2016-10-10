@@ -38,15 +38,15 @@
 </style>
 </head>
 <br>
-<c:forEach var="notice" items="${noticeList}">
+<c:forEach var="noticelist" items="${noticelist}">
 	<table width="320" border="1" bordercolor="#cccccc" align="center"
 		cellpadding="5" cellspacing="0">
 		<tr bgcolor="#ffcc00">
 			<td align="center" class="title"><B>공지사항</B></td>
 		</tr>
 		<tr bordercolor="white">
-			<td align="center">${notice.notice_admin_title}<br>
-				${notice.notice_admin_content}<br> ${notice.notice_admin_date}<br>
+			<td align="center">${noticelist.notice_admin_title}<br>
+				${noticelist.notice_admin_content}<br> ${noticelist.notice_admin_date}<br>
 			</td>
 		</tr>
 	</table>
