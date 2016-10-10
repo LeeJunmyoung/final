@@ -61,6 +61,7 @@ public class CloudMainController implements ApplicationContextAware{
 		session임시설정끝 */
 
 		int com_num = (int) request.getSession().getAttribute("com_num");
+		System.out.println("folder::"+folder);
 		List cloudlist = dao.getcloudList(com_num, folder);
 		ModelAndView mav = new ModelAndView("cloud_main", "cloudlist", cloudlist);
 		return mav;
@@ -164,9 +165,11 @@ public class CloudMainController implements ApplicationContextAware{
 	}
 	/*상위폴더로*/
 	@RequestMapping(value="/goUpper")
-	public void goUpperFolder(String folder){
-		dao.findUpper(folder);
-		
+	public ModelAndView goUpperFolder(String folder, HttpServletRequest request){
+		String upperFolder = dao.findUpper(folder);
+		HttpSession session = null;
+		 ModelAndView mav = getCloudList(session, request, upperFolder);
+		 return mav;
 	}
 
 

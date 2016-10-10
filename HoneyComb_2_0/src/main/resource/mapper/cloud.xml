@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</parameterMap>
 	<select id="getcloudlist" parameterMap="listinfo" resultType="cloud.db.CloudInfo">
 	<choose>
-		<when test="folder == null">
+		<when test="folder eq null||folder == ''">
 		select * from cloud where com_num = #{com_num} and folder is null
 		</when>
 		<otherwise>
@@ -61,5 +61,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		
 		</where>
+	</select>
+	<select id="findUpper" parameterType="String" resultType="String">
+		select folder from cloud where file_path = #{folder}
 	</select>
 </mapper>

@@ -55,10 +55,11 @@ public class CloudDao extends SqlSessionDaoSupport{
 		map.put("item", item);
 		map.put("folder", folder);
 		map.put("com_num", com_num);
-		System.out.println("folder:"+folder);
-		System.out.println("여기까진 오나?");
 		String dupli = getSqlSession().selectOne("cloud.dupliCk",map);
 		return dupli;
 	}
-	
+	public String findUpper(String folder){
+			String upperFolder = getSqlSession().selectOne("cloud.findUpper",folder);
+	return upperFolder;
+	}
 }

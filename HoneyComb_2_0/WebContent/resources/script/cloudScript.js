@@ -54,3 +54,6 @@ function openMakeFolder(folder){
 function changeFolder(folder){
 	location.href="main?folder="+folder;
 }
+function goUpperFolder(folder){
+	location.href="goUpper?folder="+folder;
+}
