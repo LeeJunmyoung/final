@@ -80,7 +80,7 @@ public class CloudMainController implements ApplicationContextAware{
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,String folder,  HttpServletRequest request, String security, int promgr_num, String promgr_name){
+	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,String folder,  HttpServletRequest request, String security, @RequestParam(value= "promgr_num",defaultValue = "0")int promgr_num, @RequestParam(required = false)String promgr_name){
 		int com_pos_num = 0;
 		if(security != null){
 			com_pos_num = 1;
@@ -115,6 +115,7 @@ public class CloudMainController implements ApplicationContextAware{
 	/*다운로드 처리*/
 	@RequestMapping(value = "/download")
 	public ModelAndView downloadFile(String selectedFiles){
+		
 		String[] fileNums = selectedFiles.split(",");
 		List downloadInfo = dao.getFileInfo(fileNums);
 		return new ModelAndView("downloadFiles", "downloadInfo", downloadInfo);

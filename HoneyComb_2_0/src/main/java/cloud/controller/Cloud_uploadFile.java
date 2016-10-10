@@ -53,7 +53,7 @@ public class Cloud_uploadFile {
 			}
 			temp_path +=str;
 		}
-		String file_path = "D:/cloud/"+temp_path + timepath + file_name;
+		String file_path = "E:/cloud/"+temp_path + timepath + file_name;
 		return file_path;
 	}
 	//파일 업로드 메서드
