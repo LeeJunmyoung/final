@@ -166,9 +166,8 @@ public class CloudMainController implements ApplicationContextAware{
 	/*상위폴더로*/
 	@RequestMapping(value="/goUpper")
 	public ModelAndView goUpperFolder(String folder, HttpServletRequest request){
-		String upperFolder = dao.findUpper(folder);
-		HttpSession session = null;
-		 ModelAndView mav = getCloudList(session, request, upperFolder);
+		List cloudlist = dao.findUpper(folder, (int)request.getSession().getAttribute("com_num"));
+		ModelAndView mav =  new ModelAndView("cloud_main", "cloudlist", cloudlist);
 		 return mav;
 	}
 

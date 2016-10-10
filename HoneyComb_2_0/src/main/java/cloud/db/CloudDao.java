@@ -58,8 +58,11 @@ public class CloudDao extends SqlSessionDaoSupport{
 		String dupli = getSqlSession().selectOne("cloud.dupliCk",map);
 		return dupli;
 	}
-	public String findUpper(String folder){
+	public List<CloudInfo> findUpper(String folder, int com_num){
+			System.out.println("firstDao::"+folder);
 			String upperFolder = getSqlSession().selectOne("cloud.findUpper",folder);
-	return upperFolder;
+			List cloudlist = getcloudList(com_num,upperFolder);
+			System.out.println("daoIpperFSAdfasdsadf::"+upperFolder);
+	return cloudlist;
 	}
 }
