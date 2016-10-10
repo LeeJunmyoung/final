@@ -166,8 +166,9 @@ public class CloudMainController implements ApplicationContextAware{
 	/*상위폴더로*/
 	@RequestMapping(value="/goUpper")
 	public String goUpperFolder(String folder, HttpServletRequest request){
-		String uppderFolder = dao.findUpper(folder);
-		String path = "redirect:main?folder="+uppderFolder;
+		String upperFolder = dao.findUpper(folder);
+		String pathFolder = (upperFolder  == null||upperFolder == "")?"":"?folder="+upperFolder;
+		String path = "redirect:main"+pathFolder;
 		 return path;
 	}
 
