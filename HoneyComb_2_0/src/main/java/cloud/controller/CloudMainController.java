@@ -80,13 +80,13 @@ public class CloudMainController implements ApplicationContextAware{
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,String folder,  HttpServletRequest request, String security, int promgrnum, String promgrname){
+	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,String folder,  HttpServletRequest request, String security, int promgr_num, String promgr_name){
 		int com_pos_num = 0;
 		if(security != null){
 			com_pos_num = 1;
 		}
-		folder = (promgrnum > 0)?"%%promgrname":folder;
-		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, folder, request, com_pos_num, promgrnum);
+		folder = (promgr_num > 0)?"%%promgrname":folder;
+		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, folder, request, com_pos_num, promgr_num);
 		dao.uploadFile(info);
 		return "redirect:upload?upload=ok";
 	}
@@ -104,10 +104,10 @@ public class CloudMainController implements ApplicationContextAware{
 	
 	/*프로젝트 업로드 컨트롤러*/
 	@RequestMapping(value="/uploadPromgr")
-	public ModelAndView uploadPromgr(@RequestParam("promgrname")String promgrname,@RequestParam("promgrnum") int promgrnum){
+	public ModelAndView uploadPromgr(@RequestParam("promgr_name")String promgr_name,@RequestParam("promgr_num") int promgr_num){
 	ModelAndView mav = new ModelAndView("/upload");
-	mav.addObject("promgrname", promgrname);
-	mav.addObject("promgrnum",promgrnum);
+	mav.addObject("promgr_name", promgr_name);
+	mav.addObject("promgr_num",promgr_num);
 	return mav;
 		
 	}
