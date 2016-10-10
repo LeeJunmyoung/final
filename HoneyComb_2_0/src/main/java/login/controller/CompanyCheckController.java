@@ -28,8 +28,7 @@ public class CompanyCheckController {
 		String email  =(String) request.getSession().getAttribute("email");
 		int com_num = (int)request.getSession().getAttribute("com_num");
 	
-		System.out.println("email::::"+email);
-		System.out.println("com_num:::::"+com_num);
+		
 			
 		if(email.equals("admin@admin.com")){
 			return "../../admin/admin_main_page";
@@ -61,9 +60,7 @@ public class CompanyCheckController {
 		request.getSession().setAttribute("com_name", lodb.getCom_name());
 		request.getSession().setAttribute("com_dept_name", lodb.getCom_dept_name());
 		request.getSession().setAttribute("com_pos_name", lodb.getCom_pos_name());
-		
-		System.out.println("lodb:::"+lodb.toString());
-		
+			
 		
 		
 		return "main_send";

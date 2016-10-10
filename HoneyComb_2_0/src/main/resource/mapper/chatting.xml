@@ -4,10 +4,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="chat">
 
-<select id="view_my_chatroom" parameterType="String" resultSets="chat.db.ChatRoomDataBean" >
-select * from chat where chat_member_participation like #{mem_num}
-</select>
+	<select id="load_chat_mem_info" parameterType="int"
+		resultType="login.controller.LogOnDataBean">
+		select name,com_pos_name,com_dept_name from members where mem_num =
+		#{mem_num}
+	</select>
 
+	<select id="view_my_chatroom" parameterType="String"
+		resultType="chat.db.ChatRoomDataBean">
+		select * from chat where chat_member_participation like #{mem_num}
+	</select>
+	<select id="view_Com_Member" parameterType="hashmap"
+		resultType="login.controller.LogOnDataBean">
+		select * from members where not mem_num = #{mem_num} and com_num =
+		#{com_num} order by com_pos_num
+	</select>
 
+	<select id="check_OneNOne_Chat" parameterType="String"
+		resultType="int">
+		select count(*) from chat where chat_member_participation like
+		#{chat_mem_num}
+	</select>
+
+	<insert id="create_OneNOne_Chat" parameterType="String">
+		insert into
+		chat(chat_num,chat_member_participation,chat_mem_name,last_chat_member,last_chat_read)
+		values ( OneNOneChat.nextval , #{chat_mem_num} ,',',',','t')
+	</insert>
 
 </mapper>

@@ -42,7 +42,38 @@
 
 
 
-<bean id="Chat_Main_Controller" class="chat.controller.Chat_Main_Controller" ></bean>
+<bean id="Chat_Main_Controller" class="chat.controller.Chat_Main_Controller" p:dao-ref="Chat_DAO" ></bean>
+
+
+<bean id="Chat_InviteForm" class="chat.controller.Chat_InviteForm" p:dao-ref="Chat_DAO" ></bean>
+
+
+<bean id="Chat_DAO" class="chat.db.Chat_DAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+
+
+
+
+
+	<context:property-placeholder location="classpath:db.properties" />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${driver}" />
+		<property name="jdbcUrl" value="${url}" />
+		<property name="user" value="honeycomb" />
+		<property name="password" value="honeycomb" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:mapper/chatting.xml" />
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
 
 
 

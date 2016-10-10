@@ -132,6 +132,22 @@ function filter(){
 	return false;
 }
 
+function memboxcheck(){
+			if(  $(".membox:checked").length == 0 ){
+				alert("1명이상 선택해주세요");
+				return false;
+				
+			}
+				
+return true;
+}
+	
+	
+
+
+
+
+
 
 
 </script>
@@ -147,7 +163,7 @@ function filter(){
 	<br>
 <div id = "search_member">
 
-<form action="/HoneyComb/Chatting/Invite_member.chat"  method="post" >
+<form   method="post" onsubmit="return memboxcheck();" >
 		<table  >
 		
 			<tr class='title'>
@@ -162,12 +178,13 @@ function filter(){
 			
 			<tbody id='membersTbody'>
 					<tr name="${members.name}" id='text'>
-						<td width="100px"><input type="checkbox" id ='${members.name}' name='check' value="${members.mem_num}"><label for='${members.name}'>${members.name}</label></td>
+						<td width="100px"><input type="checkbox" class="membox"  id ='${members.name}' name='check' value="${members.mem_num}"><label for='${members.name}'>${members.name}</label></td>
 						<td>${members.com_pos_name}</td>
 						<td>${members.com_dept_name}</td>
 					</tr>
 					
 					</tbody>
+					
 				</c:forEach>
 			</c:if>
 			
@@ -175,6 +192,7 @@ function filter(){
 					
 
 		</table>
+		
 		<input type ="submit" class="btn btn-primary btn-xs"  value="초대" id = 'invite_button' > 
 		 </form>	
 	</div>

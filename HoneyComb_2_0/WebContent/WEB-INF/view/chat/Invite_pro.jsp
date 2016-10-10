@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 
-opener.location.href='/HoneyComb/page_layout/Chat/Chat_home.jsp';
+opener.location.reload();
 
 
 

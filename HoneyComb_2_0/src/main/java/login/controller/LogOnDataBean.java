@@ -67,7 +67,7 @@ public class LogOnDataBean {
 		this.passwd = passwd;
 	}
 	public String getPhone_num() {
-		phone_num = pnum1+pnum2+pnum3;
+		
 		return phone_num;
 	}
 	public void setPhone_num(String phone_num) {

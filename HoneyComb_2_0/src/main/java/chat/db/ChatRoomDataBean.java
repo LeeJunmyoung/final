@@ -1,16 +1,18 @@
 package chat.db;
 
 public class ChatRoomDataBean {
+	@Override
+	public String toString() {
+		return "ChatRoomDataBean [chat_Num=" + chat_Num + ", chat_Member_Participation=" + chat_Member_Participation
+				+ ", last_Chat_Date=" + last_Chat_Date + ", last_Chat_Conversation=" + last_Chat_Conversation
+				+ ", chat_mem_name=" + chat_mem_name + ", last_Chat_Member=" + last_Chat_Member + ", last_Chat_Read="
+				+ last_Chat_Read + ", profile_IMG=" + profile_IMG + "]";
+	}
 	private int chat_Num;
 	private String chat_Member_Participation;
 	private String last_Chat_Date;
 	private String last_Chat_Conversation;
 	private String chat_mem_name;
-
-
-	
-
-	
 	private String last_Chat_Member;
 	private String last_Chat_Read;
 	private String profile_IMG;

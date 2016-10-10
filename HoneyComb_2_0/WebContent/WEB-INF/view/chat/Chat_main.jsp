@@ -187,11 +187,11 @@ color:#fff;
 
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src='/HoneyComb/Calendar/fullcalendar/lib/jquery.min.js'></script>
+
 
 <script type="text/javascript">
 	function invite_Member() {
-		var url = "/HoneyComb/Chatting/Invite_form.chat";
+		var url = "Invite_form.do";
 		open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"
 				+ "scrollbars=no,resizable=no,width=550,height=400");
 
@@ -481,12 +481,11 @@ function new_msg(num){
 						value="${chat_list.last_Chat_Conversation}"> <input
 						type="hidden" name="chat_partner" id="chat_partner"
 						value="${chat_list.chat_partner } ">
-						<input type="hidden" name="chat_partner" id="chat_partner"
-						value="${chat_list.chat_partner}"> 
+						 
 
 
 
-					<div class='${chat_list.chat_partner }' id = "chat_mem_div"> 
+					<div class='${chat_list.chat_partner}' id = "chat_mem_div"> 
 						<input type="submit" value=" " id="submit${chat_list.chat_Num}"
 							class='memmem'>
 						<p class='memname_chat' id='${chat_list.chat_Num}'>${chat_list.chat_partner }
