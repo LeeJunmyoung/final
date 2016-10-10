@@ -23,6 +23,21 @@ h2 {
 	text-align: center;
 }
 
+input[type=text] {
+	height: 18px;
+	border-radius: 5px 5px 5px 5px;
+	font-size: 12px;
+	margin-top: -5px;
+	margin-bottom: -5px;
+	text-align: center;
+	width: 100px;
+}
+
+#img_myprofile {
+	width: 115px;
+	height: 138px;
+}
+
 .title {
 	text-align: left;
 	margin-bottom: 5px;
@@ -63,6 +78,30 @@ h2 {
 	width: 240px;
 	background: #344d91;
 }
+
+.button {
+	display: inline-block;
+	background-color: #4367b0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	display: block;
+	cursor: pointer;
+	color: #fff;
+	font-size: 12px;
+	padding: 5px 10px;
+	text-decoration: none;
+	margin: 0 auto;
+}
+
+.button:hover {
+	background-color: #344d91;
+	color: white;
+}
+
+.button:active {
+	top: 1px;
+}
 </style>
 </head>
 <body onselectstart="return false" ondragstart="return false">
@@ -74,7 +113,10 @@ h2 {
 
 			<c:forEach var="base_list" items="${ base_list }">
 				<tr>
-					<td rowspan="5" class="wi">프로필 사진</td>
+					<td rowspan="5" class="wi"><img
+						src="${ sessionScope.profile_img }" name="profile_img"
+						onerror="this.src='/HoneyComb_2_0/resources/images/user.png'"
+						id="img_myprofile"></td>
 					<td class="bold_wi">성 명</td>
 					<td class="wi">${ base_list.name }</td>
 					<td class="bold_wi">성 별</td>
@@ -117,77 +159,103 @@ h2 {
 
 		</table>
 
-		<table>
 
-			<p class="title">학 력</p>
+		<form>
+			<table>
 
-			<tr>
-				<td class="bold_wi">학교명</td>
-				<td colspan="2" class="bold_wi_sum">재학 기간</td>
-				<!-- <td></td> -->
-				<td colspan="2" class="bold_wi_sum">전공 / 학과</td>
-				<!-- <td></td> -->
-			</tr>
+				<p class="title">학 력</p>
 
-			<c:forEach var="school" items="${ school_list }">
 				<tr>
-					<td>${ school.school_name }</td>
-					<td colspan="2">${ school.school_date }</td>
+					<td class="bold_wi">학교명</td>
+					<td colspan="2" class="bold_wi_sum">재학 기간</td>
 					<!-- <td></td> -->
-					<td colspan="2">${ school.school_major }</td>
+					<td colspan="2" class="bold_wi_sum">전공 / 학과</td>
 					<!-- <td></td> -->
 				</tr>
-			</c:forEach>
 
-		</table>
-
-		<table>
-
-			<p class="title">교육 이수</p>
-
-			<tr>
-				<td class="bold_wi">기관명</td>
-				<td colspan="2" class="bold_wi_sum">연수 과정</td>
-				<!-- <td></td> -->
-				<td colspan="2" class="bold_wi_sum">연수 기간</td>
-				<!-- <td></td> -->
-			</tr>
-
-			<c:forEach var="edu" items="${ edu_list }">
+				<c:forEach var="school" items="${ school_list }">
+					<tr>
+						<td>${ school.school_name }</td>
+						<td colspan="2">${ school.school_date }</td>
+						<!-- <td></td> -->
+						<td colspan="2">${ school.school_major }</td>
+						<!-- <td></td> -->
+					</tr>
+				</c:forEach>
 				<tr>
-					<td>${ edu.edu_insti }</td>
-					<td colspan="2" class="wi_sum">${ edu.edu_name }</td>
+					<td><input type="text" /></td>
+					<td colspan="2"><input type="text" /></td>
+					<td colspan="2"><input type="text" /></td>
+				</tr>
+
+			</table>
+		</form>
+
+		<form>
+			<table>
+
+				<p class="title">교육 이수</p>
+
+				<tr>
+					<td class="bold_wi">기관명</td>
+					<td colspan="2" class="bold_wi_sum">연수 과정</td>
 					<!-- <td></td> -->
-					<td colspan="2" class="wi_sum">${ edu.edu_date }</td>
+					<td colspan="2" class="bold_wi_sum">연수 기간</td>
 					<!-- <td></td> -->
 				</tr>
-			</c:forEach>
 
-		</table>
+				<c:forEach var="edu" items="${ edu_list }">
+					<tr>
+						<td>${ edu.edu_insti }</td>
+						<td colspan="2" class="wi_sum">${ edu.edu_name }</td>
+						<!-- <td></td> -->
+						<td colspan="2" class="wi_sum">${ edu.edu_date }</td>
+						<!-- <td></td> -->
+					</tr>
+				</c:forEach>
 
-		<table>
-
-			<p class="title">자격증</p>
-
-			<tr>
-				<td colspan="2" class="bold_wi_sum">자격증명</td>
-				<!-- <td></td> -->
-				<td class="bold_wi">발행처</td>
-				<td colspan="2" class="bold_wi_sum">취득일</td>
-				<!-- <td></td> -->
-			</tr>
-
-			<c:forEach var="certi" items="${ certi_list }">
 				<tr>
-					<td colspan="2" class="colspan">${ certi.certi_name }</td>
+					<td><input type="text" /></td>
+					<td colspan="2"><input type="text" /></td>
+					<td colspan="2"><input type="text" /></td>
+				</tr>
+
+			</table>
+		</form>
+
+
+		<form>
+			<table>
+
+				<p class="title">자격증</p>
+
+				<tr>
+					<td colspan="2" class="bold_wi_sum">자격증명</td>
 					<!-- <td></td> -->
-					<td>${ certi.certi_insti }</td>
-					<td colspan="2">${ certi.certi_date }</td>
+					<td class="bold_wi">발행처</td>
+					<td colspan="2" class="bold_wi_sum">취득일</td>
 					<!-- <td></td> -->
 				</tr>
-			</c:forEach>
 
-		</table>
+				<c:forEach var="certi" items="${ certi_list }">
+					<tr>
+						<td colspan="2" class="colspan">${ certi.certi_name }</td>
+						<!-- <td></td> -->
+						<td>${ certi.certi_insti }</td>
+						<td colspan="2">${ certi.certi_date }</td>
+						<!-- <td></td> -->
+					</tr>
+				</c:forEach>
+
+				<tr>
+					<td colspan="2"><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td colspan="2"><input type="text" /></td>
+				</tr>
+
+			</table>
+		</form>
+
 
 		<c:if test="${ !empty mili_list }">
 			<table>
@@ -217,29 +285,41 @@ h2 {
 			</table>
 		</c:if>
 
-		<table>
 
-			<p class="title">경 력</p>
 
-			<tr>
-				<td class="bold_wi">회사명</td>
-				<td class="bold_wi">부서명</td>
-				<td class="bold_wi">담당업무</td>
-				<td colspan="2" class="bold_wi_sum">근무기간</td>
-				<!-- <td></td> -->
-			</tr>
+		<form>
+			<table>
 
-			<c:forEach var="career" items="${ career_list }">
+				<p class="title">경 력</p>
+
 				<tr>
-					<td>${ career.career_com_name }</td>
-					<td>${ career.career_dept_name }</td>
-					<td>${ career.career_work }</td>
-					<td colspan="2">${ career.career_date }</td>
+					<td class="bold_wi">회사명</td>
+					<td class="bold_wi">부서명</td>
+					<td class="bold_wi">담당업무</td>
+					<td colspan="2" class="bold_wi_sum">근무기간</td>
 					<!-- <td></td> -->
 				</tr>
-			</c:forEach>
 
-		</table>
+				<c:forEach var="career" items="${ career_list }">
+					<tr>
+						<td>${ career.career_com_name }</td>
+						<td>${ career.career_dept_name }</td>
+						<td>${ career.career_work }</td>
+						<td colspan="2">${ career.career_date }</td>
+						<!-- <td></td> -->
+					</tr>
+				</c:forEach>
+
+				<tr>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td colspan="2"><input type="text" /></td>
+				</tr>
+
+			</table>
+		</form>
+
 
 	</div>
 

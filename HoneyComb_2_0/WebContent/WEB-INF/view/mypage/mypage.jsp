@@ -133,11 +133,11 @@ input[type=text] {
 }
 
 #img_myprofile {
-	width: 90px;
+	width: 100px;
 	height: 120px;
 	width: 100px;
 	margin-top: 20px;
-	border: 3px solid #848484;
+	border: 2px solid #4367b0;
 	border-radius: 5px;
 }
 /* 상단 프로필 */
