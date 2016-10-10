@@ -104,7 +104,7 @@ public class CloudMainController implements ApplicationContextAware{
 	
 	/*프로젝트 업로드 컨트롤러*/
 	@RequestMapping(value="/uploadPromgr")
-	public ModelAndView uploadPromgr(String promgrname, int promgrnum){
+	public ModelAndView uploadPromgr(@RequestParam("promgrname")String promgrname,@RequestParam("promgrnum") int promgrnum){
 	ModelAndView mav = new ModelAndView("/upload");
 	mav.addObject("promgrname", promgrname);
 	mav.addObject("promgrnum",promgrnum);
