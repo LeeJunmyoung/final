@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import cloud.db.CloudInfo;
 
 public class Cloud_uploadFile {
-	public CloudInfo uploadFile(MultipartFile uploadfile, String folder, HttpServletRequest request, int com_pos_num){
+	public CloudInfo uploadFile(MultipartFile uploadfile, String folder, HttpServletRequest request, int com_pos_num, int promgr_num){
 		HttpSession session = request.getSession();
 		String file_name = uploadfile.getOriginalFilename();
 		String file_path = makeFilePath(uploadfile, file_name);
@@ -30,6 +30,7 @@ public class Cloud_uploadFile {
 		info.setMem_num(mem_num);
 		info.setcom_pos_num(com_pos_num);
 		info.setFile_uploader(file_uploader);
+		info.setPromgr_num(promgr_num);
 		uploadFile(file_path, uploadfile);
 		
 		return info;

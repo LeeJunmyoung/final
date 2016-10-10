@@ -35,6 +35,10 @@ $(function(){
 		</c:if>
 		<input type="submit" id="submit" value="업로드" disabled="disabled">
 		<p id="dupli"/>
+		<c:if test="${promgrnum ne null|| promgrnum != 0}">
+			<input type="text" name="promgrnum" value="${promgrnum}">
+			<input type="text" name = "promgrname" value="${promgrname}"> 
+		</c:if>
 	</form>
 	
 </body>
