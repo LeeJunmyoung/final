@@ -52,13 +52,13 @@ public class CloudMainController implements ApplicationContextAware{
 	@RequestMapping(value="/main", method = RequestMethod.GET)
 	public ModelAndView getCloudList(HttpSession session, HttpServletRequest request, String folder) {
 		session = request.getSession();
-		/* session 임시설정 */
+		/* session 임시설정 
 		System.out.println("test용com_num설정::1");
 		session.setAttribute("com_num", 1);
 		session.setAttribute("com_pos_num", 1);
 		session.setAttribute("name", "tester");
 		session.setAttribute("mem_num", 1);
-		/*session임시설정끝 */
+		session임시설정끝 */
 
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		List cloudlist = dao.getcloudList(com_num, folder);
@@ -152,7 +152,6 @@ public class CloudMainController implements ApplicationContextAware{
 		
 		folder = (folder == "")? null:folder;
 		int com_num = (int)request.getSession().getAttribute("com_num");
-		System.out.println("중복체크 잘 안됨::"+folder);
 		String dupli = dao.duplicateCheck(item, folder, com_num); 
 		return dupli;
 	}
@@ -162,6 +161,12 @@ public class CloudMainController implements ApplicationContextAware{
 		CloudInfo info =  new Cloud_makeFolder().uploadFolder(request, item, folder,0);
 		dao.uploadFile(info);
 		return "redirect:makeFolder?upload=ok";
+	}
+	/*상위폴더로*/
+	@RequestMapping(value="/goUpper")
+	public void goUpperFolder(String folder){
+		dao.findUpper(folder);
+		
 	}
 
 
