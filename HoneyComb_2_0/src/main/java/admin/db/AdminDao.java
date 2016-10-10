@@ -51,9 +51,8 @@ public class AdminDao extends SqlSessionDaoSupport {
 		return adminlist;
 	}
 
-	public int adminNoticeInsert(int notice_admin_num) {
-		int adminNoticeInsert = getSqlSession().insert("adminNoticeInsert", notice_admin_num);
-		return adminNoticeInsert;
+	public int adminNoticeInsert(AdminNoticeInfo admininfo) {
+		return getSqlSession().insert("adminNoticeInsert", admininfo);
 	}
 
 	public List<AdminNoticeInfo> getadminNotice(int notice_admin_num) {
