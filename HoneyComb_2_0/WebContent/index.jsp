@@ -9,5 +9,4 @@
 		response.sendRedirect("login/LoginMainFrame.do");
 	%>
 </body>
-
 </html>

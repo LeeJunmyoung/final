@@ -55,7 +55,7 @@
 
 		<input type="button" class="btn btn-primary btn-xs" value="back"
 			id='back_button'
-			onclick="javascript:window.location='/HoneyComb/admin/admin_main.jsp'">
+			onclick="javascript:window.location='/HoneyComb_2_0/admin/admin_main_page.jsp'">
 	</div>
 </c:forEach>
 </body>

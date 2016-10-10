@@ -26,15 +26,4 @@ public class Admin_noticeInsert {
 	public String adminNoticeGet() {
 		return "/admin_noticeInsert";
 	}
-
-	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView adminNoticePost(@ModelAttribute AdminDao dao, HttpServletRequest request) {
-		int notice_admin_num = (int) request.getSession().getAttribute("notice_admin_num");
-		String notice_admin_title = (String) request.getSession().getAttribute("notice_admin_title");
-		String notice_admin_content = (String) request.getSession().getAttribute("notice_admin_content");
-		int noticelist = dao.adminNoticeInsert(notice_admin_num);
-		ModelAndView mav = new ModelAndView("admin_notice", "noticelist", noticelist);
-		return mav;
-	}
-
 }

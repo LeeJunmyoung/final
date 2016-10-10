@@ -228,7 +228,7 @@ h1 {
 		</div>
 		<div id='form_div'>
 			<form class="col-sm-10" role="form" method="post" name="writeform"
-				action="/HoneyComb/complete/complete_comNotice_admin.admin"
+				action="/HoneyComb_2_0/admin/admin_notice"
 				onsubmit="return writeSave()">
 
 				<div class="form-group">

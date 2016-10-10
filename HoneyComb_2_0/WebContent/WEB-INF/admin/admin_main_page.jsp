@@ -14,14 +14,15 @@
 <link
 	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
 	rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/HoneyComb/view/script.js"></script>
 <script>
 	function logout() {
 
 		var out = confirm("정말 로그아웃 하시겠습니까?");
 
 		if (out) {
-			location.href = "/HoneyComb/Option_user/logout_page.jsp";
+			var Backlen = history.length;
+			history.go(-Backlen);
+			window.location.href = '/HoneyComb_2_0/index.jsp';
 		} else {
 			return false;
 		}
@@ -120,21 +121,26 @@ body {
 	position: relative;
 	top: 1px;
 }
-.cover{
-background: white;
+
+.cover {
+	background: white;
 }
-#admin{
-width: 100%;
+
+#admin {
+	width: 100%;
 }
 </style>
 
 </head>
+<%
+	session.invalidate();
+%>
 <body>
 	<div id="home_banner">
 		<div id="logo_wrapper">
-			<img id="logo_banner" src="/HoneyComb/page_layout/page_image/logo.png" width="100"
-				height="100" onclick="location.href='/HoneyComb/index.jsp'"> <a
-				id="logo_a" href="/HoneyComb/index.jsp"><p id="Honey_comB">HoneyComb</p></a>
+			<!-- <img id="logo_banner" src="/HoneyComb/page_layout/page_image/logo.png" width="100"
+				height="100" onclick="location.href='/HoneyComb/index.jsp'"> -->
+			<a id="logo_a" href="/HoneyComb/index.jsp"><p id="Honey_comB">HoneyComb</p></a>
 		</div>
 	</div>
 	<div class="container" style="height: 89%; width: 70%;">
@@ -170,7 +176,7 @@ width: 100%;
 								<p>
 									<tr>
 										<td><a onclick="logout();return false;"
-											onkeypress="this.onclick;" class="myButton">로그 아웃</a></td>
+											onkeypress="this.onclick;" class="myButton">Log Out</a></td>
 									</tr>
 							</center>
 						</div>
