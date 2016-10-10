@@ -51,10 +51,12 @@ public class CloudDao extends SqlSessionDaoSupport{
 	}
 	public String duplicateCheck(String item, String folder,int com_num){
 		Map<String, Object> map =  new HashMap<String, Object>();
+		
 		map.put("item", item);
 		map.put("folder", folder);
 		map.put("com_num", com_num);
 		System.out.println("folder:"+folder);
+		System.out.println("여기까진 오나?");
 		String dupli = getSqlSession().selectOne("cloud.dupliCk",map);
 		return dupli;
 	}

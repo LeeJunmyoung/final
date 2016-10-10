@@ -52,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<where>
 		 file_name = #{item} and com_num= #{com_num} and
 			<choose>
-				<when test="#{folder == ''}" >
+				<when test="#{folder == '' || folder eq null}" >
 					 folder is null
 				</when>
 				<otherwise>

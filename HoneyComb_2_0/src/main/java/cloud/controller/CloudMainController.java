@@ -149,6 +149,8 @@ public class CloudMainController implements ApplicationContextAware{
 	@RequestMapping(value = "/dupleCk")
 	@ResponseBody
 	public String duplicateCheck(@RequestParam(value="item")String item,@RequestParam(value = "folder", required = false) String folder, HttpServletRequest request){
+		
+		folder = (folder == "")? null:folder;
 		int com_num = (int)request.getSession().getAttribute("com_num");
 		System.out.println("중복체크 잘 안됨::"+folder);
 		String dupli = dao.duplicateCheck(item, folder, com_num); 
