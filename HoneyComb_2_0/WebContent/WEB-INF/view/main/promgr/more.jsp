@@ -223,14 +223,14 @@
 	}
 	
 	function AddFile(promgr_num, promgr_name){
-		url = "/HoneyComb_2_0/cloud/uploadPromgr/promgr_num/"+promgr_num+"/promgr_name/"+promgr_name;
+		url = "/HoneyComb_2_0/cloud/uploadPromgr?promgr_num="+promgr_num+"&promgr_name="+promgr_name;
 		window.open(url,
 				"post",
 				"toolbar=no ,width=450, height=250,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 	
  	function DownFile(file_name, file_path){
- 		document.location.href="/HoneyComb/cloud/cloudDownItem.cloud?file_name="+file_name+"&file_path="+file_path;
+ 		document.location.href="/HoneyComb_2_0/cloud/cloudDownItem.cloud?file_name="+file_name+"&file_path="+file_path;
 	}
 	
 	function DelFile(promgr_num, file_path){ // file 삭제
@@ -500,7 +500,7 @@
 
 									<input type="button" class="btn btn-primary btn-xs"
 										value="FILE"
-										onclick="AddFile(${article.promgr_num}, ${article.promgr_name} })">
+										onclick="AddFile(${article.promgr_num}, '${article.promgr_name}')">
 
 								</div>
 
