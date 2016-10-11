@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -25,7 +26,6 @@ public class CloudDao extends SqlSessionDaoSupport{
 		return cloudlist;
 	}
 	public void uploadFile(CloudInfo info){
-		getSqlSession().selectOne("cloud.promgrDupli", info);
 		getSqlSession().insert("cloud.upload", info);
 	}
 	
@@ -38,7 +38,6 @@ public class CloudDao extends SqlSessionDaoSupport{
 			String file_name = getSqlSession().selectOne("cloud.getFileName", file_num);
 			downloadinfo.add(file_name);
 		}
-		
 		return downloadinfo;
 	}
 	public List<CloudInfo> getDeleteList(String[] fileNums){
@@ -52,15 +51,33 @@ public class CloudDao extends SqlSessionDaoSupport{
 	}
 	public String duplicateCheck(String item, String folder,int com_num){
 		Map<String, Object> map =  new HashMap<String, Object>();
-		
 		map.put("item", item);
 		map.put("folder", folder);
 		map.put("com_num", com_num);
 		String dupli = getSqlSession().selectOne("cloud.dupliCk",map);
 		return dupli;
 	}
-	public String findUpper(String folder){	
+	public String findUpper(String folder){
 			String upperFolder = getSqlSession().selectOne("cloud.findUpper",folder);
 	return upperFolder;
+	}
+	public String getFilePath(int promgr_num, String folder, HttpServletRequest request){
+		int com_num = (int)request.getSession().getAttribute("com_num");
+		Map<String, Object> map =  new HashMap<String, Object>();
+		map.put("com_num", com_num);
+		map.put("promgr_num", promgr_num);
+		map.put("file_name", folder);
+		String folderPath =  getSqlSession().selectOne("cloud.getFolderPath",map);
+		return folderPath;
+	}
+	public String promgrDuplick(int promgr_num,String folder, HttpServletRequest request){
+		int com_num = (int)request.getSession().getAttribute("com_num");
+		Map<String, Object> map =  new HashMap<String, Object>();
+		map.put("com_num", com_num);
+		map.put("promgr_num", promgr_num);
+		map.put("item", folder);
+		String duplick = getSqlSession().selectOne("cloud.dupliCk", map);
+		System.out.println("dao.duplick::"+duplick);
+		return duplick;
 	}
 }

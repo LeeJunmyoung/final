@@ -52,14 +52,6 @@ public class CloudMainController implements ApplicationContextAware{
 	@RequestMapping(value="/main", method = RequestMethod.GET)
 	public ModelAndView getCloudList(HttpSession session, HttpServletRequest request, String folder) {
 		session = request.getSession();
-		/* session 임시설정 
-		System.out.println("test용com_num설정::1");
-		session.setAttribute("com_num", 1);
-		session.setAttribute("com_pos_num", 1);
-		session.setAttribute("name", "tester");
-		session.setAttribute("mem_num", 1);
-		session임시설정끝 */
-
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		System.out.println("controller folder::"+folder);
 		List cloudlist = dao.getcloudList(com_num, folder);
@@ -72,24 +64,25 @@ public class CloudMainController implements ApplicationContextAware{
 	public String goUploadMain(String folder){
 		return("/upload");
 	}
-		//폴더내부에서 업로드폼 연결
-/*	@RequestMapping(value = "/upload/{folder}", method = RequestMethod.GET)
-	public String goUploadFolder(@PathVariable String folder) {
-		return "/upload";
-	}*/
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
 	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,@RequestParam(required = false)String folder,  HttpServletRequest request, String security, @RequestParam(value="promgr_num",defaultValue = "0")int promgr_num, @RequestParam(value = "promgr_name", defaultValue = "")String promgr_name){
-		System.out.println("넘어옴");
 		int com_pos_num = 0;
 		if(security != null){
 			com_pos_num = 1;
 		}
-		System.out.println("promgr_name::"+promgr_name);
-		if(promgr_num > 0){
+		System.out.println("controller::promgr_name::"+promgr_name);
+		if(promgr_num > 0 ){
 			folder = "%%"+promgr_name;
+			String promgDupli = dao.promgrDuplick(promgr_num,folder, request);
+			System.out.println("controoler.promgDupli::"+promgDupli);
+			
+			if(promgDupli.equals("0")){
 			makeFolderPro("",folder,request,promgr_num);
+			};
+			folder = dao.getFilePath(promgr_num, folder, request);
+			
 		};		
 		CloudInfo info = new Cloud_uploadFile().uploadFile(uploadfile, folder, request, com_pos_num, promgr_num);
 		dao.uploadFile(info);
@@ -134,12 +127,6 @@ public class CloudMainController implements ApplicationContextAware{
 		return"redirect:delete";
 	}
 	/*폴더 만들기*/
-/*	@RequestMapping(value = "/makeFolder/{folder}", method=RequestMethod.GET)
-	public ModelAndView makeFilder(@PathVariable String folder){
-		ModelAndView mav =  new ModelAndView("/makeFolder","folder",folder);
-		System.out.println("folder::"+folder);;
-		return mav;
-	}*/
 	@RequestMapping(value = "/makeFolder", method=RequestMethod.GET)
 	public ModelAndView makeFilder(){
 		ModelAndView mav =  new ModelAndView("/makeFolder");

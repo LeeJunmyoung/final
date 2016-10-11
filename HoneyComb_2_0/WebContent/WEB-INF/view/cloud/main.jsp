@@ -36,21 +36,21 @@
 	})
 	});
 	
-$(document).bind("contextmenu", function(event) { 
-	 event.preventDefault();
-	$("<div class='cloud_menu' style='position: absolute; z-index:1000;'>"+
-		    "<a href="+"javascript:fileUploader('${param.folder}')"+"><p>업로드</p></a>"+
-		    "<a href='javascript:download()'><p>다운로드</p></a>"+
-		    "<a href = "+"javascript:createfolder('${param.folder}')"+"><p>폴더 만들기</p></a>"+
-		    "<a class='deldiv' href=''><p>삭제</p></a>"+
-		    "<a href="" 파일 열기>" 
-		    +"</div>")
-		    .appendTo("body")
-		    .css({top: event.pageY + "px", left: event.pageX + "px"});	
-	
-}).bind("click", function(event) {
-    $("div.cloud_menu").hide(); 
-});
+	$(document).bind("contextmenu", function(event) { 
+		 event.preventDefault();
+		$("<div class='cloud_menu' style='position: absolute; z-index:1000;'>"+
+			    "<a href="+"javascript:fileUploader('${param.folder}')"+"><p>업로드</p></a>"+
+			    "<a href='javascript:download()'><p>다운로드</p></a>"+
+			    "<a href = "+"javascript:createfolder('${param.folder}')"+"><p>폴더 만들기</p></a>"+
+			    "<a class='deldiv' href=''><p>삭제</p></a>"+
+			    "<a href='' 파일 열기>" 
+			    +"</div>")
+			    .appendTo("body")
+			    .css({top: event.pageY + "px", left: event.pageX + "px"});	
+		
+	}).bind("click", function(event) {
+	    $("div.cloud_menu").hide(); 
+	});
 </script>
 </head>
 <body>

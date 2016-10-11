@@ -72,6 +72,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	and promgr_num = #{promgr_num}
 	 	and folder = #{folder}
 	 </where>
-	
+	</select>
+	<select id="getFolderPath" parameterType="hashmap" resultType="String">
+		select file_path from cloud where com_num = #{com_num} and folder is null and promgr_num = #{promgr_num} and file_name = #{file_name}
 	</select>
 </mapper>
