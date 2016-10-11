@@ -39,7 +39,7 @@
 	$(document).bind("contextmenu", function(event) { 
 		 event.preventDefault();
 		$("<div class='cloud_menu' style='position: absolute; z-index:1000;'>"+
-			    "<a href="+"javascript:fileUploader('${param.folder}')"+"><p>업로드</p></a>"+
+			    "<a href="+"javascript:openupload('${param.folder}')"+"><p>업로드</p></a>"+
 			    "<a href='javascript:download()'><p>다운로드</p></a>"+
 			    "<a href = "+"javascript:createfolder('${param.folder}')"+"><p>폴더 만들기</p></a>"+
 			    "<a class='deldiv' href=''><p>삭제</p></a>"+

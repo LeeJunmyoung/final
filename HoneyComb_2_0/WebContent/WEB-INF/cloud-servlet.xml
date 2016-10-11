@@ -59,7 +59,7 @@
 	</bean>
 
 	<bean id="cloudMainController" class="cloud.controller.CloudMainController"
-		p:dao-ref="dao" />
+		p:dao-ref="dao"/>
 	<bean id="cloud_uploadFile" class="cloud.controller.Cloud_uploadFile"/>
 	
 	<!-- 다운로드 전용 bean 생성 -->

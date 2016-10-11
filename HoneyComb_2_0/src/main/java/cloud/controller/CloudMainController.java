@@ -53,7 +53,6 @@ public class CloudMainController implements ApplicationContextAware{
 	public ModelAndView getCloudList(HttpSession session, HttpServletRequest request, String folder) {
 		session = request.getSession();
 		int com_num = (int) request.getSession().getAttribute("com_num");
-		System.out.println("controller folder::"+folder);
 		List cloudlist = dao.getcloudList(com_num, folder);
 		ModelAndView mav = new ModelAndView("cloud_main", "cloudlist", cloudlist);
 		return mav;
@@ -67,12 +66,11 @@ public class CloudMainController implements ApplicationContextAware{
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,@RequestParam(required = false)String folder,  HttpServletRequest request, String security, @RequestParam(value="promgr_num",defaultValue = "0")int promgr_num, @RequestParam(value = "promgr_name", defaultValue = "")String promgr_name){
-		int com_pos_num = 0;
-		if(security != null){
-			com_pos_num = 1;
-		}
-		System.out.println("controller::promgr_name::"+promgr_name);
+	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,@RequestParam(required = false)String folder,  HttpServletRequest request, String security, @RequestParam(value="promgr_num",required = false,defaultValue = "0")int promgr_num, @RequestParam(value = "promgr_name", defaultValue = "")String promgr_name){
+		int com_pos_num = (security != null)?0:1;
+		folder = (folder==null)?"":folder;
+		
+		System.out.println("controllerFoldeR::"+folder);
 		if(promgr_num > 0 ){
 			folder = "%%"+promgr_name;
 			String promgDupli = dao.promgrDuplick(promgr_num,folder, request);
