@@ -44,6 +44,8 @@ public class Dept_Change_Controller {
 	@RequestMapping("dept_change_pro")
 	public String dept_change_pro() {
 		
+		
+		
 		return "dept_close";
 	}
 	
