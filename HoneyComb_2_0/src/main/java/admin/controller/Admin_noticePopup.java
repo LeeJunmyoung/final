@@ -17,8 +17,8 @@ import admin.db.AdminDao;
 import admin.db.AdminNoticeInfo;
 
 @Controller
-@RequestMapping("/admin_notice")
-public class Admin_notice {
+@RequestMapping("/admin_noticePopup")
+public class Admin_noticePopup {
 
 	private AdminDao dao;
 
@@ -27,16 +27,11 @@ public class Admin_notice {
 		this.dao = dao;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView adminNoticePost( HttpServletRequest request) {
-		System.out.println("post 실행중");
-		AdminNoticeInfo admininfo = new AdminNoticeInfo();
-		admininfo.setNotice_admin_title(request.getParameter("notice_admin_title"));
-		admininfo.setNotice_admin_content(request.getParameter("notice_admin_content"));
-		admininfo.setNotice_admin_date(new Timestamp(System.currentTimeMillis()));
-		int noticelist = dao.adminNoticeInsert(admininfo);
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView adminNoticePost(HttpServletRequest request) {
 		List<AdminNoticeInfo> adminNotice = dao.getadminNotice();
-		ModelAndView mav = new ModelAndView("admin_notice", "noticelist", adminNotice);
+		ModelAndView mav = new ModelAndView("admin_noticePopup", "noticelist", adminNotice);
 		return mav;
 	}
+
 }
