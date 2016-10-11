@@ -37,16 +37,20 @@ public class Chat_Main_Controller {
 		
 		view_list = dao.view_My_chatroom(mem_num);
 		
-		for(Object c : view_list){
+
+		ModelAndView mov = new ModelAndView("chat_main");
+		
+		request.getSession().setAttribute("current_chat_list", view_list);
+		/*mov.addObject("current_chat_list", view_list);*/
+		
+		
+		
+		/*for(Object c : view_list){
 			ChatRoomDataBean crdb = (ChatRoomDataBean) c;
 			
 			System.out.println("chat:::::"+crdb.toString());
 			
-		}
-		
-		ModelAndView mov = new ModelAndView("chat_main");
-		
-		mov.addObject("current_chat_list", view_list);
+		}*/
 		
 		
 		return mov;

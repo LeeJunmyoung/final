@@ -185,8 +185,9 @@ color:#fff;
 
 </style>
 
-<script src='/HoneyComb/Calendar/fullcalendar/lib/jquery.min.js'></script>
-
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
 <script type="text/javascript">
 	function invite_Member() {
 		var url = "/HoneyComb/Chatting/Invite_form.chat";
@@ -317,7 +318,7 @@ function new_msg(num){
 	        Chat.initialize = function() {
 	            if (window.location.protocol == 'http:') {
 	                //Chat.connect('ws://' + window.location.host + '/websocket/chat');
-	            	Chat.connect('ws://localhost:8888/HoneyComb/websocket/Chatting?mem_name='+mem_num+'&receiver='+chat_Member_Participation+'&chat_Num='+chat_Num+'&my_name='+my_Name);
+	            	Chat.connect('ws://localhost:8888/HoneyComb_2_0/websocket/Chatting?mem_name='+mem_num+'&receiver='+chat_Member_Participation+'&chat_Num='+chat_Num+'&my_name='+my_Name);
 	            } else {
 	                Chat.connect('wss://' + window.location.host + '/websocket/Chatting?mem_name='+mem_num+'&receiver='+chat_Member_Participation+'&chat_Num='+chat_Num+'&my_name='+my_Name);
 	            }
@@ -465,7 +466,7 @@ function new_msg(num){
 
 			<c:forEach var="chat_list" items="${current_chat_list}">
 				<form method="post"
-					action="/HoneyComb/Chatting/Chat_Select_OneNone.chat"
+					action="Chat_Select_Controller.do"
 					class='form${chat_list.chat_Num }' id='form1'>
 					<input type="hidden" name="chat_Num" id="chat_Num"
 						value="${chat_list.chat_Num}"> <input type="hidden"
@@ -503,14 +504,14 @@ function new_msg(num){
 						</c:forTokens>
 						<c:if test="${chat_list.last_Chat_Read == 'f' }">
 						<c:if test="${temp_check != 1 }">
-						<img src="/HoneyComb/Chatting/chat_image/new.gif" class = 'visibleImg' />
+						<img src="/HoneyComb_2_0/resources/images/new.gif" class = 'visibleImg' />
 						</c:if>
 						</c:if>
-							<img src="${ chat_list.profile_IMG }"  onerror="this.src='/HoneyComb/images/user.png'" title="내 프로필 사진" class = 'myProfilePicture'>
+							<img src="${ chat_list.profile_IMG }"  onerror="this.src='/HoneyComb_2_0/resources/images/user.png'" title="내 프로필 사진" class = 'myProfilePicture'>
 				
 			
 							
-						<img src="/HoneyComb/Chatting/chat_image/new.gif"
+						<img src="/HoneyComb_2_0/resources/images/new.gif"
 							id='img_new${chat_list.chat_Num }' class='sendCheckImg'  />
 					</div>
 				</form>

@@ -4,8 +4,7 @@
 <head>
 <title>Insert title here</title>
 </head>
-
-<script src='/HoneyComb/Calendar/fullcalendar/lib/jquery.min.js'></script>
+<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
 
 <script type="text/javascript">
 /* var chat_Num = '${chat_Num}';

@@ -6,30 +6,62 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="load_chat_mem_info" parameterType="int"
 		resultType="login.controller.LogOnDataBean">
-		select name,com_pos_name,com_dept_name from members where mem_num =
+		select name,com_pos_name,com_dept_name,profile_img from
+		members where mem_num =
 		#{mem_num}
 	</select>
 
 	<select id="view_my_chatroom" parameterType="String"
 		resultType="chat.db.ChatRoomDataBean">
-		select * from chat where chat_member_participation like #{mem_num}
+		select * from chat where chat_member_participation like
+		#{mem_num}
 	</select>
 	<select id="view_Com_Member" parameterType="hashmap"
 		resultType="login.controller.LogOnDataBean">
-		select * from members where not mem_num = #{mem_num} and com_num =
+		select * from members where not mem_num = #{mem_num} and
+		com_num =
 		#{com_num} order by com_pos_num
 	</select>
 
 	<select id="check_OneNOne_Chat" parameterType="String"
 		resultType="int">
-		select count(*) from chat where chat_member_participation like
+		select count(*) from chat where chat_member_participation
+		like
 		#{chat_mem_num}
 	</select>
+
+	<select id="view_Chat_Conversation" parameterType="int"
+		resultType="chat.db.Chat_Conversation_DataBean">
+		select * from CHAT_CONVERSATION where chat_num =
+		#{chat_num} order by chat_sequence ASC
+	</select>
+
+
+	<select id="select_False_Chat" parameterType="int"
+		resultType="chat.db.ChatRoomDataBean">
+		select last_chat_read,last_chat_member from chat where
+		chat_num =
+		#{chat_num}
+	</select>
+
+
+
+
 
 	<insert id="create_OneNOne_Chat" parameterType="String">
 		insert into
 		chat(chat_num,chat_member_participation,chat_mem_name,last_chat_member,last_chat_read)
 		values ( OneNOneChat.nextval , #{chat_mem_num} ,',',',','t')
 	</insert>
+
+	<update id="check_MultiRead_Msg" parameterType="hashmap">
+		update CHAT set last_chat_read = 'f' ,last_chat_member = concat((select
+		last_chat_member from chat where chat_num = #{chat_num}), #{mem_num} ) where chat_num = #{chat_num}
+	</update>
+	
+	<update id="Read_Msg" parameterType="int">
+	update CHAT set last_chat_member = ',' ,last_chat_read = 't'  where chat_num = #{chat_num}
+	</update>
+	 
 
 </mapper>

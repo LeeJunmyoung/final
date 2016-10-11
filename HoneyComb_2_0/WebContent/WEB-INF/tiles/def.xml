@@ -63,6 +63,11 @@
 		<put-attribute name="body" value="/WEB-INF/view/chat/Chat_main.jsp" />
 	</definition>
 
+	<definition name="chatting" extends="base_layout">
+		<put-attribute name="title" value="CHAT" />
+		<put-attribute name="body" value="/WEB-INF/view/chat/Chat_use.jsp" />
+	</definition>
+
 	<definition name="myPage" extends="base_layout">
 		<put-attribute name="title" value="MYPAGE" />
 		<put-attribute name="body" value="/WEB-INF/view/mypage/mypage.jsp" />
