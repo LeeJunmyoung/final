@@ -76,7 +76,9 @@ li {
 				<ul class="nav nav-pills nav-stacked">
 					<li><a href="#">APPROVAL</a></li>
 					<li><a href="/HoneyComb_2_0/dept/chart">DEPT</a></li>
+					<c:if test="${ sessionScope.com_pos_num <= 4 }">
 					<li><a href="/HoneyComb_2_0/accept/accept">ACCEPT</a></li>
+					</c:if>
 					<li><a href="/HoneyComb_2_0/salary/user_main.do">SALARY</a></li>
 
 					<c:if test="${sessionScope.com_dept_num == 2}">
