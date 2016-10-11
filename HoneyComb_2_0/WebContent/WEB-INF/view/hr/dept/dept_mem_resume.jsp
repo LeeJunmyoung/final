@@ -5,6 +5,24 @@
 <html>
 <head>
 <title>이력서</title>
+<script>
+function init() {
+	window.location.reload(true);
+}
+
+function dept_pos_change(num, c) {
+	
+	var mem_num = num;
+	var code = c;
+	var url = "/HoneyComb_2_0/dept/change?mem_num=" + mem_num + "&code=" + code;
+	
+	window
+	.open(
+			url,
+			"post",
+			"toolbar=no, left=200, top=100, width=700, height=400, directories=no, status=yes, scrollbar=yes, menubar=no");
+}
+</script>
 <style>
 table, tr, th, td {
 	border-collapse: collapse;
@@ -63,6 +81,27 @@ h2 {
 	width: 240px;
 	background: #344d91;
 }
+
+.button {
+	width: 50px;
+	display: inline-block;
+	background-color: #4367b0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	font-size: 12px;
+	padding: 2px 2px;
+	text-decoration: none;
+	float: right;
+	text-align: center;
+}
+
+.button:hover {
+	background-color: #344d91;
+	color: white;
+}
 </style>
 </head>
 <body onselectstart="return false" ondragstart="return false">
@@ -99,9 +138,9 @@ h2 {
 
 				<tr>
 					<!-- <td></td> -->
-					<td class="bold">부 서</td>
+					<td class="bold">부 서<a onclick="dept_pos_change(${ base_list.mem_num }, 1)" class="button">부서이동</a></td>
 					<td name="com_dept_num" value="${ com_dept_num }">${ base_list.com_dept_name }</td>
-					<td class="bold">직 급</td>
+					<td class="bold">직 급<a onclick="dept_pos_change(${ base_list.mem_num }, 2)" class="button">직급변경</a></td>
 					<td name="com_pos_num" value="${ com_pos_num }">${ base_list.com_pos_name }</td>
 				</tr>
 

@@ -75,5 +75,8 @@
 	<bean id="Dept_Member_Data" class="dept.controller.Dept_MemResume_Controller"
 		p:dao-ref="deptDAO" />
 
+	<bean id="Dept_Change_Controller" class="dept.controller.Dept_Change_Controller"
+		p:dao-ref="deptDAO" />
+
 
 </beans>
