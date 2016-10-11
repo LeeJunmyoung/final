@@ -51,7 +51,7 @@ public class Chat_InviteForm {
 	public String inviteMember(HttpServletRequest request,ModelMap map,
 			@RequestParam("check") List<String> check
 			){
-		System.out.println("chekc::"+check.toString());
+		
 
 		
 		ArrayList<Integer> check_mem_num = new ArrayList<Integer>();
@@ -63,7 +63,7 @@ public class Chat_InviteForm {
 			check_mem_num.add(mem_num);
 			check_mem_num.sort(null);
 			
-			chat_mem_num = check_mem_num.get(0)+"n"+check_mem_num.get(1);
+			chat_mem_num = check_mem_num.get(0)+","+check_mem_num.get(1);
 			
 			
 			

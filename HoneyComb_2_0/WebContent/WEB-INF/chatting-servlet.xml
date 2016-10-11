@@ -49,9 +49,9 @@
 
 <bean id="Chat_Select_Controller" class="chat.controller.Chat_Select_Controller"   p:dao-ref="Chat_DAO"></bean>
 
-
 <bean id="Chat_DAO" class="chat.db.Chat_DAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	
 	</bean>
 
 

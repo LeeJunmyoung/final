@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.stereotype.Service;
 
 import login.controller.LogOnDataBean;
+
+
 
 public class Chat_DAO extends SqlSessionDaoSupport {
 
@@ -41,13 +44,13 @@ public class Chat_DAO extends SqlSessionDaoSupport {
 		for(Object c : view_my_chatroom){
 			ChatRoomDataBean crdb = (ChatRoomDataBean) c;
 			
-			StringTokenizer stok = new StringTokenizer(crdb.getChat_Member_Participation(), "n", false);
+			StringTokenizer stok = new StringTokenizer(crdb.getChat_Member_Participation(), ",", false);
 			
 			
 			String temp = stok.nextToken();
 			
 			
-			
+		
 			
 			if(temp.equals(String.valueOf(mem_num))){
 				temp=stok.nextToken();
@@ -55,15 +58,15 @@ public class Chat_DAO extends SqlSessionDaoSupport {
 				stok.nextToken();
 			}
 			
-			
+			System.out.println("temp:::::::"+temp);	
 			
 			if(!stok.hasMoreTokens() ){
 				LogOnDataBean participation_info= participation_info(new Integer(temp));
 				
 				crdb.setProfile_IMG(participation_info.getProfile_img());
-				crdb.setChat_mem_name(participation_info.getCom_dept_name()+" "+participation_info.getCom_pos_name()+" "+participation_info.getName());
+				crdb.setChat_mem_name(participation_info.getCom_dept_name()+" / "+participation_info.getCom_pos_name()+" / "+participation_info.getName());
 				crdb.setChat_partner(participation_info.getName());
-				
+				crdb.setChat_Member_Participation(temp);
 				
 				/*
 				pstmt= conn.prepareStatement(" select profile_img from members where mem_num = ? ");
@@ -147,10 +150,12 @@ public class Chat_DAO extends SqlSessionDaoSupport {
 		List<String> list= new ArrayList<String>();
 		ChatRoomDataBean crdb =  getSqlSession().selectOne("chat.select_False_Chat", chat_num);
 		
+		if(crdb.getLast_Chat_Read()!=null){
 		
-		list.set(0, crdb.getLast_Chat_Read());
-		list.set(1, crdb.getLast_Chat_Member());
+			list.add( crdb.getLast_Chat_Read());
+			list.add(crdb.getLast_Chat_Member());
 		
+		}
 		
 		return list;
 		
@@ -161,7 +166,7 @@ public class Chat_DAO extends SqlSessionDaoSupport {
 		HashMap<String, String> map = new HashMap<String, String>();
 		
 		map.put("chat_num", String.valueOf(chat_num));
-		map.put("mem_num", String.valueOf(mem_num)+"n");
+		map.put("mem_num", String.valueOf(mem_num)+",");
 		
 		
 		getSqlSession().update("chat.check_MultiRead_Msg", map);
