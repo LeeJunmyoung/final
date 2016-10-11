@@ -10,8 +10,9 @@
 
 
 	<context:annotation-config />
-
-
+	
+	
+	
 	<bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
@@ -31,11 +32,11 @@
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
 		<property name="order" value="1" />
 	</bean>
+	
 
-
-	<bean id="jspViewResolver"
+	<bean id="jspviewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/hr/dept/" />
+		<property name="prefix" value="/WEB-INF/view/hr/accept/" />
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="2" />
 	</bean>
@@ -50,10 +51,9 @@
 		<property name="password" value="honeycomb" />
 	</bean>
 
-
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:mapper/dept.xml" />
+		<property name="mapperLocations" value="classpath:mapper/*.xml" />
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
@@ -61,19 +61,14 @@
 	</bean>
 
 
-	<!-- dept -->
-	<bean id="deptDAO" class="dept.db.DeptDAO">
+	<!-- accept member -->
+	<bean id="acceptDAO" class="accept.db.AcceptDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
-	<bean id="Dept_Controller" class="dept.controller.Dept_Controller"
-		p:dao-ref="deptDAO" />
+	<bean id="Accept_Controller" class="accept.controller.Accept_Controller"
+		p:dao-ref="acceptDAO" />
 
-	<bean id="Dept_MemList" class="dept.controller.Dept_MemList_Controller"
-		p:dao-ref="deptDAO" />
-
-	<bean id="Dept_Member_Data" class="dept.controller.Dept_MemResume_Controller"
-		p:dao-ref="deptDAO" />
 
 
 </beans>

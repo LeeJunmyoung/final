@@ -91,4 +91,10 @@
 			value="/WEB-INF/view/hr/salary/management_main.jsp" />
 	</definition>
 
+	<definition name="accept" extends="base_layout">
+		<put-attribute name="title" value="ACCEPT" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/hr/accept/com_mem_accept.jsp" />
+	</definition>
+
 </tiles-definitions>

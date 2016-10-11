@@ -43,5 +43,13 @@ public class Resume_Controller {
 		
 		return mav;
 	}
+	
+	@RequestMapping("/certi_search")
+	public ModelAndView certi_Search() {
+		
+		ModelAndView mav = new ModelAndView("resume_certi_search");
+		
+		return mav;
+	}
 
 }

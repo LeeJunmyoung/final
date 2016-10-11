@@ -59,7 +59,7 @@ li {
 		<h1 align="center">${ sessionScope.com_name }</h1>
 
 		<h2>
-			<img src="${ sessionScope.profile_img }" width="150" height="153"
+			<img src="${ sessionScope.profile_img }" width="130" height="156"
 				onerror="this.src='/HoneyComb_2_0/resources/images/user.png'"
 				title="내 프로필 사진">
 		</h2>
@@ -76,6 +76,7 @@ li {
 				<ul class="nav nav-pills nav-stacked">
 					<li><a href="#">APPROVAL</a></li>
 					<li><a href="/HoneyComb_2_0/dept/chart">DEPT</a></li>
+					<li><a href="/HoneyComb_2_0/accept/accept">ACCEPT</a></li>
 					<li><a href="/HoneyComb_2_0/salary/user_main.do">SALARY</a></li>
 
 					<c:if test="${sessionScope.com_dept_num == 2}">

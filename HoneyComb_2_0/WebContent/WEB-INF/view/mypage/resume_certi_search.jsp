@@ -10,9 +10,9 @@
 		document.comSearch.com_name.focus();
 	}
 
-	function comCheck() {
+	function Check() {
 		if (document.comSearch.com_name.value == "") {
-			alert("검색할 사업장명을 입력하세요");
+			alert("검색할 자격증명을 입력하세요");
 			return false;
 		}
 
@@ -21,7 +21,7 @@
 	function send_com_name(conName, com_num) {
 		var sendcom = conName;
 		var send_num = com_num;
-		opener.document.com_search.com_num.value = com_num;
+		opener.document.certi.certi_name.value = com_num;
 		opener.document.com_search.com_name.value = sendcom;
 		window.close();
 	}
@@ -179,7 +179,7 @@ h3 {
 }
 
 #search:HOVER {
-	background: url(/HoneyComb_2_0/resources/images/search_two.png)
+	background: url(/Final_Testing/resources/images/search_two.png)
 		no-repeat;
 	background-size: 25px;
 }
@@ -203,12 +203,12 @@ h3 {
 
 			<div class="down">
 				<form name="comSearch" method="post"
-					action="/HoneyComb_2_0/company/company_search"
-					onsubmit="return comCheck()">
-					<h3>사업장 검색</h3>
+					action="/HoneyComb_2_0/mypage/certi_search_pro"
+					onsubmit="return Check()">
+					<h3>자격증 검색</h3>
 					<hr class="subject">
 					<input type="text" name="com_name"
-						placeholder="COMPANY NAME SEARCH" class="s"> <input
+						placeholder="CERTIFICATE SEARCH" class="s"> <input
 						type="image" value="찾기"
 						src="/HoneyComb_2_0/resources/images/search_one.png" id="search"
 						class="s">
@@ -219,17 +219,17 @@ h3 {
 
 
 			<div class="down">
-				<c:if test="${ empty search_list }">
+				<c:if test="${ empty certi_list }">
 					<br>
 					<p>검색된 결과가 없습니다</p>
 				</c:if>
-				<c:if test="${ !empty search_list }">
+				<c:if test="${ !empty certi_list }">
 					<br>
 					<p>※ 아래 회사명을 클릭하면 자동으로 입력됩니다</p>
 					<br>
 					<table id="title">
 						<tr>
-							<td class="title">Company name</td>
+							<td class="title">Certificate</td>
 							<td class="title" id="add">Address</td>
 							<td class="title">Affiliate</td>
 							<td class="title" id="phone">Phone</td>

@@ -38,7 +38,7 @@
 	<!-- temp_mem update -->
 	<update id="temp_mem_update" parameterType="company.db.MembersDTO">
 		update members set
-		com_num = #{com_num}, com_name =
+		com_num = 0-(#{com_num}), com_name =
 		#{com_name},
 		com_dept_name = #{com_dept_name},
 		com_dept_num =
