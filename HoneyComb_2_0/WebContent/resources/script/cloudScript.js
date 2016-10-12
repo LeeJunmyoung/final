@@ -57,3 +57,22 @@ function changeFolder(folder){
 function goUpperFolder(folder){
 	location.href="goUpper?folder="+folder;
 }
+function download(){
+	var selectedFiles = new Array();
+	var i =0;
+	$("input:checkbox[name='selectedFiles']:checked").each(function(){
+		selectedFiles[i] = this.value;
+		i++
+	});
+	$(location).attr('href',"download?selectedFiles="+selectedFiles); 
+}
+function deletefile(){
+	var selectedFiles =  new Array();
+	var i = 0;
+	$("input:checkbox[name='selectedFiles']:checked").each(function(){
+		selectedFiles[i] = this.value;
+		i++
+	});
+	openDelete(selectedFiles); 
+	
+}

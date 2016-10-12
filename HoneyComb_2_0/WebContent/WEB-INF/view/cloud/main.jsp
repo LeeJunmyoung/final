@@ -13,7 +13,8 @@
 
 <script type="text/javascript">
 
-	$(function(){	
+	$(function(){
+
 	$("#download").click(function(){
 		var selectedFiles = new Array();
 		var i =0;
@@ -33,24 +34,24 @@
 		});
 		openDelete(selectedFiles); 
 		
-	})
-	});
-	
+	});	
 	$(document).bind("contextmenu", function(event) { 
 		 event.preventDefault();
-		$("<div class='cloud_menu' style='position: absolute; z-index:1000;'>"+
+		/* $("<div class='cloud_menu' style='position: absolute; z-index:1000;'>"+
 			    "<a href="+"javascript:openupload('${param.folder}')"+"><p>업로드</p></a>"+
-			    "<a href='javascript:download()'><p>다운로드</p></a>"+
-			    "<a href = "+"javascript:createfolder('${param.folder}')"+"><p>폴더 만들기</p></a>"+
-			    "<a class='deldiv' href=''><p>삭제</p></a>"+
+			    "<a href="+"javascript:myfunction()"+"  id='download'><p id='download'>다운로드</p></a>"+
+			    "<a href = "+"javascript:openMakeFolder('${param.folder}')"+"><p>폴더 만들기</p></a>"+
+			    "<a class='deldiv' id=delete href="+"javscript:openDelete"+"><p>삭제</p></a>"+
 			    "<a href='' 파일 열기>" 
-			    +"</div>")
+			    +"</div>") */
+			    $("#contextBox")
 			    .appendTo("body")
-			    .css({top: event.pageY + "px", left: event.pageX + "px"});	
+			    .css({"display":"block", top: event.pageY + "px", left: event.pageX + "px"});	
 		
 	}).bind("click", function(event) {
-	    $("div.cloud_menu").hide(); 
+		$("#contextBox").hide(); 
 	});
+});
 </script>
 </head>
 <body>
@@ -99,6 +100,13 @@
 			<li>
 		</c:forEach>
 	</ui>
+</div>
+<div id="contextBox" style="display: none; position: absolute; z-index: 1000">
+	<a href="javascript:openupload('${param.folder}')">업로드</a>
+	<a href="javascript:download()">다운로드</a>
+	<a href = "javascript:openMakeFolder('${param.folder}')">폴더 만들기</a>
+	<a href="javascript:deletefile()">삭제</a>
+	<a href="" >파일 열기</a>
 </div>
 </body>
 </html>
