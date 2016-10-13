@@ -76,3 +76,11 @@ function deletefile(){
 	openDelete(selectedFiles); 
 	
 }
+function changeFileName(){
+	var checked = $("input:checkbox[name='selectedFiles']:checked");
+	if(checked.size() > 1){
+		alert("한개의 파일만 선택하여 주세요");
+		return false;
+	}
+	$("input:text[id="+checked.val()+"]").attr("readonly",false).focus();
+}

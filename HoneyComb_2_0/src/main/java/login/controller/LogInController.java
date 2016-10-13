@@ -43,6 +43,7 @@ public class LogInController {
 			session.setAttribute("name", lodb.getName());
 			session.setAttribute("phone_num", lodb.getPhone_num());
 			session.setAttribute("email", email);
+			session.setAttribute("profile_img", lodb.getProfile_img());
 
 			return "comCheck";
 

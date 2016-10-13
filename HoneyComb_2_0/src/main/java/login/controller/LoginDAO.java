@@ -27,8 +27,10 @@ public class LoginDAO extends SqlSessionDaoSupport{
 		String email;
 		lodb.setName(name);
 		lodb.setPhone_num(phone_num);
-		email= (String) getSqlSession().selectOne("login.FindEmail", lodb);
 		
+
+		email= (String) getSqlSession().selectOne("login.FindEmail", lodb);
+
 		return email;
 	}
 	

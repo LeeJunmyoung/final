@@ -14,7 +14,9 @@
 <script type="text/javascript">
 
 	$(function(){
-
+	if($("input:text").attr("readonly")==false){
+		alert("test");
+	}
 	$("#download").click(function(){
 		var selectedFiles = new Array();
 		var i =0;
@@ -82,7 +84,7 @@
 						<div style="border:5px solid">
 						this is file
 				</c:if>
-				
+				<input type="text" value="${cloudlist.file_name}" readonly="readonly" id="${cloudlist.file_num}">
 					  file_name :::${cloudlist.file_name}<br>
 					  file_uploader :::${cloudlist.file_uploader}<br>
 					  file_size :::${cloudlist.file_size}<br>
@@ -106,6 +108,7 @@
 	<a href="javascript:download()">다운로드</a>
 	<a href = "javascript:openMakeFolder('${param.folder}')">폴더 만들기</a>
 	<a href="javascript:deletefile()">삭제</a>
+	<a href="javascript:changeFileName()">이름 바꾸기</a>
 	<a href="" >파일 열기</a>
 </div>
 </body>
