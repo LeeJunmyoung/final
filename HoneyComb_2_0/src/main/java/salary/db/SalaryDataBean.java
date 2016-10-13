@@ -17,6 +17,7 @@ public class SalaryDataBean {
 	int costs_food;
 	int costs_transport;
 	int costs_benefit;
+	int costs_etc;
 
 	public int getSalary_num() {
 		return salary_num;
@@ -136,6 +137,14 @@ public class SalaryDataBean {
 
 	public void setCosts_benefit(int costs_benefit) {
 		this.costs_benefit = costs_benefit;
+	}
+
+	public int getCosts_etc() {
+		return costs_etc;
+	}
+
+	public void setCosts_etc(int costs_etc) {
+		this.costs_etc = costs_etc;
 	}
 
 }

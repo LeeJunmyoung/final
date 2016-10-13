@@ -5,6 +5,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="salary">
 
-	
+	<select id="getDept" parameterType="int" resultType="salary.db.DeptDataBean">
+		select
+		distinct com_dept_num, com_dept_name from members where
+		com_num=#{com_num} order by com_dept_num
+	</select>
+
+	<select id="getPos" parameterType="int" resultType="salary.db.PosDataBean">
+		select
+		distinct com_pos_num, com_pos_name from members where
+		com_num=#{com_num} order by com_pos_num
+	</select>
 
 </mapper>

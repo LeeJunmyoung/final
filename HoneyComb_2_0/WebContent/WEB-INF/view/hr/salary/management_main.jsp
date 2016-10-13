@@ -12,17 +12,37 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <script>
+	function setSel_Option() {
+		
+		var select = document.getElementById("sel_1");
 
-	$(function() {
-		$("dd:not(:first)").css("display", "none");
-		$("dl dt").click(function() {
-			if ($("+dd", this).css("display") == "none") {
-				$(this).siblings("dd").slideUp("slow");
-				$("+dd", this).slideDown("slow");
-			}
-		});
-	});
-	
+		if(select.options[select.selectedIndex].value == 0) {
+			 sel_2_dept.style.display = 'none';
+			 sel_2_pos.style.display = 'none';
+		 } else if(select.options[select.selectedIndex].value == 1) {
+			 sel_2_dept.style.display = '';
+			 sel_2_pos.style.display = 'none';
+		 } else if(select.options[select.selectedIndex].value == 2) {
+			 sel_2_dept.style.display = 'none';
+			 sel_2_pos.style.display = '';
+		 }
+		
+	}
+
+	function setMemberSalaryList() {
+		
+		var select_dept = document.getElementById("sel_2_dept");
+		var select_pos = document.getElementById("sel_2_pos");
+		
+		if(select_dept.options[select_dept.selectedIndex].value != null) {
+			
+		} else if(select_pos.options[select_pos.selectedIndex].value != null) {
+			
+		} else {
+			
+		}
+		
+	}
 </script>
 
 <body>
@@ -35,114 +55,100 @@
 
 		</div>
 
-		<div class="col-md-1"></div>
-
-		<div class="col-md-1">
-
-<!-- 			<input type="button" class="btn btn-primary btn-xs" value="뒤로가기"
-				onclick="location.href='/HoneyComb_2_0/main/main.do'"> -->
-
-		</div>
-
 	</div>
 
 	<div class="row" style="margin-top: 7px;">
-	
-		<div class="col-md-1"></div>
 
-		<div class="container col-md-10">
+		<!-- <div class="col-md-1"></div> -->
 
-			<%-- <c:if test="${notice_count == 0}">
-			
-				<div class="row">
-					<div class="col-md-12 text-center">공지사항이 없습니다.</div>
-				</div>
-				
-			</c:if>
+		<div class="container col-md-12">
 
-			<c:if test="${notice_count > 0}">
+			<div class="row">
 
-				<div class="row">
-					<b class="col-md-6 text-center">제 목</b>
-					<b class="col-md-2 text-center">작성자</b>
-					<b class="col-md-4 text-center">작성일</b>
-				</div>
+				<form id="select_search" style="margin-top: 20px">
 
-				<dl class="list-group col-md-12">
-
-					<c:forEach var="article" items="${articleList}">
-
-						<dt class="list-group-item row" style="background-color: #e9ebee;">
-							<span class="col-md-6">
-								${article.notice_title}
-								<c:if test="${article.isNew == 0}">
-									<span class="badge">new</span>
-								</c:if> 
-							</span>
-							<span class="col-md-2 text-center">${article.notice_member}</span>
-							<span class="col-md-4 text-center">${article.notice_date}</span>
-						</dt>
-
-						<dd class="list-group-item row">${article.notice_content}</dd>
-
-					</c:forEach>
-
-				</dl>
-
-			</c:if>
-
-		</div>
-		
-		<div class="col-md-1"></div>
-
-	</div>
-	
-	<div class="row">
-		
-		<div class="col-md-12 text-center">
-		
-			<c:if test="${notice_count > 0}">
-
-				<c:set var="pageCount"
-					value="${notice_count / pageSize + ( notice_count % pageSize == 0 ? 0 : 1)}" />
-	
-				<fmt:parseNumber var="result" value="${currentPage / pageSize}"
-					integerOnly="true" />
-	
-				<c:set var="startPage" value="${result * pageSize + 1}" />
-	
-				<c:set var="endPage" value="${startPage + pageSize - 1}" />
-	
-				<c:if test="${endPage > pageCount}">
-					<c:set var="endPage" value="${pageCount}" />
-				</c:if>
-	
-				<ul class="pagination pagination-sm">
-				
-					<c:if test="${startPage > pageSize}">
-						<li>
-							<a href="/HoneyComb_2_0/notice/more.do?pageNum=${startPage - pageSize}">이전</a>
-						</li>
-					</c:if>
-				
-					<c:forEach var="i" begin="${startPage}" end="${endPage}">
-						<li>
-							<a href="/HoneyComb_2_0/notice/more.do?pageNum=${i}">${i}</a>
-						</li>
-					</c:forEach>
+					<span class="col-md-3">
+						<select class="form-control" id="sel_1" onchange="setSel_Option()">
+							<option value="0">전체</option>
+							<option value="1">부서별</option>
+							<option value="2">직급별</option>
+						</select>
+					</span> 
 					
-					<c:if test="${endPage < pageCount}">
-						<li>
-							<a href="/HoneyComb_2_0/notice/more.do?pageNum=${startPage + pageSize}">다음</a>
-						</li>
-					</c:if>
+					<span class="col-md-3"> 
+						<select class="form-control" id="sel_2_dept" onchange="setMemberSalaryList()" style="display: none;">
+							<c:forEach var="item" items="${dept}">
+								<option value="${item.com_dept_num}">${item.com_dept_name}</option>
+							</c:forEach>
+						</select> 
+					
+						<select class="form-control" id="sel_2_pos" onchange="setMemberSalaryList()" style="display: none;">
+							<c:forEach var="item" items="${pos}">
+								<option value="${item.com_pos_num}">${item.com_pos_name}</option>
+							</c:forEach>
+						</select>
+
+					</span>
+
+				</form>
+
+			</div>
+			
+			<div class="row">
+			
+				<%-- <c:if test="${notice_count > 0}"> --%>
 				
-				</ul>
+				<c:set var="sum" value=""/>
+
+	  				<table class="table table-bordered" style="margin-top: 20px">
+						<thead>
+							<tr>
+								<th class="text-center" rowspan="2">이름</th>
+								<th class="text-center" rowspan="2">부서</th>
+								<th class="text-center" rowspan="2">직급</th>
+								<th class="text-center" colspan="4">지급내용(과세)</th>
+								<th class="text-center" colspan="4">지급내용(비과세)</th>
+								<th class="text-center" rowspan="2">합계</th>
+							</tr>
+							<tr>
+								<th class="text-center">기본급</th>
+								<th class="text-center">야근수당</th>
+								<th class="text-center">휴가수당</th>
+								<th class="text-center">상여금</th>
+								<th class="text-center">식대</th>
+								<th class="text-center">교통비</th>
+								<th class="text-center">복리후생</th>
+								<th class="text-center">기타</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="item" items="${salaryList}">
+								<tr id="${item.mem_num}">
+									<td class="text-center">${item.name}</td>
+									<td class="text-center">${item.com_dept_num}</td>
+									<td class="text-center">${item.com_pos_num}</td>
+									<td class="text-center">${item.salary_year / 12}</td>
+									<td class="text-center">${item.salary_add_time}</td>
+									<td class="text-center">${item.salary_add_holiday}</td>
+									<td class="text-center">${item.salary_bonus}</td>
+									<td class="text-center">${item.costs_food}</td>
+									<td class="text-center">${item.costs_transport}</td>
+									<td class="text-center">${item.costs_benefit}</td>
+									<td class="text-center">${item.costs_etc}</td>
+									<td class="text-center">${item.costs_etc}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 	
-			</c:if> --%>
-		
+				<%-- </c:if> --%>
+			
+			</div>
+			
+			<!-- <div class="col-md-1"></div> -->
+
 		</div>
-		
+
 	</div>
 
 </body>
