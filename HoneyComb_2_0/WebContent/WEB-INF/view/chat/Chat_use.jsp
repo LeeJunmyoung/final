@@ -129,7 +129,7 @@ height: 58px;
 	top: -53px;
 	z-index: 1;
 	font-size: 15px;
-	width: 230px;
+	width: 210px;
 	height: 20px;
 	overflow: hidden;
 	white-space: nowrap;
@@ -190,7 +190,7 @@ color:#fff;
 <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
 <script type="text/javascript">
 	function invite_Member() {
-		var url = "/HoneyComb/Chatting/Invite_form.chat";
+		var url = "Invite_form.do";
 		open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,"
 				+ "scrollbars=no,resizable=no,width=550,height=400");
 
@@ -282,7 +282,7 @@ function new_msg(num){
 	
 	             // 서버에 접속이 되면 호출되는 콜백함수
 	            Chat.socket.onopen = function () {
-	                Console.sys("알림 : " +chat_partner +" 님과 연결되었습니다. ");
+	             //   Console.sys("알림 : " +chat_partner +" 님과 연결되었습니다. ");
 	                // 채팅입력창에 메시지를 입력하기 위해 키를 누르면 호출되는 콜백함수
 	                document.getElementById('chat').onkeydown = function(event) {
 	                    // 엔터키가 눌린 경우, 서버로 메시지를 전송함
@@ -318,7 +318,7 @@ function new_msg(num){
 	        Chat.initialize = function() {
 	            if (window.location.protocol == 'http:') {
 	                //Chat.connect('ws://' + window.location.host + '/websocket/chat');
-	            	Chat.connect('ws://192.168.20.42:8888/HoneyComb_2_0/websocket/Chatting?mem_name='+mem_num+'&receiver='+chat_Member_Participation+'&chat_Num='+chat_Num+'&my_name='+my_Name);
+	            	Chat.connect('ws://192.168.20.21:8888/HoneyComb_2_0/websocket/Chatting?mem_name='+mem_num+'&receiver='+chat_Member_Participation+'&chat_Num='+chat_Num+'&my_name='+my_Name);
 	            } else {
 	                Chat.connect('wss://' + window.location.host + '/websocket/Chatting?mem_name='+mem_num+'&receiver='+chat_Member_Participation+'&chat_Num='+chat_Num+'&my_name='+my_Name);
 	            }
@@ -564,6 +564,7 @@ function new_msg(num){
 
 
 					</div>
+					
 					<input type="text" placeholder="type and press enter to chat" id="chat" />
 				</div>
 

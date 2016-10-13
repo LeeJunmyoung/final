@@ -22,27 +22,30 @@ import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import chat.db.Chat_DAO;
 
 
-
+@Controller
 @ServerEndpoint(value = "/websocket/Chatting") // 클라이언트가 접속할 때 사용될 URI
 public class ChatServer {
 
+
+	private static Chat_DAO dao ;
 	
 
-	private Chat_DAO dao;
-	
 	
 
-	public void setDao(Chat_DAO dao) {
-		this.dao = dao;
+
+
+	
+	public static void setDao(Chat_DAO dao) {
+		ChatServer.dao = dao;
 	}
-
-
-
 
 	private static final Map<String, Session> sessionMap = new HashMap<String, Session>();
 
@@ -66,8 +69,8 @@ public class ChatServer {
 
 	@OnOpen
 	public void start(Session session) {
-
-		System.out.println("web dao:::::"+dao.toString());
+	
+		
 		
 		String queryString = session.getQueryString();
 
@@ -87,11 +90,11 @@ public class ChatServer {
 
 		chat_num_Map.put(mem_name, new Integer(chat_Num));
 
-		String message = String.format("* %s %s", mem_name, "has joined.");
+		String message = String.format("* %s", mem_name, "has joined.");
 
 		// sendToOne(message, sessionMap.get(mem_name));
 		if (sessionMap.get(receiverMem) != null) {
-			// sendToOne(message, sessionMap.get(receiverMem));
+		//	 sendToOne(message, sessionMap.get(receiverMem));
 		}
 
 	}
@@ -147,7 +150,7 @@ public class ChatServer {
         if(!receiverMem.contains(",")){
         	System.out.println("chat 1n1 실행함니다.");
     	//chat_db.insert_Chat_Conversation(Integer.parseInt(chat_Num), mem_name, filteredMessage, date,my_name);
-        
+        dao.insert_Chat_Conversation(Integer.parseInt(chat_Num), mem_name, filteredMessage, date, my_name);
     	if(sessionMap.get(receiverMem)!=null){
         		if(chat_num_Map.get(receiverMem)!=null){
             			if(chat_num_Map.get(mem_name).equals(chat_num_Map.get(receiverMem))){//여기오류
@@ -160,19 +163,21 @@ public class ChatServer {
                     	sendToOne(sysmsg, sessionMap.get(receiverMem));
                     	
          //           	chat_db.check_Read_Msg(Integer.parseInt(chat_Num),Integer.parseInt(mem_name));
-          
+                    	dao.check_Read_Msg(Integer.parseInt(chat_Num), Integer.parseInt(mem_name));
             			}
             		}
         	}else{
         //    	chat_db.check_Read_Msg(Integer.parseInt(chat_Num),Integer.parseInt(mem_name));
+        		dao.check_Read_Msg(Integer.parseInt(chat_Num), Integer.parseInt(mem_name));
         	}
     	
     	}else{
     		
     		System.out.println("chat multi 실행함니다.");
-    		
+    		dao.insert_Chat_Conversation(Integer.parseInt(chat_Num), mem_name, message, date, my_name);
       //  	chat_db.insert_Chat_Conversation(Integer.parseInt(chat_Num), mem_name, message, date,my_name);
         	List check_false =  new ArrayList<String>();
+        	check_false=dao.select_False_Chat(Integer.parseInt(chat_Num));
       //  	check_false=chat_db.select_False_Chat(Integer.parseInt(chat_Num));
         	
         	
@@ -180,11 +185,12 @@ public class ChatServer {
         	
         	if(check_false.get(0).equals("t")||check_false.get(0)==null){
         		
-        		
+        		dao.check_Read_Msg(Integer.parseInt(chat_Num), mem_name+",");
     //        chat_db.check_Read_Msg(Integer.parseInt(chat_Num), mem_name+",");//확인 체크 하는거 
         	
         		
         	}
+        	check_false=dao.select_False_Chat(Integer.parseInt(chat_Num));
      //   	check_false=chat_db.select_False_Chat(Integer.parseInt(chat_Num));
         	StringTokenizer checktoken = new StringTokenizer((String)check_false.get(1), ",");
             
@@ -214,6 +220,7 @@ public class ChatServer {
                 			}
                 			}
                 			if(check ==0){
+                				dao.check_MultiRead_Msg(Integer.parseInt(chat_Num), Integer.parseInt(multi_Receiver.get(i)));
          //       			chat_db.check_MultiRead_Msg(Integer.parseInt(chat_Num), Integer.parseInt(multi_Receiver.get(i)));
                 			}
                 			multi_Check_Num++;
@@ -224,13 +231,14 @@ public class ChatServer {
                 			String sysmsg = "its message is deffrent user message::"+chat_Num;
                         	sendToOne(sysmsg, sessionMap.get(multi_Receiver.get(i)));
                         	
-                        	
+                        	dao.check_Read_Msg(Integer.parseInt(chat_Num), Integer.parseInt(mem_name));
                         	//chat_db.check_Read_Msg(Integer.parseInt(chat_Num),Integer.parseInt(mem_name));
                 			}
                 		}
             	}
     			
     			if(multi_Check_Num == multi_Receiver.size()){
+    				dao.Read_Msg(chat_num_Map.get(mem_name));
     	//			chat_db.Read_Msg(chat_num_Map.get(mem_name));
     			}
     			

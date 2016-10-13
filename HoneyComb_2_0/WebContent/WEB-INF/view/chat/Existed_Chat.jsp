@@ -30,7 +30,7 @@ window.close();  */
 var chat_Num = '${chat_Num}';
 $("#"+chat_Num, opener.document).css("color","red");
 
-window.close(); 
+ window.close();  
 
 
 

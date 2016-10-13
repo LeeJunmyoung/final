@@ -3,16 +3,26 @@ package chat.db;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import login.controller.LogOnDataBean;
 
 
-
+@Component
 public class Chat_DAO extends SqlSessionDaoSupport {
+
+	private static Chat_DAO dao = new Chat_DAO();
+	
+	
+	
+	public static Chat_DAO getDao() {
+		return dao;
+	}
 
 	public LogOnDataBean participation_info(int mem_num) {
 
@@ -48,17 +58,13 @@ public class Chat_DAO extends SqlSessionDaoSupport {
 			
 			
 			String temp = stok.nextToken();
-			
-			
 		
-			
 			if(temp.equals(String.valueOf(mem_num))){
 				temp=stok.nextToken();
 			}else{
 				stok.nextToken();
 			}
-			
-			System.out.println("temp:::::::"+temp);	
+		
 			
 			if(!stok.hasMoreTokens() ){
 				LogOnDataBean participation_info= participation_info(new Integer(temp));
@@ -68,37 +74,61 @@ public class Chat_DAO extends SqlSessionDaoSupport {
 				crdb.setChat_partner(participation_info.getName());
 				crdb.setChat_Member_Participation(temp);
 				
-				/*
-				pstmt= conn.prepareStatement(" select profile_img from members where mem_num = ? ");
-				pstmt.setInt(1, Integer.parseInt(temp));
-				rs2 = pstmt.executeQuery();
-				if(rs2.next()){
-					crdb.setProfile_IMG(rs2.getString(1));
-				}
-				crdb.setChat_Member_Participation(temp);
-				crdb.setLast_Chat_Date(rs.getString(3));
-				crdb.setLast_Chat_Conversation(rs.getString(4));	
-				chat_source = view_Chat_Info(Integer.parseInt(temp));
-				crdb.setChat_mem_name(chat_source);
-				stok = new StringTokenizer(chat_source, " ",false);
-				Chat_partner = stok.nextToken();
-				crdb.setChat_partner(Chat_partner);
-				//20168�썡 17�씪 異붽�遺�  �씫�뾿�뒗吏� �븡�씫�뾿�뒗吏� �솗�씤
-				crdb.setLast_Chat_Member(rs.getString("Last_Chat_Member"));
-				crdb.setLast_Chat_Read(rs.getString("Last_Chat_Read"));
-				list.add(crdb);
-				*/	
+				
 				return_list.add(crdb);
 			}
+			else{
+				StringTokenizer multi_Stok = new StringTokenizer(crdb.getChat_Member_Participation(), ",", false);
+				String korea_Name = "";
+				String multi_Names = "";
+				String temp_Names="";
+				String Chat_partner="";
+				String chat_source;
+				int i =0;
+				while(multi_Stok.hasMoreTokens()){
+					temp_Names = multi_Stok.nextToken();
+					System.out.println(temp_Names);
+					i++;
+					if(temp_Names.equals(String.valueOf(mem_num))){
+						
+					}else{
+						
+						multi_Names = multi_Names +temp_Names +","; //硫ㅻ쾭 �닽�옄�젙蹂� 
+						LogOnDataBean lodb = participation_info(Integer.parseInt(temp_Names));
+						
+						korea_Name = lodb.getName();
+						
+						Chat_partner = Chat_partner+korea_Name+" / ";  // �븳湲��씠由� 異붿텧
+						
+					}
+				}
+				
+				
+				
+				Chat_partner= Chat_partner + "("+i+")명";
+				
+				
+				
+				crdb.setChat_mem_name(Chat_partner);// ���솕�븷 �떆�엺 �븳湲� �씠由�
+				crdb.setChat_Member_Participation(multi_Names);
+				crdb.setChat_partner(Chat_partner);
+				
+				
+				
+				
+				
+				
+				
 			
+				
+				
+				return_list.add(crdb);
 			
+	
+				
+			}
 			
-			
-			
-			
-			
-			
-			
+		
 		}
 		
 		
@@ -180,6 +210,44 @@ public class Chat_DAO extends SqlSessionDaoSupport {
 		
 	}
 	
+	
+	
+	
+	public void insert_Chat_Conversation(int chat_Num,String chat_User,String chat_Conversation,String chat_Date,String chat_User_Name){
+	Map map = new HashMap();
+	map.put("chat_Num",chat_Num);
+	map.put("chat_User",chat_User);
+	map.put("chat_Conversation",chat_Conversation);
+	map.put("chat_Date",chat_Date);
+	map.put("chat_User_Name",chat_User_Name);
+		
+		
+		
+	getSqlSession().insert("chat.insert_Chat_Conversation",map);
+	
+	
+	}
+	
+	public void check_Read_Msg(int chat_num,int mem_num){
+		
+		Map<String,Integer> map = new  HashMap<String,Integer>();
+		map.put("chat_num", chat_num);
+		map.put("mem_num", mem_num);
+		
+		
+	getSqlSession().update("chat.check_Read_Msg",map);
+	
+	}
+public void check_Read_Msg(int chat_num,String mem_num){
+		
+		Map<String,Object> map = new  HashMap<String,Object>();
+		map.put("chat_num", chat_num);
+		map.put("mem_num", mem_num);
+		
+		
+	getSqlSession().update("chat.check_Read_Msg",map);
+	
+	}
 	
 	
 	

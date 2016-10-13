@@ -5,8 +5,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<%
 		response.sendRedirect("login/LoginMainFrame.do");
 	%>
+
 </body>
+
 </html>
+

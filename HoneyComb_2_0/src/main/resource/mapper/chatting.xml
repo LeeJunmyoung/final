@@ -54,14 +54,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values ( OneNOneChat.nextval , #{chat_mem_num} ,',',',','t')
 	</insert>
 
+	<insert id="insert_Chat_Conversation" parameterType="hashmap">
+		insert into
+		chat_conversation(chat_num,chat_user,chat_conversation,chat_date,chat_sequence,chat_user_name)
+		values (#{chat_Num},#{chat_User},#{chat_Conversation},#{chat_Date},chat_seq.nextval,#{chat_User_Name})
+	</insert>
+
+
+
 	<update id="check_MultiRead_Msg" parameterType="hashmap">
-		update CHAT set last_chat_read = 'f' ,last_chat_member = concat((select
-		last_chat_member from chat where chat_num = #{chat_num}), #{mem_num} ) where chat_num = #{chat_num}
+		update CHAT set
+		last_chat_read = 'f' ,last_chat_member = concat((select
+		last_chat_member from chat where chat_num = #{chat_num}), #{mem_num} )
+		where chat_num = #{chat_num}
+	</update>
+
+	<update id="Read_Msg" parameterType="int">
+		update CHAT set last_chat_member = ',' ,last_chat_read = 't' where chat_num
+		= #{chat_num}
 	</update>
 	
-	<update id="Read_Msg" parameterType="int">
-	update CHAT set last_chat_member = ',' ,last_chat_read = 't'  where chat_num = #{chat_num}
+	<update id="check_Read_Msg" parameterType="hashmap">
+	update CHAT set last_chat_read = 'f' ,last_chat_member = #{mem_num}  where chat_num = #{chat_num}
 	</update>
-	 
+
 
 </mapper>
