@@ -46,10 +46,19 @@
 }
 </style>
 <style type="text/css">
-input#chat {
+
+#chat {
 position:relative;
-	width: 500px;
+	width: 400px;
 	top:20px;
+	float: left;
+}
+
+#send_chat_button{
+position: relative;
+top:20px;
+width: 100px;
+height:63.07px;
 }
 
 #console-container {
@@ -140,7 +149,7 @@ height: 58px;
 	width: 50px;
 	height: 50px;
 	position: relative;
-	top: -97px;
+	top: -87px;
 	z-index: -3;
 }
 
@@ -564,8 +573,8 @@ function new_msg(num){
 
 
 					</div>
-					<input type="text" placeholder="type and press enter to chat"
-						id="chat"  readonly="readonly" disabled="disabled"/>
+					<textarea rows="3" cols="14" id ="chat" readonly="readonly" ></textarea>
+	<input type="button" id="send_chat_button" class="btn btn-primary btn-xs" value="보내기" >
 				</div>
 
 				<p></p>

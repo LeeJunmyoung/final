@@ -3,6 +3,15 @@ package login.controller;
 import java.sql.Timestamp;
 
 public class LogOnDataBean {
+	public String getPnum1() {
+		return pnum1;
+	}
+	public String getPnum2() {
+		return pnum2;
+	}
+	public String getPnum3() {
+		return pnum3;
+	}
 	@Override
 	public String toString() {
 		return "LogOnDataBean [mem_num=" + mem_num + ", name=" + name + ", email=" + email + ", passwd=" + passwd
@@ -68,7 +77,7 @@ public class LogOnDataBean {
 	}
 	public String getPhone_num() {
 		
-		return phone_num = pnum1+ pnum2+ pnum3;
+		return phone_num;
 	}
 	public void setPhone_num(String phone_num) {
 		this.phone_num = phone_num;

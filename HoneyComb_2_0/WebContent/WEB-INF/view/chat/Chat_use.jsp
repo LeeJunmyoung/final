@@ -46,10 +46,19 @@
 }
 </style>
 <style type="text/css">
-input#chat {
+
+#chat {
 position:relative;
-	width: 500px;
+	width: 400px;
 	top:20px;
+	float: left;
+}
+
+#send_chat_button{
+position: relative;
+top:20px;
+width: 100px;
+height:63.07px;
 }
 
 #console-container {
@@ -70,15 +79,20 @@ top:20px;
 }
 
 #console #receive {
+
 	margin: 10px;
 	position: relative;
-	width: 150px;
+	width:150px;
 	padding: 5px;
 	background: #C7FFFF;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
-	border-radius: 10px;
+	border-radius: 10px; 
+	text-align: center;
+	
+	
 }
+
 
 #console #me {
 	margin: 20px;
@@ -293,10 +307,38 @@ function new_msg(num){
 		                        Console.me(message);
 		                        }
 	                        Chat.sendMessage();
+	                      	
+	                        var chattext = document.getElementById('chat');
+	                        chattext.value=null;
 	                        
-	                       
+	                        
+	                        $('#chat').focus();
+	                        chattext.value=null;
+	                        
 	                    }
+	                    
+	                    
 	                };
+	                
+	                document.getElementById('send_chat_button').onclick = function(event) {
+	                    // 엔터키가 눌린 경우, 서버로 메시지를 전송함
+	                    	 var message = document.getElementById('chat').value.replace(/^\s+|\s+$/g,"");
+	                    
+		                        if(message != ''){
+		                        Console.me(message);
+		                        }
+	                        Chat.sendMessage();
+	                       
+	                         
+	                       
+	                        $('#chat').focus();
+	                    
+	                       
+	                    
+	                    
+	                };
+	                
+	                
 	            };
 				
 	            // 연결이 끊어진 경우에 호출되는 콜백함수
@@ -564,8 +606,8 @@ function new_msg(num){
 
 
 					</div>
-					
-					<input type="text" placeholder="type and press enter to chat" id="chat" />
+					<textarea rows="3" cols="14" id ="chat"  ></textarea>
+	<input type="button" id="send_chat_button" class="btn btn-primary btn-xs" value="보내기" >
 				</div>
 
 				<p></p>

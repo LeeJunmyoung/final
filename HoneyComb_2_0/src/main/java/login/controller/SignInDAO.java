@@ -10,7 +10,7 @@ public class SignInDAO extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("login.getMembers");
 	}
 	public void insertMember(LogOnDataBean logdb){
-		
+		logdb.setPhone_num(logdb.getPnum1()+logdb.getPnum2()+logdb.getPnum3());
 		getSqlSession().insert("login.insertMember",logdb);
 	
 	}

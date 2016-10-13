@@ -91,7 +91,7 @@ public class Chat_Select_Controller {
 			dao.Read_Msg(crdb.getChat_Num());
 
 		}
-
+		dao.Read_Msg(crdb.getChat_Num());
 		view_list = dao.view_My_chatroom(mem_num);
 
 		request.getSession().setAttribute("current_chat_list", view_list);

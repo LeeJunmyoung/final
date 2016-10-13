@@ -43,6 +43,8 @@ public class SignInController  {
 	@RequestMapping(value="members.do")//DB에 insert하는 메소드
 	public ModelAndView members(LogOnDataBean logdb, HttpSession session, HttpServletResponse response) throws Exception{
 		System.out.println("실행");
+		System.out.println(logdb.toString());
+		
 		ModelAndView mav = new ModelAndView();
 		System.out.println("insert");
 		dao.insertMember(logdb);
