@@ -12,12 +12,24 @@ function init() {
 	
 function approve(num) {
 	var mem_num = num;
-	location.href="/HoneyComb_2_0/accept/update_member?mem_num=" + mem_num;
+	var url = "/HoneyComb_2_0/accept/update_member?mem_num=" + mem_num;
+	
+	window
+	.open(
+			url,
+			"post",
+			"toolbar=no, left=400, top=200, width=500, height=150, directories=no, status=yes, scrollbar=yes, menubar=no");
 }
 
 function refusal(num) {
 	var mem_num = num;
-	location.href="/HoneyComb_2_0/accept/delete_member?mem_num=" + mem_num;
+	var url = "/HoneyComb_2_0/accept/delete_member?mem_num=" + mem_num;
+	
+	window
+	.open(
+			url,
+			"post",
+			"toolbar=no, left=400, top=200, width=500, height=150, directories=no, status=yes, scrollbar=yes, menubar=no");
 }
 
 </script>
@@ -182,16 +194,9 @@ h4 {
 
 
 	<div id='h1_tag'>
-	<br>
-<br>
-<br>
-<br>
+		<br> <br> <br> <br>
 		<h2 id="h2_title">ACCEPT</h2>
-		<br>
-<br>
-<br>
-<br>
-		<br />
+		<br> <br> <br> <br> <br />
 		<c:if test="${ !empty awaiter_list }">
 			<h4>"${ count }"명의 승인 대기자가 조회되었습니다</h4>
 		</c:if>

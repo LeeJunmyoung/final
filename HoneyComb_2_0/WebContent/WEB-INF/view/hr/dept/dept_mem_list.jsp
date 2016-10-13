@@ -22,7 +22,6 @@ function view_resume(mem_num) {
 <style>
 body {
 	width: 100%;
-	margin-top: 2%;
 }
 
 table, tr, th, td {
@@ -76,19 +75,47 @@ tr, td {
 	font-size: 30px;
 	text-align: center;
 }
+
+.button {
+	width: 100px;
+	text-align: center;
+	background-color: #4367b0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	display: block;
+	cursor: pointer;
+	color: #fff;
+	font-size: 15px;
+	padding: 5px 10px;
+	text-decoration: none;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-right: 60px;
+}
+
+.button:hover {
+	background-color: #344d91;
+	color: white;
+}
+
+.button:active {
+	position: relative;
+	top: 1px;
+}
 </style>
 
 </head>
 <body onselectstart="return false" ondragstart="return false">
-<br>
-<br>
-<br>
-<br>
-<h2 id="h2_title">${ com_dept_name }</h2>
-<br>
-<br>
-<br>
-<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h2 id="h2_title">${ com_dept_name }</h2>
+	<br>
+	<br>
+	<br>
+	<br>
 	<table>
 		<tr>
 			<td class="title">직 급</td>
@@ -100,7 +127,7 @@ tr, td {
 		<c:if test="${ !empty dept_List }">
 			<c:forEach var="dept_List" items="${ dept_List }">
 				<tbody id="content_tbody">
-					<tr id="text"  onclick="view_resume(${ dept_List.mem_num })">
+					<tr id="text" onclick="view_resume(${ dept_List.mem_num })">
 						<td id="com_pos_name">${ dept_List.com_pos_name }</td>
 						<td id="name">${ dept_List.name }</td>
 						<td id="phone_num">${ dept_List.phone_num }</td>
@@ -117,6 +144,14 @@ tr, td {
 		</c:if>
 
 	</table>
+	<br />
+	<br />
+
+	<div id="div_button">
+		<div id="div_sub_button">
+			<a href="/HoneyComb_2_0/dept/chart" class="button">뒤로가기</a>
+		</div>
+	</div>
 
 </body>
 </html>

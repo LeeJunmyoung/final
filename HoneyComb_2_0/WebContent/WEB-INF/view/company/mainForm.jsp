@@ -77,6 +77,8 @@
 </script>
 <script type='text/javascript'
 	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script>
 	$(document).ready(function() {
 		$("#one").click(function() {
@@ -117,15 +119,49 @@
 </script>
 
 <style>
-#content {
-	position: absolute;
-	left: 0px;
-	top: 0px;
+#home_banner {
 	width: 100%;
+	height: 11%;
+	background: #344d91;
+	margin: 0;
+	padding: 0;
+}
+
+#logo_wrapper {
+	position: absolute;
+	left: 250px;
+	z-index: 3;
+}
+
+#logo_banner {
+	display: inline;
+	margin: auto;
+	width: 100px;
+	height: 100px;
+}
+
+#Honey_comB {
+	display: inline;
+	font-size: 38pt;
+	color: #fff;
+	vertical-align: middle;
+}
+
+#logo_a {
+	text-decoration: none;
+}
+
+html, body {
 	height: 100%;
+}
+
+#content {
+	position: relative;
+	left: 0px;
+	width: 100%;
+	height: 88%;
 	z-index: 100;
 	filter: alpha(opacity = 50);
-	background: #e9ebee;
 }
 /* 4367b0 */
 #main {
@@ -205,7 +241,7 @@ input[type=radio].ch {
 	display: block;
 	z-index: 3;
 	width: 100%;
-	height: 90%;
+	height: 75%;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
@@ -273,6 +309,7 @@ a.search span {
 
 .submit:hover {
 	background-color: #344d91;
+	color: #fff;
 }
 
 .submit:active {
@@ -333,9 +370,18 @@ h3 {
 </style>
 
 </head>
-<body>
+<body style="background: #e9ebee;">
+	<div id="home_banner">
+		<div id="logo_wrapper">
+			<img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png"
+				width="80" height="80"
+				onclick="location.href='/HoneyComb_2_0/index.jsp'"> <a
+				id="logo_a" href="/HoneyComb_2_0/index.jsp"><p id="Honey_comB">HONEYCOMB</p></a>
+		</div>
+	</div>
 
 	<div id="content">
+
 
 		<div id="main">
 
@@ -384,9 +430,11 @@ h3 {
 						<h3>내 회사 등록</h3>
 						<hr class="subject">
 						<div id="search_map">
-							<div id="div_text"><input type="text" placeholder="COMPANY NAME SEARCH"
-								name="com_name" class="cname" readonly></div> <a
-								href="#companyCheck" onclick="companyCheck();return false;"
+							<div id="div_text">
+								<input type="text" placeholder="COMPANY NAME SEARCH"
+									name="com_name" class="cname" readonly>
+							</div>
+							<a href="#companyCheck" onclick="companyCheck();return false;"
 								onkeypress="this.onclick" class="search"><span>search</span></a>
 						</div>
 
@@ -411,6 +459,7 @@ h3 {
 			</div>
 
 		</div>
+
 	</div>
 
 

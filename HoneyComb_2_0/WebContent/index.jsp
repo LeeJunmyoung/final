@@ -7,6 +7,7 @@
 <body>
 
 	<%
+		session.invalidate();
 		response.sendRedirect("login/LoginMainFrame.do");
 	%>
 

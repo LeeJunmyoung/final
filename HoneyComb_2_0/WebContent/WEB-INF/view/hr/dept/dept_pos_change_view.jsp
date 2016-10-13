@@ -11,7 +11,7 @@
 		if (document.dept.com_dept_num.value == "선택하세요") {
 			alert("변경할 부서를 선택해주세요");
 			return false;
-			
+
 		} else {
 			return true;
 		}
@@ -23,7 +23,7 @@
 		if (document.pos.com_pos_num.value == "선택하세요") {
 			alert("변경할 직급을 선택해주세요");
 			return false;
-			
+
 		} else {
 			return true;
 		}
@@ -81,7 +81,8 @@ select {
 						<c:forEach var="dept" items="${ dept_map }">
 							<option value="${ dept.key }">${ dept.value }</option>
 						</c:forEach>
-					</select><input type="submit" value="변경" class="button" />
+					</select> <input type="hidden" name="mem_num" value="${ mem_num }" /> <input
+						type="submit" value="변경" class="button" />
 				</div>
 			</form>
 		</c:if>
@@ -98,7 +99,8 @@ select {
 						<c:forEach var="pos" items="${ pos_map }">
 							<option value="${ pos.key }">${ pos.value }</option>
 						</c:forEach>
-					</select><input type="submit" value="변경" class="button" />
+					</select> <input type="hidden" name="mem_num" value="${ mem_num }" /><input
+						type="submit" value="변경" class="button" />
 				</div>
 			</form>
 		</c:if>

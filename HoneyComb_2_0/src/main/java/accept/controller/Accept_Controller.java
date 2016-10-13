@@ -57,7 +57,7 @@ public class Accept_Controller {
 		
 		dao.com_In_Member(mem_num, com_num);
 		
-		return "accept";
+		return "accept_close";
 	}
 	
 	@RequestMapping("/delete_member")
@@ -66,7 +66,7 @@ public class Accept_Controller {
 		
 		dao.com_Out_Member(mem_num);
 		
-		return "accept";
+		return "accept_close";
 	}
 
 }

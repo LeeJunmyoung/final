@@ -5,6 +5,10 @@
 <title>Insert title here</title>
 <script>
 function close_page() {
+	alert("변경되었습니다");
+	opener.opener.location.reload();
+	opener.location.reload();
+	
 	window.close();
 }
 </script>

@@ -3,6 +3,31 @@
 
 <mapper namespace="dept">
 
+	<!-- 부서변경 -->
+	<update id="dept_ch" parameterType="Map">
+		update members set
+		com_dept_num=#{com_dept_num}, com_dept_name=#{com_dept_name} where
+		mem_num=#{mem_num}
+	</update>
+
+	<!-- 직급변경 -->
+	<update id="pos_ch" parameterType="Map">
+		update members set
+		com_pos_num=#{com_pos_num}, com_pos_name=#{com_pos_name} where
+		mem_num=#{mem_num}
+	</update>
+
+	<!-- 부서명 -->
+	<select id="dept_name_select" parameterType="int" resultType="String">
+		select distinct com_dept_name from members where
+		com_dept_num=#{com_dept_num}
+	</select>
+
+	<!-- 직급명 -->
+	<select id="pos_name_select" parameterType="int" resultType="String">
+		select distinct com_pos_name from members where
+		com_pos_num=#{com_pos_num}
+	</select>
 
 	<select id="select" parameterType="int" resultType="dept.db.DeptDTO">
 		select
@@ -32,15 +57,18 @@
 	</select>
 
 	<select id="edu_select" parameterType="int" resultType="dept.db.Mem_Edu">
-		select * from mem_edu where mem_num=#{mem_num}
+		select *
+		from mem_edu where mem_num=#{mem_num}
 	</select>
 
 	<select id="certi_select" parameterType="int" resultType="dept.db.Mem_Certi">
-		select * from mem_certi where mem_num=#{mem_num}
+		select
+		* from mem_certi where mem_num=#{mem_num}
 	</select>
 
 	<select id="mili_select" parameterType="int" resultType="dept.db.Mem_Mili">
-		select * from mem_mili where mem_num=#{mem_num}
+		select *
+		from mem_mili where mem_num=#{mem_num}
 	</select>
 
 	<select id="career_select" parameterType="int" resultType="dept.db.Mem_Career">
