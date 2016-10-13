@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SelectUploadFile</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"/>
-<script type="text/javascript" src="/HoneyComb_2_0/resources/script/cloudScript.js"/>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/HoneyComb_2_0/resources/script/cloudScript.js"></script>
 <script>
 $(function(){
 	if ('${param.upload}') {
