@@ -212,15 +212,16 @@ padding:0;
             </div>
               <div id="buttoncheck">
                 
-                  <button type="submit" class="btn btn-default">Sign in</button><p></p> <p></p>   
-                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+                  <button type="submit" class="btn btn-default">Sign in</button><br><br> 
+                   
+ <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div><br/><br>
                    <a href="signIn.do">회원가입</a>
+           
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="findEmail.do">Email</a>&nbsp;/&nbsp; 
                  <a href="findPasswd.do">Passwd 찾기</a>          
               </div>
-         <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div><br>
+      
             <a href="#" onclick="FB.logout();">[logout]</a><br>
                   
                   </div>
