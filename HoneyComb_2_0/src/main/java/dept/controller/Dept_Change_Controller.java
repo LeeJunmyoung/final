@@ -32,10 +32,6 @@ public class Dept_Change_Controller {
 			
 			Map<Integer, String> dept = cm.deptMap();
 			mav.addObject("dept_map", dept);
-			
-			for (int i = 0; i < dept.size()+3; i++) {
-				System.out.println(dept.get(i));
-			}
 
 		} else if (code == 2) {
 			// code가 2면 직급변경 페이지로 이동
@@ -52,8 +48,6 @@ public class Dept_Change_Controller {
 	@RequestMapping("dept_change_pro")
 	public String dept_change_pro(@RequestParam int mem_num, @RequestParam int com_dept_num) {
 
-		System.out.println("mem_num ::: " + mem_num + " , com_dept_num ::: " + com_dept_num);
-
 		dao.dept_ch(mem_num, com_dept_num);
 
 		return "dept_close";
@@ -61,8 +55,6 @@ public class Dept_Change_Controller {
 
 	@RequestMapping("pos_change_pro")
 	public String pos_change_pro(@RequestParam int mem_num, @RequestParam int com_pos_num) {
-
-		System.out.println("mem_num ::: " + mem_num + " , com_pos_num ::: " + com_pos_num);
 
 		dao.pos_ch(mem_num, com_pos_num);
 

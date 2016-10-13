@@ -125,6 +125,64 @@ padding:0;
 
   </head>
   <body>
+   <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  <script>
+  
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            if (response.status === 'connected') {
+                alert('로그인 성공!');
+                
+            } else if (response.status === 'not_authorized') {
+                alert('Please log ' + 'into this app.');
+            } else {
+                alert('Please log ' + 'into Facebook.');
+            }
+        }
+ 
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+ 
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId : '2133525620205300',
+                xfbml : true,
+                version : 'v2.8'
+            });
+ 
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+ 
+        FB.Event.subscribe('auth.logout', function(response) {
+                document.location.reload();
+        });
+ 
+        };
+ 
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        
+    </script>
+  
   <div id = "home_banner">
   <div id = "logo_wrapper">
        <img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png" width="100" height="100"onclick="location.href='LoginMainFrame.do'">
@@ -162,7 +220,8 @@ padding:0;
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="findEmail.do">Email</a>&nbsp;/&nbsp; 
                  <a href="findPasswd.do">Passwd 찾기</a>          
               </div>
-            </form>
+         <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div><br>
+            <a href="#" onclick="FB.logout();">[logout]</a><br>
                   
                   </div>
                 </div>
