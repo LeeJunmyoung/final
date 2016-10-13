@@ -67,9 +67,10 @@
 	%>
 	<div id="home_banner">
 		<div id="logo_wrapper">
-			<img id="logo_banner" src="/Final_Testing/img/logo.png" width="80"
-				height="80" onclick="location.href='/HoneyComb/index.jsp'"> <a
-				id="logo_a" href="/HoneyComb/index.jsp"><p id="Honey_comB">HONEYCOMB</p></a>
+			<img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png"
+				width="80" height="80"
+				onclick="location.href='/HoneyComb_2_0/index.jsp'"> <a
+				id="logo_a" href="/HoneyComb_2_0/index.jsp"><p id="Honey_comB">HONEYCOMB</p></a>
 		</div>
 	</div>
 	<div class="container" style="height: 89%; width: 80%;">
@@ -85,7 +86,8 @@
 							height="300px">
 						<p>
 						<p>
-							<button onclick="location.href='/HoneyComb_2_0/login/LoginMainFrame.do'"
+							<button
+								onclick="location.href='/HoneyComb_2_0/login/LoginMainFrame.do'"
 								class="btn btn-default">확인</button>
 					</div>
 				</div>
