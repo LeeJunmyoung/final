@@ -58,7 +58,7 @@ public class Accept_Controller {
 		dao.com_In_Member(mem_num, com_num);
 		
 		// salary row add
-		dao.setSalaryMember(mem_num);
+		dao.setSalaryMember(mem_num, com_num);
 		
 		return "accept_close";
 	}

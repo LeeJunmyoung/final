@@ -60,11 +60,14 @@ public class AcceptDAO extends SqlSessionDaoSupport {
 		}
 	}
 
-	public void setSalaryMember(int mem_num) {
+	public void setSalaryMember(int mem_num, int com_num) {
 
-		SalaryDataBean member = getSqlSession().selectOne("accept.getMember", mem_num);
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
 
-		int x = getSqlSession().insert("accept.setSalary_member", member);
+		map.put("mem_num", mem_num);
+		map.put("com_num", com_num);
+
+		int x = getSqlSession().insert("accept.setSalary_member", map);
 
 		if (x > 0) {
 			System.out.println("salary member add 성공");
