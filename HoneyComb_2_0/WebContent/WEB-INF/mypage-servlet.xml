@@ -85,5 +85,7 @@
 	</bean>
 	
 	<bean id="Resume_Controller" class="mypage.controller.Resume_Controller" p:dao-ref="resumeDAO" />
+	
+	<bean id="Resume_Pro_Controller" class="mypage.controller.Resume_Pro_Controller" p:dao-ref="resumeDAO" />
 
 </beans>

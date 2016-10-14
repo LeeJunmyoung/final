@@ -6,15 +6,23 @@
 <head>
 <title>이력서</title>
 <script>
-	function certi_search() {
+	function resume_pro(c) {
+		// code number
+		// 1 == school (학력)
+		// 2 == edu (교육이수)
+		// 3 == certi (자격증)
+		// 4 == mili (병역)
+		// 5 == career (경력)
 
-		url = "/HoneyComb_2_0/mypage/certi_search";
+		var code = c;
+
+		url = "/HoneyComb_2_0/mypage/resume_pro?code=" + code;
 
 		window
 				.open(
 						url,
 						"post",
-						"toolbar=no, left=200, top=100, width=700, height=400, directories=no, status=yes, scrollbar=yes, menubar=no");
+						"toolbar=no, left=200, top=100, width=700, height=280, directories=no, status=yes, scrollbar=yes, menubar=no");
 	}
 </script>
 <style>
@@ -42,7 +50,7 @@ input[type=text] {
 	margin-top: -10px;
 	margin-bottom: -10px;
 	text-align: center;
-	width: 120px;
+	width: 80px;
 }
 
 #img_myprofile {
@@ -191,8 +199,7 @@ input[type=text] {
 
 				<div class="div_title">
 					<p class="title">
-						학 력<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a
-							href="#" class="button">등록</a>
+						학 력<a href="#" onclick="resume_pro(1)" class="button">등록</a>
 					</p>
 				</div>
 
@@ -220,12 +227,6 @@ input[type=text] {
 					</tr>
 				</c:if>
 
-				<tr>
-					<td><input type="text" name="school_name" /></td>
-					<td colspan="2"><input type="text" name="school_date" /></td>
-					<td colspan="2"><input type="text" name="school_major" /></td>
-				</tr>
-
 			</table>
 		</form>
 
@@ -234,8 +235,7 @@ input[type=text] {
 
 				<div class="div_title">
 					<p class="title">
-						교육 이수<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a
-							href="#" class="button">등록</a>
+						교육 이수<a href="#" onclick="resume_pro(2)" class="button">등록</a>
 					</p>
 				</div>
 
@@ -263,12 +263,6 @@ input[type=text] {
 					</tr>
 				</c:if>
 
-				<tr>
-					<td><input type="text" name="edu_insti" /></td>
-					<td colspan="2"><input type="text" name="edu_name" /></td>
-					<td colspan="2"><input type="text" name="edu_date" /></td>
-				</tr>
-
 			</table>
 		</form>
 
@@ -278,8 +272,7 @@ input[type=text] {
 
 				<div class="div_title">
 					<p class="title">
-						자격증<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a
-							href="#" class="button">등록</a>
+						자격증<a href="#" onclick="resume_pro(3)" class="button">등록</a>
 					</p>
 				</div>
 
@@ -307,62 +300,59 @@ input[type=text] {
 					</tr>
 				</c:if>
 
-				<tr>
-					<td colspan="2"><input type="text" readonly name="certi_name" /><a
-						href="#" href="#companyCheck"
-						onclick="companyCheck();return false;" onkeypress="this.onclick"
-						class="search"><span>search</span></td>
-					<td><input type="text" name="certi_insti" /></td>
-					<td colspan="2"><input type="text" name="certi_date" /></td>
-				</tr>
-
 			</table>
 		</form>
 
 
-		<c:if test="${ !empty mili_list }">
-			<table>
+		<table>
 
-				<p class="title">병 역</p>
+			<div class="div_title">
+				<p class="title">
+					병 역
+					<c:if test="${ empty mili_list }">
+						<a href="#" onclick="resume_pro(4)" class="button">등록</a>
+					</c:if>
+				</p>
+			</div>
 
-				<c:forEach var="mili" items="${ mili_list }">
-					<tr>
-						<td class="bold_wi">군필 여부</td>
-						<td class="wi">${ mili.mili_check }</td>
-						<td class="bold_wi">면제 사유</td>
-						<td class="wi">${ mili.mili_ex }</td>
-						<td class="bold_wi">복무처</td>
-						<td class="wi">${ mili.mili_place }</td>
-					</tr>
+			<c:forEach var="mili" items="${ mili_list }">
+				<tr>
+					<td class="bold_wi">군필 여부</td>
+					<td class="wi">${ mili.mili_check }</td>
+					<td class="bold_wi">면제 사유</td>
+					<td class="wi">${ mili.mili_ex }</td>
+					<td class="bold_wi">복무처</td>
+					<td class="wi">${ mili.mili_place }</td>
+				</tr>
 
-					<tr>
-						<td colspan="2" class="bold">복무 기간</td>
-						<!-- <td></td> -->
-						<td colspan="4">${ mili.mili_date }</td>
-						<!-- <td></td> -->
-						<!-- <td></td> -->
-						<!-- <td></td> -->
-					</tr>
-				</c:forEach>
+				<tr>
+					<td colspan="2" class="bold">복무 기간</td>
+					<!-- <td></td> -->
+					<td colspan="4">${ mili.mili_date }</td>
+					<!-- <td></td> -->
+					<!-- <td></td> -->
+					<!-- <td></td> -->
+				</tr>
+			</c:forEach>
 
-				<c:if test="${ empty mili_list }">
-					<tr>
-						<td class="bold_wi">군필 여부</td>
-						<td class="wi"><input type="text" name="mili_check"></td>
-						<td class="bold_wi">면제 사유</td>
-						<td class="wi"><input type="text" name="mili_ex"></td>
-						<td class="bold_wi">복무처</td>
-						<td class="wi"><input type="text" name="mili_place"></td>
-					</tr>
 
-					<tr>
-						<td colspan="2" class="bold">복무 기간</td>
-						<td colspan="4"><input type="text" name="mili_date"></td>
-					</tr>
-				</c:if>
+			<c:if test="${ empty mili_list }">
+				<tr>
+					<td class="bold_wi">군필 여부</td>
+					<td class="wi"></td>
+					<td class="bold_wi">면제 사유</td>
+					<td class="wi"></td>
+					<td class="bold_wi">복무처</td>
+					<td class="wi"></td>
+				</tr>
 
-			</table>
-		</c:if>
+				<tr>
+					<td colspan="2" class="bold">복무 기간</td>
+					<td colspan="4"></td>
+				</tr>
+			</c:if>
+
+		</table>
 
 
 
@@ -371,8 +361,7 @@ input[type=text] {
 
 				<div class="div_title">
 					<p class="title">
-						경 력<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a
-							href="#" class="button">등록</a>
+						경 력<a href="#" onclick="resume_pro(5)" class="button">등록</a>
 					</p>
 				</div>
 
@@ -399,13 +388,6 @@ input[type=text] {
 						<td colspan="5">등록된 정보가 없습니다</td>
 					</tr>
 				</c:if>
-
-				<tr>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td><input type="text" /></td>
-					<td colspan="2"><input type="text" /></td>
-				</tr>
 
 			</table>
 		</form>

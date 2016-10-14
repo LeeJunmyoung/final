@@ -12,7 +12,7 @@ function init() {
 
 function dept_pos_change(num, c, com_dept_num) {
 	
-	if(com_dept_num == 2) {
+	if(com_dept_num == 2 || com_dept_num == 0) {
 	
 	var mem_num = num;
 	var code = c;

@@ -462,7 +462,7 @@ a#account span {
 		<div class="functions" id="div_line">
 
 			<div class="div_text">
-				<p>이력서를 조회 및 수정할 수 있습니다</p>
+				<p>이력서를 조회 및 등록할 수 있습니다</p>
 			</div>
 			<div class="div_img_map">
 				<div class="div_img">
