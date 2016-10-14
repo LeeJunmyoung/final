@@ -12,6 +12,7 @@ public class SalaryDataBean {
 	int com_pos_num;
 	String com_pos_name;
 	int salary_year;
+	int salary_month;
 	int salary_add_time;
 	int salary_add_holiday;
 	int salary_bonus;
@@ -98,6 +99,11 @@ public class SalaryDataBean {
 
 	public void setSalary_year(int salary_year) {
 		this.salary_year = salary_year;
+		this.salary_month = salary_year / 12;
+	}
+
+	public int getSalary_month() {
+		return salary_month;
 	}
 
 	public int getSalary_add_time() {

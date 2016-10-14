@@ -1,5 +1,6 @@
 package salary.db;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -16,21 +17,39 @@ public class SalaryDao extends SqlSessionDaoSupport {
 
 	public List<SalaryDataBean> getSalaryList(int com_num, int dept_num, int pos_num) {
 
+		List<SalaryDataBean> list = null;
+
 		if (dept_num > -1) {
+
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+
+			map.put("com_num", com_num);
+			map.put("dept_num", dept_num);
+
+			list = getSqlSession().selectList("salary.getSalary_list_dept", map);
 
 		} else if (pos_num > -1) {
 
+			HashMap<String, Integer> map = new HashMap<String, Integer>();
+
+			map.put("com_num", com_num);
+			map.put("pos_num", pos_num);
+
+			list = getSqlSession().selectList("salary.getSalary_list_pos", map);
+
 		} else {
+
+			list = getSqlSession().selectList("salary.getSalary_list_all", com_num);
 			
 		}
 
-		return null;
+		return list;
 	}
 
 	public SalaryDataBean getSalary(int mem_num) {
 		
-		return null;
-		
+		return getSqlSession().selectOne("salary.getSalary_item", mem_num);
+
 	}
 
 } // public class NoticeDao end
