@@ -15,39 +15,77 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <script>
-	function setSel_Option() {
-
-		var select = document.getElementById("sel_1");
-
-		if (select.options[select.selectedIndex].value == 0) {
-			sel_2_dept.style.display = 'none';
-			sel_2_pos.style.display = 'none';
-		} else if (select.options[select.selectedIndex].value == 1) {
-			sel_2_dept.style.display = '';
-			sel_2_pos.style.display = 'none';
-		} else if (select.options[select.selectedIndex].value == 2) {
-			sel_2_dept.style.display = 'none';
-			sel_2_pos.style.display = '';
-		}
-
-	}
-
-	function setMemberSalaryList() {
-
-		var select_dept = document.getElementById("sel_2_dept");
-		var select_pos = document.getElementById("sel_2_pos");
-
-		if (select_dept.options[select_dept.selectedIndex].value != null) {
-			document.location.href = "/HoneyComb_2_0/salary/management_main.do?dept_num="
-					+ select_dept.options[select_dept.selectedIndex].value;
-		} else if (select_pos.options[select_pos.selectedIndex].value != null) {
-			document.location.href = "/HoneyComb_2_0/salary/management_main.do?pos_num="
-					+ select_pos.options[select_pos.selectedIndex].value;
+	$(document).ready(function() {
+		
+		if(${dept_num} > -1) {
+			
+			$("#sel_1").val(1).attr("selected", "selected");
+			
+			$('#sel_2_dept').css("display", "");
+			$('#sel_2_pos').css("display", "none");
+			
+			$("#sel_2_dept").val(${dept_num}).attr("selected", "selected");
+			
+		}else if(${pos_num} > -1) {
+			
+			$("#sel_1").val(2).attr("selected", "selected");
+			
+			$('#sel_2_dept').css("display", "none");
+			$('#sel_2_pos').css("display", "");
+			
+			$("#sel_2_pos").val(${pos_num}).attr("selected", "selected");
+			
 		} else {
-			document.location.href = "/HoneyComb_2_0/salary/management_main.do";
+			
+			$("#sel_1").val(0).attr("selected", "selected");
+			
+			$('#sel_2_dept').css("display", "none");
+			$('#sel_2_pos').css("display", "none");
+			
 		}
 
-	}
+		$('#sel_1').change(function() {
+
+			if ($('#sel_1 option:selected').val() == 0) {
+				$('#sel_2_dept').css("display", "none");
+				$('#sel_2_pos').css("display", "none");
+				
+				$(location).attr('href', "/HoneyComb_2_0/salary/management_main.do");
+				
+			} else if ($('#sel_1 option:selected').val() == 1) {
+				$('#sel_2_dept').css("display", "");
+				$('#sel_2_pos').css("display", "none");
+			} else if ($('#sel_1 option:selected').val() == 2) {
+				$('#sel_2_dept').css("display", "none");
+				$('#sel_2_pos').css("display", "");
+			}
+
+		});
+
+		$('#sel_2_dept').change(function() {
+
+			if ($('#sel_2_dept option:selected').val() != null) {
+				
+				$(location).attr("href", "/HoneyComb_2_0/salary/management_main.do?dept_num="
+					+ $('#sel_2_dept option:selected').val());
+				
+			}
+
+		});
+
+		$('#sel_2_pos').change(function() {
+
+			if ($('#sel_2_pos option:selected').val() != null) {
+				
+				$(location).attr('href', "/HoneyComb_2_0/salary/management_main.do?pos_num="
+					+ $('#sel_2_pos option:selected').val());
+				
+			}
+
+		});
+
+	});
+
 </script>
 
 <body>
@@ -72,24 +110,29 @@
 
 				<form id="select_search" style="margin-top: 20px">
 
-					<span class="col-md-3"> <select class="form-control"
-						id="sel_1" onchange="setSel_Option()">
-							<option value="0" selected="selected">전체</option>
+					<span class="col-md-3"> 
+					
+						<select class="form-control" id="sel_1">
+							<option value="0"><!--  selected="selected" -->전체</option>
 							<option value="1">부서별</option>
 							<option value="2">직급별</option>
-					</select>
-					</span> <span class="col-md-3"> <select class="form-control"
-						id="sel_2_dept" onchange="setMemberSalaryList()"
-						style="display: none;">
+						</select>
+
+					</span>
+					
+					<span class="col-md-3">
+					 
+						<select class="form-control" id="sel_2_dept"> <!-- style="display: none;" -->
 							<c:forEach var="item" items="${dept}">
 								<option value="${item.com_dept_num}">${item.com_dept_name}</option>
 							</c:forEach>
-					</select> <select class="form-control" id="sel_2_pos"
-						onchange="setMemberSalaryList()" style="display: none;">
+						</select>
+						
+						<select class="form-control" id="sel_2_pos"> <!-- style="display: none;" -->
 							<c:forEach var="item" items="${pos}">
 								<option value="${item.com_pos_num}">${item.com_pos_name}</option>
 							</c:forEach>
-					</select>
+						</select>
 
 					</span>
 

@@ -55,6 +55,9 @@ public class SalaryMainController {
 		mav.addObject("pos", pos);
 		mav.addObject("salaryList", salaryList);
 
+		mav.addObject("dept_num", dept_num);
+		mav.addObject("pos_num", pos_num);
+
 		return mav;
 	}
 

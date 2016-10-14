@@ -44,6 +44,7 @@ public class SalaryDao extends SqlSessionDaoSupport {
 		}
 
 		return list;
+		
 	}
 
 	public SalaryDataBean getSalary(int mem_num) {
