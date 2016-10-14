@@ -1,15 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="UTF-8"%>
-<html><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
-  
-  <script type="text/javascript" src="/HoneyComb_2_0/resources/script/script.js"></script>
-  <script>
+	pageEncoding="UTF-8"%>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript"
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+	rel="stylesheet" type="text/css">
+
+<script type="text/javascript"
+	src="/HoneyComb_2_0/resources/script/script.js"></script>
+<script>
 $(document).ready(function(){
     // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
     var userInputId = getCookie("userInputId");
@@ -76,77 +84,97 @@ function confirmSave(checkbox){
 }
 </script>
 <style type="text/css">
-a:link {text-decoration: none; color: #333333;}
-a:visited {text-decoration: none; color: #333333;}
-a:active {text-decoration: none; color: #333333;}
-a:hover {text-decoration: underline; color: red;}
-
-
-#home_banner{
-width: 100%;
-height: 11%;
-background: #344d91;
-margin: 0;
-padding: 0;
-}
-#logo_wrapper{
-position: absolute;
-left: 250px;
-z-index: 3;
+a:link {
+	text-decoration: none;
+	color: #333333;
 }
 
-#logo_banner{
-display: inline;
-margin : auto;
-width: 100px;
-height: 100px;
-}
-#Honey_comB{
-display: inline;
-
-font-size: 38pt;
-color:#fff;
-vertical-align: middle;
-}
-#logo_a{
-text-decoration: none;
+a:visited {
+	text-decoration: none;
+	color: #333333;
 }
 
-.container{
-position: absolute;
-left: 250px;
-padding:0;
-}
-#col-md-12{
-padding:0;
+a:active {
+	text-decoration: none;
+	color: #333333;
 }
 
+a:hover {
+	text-decoration: underline;
+	color: red;
+}
+
+#home_banner {
+	width: 100%;
+	height: 11%;
+	background: #344d91;
+	margin: 0;
+	padding: 0;
+}
+
+#logo_wrapper {
+	position: absolute;
+	left: 250px;
+	z-index: 3;
+}
+
+#logo_banner {
+	display: inline;
+	margin: auto;
+	width: 100px;
+	height: 100px;
+}
+
+#Honey_comB {
+	display: inline;
+	font-size: 38pt;
+	color: #fff;
+	vertical-align: middle;
+}
+
+#logo_a {
+	text-decoration: none;
+}
+
+.container {
+	position: absolute;
+	left: 250px;
+	padding: 0;
+}
+
+#col-md-12 {
+	padding: 0;
+}
+
+#FBbtn {
+	color: blue;
+}
 </style>
 
-  </head>
-  <body>
-   <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+ /*  var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-  <script>
+}(document, 'script', 'facebook-jssdk')); */</script>
+	<script>
   
         function statusChangeCallback(response) {
-            console.log('statusChangeCallback');
-            console.log(response);
-            if (response.status === 'connected') {
+             console.log('statusChangeCallback'); 
+             console.log(response);
+             if (response.status === 'connected') {
                 alert('로그인 성공!');
                 
             } else if (response.status === 'not_authorized') {
                 alert('Please log ' + 'into this app.');
             } else {
                 alert('Please log ' + 'into Facebook.');
-            }
-        }
+            } 
+        } 
  
         function checkLoginState() {
             FB.getLoginStatus(function(response) {
@@ -180,54 +208,59 @@ padding:0;
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-        
+         
     </script>
-  
-  <div id = "home_banner">
-  <div id = "logo_wrapper">
-       <img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png" width="100" height="100"onclick="location.href='LoginMainFrame.do'">
- <a id="logo_a" href="LoginMainFrame.do"><p id="Honey_comB" >HONEYCOMB</p></a>
-  </div>
-  </div>
-      <div class="container" style="height:89%; width:80%;">
-            <div class="cover">
-              <div class="navbar navbar-default" >
-              </div>
-              <div class="cover-image" style="background-image : url('/HoneyComb_2_0/resources/img/background.png')" ></div>
-             <div class="container" style="width:70%;">
-                
-                  <div class="col-md-12 text-center" id="col-md-12">
-                    <h1>HONEYCOMB</h1>
-            <p>로그인페이지</p>
-            <form class="form-horizontal text-center"  method="post" onsubmit="return checkEmail()" name="myform">
-            
-                 <input type="email"  name="email" id="email" placeholder="Email">
-                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <input type="password" name="passwd" id="passwd" placeholder="Password">
-                  <p></p> <p></p>  
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" id="idSaveCheck" onClick="confirmSave(this)">이메일 저장</label>
-                      <p></p> <p></p>  
-            </div>
-              <div id="buttoncheck">
-                
-                  <button type="submit" class="btn btn-default">Sign in</button><br><br> 
-                   
- <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div><br/><br>
-                   <a href="signIn.do">회원가입</a>
-           
-                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="findEmail.do">Email</a>&nbsp;/&nbsp; 
-                 <a href="findPasswd.do">Passwd 찾기</a>          
-              </div>
-      
-            <a href="#" onclick="FB.logout();">[logout]</a><br>
-                  
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
+	<div id="home_banner">
+		<div id="logo_wrapper">
+			<img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png"
+				width="100" height="100" onclick="location.href='LoginMainFrame.do'">
+			<a id="logo_a" href="LoginMainFrame.do"><p id="Honey_comB">HONEYCOMB</p></a>
+		</div>
+	</div>
+	<div class="container" style="height: 89%; width: 80%;">
+		<div class="cover">
+			<div class="navbar navbar-default"></div>
+			<div class="cover-image"
+				style="background-image: url('/HoneyComb_2_0/resources/img/background.png')"></div>
+			<div class="container" style="width: 70%;">
+
+				<div class="col-md-12 text-center" id="col-md-12">
+					<h1>HONEYCOMB</h1>
+					<p>로그인페이지</p>
+					<form class="form-horizontal text-center" method="post"
+						onsubmit="return checkEmail()" name="myform">
+
+						<input type="email" name="email" id="email" placeholder="Email">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
+							type="password" name="passwd" id="passwd" placeholder="Password">
+						<p></p>
+						<p></p>
+						<div class="checkbox">
+							<label> <input type="checkbox" id="idSaveCheck"
+								onClick="confirmSave(this)">이메일 저장
+							</label>
+							<p></p>
+							<p></p>
+						</div>
+						<div id="buttoncheck">
+
+							<button type="submit" class="btn btn-default">Sign in</button>
+							<br>
+							<br> <a href="#" class="btn-social btn-facebook" id="FBbtn"
+								onclick="FB.login();"> <span class="fa fa-facebook">
+									&nbsp;Facebook 계정으로 로그인하기</span></a>
+							</p>
+							<a href="signIn.do">회원가입</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="findEmail.do">Email</a>&nbsp;/&nbsp;
+							<a href="findPasswd.do">Passwd 찾기</a>
+						</div>
+
+						<a href="#" onclick="FB.logout();">[logout]</a><br>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 </body>
 </html>
