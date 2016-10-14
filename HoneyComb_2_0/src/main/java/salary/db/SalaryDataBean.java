@@ -6,6 +6,7 @@ public class SalaryDataBean {
 	int mem_num;
 	String name;
 	int com_num;
+	String com_name;
 	int com_dept_num;
 	String com_dept_name;
 	int com_pos_num;
@@ -49,6 +50,14 @@ public class SalaryDataBean {
 
 	public void setCom_num(int com_num) {
 		this.com_num = com_num;
+	}
+
+	public String getCom_name() {
+		return com_name;
+	}
+
+	public void setCom_name(String com_name) {
+		this.com_name = com_name;
 	}
 
 	public int getCom_dept_num() {
