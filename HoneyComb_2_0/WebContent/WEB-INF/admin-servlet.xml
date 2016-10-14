@@ -63,4 +63,7 @@
 
 	<bean id="adminNoticePopup" class="admin.controller.Admin_noticePopup"
 		p:dao-ref="dao" />
+
+	<bean id="adminmainPage" class="admin.controller.Admin_mainPage"
+		p:dao-ref="dao" />
 </beans>
