@@ -97,4 +97,11 @@
 			value="/WEB-INF/view/hr/accept/com_mem_accept.jsp" />
 	</definition>
 
+	<definition name="EDI/*" extends="base_layout">
+		<put-attribute name="title" value="전자결제" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/EDI/{1}.jsp" />
+	</definition>
+
+
 </tiles-definitions>

@@ -153,8 +153,8 @@
 		<servlet-name>salary</servlet-name>
 		<url-pattern>/salary/*</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>accept</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
@@ -162,6 +162,16 @@
 	<servlet-mapping>
 		<servlet-name>accept</servlet-name>
 		<url-pattern>/accept/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>EDI</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>EDI</servlet-name>
+		<url-pattern>/EDI/*</url-pattern>
 	</servlet-mapping>
 
 </web-app>

@@ -235,3 +235,20 @@ dl dd {
 	height: 900px;
 	margin: auto;
 }
+
+#EDI_main {
+	border: 1px solid;
+	height: 300px;
+	margin: 5px;
+}
+#EDI_wait {
+	border: 1px solid;
+	height: 300px;
+	margin: 5px;
+}
+#EDI_temp {
+	border: 1px solid;
+	height: 300px;
+	margin: 5px;
+}
+

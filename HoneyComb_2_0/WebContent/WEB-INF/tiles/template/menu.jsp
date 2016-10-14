@@ -74,7 +74,7 @@ li {
 
 			<li id="dropdown"><a>HR <span class="caret"></span></a>
 				<ul class="nav nav-pills nav-stacked">
-					<li><a href="#">APPROVAL</a></li>
+					<li><a href="/HoneyComb_2_0/EDI/EDI_Main.do">EDInterchage</a></li>
 					<li><a href="/HoneyComb_2_0/dept/chart">DEPT</a></li>
 					<c:if test="${ sessionScope.com_pos_num <= 4 }">
 					<li><a href="/HoneyComb_2_0/accept/accept">ACCEPT</a></li>
