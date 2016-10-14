@@ -80,4 +80,11 @@ public class CloudDao extends SqlSessionDaoSupport{
 		System.out.println("dao.duplick::"+duplick);
 		return duplick;
 	}
+	public int changeFileName(int file_num, String file_name){
+		Map<String, Object> map =  new HashMap<String, Object>();
+		map.put("file_num", file_num);
+		map.put("file_name", file_name);
+		getSqlSession().update("cloud.changeFileName", map);
+		return 0;
+	}
 }

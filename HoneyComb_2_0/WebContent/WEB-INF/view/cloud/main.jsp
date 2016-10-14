@@ -24,7 +24,7 @@
 			selectedFiles[i] = this.value;
 			i++
 		});
-		$(location).attr('href',"download?selectedFiles="+selectedFiles); 
+		$(location).attr('href',"url"); 
 		
 	});
 	$("#delete").click(function(){
@@ -39,12 +39,13 @@
 	});	
 	$(document).bind("contextmenu", function(event) { 
 		 event.preventDefault();
-		 testfunction();
+		 checkChange();
 			    $("#contextBox")
 			    .appendTo("body")
 			    .css({"display":"block", top: event.pageY + "px", left: event.pageX + "px"});	
 		
 	}).bind("click", function(event) {
+		checkChange();
 		$("#contextBox").hide(); 
 	});
 });

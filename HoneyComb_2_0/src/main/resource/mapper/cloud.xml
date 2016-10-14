@@ -76,4 +76,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getFolderPath" parameterType="hashmap" resultType="String">
 		select file_path from cloud where com_num = #{com_num} and folder is null and promgr_num = #{promgr_num} and file_name = #{file_name}
 	</select>
+	<update id="changeFileName" parameterType="hashmap">
+		update cloud set file_name = #{file_name}
+			<where>
+				file_num = #{file_num}
+			</where>
+	</update>
+	
 </mapper>

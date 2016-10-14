@@ -84,18 +84,38 @@ function changeFileName(){
 	}
 	$("input:text[id="+checked.val()+"]").removeAttr("readonly").focus();
 }
-function testfunction(){
+function checkChange(){
 	$("input:text").each(function(){
 		if($(this).attr("readonly") != 'readonly'){
-			alert($(this).attr('id'))
-			changeFilename($(this).attr('id'));
+			changeFilename($(this).attr('id'), $(this).val());
 		}
 		
 		
 	})
-function changeFilename(filenum){
-		alert(filenum);
-		
+function changeFilename(file_num, file_name){
+		var file_num = file_num;
+		var file_name = file_name;
+	$.ajax({
+			type : "POST",
+			url : "/HoneyComb_2_0/cloud/changeName",
+			data : {
+				"file_num" : file_num,
+				"file_name" : file_name
+			},
+			success : function(data) {
+				console.log(data);
+				alert(data);
+				if (data == 0) {
+					alert("success");
+					$("input:text[id="+file_num+"]").Attr("readonly", true);
+				} else {
+					$("#dupli").html("<font color=red>이미 있는 이름입니다 다시 입력해 주세요.")
+					$("#submit").attr("disabled",true);
+				}
+
+			} ,error:function(request,status,error){
+			    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
+		});
 		
 	}
 	
