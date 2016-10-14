@@ -15,6 +15,19 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <script>
+
+function writeSalary(mem_num) { // salary 입력
+	url = "/HoneyComb_2_0/salary/management_writeForm.do?mem_num="+mem_num;
+	window
+			.open(
+					url,
+					"post",
+					"toolbar=no,width=450,height=400,directories=no,status=yes,scrollbars=yes,menubar=no");
+}
+
+</script>
+
+<script>
 	$(document).ready(function() {
 		
 		if(${dept_num} > -1) {
@@ -113,7 +126,7 @@
 					<span class="col-md-3"> 
 					
 						<select class="form-control" id="sel_1">
-							<option value="0"><!--  selected="selected" -->전체</option>
+							<option value="0">전체</option>
 							<option value="1">부서별</option>
 							<option value="2">직급별</option>
 						</select>
@@ -122,13 +135,13 @@
 					
 					<span class="col-md-3">
 					 
-						<select class="form-control" id="sel_2_dept"> <!-- style="display: none;" -->
+						<select class="form-control" id="sel_2_dept">
 							<c:forEach var="item" items="${dept}">
 								<option value="${item.com_dept_num}">${item.com_dept_name}</option>
 							</c:forEach>
 						</select>
 						
-						<select class="form-control" id="sel_2_pos"> <!-- style="display: none;" -->
+						<select class="form-control" id="sel_2_pos">
 							<c:forEach var="item" items="${pos}">
 								<option value="${item.com_pos_num}">${item.com_pos_name}</option>
 							</c:forEach>
@@ -153,6 +166,7 @@
 							<th class="text-center" colspan="4">지급내용(과세)</th>
 							<th class="text-center" colspan="4">지급내용(비과세)</th>
 							<th class="text-center" rowspan="2">합계</th>
+							<th class="text-center" rowspan="2"> </th>
 						</tr>
 						<tr>
 							<th class="text-center">기본급</th>
@@ -193,6 +207,9 @@
 									<td class="text-center">${item.costs_benefit}</td>
 									<td class="text-center">${item.costs_etc}</td>
 									<td class="text-center">${item.costs_etc}</td>
+									<td class="text-center">
+										<input type="button" class="btn btn-primary btn-xs" value="입력" onclick="writeSalary(${item.mem_num})">
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

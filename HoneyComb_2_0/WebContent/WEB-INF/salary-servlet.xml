@@ -26,7 +26,7 @@
 		<property name="order" value="1" />
 	</bean>
 
- 	<bean id="jspViewResolver"
+	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/hr/salary/" />
 		<property name="suffix" value=".jsp" />
@@ -60,6 +60,8 @@
 	<bean id="salaryMainController" class="salary.controller.SalaryMainController"
 		p:dao-ref="dao" />
 
-	
+	<bean id="salaryWriteController" class="salary.controller.SalaryWriteController"
+		p:dao-ref="dao" />
+
 
 </beans>
