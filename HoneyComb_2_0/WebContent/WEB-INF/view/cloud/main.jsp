@@ -39,13 +39,7 @@
 	});	
 	$(document).bind("contextmenu", function(event) { 
 		 event.preventDefault();
-		/* $("<div class='cloud_menu' style='position: absolute; z-index:1000;'>"+
-			    "<a href="+"javascript:openupload('${param.folder}')"+"><p>업로드</p></a>"+
-			    "<a href="+"javascript:myfunction()"+"  id='download'><p id='download'>다운로드</p></a>"+
-			    "<a href = "+"javascript:openMakeFolder('${param.folder}')"+"><p>폴더 만들기</p></a>"+
-			    "<a class='deldiv' id=delete href="+"javscript:openDelete"+"><p>삭제</p></a>"+
-			    "<a href='' 파일 열기>" 
-			    +"</div>") */
+		 testfunction();
 			    $("#contextBox")
 			    .appendTo("body")
 			    .css({"display":"block", top: event.pageY + "px", left: event.pageX + "px"});	
