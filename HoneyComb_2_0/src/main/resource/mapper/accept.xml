@@ -5,8 +5,8 @@
 
 	<!-- salary row add -->
 	<insert id="setSalary_member" parameterType="salary.db.SalaryDataBean">
-		insert into salary(salary_num,mem_num,name,com_num,com_dept_num,com_dept_name,com_pos_num,com_pos_name)
-		values(salary_num.NEXTVAL,#{mem_num},#{name},#{com_num},#{com_dept_num},#{com_dept_name},#{com_pos_num}, #{com_pos_name})
+		insert into salary(salary_num,mem_num,name,com_num,com_name,com_dept_num,com_dept_name,com_pos_num,com_pos_name)
+		values(salary_num.NEXTVAL,#{mem_num},#{name},#{com_num},#{com_name},#{com_dept_num},#{com_dept_name},#{com_pos_num}, #{com_pos_name})
 	</insert>
 
 	<!-- 승인 -->
@@ -35,7 +35,7 @@
 
 	<!-- get member info -->
 	<select id="getMember" parameterType="int" resultType="salary.db.SalaryDataBean">
-		select mem_num,name,com_num,com_dept_num,com_dept_name,com_pos_num,com_pos_name from members where mem_num=#{mem_num}
+		select mem_num,name,com_num,com_name,com_dept_num,com_dept_name,com_pos_num,com_pos_name from members where mem_num=#{mem_num}
 	</select>
 
 </mapper>
