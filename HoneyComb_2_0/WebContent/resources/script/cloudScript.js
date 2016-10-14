@@ -82,5 +82,22 @@ function changeFileName(){
 		alert("한개의 파일만 선택하여 주세요");
 		return false;
 	}
-	$("input:text[id="+checked.val()+"]").attr("readonly",false).focus();
+	$("input:text[id="+checked.val()+"]").removeAttr("readonly").focus();
+}
+function testfunction(){
+	$("input:text").each(function(){
+		if($(this).attr("readonly") != 'readonly'){
+			alert($(this).attr('id'))
+			changeFilename($(this).attr('id'));
+		}
+		
+		
+	})
+function changeFilename(filenum){
+		alert(filenum);
+		
+		
+	}
+	
+	
 }
