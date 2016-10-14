@@ -46,13 +46,12 @@ a:hover {
 	background: #344d91;
 	margin: 0;
 	padding: 0;
-	z-index: 5;
 }
 
 #logo_wrapper {
 	position: absolute;
 	left: 250px;
-	z-index: 5;
+	z-index: 3;
 }
 
 #logo_banner {
@@ -60,7 +59,6 @@ a:hover {
 	margin: auto;
 	width: 100px;
 	height: 100px;
-	z-index: 5;
 }
 
 #Honey_comB {

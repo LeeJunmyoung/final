@@ -15,6 +15,40 @@
 <script type='text/javascript'
 	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
 <style type="text/css">
+#home_banner {
+position:absolute;
+	width: 100%;
+	height: 11%;
+	background: #344d91;
+	margin: 0;
+}
+
+#logo_wrapper {
+width:700px;
+position:absolute;
+	left: 250px;
+	z-index:3;
+}
+
+#logo_banner {
+	display: inline;
+	float:left;
+	margin: auto;
+	width: 100px;
+	height: 100px;
+}
+
+#Honey_comB {
+position:absolute;
+	display: inline;
+	font-size: 38pt;
+	color: #fff;
+	height: 100px;
+}
+
+#logo_a {
+	text-decoration: none;
+}
 
 input[type=text] {
 	height: 30px;
@@ -89,7 +123,8 @@ td {
 	width: 70%;
 	height: 89%;
 	background: white;
-	position: relative;
+	position: absolute;
+	top:11%;
 	left: 250px;
 }
 
@@ -153,38 +188,6 @@ input[type=text] {
 	padding-left: 10px;
 	text-align: lift;
 }
-
-#home_banner {
-	width: 100%;
-	height: 11%;
-	background: #344d91;
-	margin: 0;
-	padding: 0;
-}
-
-#logo_wrapper {
-	position: absolute;
-	left: 250px;
-	z-index: 3;
-}
-
-#logo_banner {
-	display: inline;
-	margin: auto;
-	width: 100px;
-	height: 100px;
-}
-
-#Honey_comB {
-	display: inline;
-	font-size: 38pt;
-	color: #fff;
-	vertical-align: middle;
-}
-
-#logo_a {
-	text-decoration: none;
-}
 </style>
 
 
@@ -228,9 +231,9 @@ function in_focus(){
 	<div id="home_banner">
 		<div id="logo_wrapper">
 			<img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png"
-				width="80" height="80"
-				onclick="location.href='/HoneyComb_2_0/admin/admin_mainPage'"> <a
-				id="logo_a" href="/HoneyComb_2_0/admin/admin_mainPage"><p id="Honey_comB">HONEYCOMB</p></a>
+				onclick="location.href='/HoneyComb_2_0/admin/admin_mainPage'">
+			<a id="logo_a" href="/HoneyComb_2_0/admin/admin_mainPage"><p
+					id="Honey_comB">HONEYCOMB</p></a>
 		</div>
 	</div>
 

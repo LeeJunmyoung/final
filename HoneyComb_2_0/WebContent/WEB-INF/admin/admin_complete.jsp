@@ -32,15 +32,15 @@ left: 250px;
 #home_banner {
 	width: 100%;
 	height: 11%;
-	background-color: #344d91;
+	background: #344d91;
 	margin: 0;
 	padding: 0;
 }
 
 #logo_wrapper {
-	position: relative	;
+	position: absolute;
 	left: 250px;
-	
+	z-index: 3;
 }
 
 #logo_banner {
@@ -60,7 +60,6 @@ left: 250px;
 #logo_a {
 	text-decoration: none;
 }
-
 
 #back_button {
 	

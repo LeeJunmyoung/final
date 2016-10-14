@@ -72,6 +72,8 @@ a:hover {
 	font-size: 38pt;
 	color: #fff;
 	vertical-align: middle;
+	height: 100px;
+	margin: auto;
 }
 
 #logo_a {
@@ -141,8 +143,9 @@ body {
 		<div id="logo_wrapper">
 			<img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png"
 				width="80" height="80"
-				onclick="location.href='/HoneyComb_2_0/admin/admin_mainPage'"> <a
-				id="logo_a" href="/HoneyComb_2_0/admin/admin_mainPage"><p id="Honey_comB">HONEYCOMB</p></a>
+				onclick="location.href='/HoneyComb_2_0/admin/admin_mainPage'">
+			<a id="logo_a" href="/HoneyComb_2_0/admin/admin_mainPage"><p
+					id="Honey_comB">HONEYCOMB</p></a>
 		</div>
 	</div>
 
