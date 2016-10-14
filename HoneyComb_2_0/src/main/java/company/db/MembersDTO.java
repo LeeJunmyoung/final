@@ -16,6 +16,7 @@ public class MembersDTO {
 	private String birth_date;
 	private String mem_address;
 	private String gender;
+	private String profile_img;
 
 	public MembersDTO() {
 		super();
@@ -23,7 +24,7 @@ public class MembersDTO {
 
 	public MembersDTO(int mem_num, String name, String email, String passwd, String phone_num, int com_num,
 			String com_name, int com_dept_num, String com_dept_name, int com_pos_num, String com_pos_name,
-			String birth_date, String mem_address, String gender) {
+			String birth_date, String mem_address, String gender, String profile_img) {
 		super();
 		this.mem_num = mem_num;
 		this.name = name;
@@ -39,33 +40,7 @@ public class MembersDTO {
 		this.birth_date = birth_date;
 		this.mem_address = mem_address;
 		this.gender = gender;
-	}
-
-	public MembersDTO(int mem_num, String name, String email, String passwd, String phone_num, int com_num,
-			String com_name, int com_dept_num, String com_dept_name, int com_pos_num, String com_pos_name) {
-		super();
-		this.mem_num = mem_num;
-		this.name = name;
-		this.email = email;
-		this.passwd = passwd;
-		this.phone_num = phone_num;
-		this.com_num = com_num;
-		this.com_name = com_name;
-		this.com_dept_num = com_dept_num;
-		this.com_dept_name = com_dept_name;
-		this.com_pos_num = com_pos_num;
-		this.com_pos_name = com_pos_name;
-	}
-
-	public MembersDTO(int com_num, String com_name, int com_dept_num, String com_dept_name, int com_pos_num,
-			String com_pos_name) {
-		super();
-		this.com_num = com_num;
-		this.com_name = com_name;
-		this.com_dept_num = com_dept_num;
-		this.com_dept_name = com_dept_name;
-		this.com_pos_num = com_pos_num;
-		this.com_pos_name = com_pos_name;
+		this.profile_img = profile_img;
 	}
 
 	@Override
@@ -74,7 +49,7 @@ public class MembersDTO {
 				+ ", phone_num=" + phone_num + ", com_num=" + com_num + ", com_name=" + com_name + ", com_dept_num="
 				+ com_dept_num + ", com_dept_name=" + com_dept_name + ", com_pos_num=" + com_pos_num + ", com_pos_name="
 				+ com_pos_name + ", birth_date=" + birth_date + ", mem_address=" + mem_address + ", gender=" + gender
-				+ "]";
+				+ ", profile_img=" + profile_img + "]";
 	}
 
 	public int getMem_num() {
@@ -187,6 +162,14 @@ public class MembersDTO {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public String getProfile_img() {
+		return profile_img;
+	}
+
+	public void setProfile_img(String profile_img) {
+		this.profile_img = profile_img;
 	}
 
 }

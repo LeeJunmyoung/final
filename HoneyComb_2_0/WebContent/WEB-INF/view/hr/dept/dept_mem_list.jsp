@@ -11,10 +11,15 @@
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script>
 
-function view_resume(mem_num) {
+function view_resume(mem_num, com_dept_num, com_pos_num) {
 
+	if(com_dept_num == 2 || com_pos_num <= 3) {
 	/* "final_test/mem_resume.do?mem_num=" + mem_num */
 	window.open("/HoneyComb_2_0/dept/mem_resume?mem_num=" + mem_num, "", "toolbar=no,location=no,status=no,menubar=no scrollbars=no,resizable=no,left=600, top=20,width=700,height=920");
+	} else {
+		alert("조회 권한이 없습니다");
+		return false;
+	}
 }
 
 </script>
@@ -127,7 +132,7 @@ tr, td {
 		<c:if test="${ !empty dept_List }">
 			<c:forEach var="dept_List" items="${ dept_List }">
 				<tbody id="content_tbody">
-					<tr id="text" onclick="view_resume(${ dept_List.mem_num })">
+					<tr id="text" onclick="view_resume(${ dept_List.mem_num }, ${ sessionScope.com_dept_num }, ${ sessionScope.com_pos_num })">
 						<td id="com_pos_name">${ dept_List.com_pos_name }</td>
 						<td id="name">${ dept_List.name }</td>
 						<td id="phone_num">${ dept_List.phone_num }</td>

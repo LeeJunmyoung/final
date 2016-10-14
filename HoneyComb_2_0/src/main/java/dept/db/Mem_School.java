@@ -3,6 +3,7 @@ package dept.db;
 public class Mem_School {
 
 	private int mem_num;
+	private int school_num;
 	private String school_name;
 	private String school_date;
 	private String school_major;
@@ -11,9 +12,10 @@ public class Mem_School {
 		super();
 	}
 
-	public Mem_School(int mem_num, String school_name, String school_date, String school_major) {
+	public Mem_School(int mem_num, int school_num, String school_name, String school_date, String school_major) {
 		super();
 		this.mem_num = mem_num;
+		this.school_num = school_num;
 		this.school_name = school_name;
 		this.school_date = school_date;
 		this.school_major = school_major;
@@ -21,8 +23,8 @@ public class Mem_School {
 
 	@Override
 	public String toString() {
-		return "Mem_School [mem_num=" + mem_num + ", school_name=" + school_name + ", school_date=" + school_date
-				+ ", school_major=" + school_major + "]";
+		return "Mem_School [mem_num=" + mem_num + ", school_num=" + school_num + ", school_name=" + school_name
+				+ ", school_date=" + school_date + ", school_major=" + school_major + "]";
 	}
 
 	public int getMem_num() {
@@ -31,6 +33,14 @@ public class Mem_School {
 
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
+	}
+
+	public int getSchool_num() {
+		return school_num;
+	}
+
+	public void setSchool_num(int school_num) {
+		this.school_num = school_num;
 	}
 
 	public String getSchool_name() {

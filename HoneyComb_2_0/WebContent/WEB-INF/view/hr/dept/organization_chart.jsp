@@ -73,9 +73,9 @@ tr, td {
 	text-align: center;
 	border: 2px solid white;
 	cursor: pointer;
-	line-height: 40px;
+	line-height: 45px;
 	width: 92px;
-	height: 40px;
+	height: 45px;
 	margin-bottom: 20px;
 	font-size: 14px;
 }

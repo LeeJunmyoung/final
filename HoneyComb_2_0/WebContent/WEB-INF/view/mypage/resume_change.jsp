@@ -6,17 +6,16 @@
 <head>
 <title>이력서</title>
 <script>
-function certi_search() {
-	
+	function certi_search() {
 
-	url = "/HoneyComb_2_0/mypage/certi_search";
+		url = "/HoneyComb_2_0/mypage/certi_search";
 
-	window
-			.open(
-					url,
-					"post",
-					"toolbar=no, left=200, top=100, width=700, height=400, directories=no, status=yes, scrollbar=yes, menubar=no");
-}
+		window
+				.open(
+						url,
+						"post",
+						"toolbar=no, left=200, top=100, width=700, height=400, directories=no, status=yes, scrollbar=yes, menubar=no");
+	}
 </script>
 <style>
 table, tr, th, td {
@@ -43,7 +42,7 @@ input[type=text] {
 	margin-top: -10px;
 	margin-bottom: -10px;
 	text-align: center;
-	width: 100px;
+	width: 120px;
 }
 
 #img_myprofile {
@@ -121,6 +120,12 @@ input[type=text] {
 	background-color: #344d91;
 	color: white;
 }
+
+#address {
+	width: 320px;
+	margin-left: -90px;
+	margin-right: -90px;
+}
 </style>
 </head>
 <body onselectstart="return false" ondragstart="return false">
@@ -133,13 +138,13 @@ input[type=text] {
 			<c:forEach var="base_list" items="${ base_list }">
 				<tr>
 					<td rowspan="5" class="wi"><img
-						src="${ sessionScope.profile_img }" name="profile_img"
+						src="${ base_list.profile_img }" name="profile_img"
 						onerror="this.src='/HoneyComb_2_0/resources/images/user.png'"
 						id="img_myprofile"></td>
 					<td class="bold_wi">성 명</td>
-					<td class="wi"><input type="text" name="name" value="${ base_list.name }"/></td>
+					<td class="wi">${ base_list.name }</td>
 					<td class="bold_wi">성 별</td>
-					<td class="wi"><input type="text" name="name" value="${ base_list.gender }"/></td>
+					<td class="wi">${ base_list.gender }</td>
 				</tr>
 
 				<tr>
@@ -147,13 +152,15 @@ input[type=text] {
 					<td class="bold">생년월일</td>
 					<td>${ base_list.birth_date }</td>
 					<td class="bold">핸드폰 번호</td>
-					<td><input type="text" name="name" value="${ base_list.phone_num }"/></td>
+					<td><input type="text" name="name"
+						value="${ base_list.phone_num }" /></td>
 				</tr>
 
 				<tr>
 					<!-- <td></td> -->
 					<td class="bold">주 소</td>
-					<td colspan="3"><input type="text" name="name" value="${ base_list.mem_address }"/></td>
+					<td colspan="3"><input type="text" name="name" id="address"
+						value="${ base_list.mem_address }" /></td>
 					<!-- <td></td> -->
 					<!-- <td></td> -->
 				</tr>
@@ -182,7 +189,12 @@ input[type=text] {
 		<form name="school">
 			<table>
 
-				<div class="div_title"><p class="title">학 력<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a href="#" class="button">등록</a></p></div>
+				<div class="div_title">
+					<p class="title">
+						학 력<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a
+							href="#" class="button">등록</a>
+					</p>
+				</div>
 
 				<tr>
 					<td class="bold_wi">학교명</td>
@@ -201,10 +213,17 @@ input[type=text] {
 						<!-- <td></td> -->
 					</tr>
 				</c:forEach>
+
+				<c:if test="${ empty school_list }">
+					<tr>
+						<td colspan="5">등록된 정보가 없습니다</td>
+					</tr>
+				</c:if>
+
 				<tr>
-					<td><input type="text" /></td>
-					<td colspan="2"><input type="text" /></td>
-					<td colspan="2"><input type="text" /></td>
+					<td><input type="text" name="school_name" /></td>
+					<td colspan="2"><input type="text" name="school_date" /></td>
+					<td colspan="2"><input type="text" name="school_major" /></td>
 				</tr>
 
 			</table>
@@ -213,7 +232,12 @@ input[type=text] {
 		<form name="edu">
 			<table>
 
-				<div class="div_title"><p class="title">교육 이수<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a href="#" class="button">등록</a></p></div>
+				<div class="div_title">
+					<p class="title">
+						교육 이수<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a
+							href="#" class="button">등록</a>
+					</p>
+				</div>
 
 				<tr>
 					<td class="bold_wi">기관명</td>
@@ -233,10 +257,16 @@ input[type=text] {
 					</tr>
 				</c:forEach>
 
+				<c:if test="${ empty edu_list }">
+					<tr>
+						<td colspan="5">등록된 정보가 없습니다</td>
+					</tr>
+				</c:if>
+
 				<tr>
-					<td><input type="text" /></td>
-					<td colspan="2"><input type="text" /></td>
-					<td colspan="2"><input type="text" /></td>
+					<td><input type="text" name="edu_insti" /></td>
+					<td colspan="2"><input type="text" name="edu_name" /></td>
+					<td colspan="2"><input type="text" name="edu_date" /></td>
 				</tr>
 
 			</table>
@@ -246,7 +276,12 @@ input[type=text] {
 		<form name="certi">
 			<table>
 
-				<div class="div_title"><p class="title">자격증<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a href="#" class="button">등록</a></p></div>
+				<div class="div_title">
+					<p class="title">
+						자격증<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a
+							href="#" class="button">등록</a>
+					</p>
+				</div>
 
 				<tr>
 					<td colspan="2" class="bold_wi_sum">자격증명</td>
@@ -266,11 +301,19 @@ input[type=text] {
 					</tr>
 				</c:forEach>
 
+				<c:if test="${ empty certi_list }">
+					<tr>
+						<td colspan="5">등록된 정보가 없습니다</td>
+					</tr>
+				</c:if>
+
 				<tr>
-					<td colspan="2"><input type="text" readonly name="certi_name"/><a href="#" href="#companyCheck" onclick="companyCheck();return false;"
-								onkeypress="this.onclick" class="search"><span>search</span></td>
-					<td><input type="text" /></td>
-					<td colspan="2"><input type="text" /></td>
+					<td colspan="2"><input type="text" readonly name="certi_name" /><a
+						href="#" href="#companyCheck"
+						onclick="companyCheck();return false;" onkeypress="this.onclick"
+						class="search"><span>search</span></td>
+					<td><input type="text" name="certi_insti" /></td>
+					<td colspan="2"><input type="text" name="certi_date" /></td>
 				</tr>
 
 			</table>
@@ -302,6 +345,22 @@ input[type=text] {
 					</tr>
 				</c:forEach>
 
+				<c:if test="${ empty mili_list }">
+					<tr>
+						<td class="bold_wi">군필 여부</td>
+						<td class="wi"><input type="text" name="mili_check"></td>
+						<td class="bold_wi">면제 사유</td>
+						<td class="wi"><input type="text" name="mili_ex"></td>
+						<td class="bold_wi">복무처</td>
+						<td class="wi"><input type="text" name="mili_place"></td>
+					</tr>
+
+					<tr>
+						<td colspan="2" class="bold">복무 기간</td>
+						<td colspan="4"><input type="text" name="mili_date"></td>
+					</tr>
+				</c:if>
+
 			</table>
 		</c:if>
 
@@ -310,7 +369,12 @@ input[type=text] {
 		<form name="career">
 			<table>
 
-				<div class="div_title"><p class="title">경 력<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a href="#" class="button">등록</a></p></div>
+				<div class="div_title">
+					<p class="title">
+						경 력<a href="#" class="button">수정</a><a href="#" class="button">삭제</a><a
+							href="#" class="button">등록</a>
+					</p>
+				</div>
 
 				<tr>
 					<td class="bold_wi">회사명</td>
@@ -329,6 +393,12 @@ input[type=text] {
 						<!-- <td></td> -->
 					</tr>
 				</c:forEach>
+
+				<c:if test="${ empty career_list }">
+					<tr>
+						<td colspan="5">등록된 정보가 없습니다</td>
+					</tr>
+				</c:if>
 
 				<tr>
 					<td><input type="text" /></td>
