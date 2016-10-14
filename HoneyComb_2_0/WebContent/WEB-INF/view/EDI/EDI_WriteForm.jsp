@@ -10,9 +10,9 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 function fromtodept(){
-	url = "writeForm.do";
-	window.open(url,"post","toolbar=no,width=800,height=900,directories=no,status=no,scrollbars=no,menubar=no");
-	window.open(url,"post","toolbar=no,width=800,height=900,directories=no,status=no,scrollbars=no,menubar=no");
+	var url="";
+	window.open(url,'get',"toolbar=no,width=800,height=900,directories=no,status=no,scrollbars=no,menubar=no");
+	
 }
 </script>
 
