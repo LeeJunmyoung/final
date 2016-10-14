@@ -10,7 +10,9 @@ function init() {
 	window.location.reload(true);
 }
 
-function dept_pos_change(num, c) {
+function dept_pos_change(num, c, com_dept_num) {
+	
+	if(com_dept_num == 2) {
 	
 	var mem_num = num;
 	var code = c;
@@ -21,6 +23,11 @@ function dept_pos_change(num, c) {
 			url,
 			"post",
 			"toolbar=no, left=200, top=100, width=700, height=400, directories=no, status=yes, scrollbar=yes, menubar=no");
+	} else {
+		
+		alert("권한이 없습니다");
+		return false;
+	}
 }
 </script>
 <style>
@@ -138,9 +145,13 @@ h2 {
 
 				<tr>
 					<!-- <td></td> -->
-					<td class="bold">부 서<a onclick="dept_pos_change(${ base_list.mem_num }, 1)" class="button">부서이동</a></td>
+					<td class="bold">부 서<a
+						onclick="dept_pos_change(${ base_list.mem_num }, 1, ${ sessionScope.com_dept_num })"
+						class="button">부서이동</a></td>
 					<td name="com_dept_num" value="${ com_dept_num }">${ base_list.com_dept_name }</td>
-					<td class="bold">직 급<a onclick="dept_pos_change(${ base_list.mem_num }, 2)" class="button">직급변경</a></td>
+					<td class="bold">직 급<a
+						onclick="dept_pos_change(${ base_list.mem_num }, 2, ${ sessionScope.com_dept_num })"
+						class="button">직급변경</a></td>
 					<td name="com_pos_num" value="${ com_pos_num }">${ base_list.com_pos_name }</td>
 				</tr>
 

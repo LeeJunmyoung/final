@@ -3,6 +3,7 @@ package dept.db;
 public class Mem_Mili {
 
 	private int mem_num;
+	private int mili_num;
 	private String mili_check;
 	private String mili_ex;
 	private String mili_place;
@@ -12,9 +13,10 @@ public class Mem_Mili {
 		super();
 	}
 
-	public Mem_Mili(int mem_num, String mili_check, String mili_ex, String mili_place, String mili_date) {
+	public Mem_Mili(int mem_num, int mili_num, String mili_check, String mili_ex, String mili_place, String mili_date) {
 		super();
 		this.mem_num = mem_num;
+		this.mili_num = mili_num;
 		this.mili_check = mili_check;
 		this.mili_ex = mili_ex;
 		this.mili_place = mili_place;
@@ -23,8 +25,8 @@ public class Mem_Mili {
 
 	@Override
 	public String toString() {
-		return "Mem_Mili [mem_num=" + mem_num + ", mili_check=" + mili_check + ", mili_ex=" + mili_ex + ", mili_place="
-				+ mili_place + ", mili_date=" + mili_date + "]";
+		return "Mem_Mili [mem_num=" + mem_num + ", mili_num=" + mili_num + ", mili_check=" + mili_check + ", mili_ex="
+				+ mili_ex + ", mili_place=" + mili_place + ", mili_date=" + mili_date + "]";
 	}
 
 	public int getMem_num() {
@@ -33,6 +35,14 @@ public class Mem_Mili {
 
 	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
+	}
+
+	public int getMili_num() {
+		return mili_num;
+	}
+
+	public void setMili_num(int mili_num) {
+		this.mili_num = mili_num;
 	}
 
 	public String getMili_check() {

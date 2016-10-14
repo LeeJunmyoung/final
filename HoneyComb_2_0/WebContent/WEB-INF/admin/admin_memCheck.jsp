@@ -227,10 +227,10 @@ function in_focus(){
 
 	<div id="home_banner">
 		<div id="logo_wrapper">
-			<img id="logo_banner"
-				src="/HoneyComb/page_layout/page_image/logo.png" width="100"
-				height="100" onclick="location.href='/HoneyComb/index.jsp'"> <a
-				id="logo_a" href="/HoneyComb/index.jsp"><p id="Honey_comB">HoneyComb</p></a>
+			<img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png"
+				width="80" height="80"
+				onclick="location.href='/HoneyComb_2_0/admin/admin_mainPage'"> <a
+				id="logo_a" href="/HoneyComb_2_0/admin/admin_mainPage"><p id="Honey_comB">HONEYCOMB</p></a>
 		</div>
 	</div>
 
