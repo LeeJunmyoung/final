@@ -3,13 +3,50 @@
 
 <mapper namespace="mypage">
 
+	<!-- resume insert -->
+
+	<insert id="school_insert">
+		insert into mem_school(mem_num, school_num,
+		school_name, school_date, school_major) values(#{mem_num},
+		mem_school_seq.NEXTVAL, #{school_name}, #{school_date},
+		#{school_major})
+	</insert>
+
+	<insert id="edu_insert">
+		insert into mem_edu(mem_num, edu_num, edu_insti,
+		edu_name, edu_date) values(#{mem_num}, mem_edu_seq.NEXTVAL,
+		#{edu_insti}, #{edu_name}, #{edu_date})
+	</insert>
+
+	<insert id="certi_insert">
+		insert into mem_certi(mem_num, certi_num, certi_name,
+		certi_insti, certi_date) values(#{mem_num}, mem_certi_seq.NEXTVAL,
+		#{certi_name}, #{certi_insti}, #{certi_date})
+	</insert>
+
+	<insert id="mili_insert">
+		insert into mem_mili(mem_num, mili_num, mili_check,
+		mili_ex, mili_place, mili_date) values(#{mem_num,
+		mem_mili_seq.NEXTVAL, #{mili_check}, #{mili_ex}, #{mili_place},
+		#{mili_date})
+	</insert>
+
+	<insert id="career_insert">
+		insert into mem_career(mem_num, career_num,
+		career_com_name, career_dept_name, career_work, career_date)
+		values(#{mem_num}, mem_career.seq.NEXTVAL, #{career_com_name},
+		#{career_dept_name}, #{career_work}, #{career_date})
+	</insert>
+
+	<!-- resume insert -->
+
 	<!-- !!! -->
 	<update id="passwd_change" parameterType="Map">
 		update members set
 		passwd=#{passwd} where mem_num=#{mem_num}
 	</update>
-	
-		<!-- !!! -->
+
+	<!-- !!! -->
 	<update id="com_update_member" parameterType="Map">
 		update members set
 		com_num=#{com_num} where mem_num=#{mem_num}
@@ -20,13 +57,13 @@
 		update members set
 		profile_img=#{profile_img} where mem_num=#{mem_num}
 	</update>
-	
+
 	<!-- 계정삭제 -->
 	<delete id="members_delete" parameterType="int">
 		delete from members
 		where mem_num=#{mem_num}
 	</delete>
-	
+
 	<select id="passwd_select" parameterType="int" resultType="String">
 		select passwd from members where mem_num=#{mem_num}
 	</select>
@@ -41,15 +78,18 @@
 	</select>
 
 	<select id="edu_select" parameterType="int" resultType="dept.db.Mem_Edu">
-		select * from mem_edu where mem_num=#{mem_num}
+		select *
+		from mem_edu where mem_num=#{mem_num}
 	</select>
 
 	<select id="certi_select" parameterType="int" resultType="dept.db.Mem_Certi">
-		select * from mem_certi where mem_num=#{mem_num}
+		select
+		* from mem_certi where mem_num=#{mem_num}
 	</select>
 
 	<select id="mili_select" parameterType="int" resultType="dept.db.Mem_Mili">
-		select * from mem_mili where mem_num=#{mem_num}
+		select *
+		from mem_mili where mem_num=#{mem_num}
 	</select>
 
 	<select id="career_select" parameterType="int" resultType="dept.db.Mem_Career">

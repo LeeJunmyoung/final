@@ -17,7 +17,7 @@
 	<!-- 거절 -->
 	<delete id="com_delete_member" parameterType="int">
 		delete from members
-		com_num
+		com_num, com_name, com_dept_num, com_dept_name, com_pos_num, com_pos_name
 		where mem_num=#{mem_num}
 	</delete>
 
