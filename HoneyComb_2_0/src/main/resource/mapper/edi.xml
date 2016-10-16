@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edi">
+
+
+	<select id="getDeptName" parameterType="int" resultType="String">
+		select
+		com_dept_name from
+		(select DISTINCT com_dept_name,com_dept_num from
+		members where com_dept_name
+		is not null and com_num =#{com_num} order
+		by com_dept_num)
+	</select>
+
+
+	<select id="getDeptMem" parameterType="hashmap"
+		resultType="login.controller.LogOnDataBean">
+		select * from members where com_num=#{com_num} and
+		com_dept_name=#{com_dept_name} order by COM_pos_NUM
+	</select>
+
+
+
+</mapper>
+
