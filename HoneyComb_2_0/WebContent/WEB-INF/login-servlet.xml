@@ -15,16 +15,6 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
-
-
-
-
-
-
-
-
-
-
 	<context:annotation-config />
 
 	<bean id="viewResolver"
@@ -38,7 +28,7 @@
 
 
 	<bean id = "SignInController" class="login.controller.SignInController" p:dao-ref="dao"/>
-
+	<bean id="NaverLogInController" class="login.controller.NaverLoginController" p:dao-ref="dao"></bean>
 
 	<bean id = "LogInController" class="login.controller.LogInController" p:logindao-ref="logindao" />
 
@@ -51,12 +41,12 @@
 <bean id = "CompanyCheckController" class="login.controller.CompanyCheckController" p:logindao-ref="logindao"/>
 
 
-<bean id="NaverLogInController" class="login.controller.NaverLoginController" p:logindao-ref="logindao"></bean>
+
 
 
 
 <bean id="dao" class="login.controller.SignInDAO">
-<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 </bean>
 	<bean id="logindao" class="login.controller.LoginDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />

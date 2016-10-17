@@ -15,8 +15,12 @@
 	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
 	rel="stylesheet" type="text/css">
 
-<script type="text/javascript"
-	src="/HoneyComb_2_0/resources/script/script.js"></script>
+<script type="text/javascript"src="/HoneyComb_2_0/resources/script/script.js"></script>
+	
+	<!-- 네이버 로그인 스크립트 링크 -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 <script>
 $(document).ready(function(){
     // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
@@ -83,12 +87,14 @@ function confirmSave(checkbox){
 	}
 }
 function openNaver(){
-	var url="https://nid.naver.com/oauth2.0/authorize?client_id=XxuZWIw4L8tP4C_0BW1_&response_type=code&redirect_uri=http://localhost:7777/HoneyComb_2_0/login/logIn.do(UTF-8)&state={state}";
+	var url="https://nid.naver.com/oauth2.0/authorize?client_id=XxuZWIw4L8tP4C_0BW1_&response_type=code&redirect_uri=http://localhost:7777/HoneyComb_2_0/login/logIn.do(UTF-8)&state=${state}";
 	window.open(url);
 	
 }
 </script>
 <style type="text/css">
+
+
 a:link {
 	text-decoration: none;
 	color: #333333;
@@ -154,11 +160,12 @@ a:hover {
 #FBbtn {
 	color: blue;
 }
+
 </style>
 
 </head>
 <body>
-	<script>
+	<script type="text/javascript">
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -271,26 +278,54 @@ a:hover {
 							<p></p>
 							<p></p>
 						</div>
+							
 						<div id="buttoncheck">
 
 							<button type="submit" class="btn btn-default">Sign in</button>
 							<br>
 							<br> <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">페이스북으로 로그인하기</fb:login-button>
-
-
-									<a href="javascript:openNaver()">네이버 로그인 나는냐 CSS 파괴자</a>
-									</p>
-							</p>
+							<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+							<div id="naver_id_login">네이버 아이디로 로그인</div>
+							<!-- //네이버아이디로로그인 버튼 노출 영역 -->
 							<a href="signIn.do">회원가입</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="findEmail.do">Email</a>&nbsp;/&nbsp;
 							<a href="findPasswd.do">Passwd 찾기</a>
 						</div>
-
+						
 						<a href="#" onclick="FB.logout();">[logout]</a><br>
 				</div>
 			</div>
 		</div>
 	</div>
 	</div>
+<script type="text/javascript">
+var naver_id_login = new naver_id_login("XxuZWIw4L8tP4C_0BW1_", "http://localhost:7777/HoneyComb_2_0/login/logIn.do");
+var state = naver_id_login.getUniqState();
+naver_id_login.setButton("green", 3,40);
+naver_id_login.setDomain("/login/naverLogIn"); 
+naver_id_login.setState(state);
+naver_id_login.setPopup();
+naver_id_login.init_naver_id_login();
+
+// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+function naverSignInCallback() {
+	var email = naver_id_login.getProfileData('email');
+	var gender = naver_id_login.getProfileData('gender');
+	var name = naver_id_login.getProfileData('nickname');
+	window.opener.location.replace("login/naverLogIn.do?email="+email+"&gender="+gender+"&name="+name);
+	window.close();
+	// naver_id_login.getProfileData('프로필항목명');
+	// 프로필 항목은 개발가이드를 참고하시기 바랍니다.
+/* 	;
+	alert(naver_id_login.getProfileData('nickname'));
+	alert(naver_id_login.getProfileData('age'));
+	alert(naver_id_login.getProfileData('gender'));
+	alert(naver_id_login.getProfileData('birthday')); */
+}
+
+// 네이버 사용자 프로필 조회
+naver_id_login.get_naver_userprofile("naverSignInCallback()");
+
+</script>
 </body>
 </html>
