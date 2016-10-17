@@ -26,8 +26,6 @@ public class SalaryWriteController {
 
 		SalaryDataBean salary = dao.getSalary(mem_num);
 
-		System.out.println(mem_num + " : " + salary.getName());
-
 		ModelAndView mav = new ModelAndView("management_writeForm");
 		mav.addObject("salary", salary);
 

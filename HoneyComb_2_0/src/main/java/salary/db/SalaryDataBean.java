@@ -21,6 +21,11 @@ public class SalaryDataBean {
 	int costs_benefit;
 	int costs_etc;
 	int salary_sum;
+	int tax_np; // 국민연금
+	int tax_ui; // 고용보험
+	int tax_hi; // 건강보험
+	int tax_lci; // 장기요양보험
+	int tax_sum;
 
 	public int getSalary_num() {
 		return salary_num;
@@ -102,6 +107,8 @@ public class SalaryDataBean {
 		this.salary_year = salary_year;
 		this.salary_month = salary_year / 12;
 		setSalary_sum();
+		setTax();
+		setTax_sum();
 	}
 
 	public int getSalary_month() {
@@ -115,6 +122,8 @@ public class SalaryDataBean {
 	public void setSalary_add_time(int salary_add_time) {
 		this.salary_add_time = salary_add_time;
 		setSalary_sum();
+		setTax();
+		setTax_sum();
 	}
 
 	public int getSalary_add_holiday() {
@@ -124,6 +133,8 @@ public class SalaryDataBean {
 	public void setSalary_add_holiday(int salary_add_holiday) {
 		this.salary_add_holiday = salary_add_holiday;
 		setSalary_sum();
+		setTax();
+		setTax_sum();
 	}
 
 	public int getSalary_bonus() {
@@ -133,6 +144,8 @@ public class SalaryDataBean {
 	public void setSalary_bonus(int salary_bonus) {
 		this.salary_bonus = salary_bonus;
 		setSalary_sum();
+		setTax();
+		setTax_sum();
 	}
 
 	public int getCosts_food() {
@@ -142,6 +155,8 @@ public class SalaryDataBean {
 	public void setCosts_food(int costs_food) {
 		this.costs_food = costs_food;
 		setSalary_sum();
+		setTax();
+		setTax_sum();
 	}
 
 	public int getCosts_transport() {
@@ -151,6 +166,8 @@ public class SalaryDataBean {
 	public void setCosts_transport(int costs_transport) {
 		this.costs_transport = costs_transport;
 		setSalary_sum();
+		setTax();
+		setTax_sum();
 	}
 
 	public int getCosts_benefit() {
@@ -160,6 +177,8 @@ public class SalaryDataBean {
 	public void setCosts_benefit(int costs_benefit) {
 		this.costs_benefit = costs_benefit;
 		setSalary_sum();
+		setTax();
+		setTax_sum();
 	}
 
 	public int getCosts_etc() {
@@ -169,6 +188,8 @@ public class SalaryDataBean {
 	public void setCosts_etc(int costs_etc) {
 		this.costs_etc = costs_etc;
 		setSalary_sum();
+		setTax();
+		setTax_sum();
 	}
 
 	public int getSalary_sum() {
@@ -178,6 +199,37 @@ public class SalaryDataBean {
 	public void setSalary_sum() {
 		this.salary_sum = salary_month + salary_add_time + salary_add_holiday + salary_bonus + costs_food
 				+ costs_transport + costs_benefit + costs_etc;
+	}
+
+	public void setTax() {
+		this.tax_np = (int) (salary_sum * 0.045);
+		this.tax_ui = (int) (salary_sum * 0.0065);
+		this.tax_hi = (int) (salary_sum * 0.0306);
+		this.tax_lci = (int) (tax_hi * 0.03275);
+	}
+
+	public int getTax_np() {
+		return tax_np;
+	}
+
+	public int getTax_ui() {
+		return tax_ui;
+	}
+
+	public int getTax_hi() {
+		return tax_hi;
+	}
+
+	public int getTax_lci() {
+		return tax_lci;
+	}
+
+	public int getTax_sum() {
+		return tax_sum;
+	}
+
+	public void setTax_sum() {
+		this.tax_sum = tax_np + tax_ui + tax_hi + tax_lci;
 	}
 
 }

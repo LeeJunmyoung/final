@@ -13,16 +13,15 @@
 
 <script>
 
-	$(function() {
-		$("dd:not(:first)").css("display", "none");
-		$("dl dt").click(function() {
-			if ($("+dd", this).css("display") == "none") {
-				$(this).siblings("dd").slideUp("slow");
-				$("+dd", this).slideDown("slow");
-			}
-		});
-	});
-	
+function viewSalary(mem_num) { // salary 자세히보기
+	url = "/HoneyComb_2_0/salary/user_view.do?mem_num="+mem_num;
+	window
+			.open(
+					url,
+					"post",
+					"toolbar=no,width=900,height=350,directories=no,status=yes,scrollbars=yes,menubar=no");
+}
+
 </script>
 
 <body>
@@ -31,16 +30,13 @@
 
 		<div class="col-md-9">
 
-			<b>SALARY <span class="badge">연봉 : 0</span></b>
+			<b>SALARY <span class="badge">연봉 : ${salary.salary_year / 10000} 만원</span></b>
 
 		</div>
 
 		<div class="col-md-1"></div>
 
 		<div class="col-md-1">
-
-<!-- 			<input type="button" class="btn btn-primary btn-xs" value="뒤로가기"
-				onclick="location.href='/HoneyComb_2_0/main/main.do'"> -->
 
 		</div>
 
@@ -52,94 +48,64 @@
 
 		<div class="container col-md-10">
 
-			<%-- <c:if test="${notice_count == 0}">
-			
-				<div class="row">
-					<div class="col-md-12 text-center">공지사항이 없습니다.</div>
-				</div>
-				
-			</c:if>
-
-			<c:if test="${notice_count > 0}">
-
-				<div class="row">
-					<b class="col-md-6 text-center">제 목</b>
-					<b class="col-md-2 text-center">작성자</b>
-					<b class="col-md-4 text-center">작성일</b>
-				</div>
-
-				<dl class="list-group col-md-12">
-
-					<c:forEach var="article" items="${articleList}">
-
-						<dt class="list-group-item row" style="background-color: #e9ebee;">
-							<span class="col-md-6">
-								${article.notice_title}
-								<c:if test="${article.isNew == 0}">
-									<span class="badge">new</span>
-								</c:if> 
-							</span>
-							<span class="col-md-2 text-center">${article.notice_member}</span>
-							<span class="col-md-4 text-center">${article.notice_date}</span>
-						</dt>
-
-						<dd class="list-group-item row">${article.notice_content}</dd>
-
-					</c:forEach>
-
-				</dl>
-
-			</c:if>
-
-		</div>
-		
-		<div class="col-md-1"></div>
-
-	</div>
-	
-	<div class="row">
-		
-		<div class="col-md-12 text-center">
-		
-			<c:if test="${notice_count > 0}">
-
-				<c:set var="pageCount"
-					value="${notice_count / pageSize + ( notice_count % pageSize == 0 ? 0 : 1)}" />
-	
-				<fmt:parseNumber var="result" value="${currentPage / pageSize}"
-					integerOnly="true" />
-	
-				<c:set var="startPage" value="${result * pageSize + 1}" />
-	
-				<c:set var="endPage" value="${startPage + pageSize - 1}" />
-	
-				<c:if test="${endPage > pageCount}">
-					<c:set var="endPage" value="${pageCount}" />
-				</c:if>
-	
-				<ul class="pagination pagination-sm">
-				
-					<c:if test="${startPage > pageSize}">
-						<li>
-							<a href="/HoneyComb_2_0/notice/more.do?pageNum=${startPage - pageSize}">이전</a>
-						</li>
-					</c:if>
-				
-					<c:forEach var="i" begin="${startPage}" end="${endPage}">
-						<li>
-							<a href="/HoneyComb_2_0/notice/more.do?pageNum=${i}">${i}</a>
-						</li>
-					</c:forEach>
+			<table class="table table-bordered" style="margin-top: 20px">
+					<thead>
+						<tr>
+							<th class="text-center" rowspan="12">연봉</th>
+						</tr>
+						<tr>
+							<td class="text-center" rowspan="12">${salary.salary_year}</td>
+						</tr>
+						<tr>
+							<th class="text-center" rowspan="6">지급내용(과세)</th>
+							<th class="text-center" rowspan="6">지급내용(비과세)</th>
+						</tr>
+					</thead>
 					
-					<c:if test="${endPage < pageCount}">
-						<li>
-							<a href="/HoneyComb_2_0/notice/more.do?pageNum=${startPage + pageSize}">다음</a>
-						</li>
+					<c:if test="${!empty salary}">
+						<tbody>
+							<tr>
+								<th class="text-center" rowspan="3">기본급</th>
+								<td class="text-center" rowspan="3">${salary.salary_month}</td>
+								<th class="text-center" rowspan="3">식대</th>
+								<td class="text-center" rowspan="3">${salary.costs_food}</td>
+							</tr>
+							<tr>
+								<th class="text-center" rowspan="3">야근수당</th>
+								<td class="text-center" rowspan="3">${salary.salary_add_time}</td>
+								<th class="text-center" rowspan="3">교통비</th>
+								<td class="text-center" rowspan="3">${salary.costs_transport}</td>
+							</tr>
+							<tr>
+								<th class="text-center" rowspan="3">휴가수당</th>
+								<td class="text-center" rowspan="3">${salary.salary_add_holiday}</td>
+								<th class="text-center" rowspan="3">복리후생</th>
+								<td class="text-center" rowspan="3">${salary.costs_benefit}</td>
+							</tr>
+							<tr>
+								<th class="text-center" rowspan="3">상여금</th>
+								<td class="text-center" rowspan="3">${salary.salary_bonus}</td>
+								<th class="text-center" rowspan="3">기타</th>
+								<td class="text-center" rowspan="3">${salary.costs_etc}</td>
+								
+							</tr>
+							<tr>
+								<th class="text-center" rowspan="3">월급여액</th>
+								<td class="text-center" rowspan="3">${salary.salary_sum}</td>
+								<th class="text-center" rowspan="3">소득공제액</th>
+								<td class="text-center" rowspan="3">${salary.tax_sum}</td>
+							</tr>
+							<tr>
+								<th class="text-center" rowspan="6">실수령액</th>
+								<td class="text-center" rowspan="6">${salary.salary_sum - salary.tax_sum}</td>
+							</tr>
+						</tbody>
+
 					</c:if>
+
+				</table>
 				
-				</ul>
-	
-			</c:if> --%>
+				<input type="button" class="btn btn-primary btn-xs" value="입력" onclick="viewSalary(${salary.mem_num})">
 		
 		</div>
 		
