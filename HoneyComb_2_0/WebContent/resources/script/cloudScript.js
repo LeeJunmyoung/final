@@ -104,13 +104,11 @@ function changeFilename(file_num, file_name){
 			},
 			success : function(data) {
 				console.log(data);
-				alert(data);
 				if (data == 0) {
-					alert("success");
-					$("input:text[id="+file_num+"]").Attr("readonly", true);
+					$("input:text[id="+file_num+"]").attr("readonly", true);
 				} else {
-					$("#dupli").html("<font color=red>이미 있는 이름입니다 다시 입력해 주세요.")
-					$("#submit").attr("disabled",true);
+					alert("다른 이름을 선택하여 주세요");
+					$("input:text[id="+file_num+"]").attr("readonly", true);
 				}
 
 			} ,error:function(request,status,error){

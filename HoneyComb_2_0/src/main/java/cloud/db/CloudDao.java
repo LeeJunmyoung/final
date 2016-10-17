@@ -80,11 +80,23 @@ public class CloudDao extends SqlSessionDaoSupport{
 		System.out.println("dao.duplick::"+duplick);
 		return duplick;
 	}
-	public int changeFileName(int file_num, String file_name){
+	public int changeFileName(String file_num, String file_name){
+		//중복체크 1차 쿼리
+		int numinfo = Integer.parseInt(file_num);
+		Map<String, Object> info = getSqlSession().selectOne("cloud.getdupliInfo",numinfo);
+		//중복체크 2차 쿼리
+		Map<String, Object> changeMap  =  new HashMap<String, Object>();
+		changeMap.put("folder", info.get("FOLDER"));
+		changeMap.put("com_num", info.get("COM_NUM"));
+		changeMap.put("item", file_name);
+		String dupli = getSqlSession().selectOne("cloud.dupliCk",changeMap);
+		int i = Integer.parseInt(dupli);
+		if(i>0)return i;
+		//이픔 바꾸는 쿼리
 		Map<String, Object> map =  new HashMap<String, Object>();
 		map.put("file_num", file_num);
 		map.put("file_name", file_name);
 		getSqlSession().update("cloud.changeFileName", map);
-		return 0;
+		return i;
 	}
 }

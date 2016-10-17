@@ -47,21 +47,48 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</foreach>
 		</where>
 	</delete>
-	<select id="dupliCk" parameterType="hashmap" resultType="String">
+
+	<parameterMap id="dupliInfo" type="hashMap">
+		<parameter property="item"/>
+		<parameter property="folder"/>
+		<parameter property="com_num"/>	
+	</parameterMap>	
+	
+	
+	<select id="dupliCk" parameterMap="dupliInfo" resultType="String">
 		select count(*) from cloud
 		<where>
-		 file_name = #{item} and com_num= #{com_num} and
+		 file_name = #{item} and com_num= #{com_num} 
+	
 			<choose>
+				<when test="folder eq null|| folder == ''">
+				and folder is null
+				</when>
+				<otherwise>
+					and folder = #{folder}
+				</otherwise>
+			</choose>
+<!-- 			 <if test='#{folder, jdbcType=VARCHAR}!= "null"'>
+			 and folder = #{folder}
+			 </if> -->
+
+	
+		<!-- 	<choose>
 				<when test="#{folder == '' || folder eq null}" >
 					 folder is null
 				</when>
 				<otherwise>
 					folder = #{folder}
 				</otherwise>
-			</choose>
+			</choose> -->
 		
 		</where>
 	</select>
+	
+	
+	
+	
+	
 	<select id="findUpper" parameterType="String" resultType="String">
 		select folder from cloud where file_path = #{folder}
 	</select>
@@ -82,5 +109,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				file_num = #{file_num}
 			</where>
 	</update>
-	
+	<select id="getdupliInfo" parameterType="int" resultType="hashmap">
+		select folder, com_num from cloud where file_num = #{file_num}	
+	</select>
 </mapper>

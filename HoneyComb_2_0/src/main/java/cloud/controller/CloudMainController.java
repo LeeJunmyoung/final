@@ -72,9 +72,9 @@ public class CloudMainController implements ApplicationContextAware{
 		
 		System.out.println("controllerFoldeR::"+folder);
 		System.out.println("controllerpromgr_num::"+promgr_num);
-		if(promgr_num == 0){
+	/*	if(promgr_num == 0){
 			return null;
-		}
+		}*/
 		if(promgr_num > 0 ){
 			folder = "%%"+promgr_name;
 			String promgDupli = dao.promgrDuplick(promgr_num,folder, request);
@@ -147,7 +147,7 @@ public class CloudMainController implements ApplicationContextAware{
 	}
 	/*폴더업로드*/
 	@RequestMapping(value="/makeFolder", method=RequestMethod.POST)
-	public String makeFolderPro(String folder, String item, HttpServletRequest request, @RequestParam(required = false) int promgr_num){
+	public String makeFolderPro(String folder, String item, HttpServletRequest request, @RequestParam(required = false, defaultValue = "0") int promgr_num){
 		CloudInfo info =  new Cloud_makeFolder().uploadFolder(request, item, folder,promgr_num);
 		dao.uploadFile(info);
 		return "redirect:makeFolder?upload=ok";
@@ -161,12 +161,11 @@ public class CloudMainController implements ApplicationContextAware{
 		 return path;
 	}
 	/*ajax로 파일명 바꾸기*/
-	@RequestMapping(value="/changeName")
+	@RequestMapping(value="/changeName", method = RequestMethod.POST)
 	@ResponseBody
-	public int changeName(@RequestParam(value = "file_num") int file_num,@RequestParam(value = "file_name")String file_name){
-		System.out.println("이까지 온다");
-		dao.changeFileName(file_num, file_name);
-		return 0;
+	public int changeName(@RequestParam(value = "file_num") String file_num,@RequestParam(value = "file_name")String file_name, HttpServletRequest request){
+		int i = dao.changeFileName(file_num, file_name);
+		return i;
 	}
 	
 }
