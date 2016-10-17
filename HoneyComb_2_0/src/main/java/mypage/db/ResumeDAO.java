@@ -1,9 +1,12 @@
 package mypage.db;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
+import company.db.MembersDTO;
 import dept.db.Mem_Career;
 import dept.db.Mem_Certi;
 import dept.db.Mem_Edu;
@@ -58,6 +61,28 @@ public class ResumeDAO extends SqlSessionDaoSupport {
 		List career_list = getSqlSession().selectList("mypage.career_select", mem_num);
 
 		return career_list;
+	}
+	
+	public Map base_Update(int mem_num, Map base_map) {
+		
+		int x = getSqlSession().update("mypage.base_update", base_map);
+		
+		if(x >= 1) {
+			System.out.println("base update 성공");
+		} else if(x <= 0){
+			System.out.println("base update 실패");
+		}
+		
+		List base_list = (List) getSqlSession().selectList("mypage.base_up_select", mem_num);
+		Map base = new HashMap<>();
+		
+		for(Object ob : base_list) {
+			MembersDTO dto = (MembersDTO) ob;
+			base.put("phone_num", dto.getPhone_num());
+			base.put("mem_address", dto.getMem_address());
+		}
+		
+		return base;
 	}
 	
 	public void school_Insert(int mem_num, Mem_School sch) {
@@ -120,7 +145,7 @@ public class ResumeDAO extends SqlSessionDaoSupport {
 		
 		car.setMem_num(mem_num);
 		
-		int x = getSqlSession().insert("mypage.school_insert", car);
+		int x = getSqlSession().insert("mypage.career_insert", car);
 		
 		if(x >= 1) {
 			System.out.println("school insert 성공");

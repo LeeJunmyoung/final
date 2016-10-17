@@ -1,12 +1,17 @@
 package mypage.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import company.db.MembersDTO;
 import dept.db.Mem_Career;
 import dept.db.Mem_Certi;
 import dept.db.Mem_Edu;
@@ -54,9 +59,26 @@ public class Resume_Pro_Controller {
 		return mav;
 
 	}
+	
+	@RequestMapping("base_pro")
+	public String base_Pro(HttpServletRequest request, @RequestParam String phone_num, @RequestParam String mem_address) {
+		
+		int mem_num = (int) request.getSession().getAttribute("mem_num");
+		Map base_map = new HashMap<>();
+		base_map.put("phone_num", phone_num);
+		base_map.put("mem_address", mem_address);
+		base_map.put("mem_num", mem_num);
+		
+		Map base_session = dao.base_Update(mem_num, base_map);
+		
+		request.getSession().setAttribute("phone_num", base_session.get("phone_num"));
+		request.getSession().setAttribute("mem_address", base_session.get("mem_address"));
+		
+		return "resume_close";
+	}
 
 	@RequestMapping("school_pro")
-	public String school_Pro(HttpServletRequest request, @RequestParam Mem_School sch) {
+	public String school_Pro(HttpServletRequest request, @ModelAttribute Mem_School sch) {
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		
@@ -66,7 +88,7 @@ public class Resume_Pro_Controller {
 	}
 
 	@RequestMapping("edu_pro")
-	public String edu_Pro(HttpServletRequest request, @RequestParam Mem_Edu edu) {
+	public String edu_Pro(HttpServletRequest request, @ModelAttribute Mem_Edu edu) {
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		
@@ -76,7 +98,7 @@ public class Resume_Pro_Controller {
 	}
 
 	@RequestMapping("certi_pro")
-	public String certi_Pro(HttpServletRequest request, @RequestParam Mem_Certi cer) {
+	public String certi_Pro(HttpServletRequest request, @ModelAttribute Mem_Certi cer) {
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		
@@ -86,7 +108,9 @@ public class Resume_Pro_Controller {
 	}
 
 	@RequestMapping("mili_pro")
-	public String mili_Pro(HttpServletRequest request, @RequestParam Mem_Mili mil) {
+	public String mili_Pro(HttpServletRequest request, @ModelAttribute Mem_Mili mil) {
+		
+		System.out.println("mili :::" + mil.toString());
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		
@@ -96,7 +120,9 @@ public class Resume_Pro_Controller {
 	}
 
 	@RequestMapping("career_pro")
-	public String career_Pro(HttpServletRequest request, @RequestParam Mem_Career car) {
+	public String career_Pro(HttpServletRequest request, @ModelAttribute Mem_Career car) {
+		
+		System.out.println("career :::" + car.toString());
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		

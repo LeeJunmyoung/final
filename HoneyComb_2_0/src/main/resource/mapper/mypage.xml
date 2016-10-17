@@ -5,51 +5,73 @@
 
 	<!-- resume insert -->
 
-	<insert id="school_insert">
-		insert into mem_school(mem_num, school_num,
-		school_name, school_date, school_major) values(#{mem_num},
-		mem_school_seq.NEXTVAL, #{school_name}, #{school_date},
+	<insert id="school_insert" parameterType="dept.db.Mem_School">
+		insert into
+		mem_school(mem_num, school_num,
+		school_name, school_date, school_major)
+		values(#{mem_num},
+		mem_school_seq.NEXTVAL, #{school_name},
+		#{school_date},
 		#{school_major})
 	</insert>
 
-	<insert id="edu_insert">
-		insert into mem_edu(mem_num, edu_num, edu_insti,
-		edu_name, edu_date) values(#{mem_num}, mem_edu_seq.NEXTVAL,
-		#{edu_insti}, #{edu_name}, #{edu_date})
+	<insert id="edu_insert" parameterType="dept.db.Mem_Edu">
+		insert into
+		mem_edu(mem_num, edu_num, edu_insti,
+		edu_name, edu_date)
+		values(#{mem_num}, mem_edu_seq.NEXTVAL,
+		#{edu_insti}, #{edu_name},
+		#{edu_date})
 	</insert>
 
-	<insert id="certi_insert">
-		insert into mem_certi(mem_num, certi_num, certi_name,
-		certi_insti, certi_date) values(#{mem_num}, mem_certi_seq.NEXTVAL,
-		#{certi_name}, #{certi_insti}, #{certi_date})
+	<insert id="certi_insert" parameterType="dept.db.Mem_Certi">
+		insert into
+		mem_certi(mem_num, certi_num, certi_name,
+		certi_insti, certi_date)
+		values(#{mem_num}, mem_certi_seq.NEXTVAL,
+		#{certi_name},
+		#{certi_insti}, #{certi_date})
 	</insert>
 
-	<insert id="mili_insert">
-		insert into mem_mili(mem_num, mili_num, mili_check,
-		mili_ex, mili_place, mili_date) values(#{mem_num,
-		mem_mili_seq.NEXTVAL, #{mili_check}, #{mili_ex}, #{mili_place},
-		#{mili_date})
+	<insert id="mili_insert" parameterType="dept.db.Mem_Mili">
+		insert into
+		mem_mili(mem_num, mili_num, mili_check, mili_ex, mili_place,
+		mili_date) values(#{mem_num}, mem_mili_seq.NEXTVAL, #{mili_check},
+		#{mili_ex}, #{mili_place}, #{mili_date})
 	</insert>
 
-	<insert id="career_insert">
-		insert into mem_career(mem_num, career_num,
-		career_com_name, career_dept_name, career_work, career_date)
-		values(#{mem_num}, mem_career.seq.NEXTVAL, #{career_com_name},
-		#{career_dept_name}, #{career_work}, #{career_date})
+	<insert id="career_insert" parameterType="dept.db.Mem_Career">
+		insert into
+		mem_career(mem_num, career_num,
+		career_com_name, career_dept_name,
+		career_work, career_date)
+		values(#{mem_num}, mem_career_seq.NEXTVAL,
+		#{career_com_name},
+		#{career_dept_name}, #{career_work},
+		#{career_date})
 	</insert>
 
 	<!-- resume insert -->
 
-	<!-- !!! -->
+	<!-- mili update -->
+	<update id="mili_update" parameterType="dept.db.Mem_Mili">
+		update mem_mili set
+		mili_check=#{mili_check}, mili_ex=#{mili_ex}, mili_place=#{mili_place}
+		mili_date=#{mili_date} where mem_num=#{mem_num}
+	</update>
+
+	<!-- base_update -->
+	<update id="base_update" parameterType="Map">
+		update members set
+		phone_num=#{phone_num}, mem_address=#{mem_address} where
+		mem_num=#{mem_num}
+	</update>
+
+
+	<!-- password change -->
 	<update id="passwd_change" parameterType="Map">
 		update members set
 		passwd=#{passwd} where mem_num=#{mem_num}
-	</update>
-
-	<!-- !!! -->
-	<update id="com_update_member" parameterType="Map">
-		update members set
-		com_num=#{com_num} where mem_num=#{mem_num}
 	</update>
 
 	<!-- 프로필 이미지 -->
@@ -64,9 +86,18 @@
 		where mem_num=#{mem_num}
 	</delete>
 
+	<!-- password select -->
 	<select id="passwd_select" parameterType="int" resultType="String">
 		select passwd from members where mem_num=#{mem_num}
 	</select>
+
+	<!-- base update select -->
+	<select id="base_up_select" parameterType="int" resultType="company.db.MembersDTO">
+	select phone_num, mem_address from members where mem_num=#{mem_num}
+	</select>
+
+
+	<!-- resume select -->
 
 	<select id="base_select" parameterType="int" resultType="company.db.MembersDTO">
 		select *
@@ -95,6 +126,8 @@
 	<select id="career_select" parameterType="int" resultType="dept.db.Mem_Career">
 		select * from mem_career where mem_num=#{mem_num}
 	</select>
+
+	<!-- resume select -->
 
 
 </mapper>

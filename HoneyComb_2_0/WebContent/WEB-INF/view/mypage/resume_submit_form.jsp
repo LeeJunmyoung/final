@@ -5,7 +5,45 @@
 <html>
 <head>
 <title>Insert title here</title>
+<script type='text/javascript'
+	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
 <script>
+
+$(document).ready(function() {
+	$("#mili_check").click(function(){
+		if($("#mili_check").val()=='군필'){
+			$('#mili_ex').attr('readonly','readonly');
+			$('#mili_place').removeAttr('readonly','readonly');
+			$('#mili_date').removeAttr('readonly','readonly');
+			$('#mili_ex').val('해당없음');
+			$('#mili_place').val('');
+			$('#mili_date').val('');
+		}
+		
+		if($("#mili_check").val()=='면제'){
+			$('#mili_ex').removeAttr('readonly','readonly');
+			$('#mili_place').attr('readonly','readonly');
+			$('#mili_date').attr('readonly','readonly');
+			$('#mili_ex').val('');
+			$('#mili_place').val('─');
+			$('#mili_date').val('─');
+		}
+		
+		if($("#mili_check").val()=='해당없음'){
+			$('#mili_ex').attr('readonly','readonly');
+			$('#mili_place').attr('readonly','readonly');
+			$('#mili_date').attr('readonly','readonly');
+			$('#mili_ex').val('─');
+			$('#mili_place').val('─');
+			$('#mili_date').val('─');
+		}
+		
+		
+		
+	})
+})
+
+
 	function certi_search() {
 
 		url = "/HoneyComb_2_0/mypage/certi_search";
@@ -16,8 +54,8 @@
 						"post",
 						"toolbar=no, left=200, top=100, width=700, height=400, directories=no, status=yes, scrollbar=yes, menubar=no");
 	}
-	
-	function school_check() {
+
+	function school_che() {
 		if (!document.school_submit.school_name.value) {
 			alert("학교명을 입력하세요");
 			return false;
@@ -36,7 +74,7 @@
 		return true;
 	}
 
-	function edu_check() {
+	function edu_che() {
 		if (!document.edu_submit.edu_insti.value) {
 			alert("기관명을 입력하세요");
 			return false;
@@ -55,7 +93,7 @@
 
 	}
 
-	function certi_check() {
+	function certi_che() {
 		if (!document.certi_submit.certi_name.value) {
 			alert("자격증명을 선택하세요");
 			return false;
@@ -75,9 +113,8 @@
 
 	}
 
-	function mili_check() {
-		alert("온당");
-		if (!document.mili_submit.mili_check.value) {
+	function mili_che() {
+		if (document.mili_submit.mili_check.value == "선택하세요") {
 			alert("군필여부를 선택하세요");
 			return false;
 		}
@@ -99,7 +136,7 @@
 		return true;
 	}
 
-	function career_check() {
+	function career_che() {
 		if (!document.career_submit.career_com_name.value) {
 			alert("회사명을 입력하세요");
 			return false;
@@ -190,7 +227,8 @@ p {
 <body style="background-color: #e9ebee;">
 
 	<c:if test="${ code == 1 }">
-		<form action="#" method="post" name="shool_submit">
+		<form action="/HoneyComb_2_0/mypage/school_pro" method="post"
+			name="school_submit">
 			<p>학 력</p>
 			<table id="school">
 
@@ -210,7 +248,7 @@ p {
 			</table>
 			<br /> <br />
 			<div class="div_submit">
-				<input type="submit" onclick="return school_check()" class="button"
+				<input type="submit" onclick="return school_che()" class="button"
 					value="등록" />
 			</div>
 
@@ -220,7 +258,8 @@ p {
 
 
 	<c:if test="${ code == 2 }">
-		<form action="#" method="post" name="edu_submit">
+		<form action="/HoneyComb_2_0/mypage/edu_pro" method="post"
+			name="edu_submit">
 			<p>교육 이수</p>
 			<table id="edu">
 
@@ -240,7 +279,7 @@ p {
 			<br /> <br />
 			<div class="div_submit">
 				<input type="submit" class="button" value="등록"
-					onclick="return edu_check()" />
+					onclick="return edu_che()" />
 			</div>
 
 		</form>
@@ -249,7 +288,8 @@ p {
 
 
 	<c:if test="${ code == 3 }">
-		<form action="#" method="post" name="certi_submit">
+		<form action="/HoneyComb_2_0/mypage/certi_pro" method="post"
+			name="certi_submit">
 			<p>자격증</p>
 			<table id="certi">
 
@@ -271,7 +311,7 @@ p {
 			<br /> <br />
 			<div class="div_submit">
 				<input type="submit" class="button" value="등록"
-					onclick="return certi_check()" />
+					onclick="return certi_che()" />
 			</div>
 
 		</form>
@@ -280,23 +320,29 @@ p {
 
 
 	<c:if test="${ code == 4 }">
-		<form action="#" method="post" name="mili_submit">
+		<form action="/HoneyComb_2_0/mypage/mili_pro" method="post"
+			name="mili_submit">
 			<p>병 역</p>
 			<table id="mili">
 
 				<tr>
 					<td>군필 여부</td>
-					<td><input type="text" name="mili_check" /></td>
+					<td><select name="mili_check" id="mili_check">
+							<option value="선택하세요">선택하세요</option>
+							<option value="군필">군필</option>
+							<option value="면제">면제</option>
+							<option value="해당없음">해당없음</option>
+					</select></td>
 					<td>면제 사유</td>
-					<td><input type="text" name="mili_ex" /></td>
+					<td><input type="text" name="mili_ex" id="mili_ex" /></td>
 					<td>복무처</td>
-					<td><input type="text" name="mili_place" /></td>
+					<td><input type="text" name="mili_place" id="mili_place" /></td>
 				</tr>
 
 				<tr>
 					<td colspan="2">복무 기간</td>
 					<!-- <td></td> -->
-					<td colspan="4"><input type="text" name="mili_date" /></td>
+					<td colspan="4"><input type="text" name="mili_date" id="mili_date" /></td>
 					<!-- <td></td> -->
 					<!-- <td></td> -->
 					<!-- <td></td> -->
@@ -306,7 +352,7 @@ p {
 			<br /> <br />
 			<div class="div_submit">
 				<input type="submit" class="button" value="등록"
-					onclick="return mili_check()" />
+					onclick="return mili_che()" />
 			</div>
 
 		</form>
@@ -315,7 +361,8 @@ p {
 
 
 	<c:if test="${ code == 5 }">
-		<form action="#" method="post" name="career_submit">
+		<form action="/HoneyComb_2_0/mypage/career_pro" method="post"
+			name="career_submit">
 			<p>경 력</p>
 			<table id="career">
 
@@ -337,7 +384,7 @@ p {
 			<br /> <br />
 			<div class="div_submit">
 				<input type="submit" class="button" value="등록"
-					onclick="return career_check()" />
+					onclick="return career_che()" />
 			</div>
 
 		</form>

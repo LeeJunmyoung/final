@@ -24,6 +24,23 @@
 						"post",
 						"toolbar=no, left=200, top=100, width=700, height=280, directories=no, status=yes, scrollbar=yes, menubar=no");
 	}
+	
+	function base_change() {
+		
+		var phone_num = document.base.phone_num.value;
+		var mem_address = document.base.mem_address.value;
+		
+		alert(phone_num);
+		alert(mem_address);
+		
+		var url = "/HoneyComb_2_0/mypage/base_pro?phone_num=" + phone_num + "&mem_address=" + mem_address;
+		
+		window
+		.open(
+				url,
+				"post",
+				"toolbar=no, left=200, top=100, width=500, height=280, directories=no, status=yes, scrollbar=yes, menubar=no");
+	}
 </script>
 <style>
 table, tr, th, td {
@@ -39,8 +56,9 @@ table, tr, th, td {
 	background: #e9ebee;
 }
 
-h2 {
+#subject {
 	text-align: center;
+	margin-bottom: -5px;
 }
 
 input[type=text] {
@@ -50,7 +68,7 @@ input[type=text] {
 	margin-top: -10px;
 	margin-bottom: -10px;
 	text-align: center;
-	width: 80px;
+	width: 110px;
 }
 
 #img_myprofile {
@@ -102,7 +120,6 @@ input[type=text] {
 .div_title {
 	width: 590px;
 	height: 30px;
-	border: 1px solid black;
 	margin-bottom: 2px;
 }
 
@@ -129,6 +146,29 @@ input[type=text] {
 	color: white;
 }
 
+.button_base {
+	width: 80px;
+	display: inline-block;
+	margin-bottom: 2px;
+	margin-left: 5px;
+	background-color: #4367b0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	font-size: 12px;
+	padding: 2px 7px;
+	text-decoration: none;
+	float: right;
+	text-align: center;
+}
+
+.button_base:HOVER {
+	background-color: #344d91;
+	color: white;
+}
+
 #address {
 	width: 320px;
 	margin-left: -90px;
@@ -140,58 +180,64 @@ input[type=text] {
 
 	<div id="main">
 
-		<h2>이 력 서</h2>
-		<table>
+		<h2 id="subject">이 력 서</h2>
 
-			<c:forEach var="base_list" items="${ base_list }">
-				<tr>
-					<td rowspan="5" class="wi"><img
-						src="${ base_list.profile_img }" name="profile_img"
-						onerror="this.src='/HoneyComb_2_0/resources/images/user.png'"
-						id="img_myprofile"></td>
-					<td class="bold_wi">성 명</td>
-					<td class="wi">${ base_list.name }</td>
-					<td class="bold_wi">성 별</td>
-					<td class="wi">${ base_list.gender }</td>
-				</tr>
+		<form name="base">
+			<div class="div_title">
+				<a href="#" onclick="base_change()" class="button_base">기본정보 변경</a>
+			</div>
+			<table>
 
-				<tr>
-					<!-- <td></td> -->
-					<td class="bold">생년월일</td>
-					<td>${ base_list.birth_date }</td>
-					<td class="bold">핸드폰 번호</td>
-					<td><input type="text" name="name"
-						value="${ base_list.phone_num }" /></td>
-				</tr>
+				<c:forEach var="base_list" items="${ base_list }">
+					<tr>
+						<td rowspan="5" class="wi"><img
+							src="${ base_list.profile_img }" name="profile_img"
+							onerror="this.src='/HoneyComb_2_0/resources/images/user.png'"
+							id="img_myprofile"></td>
+						<td class="bold_wi">성 명</td>
+						<td class="wi">${ base_list.name }</td>
+						<td class="bold_wi">성 별</td>
+						<td class="wi">${ base_list.gender }</td>
+					</tr>
 
-				<tr>
-					<!-- <td></td> -->
-					<td class="bold">주 소</td>
-					<td colspan="3"><input type="text" name="name" id="address"
-						value="${ base_list.mem_address }" /></td>
-					<!-- <td></td> -->
-					<!-- <td></td> -->
-				</tr>
+					<tr>
+						<!-- <td></td> -->
+						<td class="bold">생년월일</td>
+						<td>${ base_list.birth_date }</td>
+						<td class="bold">핸드폰 번호</td>
+						<td><input type="text" name="phone_num"
+							value="${ base_list.phone_num }" /></td>
+					</tr>
 
-				<tr>
-					<!-- <td></td> -->
-					<td class="bold">부 서</td>
-					<td name="com_dept_num" value="${ com_dept_num }">${ base_list.com_dept_name }</td>
-					<td class="bold">직 급</td>
-					<td name="com_pos_num" value="${ com_pos_num }">${ base_list.com_pos_name }</td>
-				</tr>
+					<tr>
+						<!-- <td></td> -->
+						<td class="bold">주 소</td>
+						<td colspan="3"><input type="text" name="mem_address" id="address"
+							value="${ base_list.mem_address }" /></td>
+						<!-- <td></td> -->
+						<!-- <td></td> -->
+					</tr>
 
-				<tr>
-					<!-- <td></td> -->
-					<td class="bold">E-mail</td>
-					<td colspan="3">${ base_list.email }</td>
-					<!-- <td></td> -->
-					<!-- <td></td> -->
-					<!-- <td></td> -->
-				</tr>
-			</c:forEach>
+					<tr>
+						<!-- <td></td> -->
+						<td class="bold">부 서</td>
+						<td name="com_dept_num" value="${ com_dept_num }">${ base_list.com_dept_name }</td>
+						<td class="bold">직 급</td>
+						<td name="com_pos_num" value="${ com_pos_num }">${ base_list.com_pos_name }</td>
+					</tr>
 
-		</table>
+					<tr>
+						<!-- <td></td> -->
+						<td class="bold">E-mail</td>
+						<td colspan="3">${ base_list.email }</td>
+						<!-- <td></td> -->
+						<!-- <td></td> -->
+						<!-- <td></td> -->
+					</tr>
+				</c:forEach>
+
+			</table>
+		</form>
 
 
 		<form name="school">
