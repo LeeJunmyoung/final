@@ -83,7 +83,7 @@ function confirmSave(checkbox){
 	}
 }
 function openNaver(){
-	var url="https://nid.naver.com/oauth2.0/authorize?client_id=XxuZWIw4L8tP4C_0BW1_&response_type=code&redirect_uri=login/LoginMainFrame.do(UTF-8)";
+	var url="https://nid.naver.com/oauth2.0/authorize?client_id=XxuZWIw4L8tP4C_0BW1_&response_type=code&redirect_uri=login/LoginMainFrame.do(UTF-8)&state=";
 	window.open(url);
 	
 }
