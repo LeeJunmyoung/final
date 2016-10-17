@@ -148,9 +148,69 @@ public class ResumeDAO extends SqlSessionDaoSupport {
 		int x = getSqlSession().insert("mypage.career_insert", car);
 		
 		if(x >= 1) {
-			System.out.println("school insert 성공");
+			System.out.println("career insert 성공");
 		} else if(x <= 0){
-			System.out.println("school insert 실패");
+			System.out.println("career insert 실패");
+		}
+		
+	}
+	
+	public void school_Reset(int mem_num) {
+		
+		int x = getSqlSession().delete("mypage.school_delete", mem_num);
+		
+		if(x >= 1) {
+			System.out.println("school delete 성공");
+		} else if(x <= 0){
+			System.out.println("school delete 실패");
+		}
+		
+	}
+	
+	public void edu_Reset(int mem_num) {
+		
+		int x = getSqlSession().delete("mypage.edu_delete", mem_num);
+		
+		if(x >= 1) {
+			System.out.println("edu delete 성공");
+		} else if(x <= 0){
+			System.out.println("edu delete 실패");
+		}
+		
+	}
+	
+	public void certi_Reset(int mem_num) {
+		
+		int x = getSqlSession().delete("mypage.certi_delete", mem_num);
+		
+		if(x >= 1) {
+			System.out.println("certi delete 성공");
+		} else if(x <= 0){
+			System.out.println("certi delete 실패");
+		}
+		
+	}
+	
+	public void mili_Reset(int mem_num) {
+		
+		int x = getSqlSession().delete("mypage.mili_delete", mem_num);
+		
+		if(x >= 1) {
+			System.out.println("mili delete 성공");
+		} else if(x <= 0){
+			System.out.println("mili delete 실패");
+		}
+		
+	}
+	
+	public void career_Reset(int mem_num) {
+		
+		int x = getSqlSession().delete("mypage.career_delete", mem_num);
+		
+		if(x >= 1) {
+			System.out.println("career delete 성공");
+		} else if(x <= 0){
+			System.out.println("career delete 실패");
 		}
 		
 	}

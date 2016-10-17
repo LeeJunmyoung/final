@@ -86,14 +86,42 @@
 		where mem_num=#{mem_num}
 	</delete>
 
+
+	<!-- resume delete -->
+
+	<delete id="school_delete" parameterType="int">
+		delete from mem_school
+		where mem_num=#{mem_num}
+	</delete>
+
+	<delete id="edu_delete" parameterType="int">
+		delete from mem_edu where mem_num=#{mem_num}
+	</delete>
+
+	<delete id="certi_delete" parameterType="int">
+		delete from mem_certi where mem_num=#{mem_num}
+	</delete>
+
+	<delete id="mili_delete" parameterType="int">
+		delete from mem_mili where mem_num=#{mem_num}
+	</delete>
+
+	<delete id="career_delete" parameterType="int">
+		delete from mem_career where mem_num=#{mem_num}
+	</delete>
+
+	<!-- resume delete -->
+
+
 	<!-- password select -->
 	<select id="passwd_select" parameterType="int" resultType="String">
 		select passwd from members where mem_num=#{mem_num}
 	</select>
 
 	<!-- base update select -->
-	<select id="base_up_select" parameterType="int" resultType="company.db.MembersDTO">
-	select phone_num, mem_address from members where mem_num=#{mem_num}
+	<select id="base_up_select" parameterType="int"
+		resultType="company.db.MembersDTO">
+		select phone_num, mem_address from members where mem_num=#{mem_num}
 	</select>
 
 
