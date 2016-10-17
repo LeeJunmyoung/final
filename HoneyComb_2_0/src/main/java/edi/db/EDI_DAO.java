@@ -9,6 +9,9 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import login.controller.LogOnDataBean;
 
 public class EDI_DAO extends SqlSessionDaoSupport {
+	
+	
+	
 
 	public List<String> getDept_name(int com_num){
 		
@@ -43,6 +46,17 @@ public class EDI_DAO extends SqlSessionDaoSupport {
 		getSqlSession().insert("edi.insertNewEDI", edb);
 		
 	}
+	
+	
+	public List<EDI_DateBean> getEDI_Table(int com_num){
+		
+		List<EDI_DateBean> list = getSqlSession().selectList("edi.getEDI_Table", com_num);
+		
+		return list;
+		
+	}
+	
+	
 	
 	
 	

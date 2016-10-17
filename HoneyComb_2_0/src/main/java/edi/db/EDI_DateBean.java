@@ -8,18 +8,33 @@ public class EDI_DateBean {
 	private String EDI_Subject;
 	private String EDI_TextArea;
 	private int mid_mem_num;
-	@Override
-	public String toString() {
-		return "EDI_DateBean [EDI_num=" + EDI_num + ", document_num=" + document_num + ", com_num=" + com_num
-				+ ", EDI_Subject=" + EDI_Subject + ", EDI_TextArea=" + EDI_TextArea + ", mid_mem_num=" + mid_mem_num
-				+ ", mid_accept=" + mid_accept + ", fin_mem_num=" + fin_mem_num + ", fin_accept=" + fin_accept
-				+ ", send_dept_name=" + send_dept_name + ", attechFile=" + attechFile + "]";
-	}
 	private int mid_accept;
 	private int fin_mem_num;
 	private int fin_accept;
 	private String send_dept_name;
 	private String attechFile;
+	private String draftDate;
+	private String approvalDate;
+	@Override
+	public String toString() {
+		return "EDI_DateBean [EDI_num=" + EDI_num + ", document_num=" + document_num + ", com_num=" + com_num
+				+ ", EDI_Subject=" + EDI_Subject + ", EDI_TextArea=" + EDI_TextArea + ", mid_mem_num=" + mid_mem_num
+				+ ", mid_accept=" + mid_accept + ", fin_mem_num=" + fin_mem_num + ", fin_accept=" + fin_accept
+				+ ", send_dept_name=" + send_dept_name + ", attechFile=" + attechFile + ", draftDate=" + draftDate
+				+ ", approvalDate=" + approvalDate + "]";
+	}
+	public String getDraftDate() {
+		return draftDate;
+	}
+	public void setDraftDate(String draftDate) {
+		this.draftDate = draftDate;
+	}
+	public String getApprovalDate() {
+		return approvalDate;
+	}
+	public void setApprovalDate(String approvalDate) {
+		this.approvalDate = approvalDate;
+	}
 	public int getEDI_num() {
 		return EDI_num;
 	}

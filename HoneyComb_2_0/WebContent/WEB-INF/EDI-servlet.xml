@@ -54,7 +54,7 @@
 
 
 
-	<bean id="EDI_MainController" class="edi.controller.EDI_MainController"></bean>
+	<bean id="EDI_MainController" class="edi.controller.EDI_MainController" p:dao-ref="EDI_DAO"></bean>
 
 	<bean id="EDI_WriteFormController" class="edi.controller.EDI_WriteFormController" p:dao-ref="EDI_DAO"></bean>
 

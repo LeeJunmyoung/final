@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edi.db.EDI_DAO;
+import edi.db.EDI_DateBean;
 
 @Controller
 public class EDI_MainController {
@@ -26,8 +27,11 @@ public class EDI_MainController {
 
 	@RequestMapping("/EDI_Main.do")
 	public String maintogo(HttpServletRequest request,ModelMap map){
+		int com_num=(int) request.getSession().getAttribute("com_num");
 		
+		List<EDI_DateBean> list=dao.getEDI_Table(com_num);
 		
+		map.put("EDI_Table", list);
 		
 		return "EDI/EDI_main";
 	}

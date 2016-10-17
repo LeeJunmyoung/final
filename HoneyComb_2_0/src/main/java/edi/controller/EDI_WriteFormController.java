@@ -57,7 +57,7 @@ public class EDI_WriteFormController {
 		edb.setFin_mem_num(fin_mem_num);
 		edb.setSend_dept_name(send_dept_name);
 		edb.setDocument_num(document_num);
-		
+		edb.setDraftDate(writeDate());
 		dao.insertNewEDI(edb);
 		
 		

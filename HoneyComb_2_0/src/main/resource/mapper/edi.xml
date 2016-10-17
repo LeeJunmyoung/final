@@ -25,19 +25,28 @@
 		select * from members where mem_num=#{mem_num}
 	</select>
 
+
+	<select id="getEDI_Table" parameterType="int" resultType="edi.db.EDI_DateBean">
+		select * from (select * from EDI where com_num = #{com_num} order by
+		edi_num DESC) where ROWNUM <![CDATA[ < ]]>6
+	</select>
+
+
 	<insert id="insertNewEDI" parameterType="edi.db.EDI_DateBean">
 		insert into
 		edi(edi_num,document_num,com_num,
 		edi_subject,edi_textarea,mid_mem_num,
 		mid_accept,fin_mem_num,
 		fin_accept,send_dept_name,
-		attachfile)
+		attachfile,draftdate)
 		values(EDI_seq.nextval,#{document_num},
 		#{com_num},#{EDI_Subject},
 		#{EDI_TextArea},
 		#{mid_mem_num},0,
 		#{fin_mem_num},0,
-		#{send_dept_name},#{attechFile})
+		#{send_dept_name},#{attechFile}
+		#{draftDate}
+		)
 	</insert>
 
 
