@@ -27,7 +27,7 @@ public class Profile_Img_Controller {
 	public String profile_Img_Upload(HttpServletRequest request, @RequestParam("profile_img") MultipartFile pro) {
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
-		String savePath = request.getServletContext().getRealPath("profile_img");
+		String savePath = request.getSession().getServletContext().getRealPath("profile_img");
 
 		System.out.println("profile_Img_Upload savePath ::: " + savePath);
 
