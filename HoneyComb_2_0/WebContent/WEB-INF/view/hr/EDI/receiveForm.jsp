@@ -34,23 +34,55 @@ $(document).ready(function() {
 	})
 	
 	
+	$('p').mouseenter(function(){
+	
+		$(this).css('background-color','#efefef');
+		$(this).css('color','blue');
+		
+		
+	})
+	$('p').mouseleave(function(){
+	
+		$(this).css('background-color','#fff');
+		$(this).css('color','black');
+		
+		
+	})
+	
+	
 	
 });
 
 </script>
+<style type="text/css">
+.wrapper{
+text-align: center;
+
+}
+p{
+width:100px;
+padding:10px;
+margin: auto;
+
+}
+</style>
 
 
 
 </head>
 <body>
+<div class="wrapper">
 <h4>수신 부서를 선택하세요</h4>
+<hr>
 <c:forEach var="dept_name" items="${dept_Name_EDI }">
 
 
-<p id="dept_name">${dept_name}</p><br>
-<hr>
-</c:forEach>
+<p id="dept_name" class='${dept_name}'>${dept_name}</p>
+<br>
 
+
+</c:forEach>
+</div>
 
 
 </body>
