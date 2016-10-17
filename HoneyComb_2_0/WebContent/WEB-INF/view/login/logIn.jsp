@@ -276,9 +276,8 @@ a:hover {
 							<button type="submit" class="btn btn-default">Sign in</button>
 							<br>
 							<br> <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">페이스북으로 로그인하기</fb:login-button>
-							<div id="status">
 
-									<p>
+
 									<a href="javascript:openNaver()">네이버 로그인 나는냐 CSS 파괴자</a>
 									</p>
 							</p>
