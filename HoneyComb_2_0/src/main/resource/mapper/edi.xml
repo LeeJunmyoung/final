@@ -20,6 +20,11 @@
 		com_dept_name=#{com_dept_name} order by COM_pos_NUM
 	</select>
 
+	<select id="getMemberInfo" parameterType="int"
+		resultType="login.controller.LogOnDataBean">
+		select * from members where mem_num=#{mem_num}
+	</select>
+
 
 
 </mapper>
