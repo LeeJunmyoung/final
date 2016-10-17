@@ -38,6 +38,12 @@ public class EDI_DAO extends SqlSessionDaoSupport {
 		return lodb;
 	}
 	
+	public void insertNewEDI(EDI_DateBean edb){
+		
+		getSqlSession().insert("edi.insertNewEDI", edb);
+		
+	}
+	
 	
 	
 }

@@ -25,6 +25,21 @@
 		select * from members where mem_num=#{mem_num}
 	</select>
 
+	<insert id="insertNewEDI" parameterType="edi.db.EDI_DateBean">
+		insert into
+		edi(edi_num,document_num,com_num,
+		edi_subject,edi_textarea,mid_mem_num,
+		mid_accept,fin_mem_num,
+		fin_accept,send_dept_name,
+		attachfile)
+		values(EDI_seq.nextval,#{document_num},
+		#{com_num},#{EDI_Subject},
+		#{EDI_TextArea},
+		#{mid_mem_num},0,
+		#{fin_mem_num},0,
+		#{send_dept_name},#{attechFile})
+	</insert>
+
 
 
 </mapper>

@@ -413,6 +413,17 @@ position: relative;
 	top: 53%;
 	margin-bottom: 5%;
 }
+
+input[type='checkbox'] {
+position: absolute;
+left: -9999px;
+
+}
+input[type='radio'] {
+position: absolute;
+left: -9999px;
+
+}
 </style>
 
 
