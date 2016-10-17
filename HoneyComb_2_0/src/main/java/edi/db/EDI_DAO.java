@@ -30,6 +30,14 @@ public class EDI_DAO extends SqlSessionDaoSupport {
 		return list;
 	}
 	
+	public LogOnDataBean getMemberInfo(int mem_num){
+		
+		LogOnDataBean lodb = getSqlSession().selectOne("edi.getMemberInfo", mem_num);
+		
+		
+		return lodb;
+	}
+	
 	
 	
 }

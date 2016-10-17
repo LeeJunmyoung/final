@@ -14,13 +14,20 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>수신처</title>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
-	$('p').mouseenter(function() {
+	$('p').click(function() {
 
 	var c = $(this).text();	
 	$("#dept_name", opener.document).text(c);
+	$("#send_dept_name", opener.document).val(c);
 	alert(c+'을 수신부서로 선택하셨습니다.');
 	window.close();
 	

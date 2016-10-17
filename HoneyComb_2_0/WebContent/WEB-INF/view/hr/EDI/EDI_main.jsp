@@ -21,7 +21,7 @@
 		window.open(
 						url,
 						"post",
-						"toolbar=no,width=800,height=900,left=300,directories=no,status=no,scrollbars=no,menubar=no");
+						"toolbar=no,width=800,height=980,left=300,directories=no,status=no,scrollbars=no,menubar=no");
 	}
 </script>
 

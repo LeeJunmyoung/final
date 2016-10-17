@@ -25,7 +25,7 @@ public class SelectApprovalMemFrameController {
 		this.dao = dao;
 	}
 	
-	@RequestMapping("/select_approval.do")
+	@RequestMapping(value="/select_approval.do" ,method = RequestMethod.GET)
 	public String SelectApprovalMemFrame(HttpServletRequest request,ModelMap map){
 		
 		
@@ -40,6 +40,29 @@ public class SelectApprovalMemFrameController {
 		
 		return "select_approval_mem_Form";
 	}
+	
+	@RequestMapping(value="/select_approval.do" ,method = RequestMethod.POST)
+	public String Selected(HttpServletRequest request,ModelMap map,
+			@RequestParam("chk_box1") List<String> chk_box1,
+			@RequestParam("chk_box2") List<String> chk_box2){
+		
+		LogOnDataBean lodb = new LogOnDataBean();
+		
+		lodb = dao.getMemberInfo(Integer.parseInt( (chk_box1.get(0) ) ) );
+		
+		map.addAttribute("mid_mem", lodb);
+		
+		lodb = dao.getMemberInfo(Integer.parseInt( (chk_box2.get(0) ) ) );
+		
+		map.addAttribute("fin_mem", lodb);
+	
+	
+		
+		
+		return "setMember";
+	}
+	
+	
 	
 	
 	
