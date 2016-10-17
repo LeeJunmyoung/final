@@ -48,6 +48,11 @@
 		checkChange();
 		$("#contextBox").hide(); 
 	});
+	$(document).keypress(function(e){
+		if(e.which == 13){
+			 checkChange();
+		};
+	});
 });
 </script>
 </head>
