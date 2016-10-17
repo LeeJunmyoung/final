@@ -82,6 +82,11 @@ function confirmSave(checkbox){
 	
 	}
 }
+function openNaver(){
+	var url="https://nid.naver.com/oauth2.0/authorize?client_id=XxuZWIw4L8tP4C_0BW1_&response_type=code&redirect_uri=login/LoginMainFrame.do(UTF-8)";
+	window.open(url);
+	
+}
 </script>
 <style type="text/css">
 a:link {
@@ -250,6 +255,9 @@ a:hover {
 							<br> <a href="#" class="btn-social btn-facebook" id="FBbtn"
 								onclick="FB.login();"> <span class="fa fa-facebook">
 									&nbsp;Facebook 계정으로 로그인하기</span></a>
+									<p>
+									<a href="javascript:openNaver()">네이버 로그인 나는냐 CSS 파괴자</a>
+									</p>
 							</p>
 							<a href="signIn.do">회원가입</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="findEmail.do">Email</a>&nbsp;/&nbsp;
