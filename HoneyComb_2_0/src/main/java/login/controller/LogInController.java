@@ -1,5 +1,8 @@
 package login.controller;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -35,6 +38,7 @@ public class LogInController {
 
 			return "logInpro";
 		} else {
+			String state  = generateState();
 			HttpSession session = request.getSession();
 			session.setAttribute("mem_num", lodb.getMem_num());
 			session.setAttribute("com_num", lodb.getCom_num());
@@ -44,11 +48,16 @@ public class LogInController {
 			session.setAttribute("phone_num", lodb.getPhone_num());
 			session.setAttribute("email", email);
 			session.setAttribute("profile_img", lodb.getProfile_img());
-
+			session.setAttribute("state", state);
 			return "comCheck";
 
 		}
 
+	}
+	public String generateState()
+	{
+	    SecureRandom random = new SecureRandom();
+	    return new BigInteger(130, random).toString(32);
 	}
 
 }
