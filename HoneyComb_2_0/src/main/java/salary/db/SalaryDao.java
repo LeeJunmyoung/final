@@ -40,17 +40,21 @@ public class SalaryDao extends SqlSessionDaoSupport {
 		} else {
 
 			list = getSqlSession().selectList("salary.getSalary_list_all", com_num);
-			
+
 		}
 
 		return list;
-		
+
 	}
 
 	public SalaryDataBean getSalary(int mem_num) {
-		
+
 		return getSqlSession().selectOne("salary.getSalary_item", mem_num);
 
+	}
+
+	public int modSalary(SalaryDataBean article) {
+		return getSqlSession().update("salary.setSalary_item", article);
 	}
 
 } // public class NoticeDao end

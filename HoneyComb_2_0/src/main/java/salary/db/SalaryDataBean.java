@@ -20,6 +20,7 @@ public class SalaryDataBean {
 	int costs_transport;
 	int costs_benefit;
 	int costs_etc;
+	int salary_sum;
 
 	public int getSalary_num() {
 		return salary_num;
@@ -100,6 +101,7 @@ public class SalaryDataBean {
 	public void setSalary_year(int salary_year) {
 		this.salary_year = salary_year;
 		this.salary_month = salary_year / 12;
+		setSalary_sum();
 	}
 
 	public int getSalary_month() {
@@ -112,6 +114,7 @@ public class SalaryDataBean {
 
 	public void setSalary_add_time(int salary_add_time) {
 		this.salary_add_time = salary_add_time;
+		setSalary_sum();
 	}
 
 	public int getSalary_add_holiday() {
@@ -120,6 +123,7 @@ public class SalaryDataBean {
 
 	public void setSalary_add_holiday(int salary_add_holiday) {
 		this.salary_add_holiday = salary_add_holiday;
+		setSalary_sum();
 	}
 
 	public int getSalary_bonus() {
@@ -128,6 +132,7 @@ public class SalaryDataBean {
 
 	public void setSalary_bonus(int salary_bonus) {
 		this.salary_bonus = salary_bonus;
+		setSalary_sum();
 	}
 
 	public int getCosts_food() {
@@ -136,6 +141,7 @@ public class SalaryDataBean {
 
 	public void setCosts_food(int costs_food) {
 		this.costs_food = costs_food;
+		setSalary_sum();
 	}
 
 	public int getCosts_transport() {
@@ -144,6 +150,7 @@ public class SalaryDataBean {
 
 	public void setCosts_transport(int costs_transport) {
 		this.costs_transport = costs_transport;
+		setSalary_sum();
 	}
 
 	public int getCosts_benefit() {
@@ -152,6 +159,7 @@ public class SalaryDataBean {
 
 	public void setCosts_benefit(int costs_benefit) {
 		this.costs_benefit = costs_benefit;
+		setSalary_sum();
 	}
 
 	public int getCosts_etc() {
@@ -160,6 +168,16 @@ public class SalaryDataBean {
 
 	public void setCosts_etc(int costs_etc) {
 		this.costs_etc = costs_etc;
+		setSalary_sum();
+	}
+
+	public int getSalary_sum() {
+		return salary_sum;
+	}
+
+	public void setSalary_sum() {
+		this.salary_sum = salary_month + salary_add_time + salary_add_holiday + salary_bonus + costs_food
+				+ costs_transport + costs_benefit + costs_etc;
 	}
 
 }

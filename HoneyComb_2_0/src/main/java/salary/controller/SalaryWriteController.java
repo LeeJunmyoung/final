@@ -35,37 +35,26 @@ public class SalaryWriteController {
 	}
 
 	@RequestMapping("/management_writePro.do")
-	public ModelAndView write_pro(HttpServletRequest request) {
+	public ModelAndView write_pro(@RequestParam(value = "salary_num") int salary_num, HttpServletRequest request) {
 
-		int mem_num = (int) request.getSession().getAttribute("mem_num");
+		SalaryDataBean article = new SalaryDataBean();
+		
+		article.setSalary_num(salary_num);
+		article.setSalary_year(Integer.parseInt(request.getParameter("salary_year")));
+		article.setSalary_add_time(Integer.parseInt(request.getParameter("salary_add_time")));
+		article.setSalary_add_holiday(Integer.parseInt(request.getParameter("salary_add_holiday")));
+		article.setSalary_bonus(Integer.parseInt(request.getParameter("salary_bonus")));
+		article.setCosts_food(Integer.parseInt(request.getParameter("costs_food")));
+		article.setCosts_transport(Integer.parseInt(request.getParameter("costs_transport")));
+		article.setCosts_benefit(Integer.parseInt(request.getParameter("costs_benefit")));
+		article.setCosts_etc(Integer.parseInt(request.getParameter("costs_etc")));
 
-		SalaryDataBean salary = dao.getSalary(mem_num);
-
-		ModelAndView mav = new ModelAndView("salary_write");
-		mav.addObject("salary", salary);
-
+		int salary_update_count =  dao.modSalary(article);
+		
+		ModelAndView mav = new ModelAndView("pro");
+		mav.addObject("salary_update_count", salary_update_count);
+		
 		return mav;
 	}
-
-	/*
-	 * @RequestMapping("/chkListAddPro.do") public ModelAndView
-	 * submit(HttpServletRequest request) {
-	 * 
-	 * ChkListDataBean article = new ChkListDataBean();
-	 * 
-	 * article.setChklist_title_name(String.valueOf(request.getParameter(
-	 * "promgr_list_title")));
-	 * article.setPromgr_num(request.getParameter("promgr_num"));
-	 * article.setCom_num((int) request.getSession().getAttribute("com_num"));
-	 * 
-	 * int promgr_insert_count = dao.addChkList(article);
-	 * 
-	 * ModelAndView mav = new ModelAndView("pro");
-	 * mav.addObject("promgr_insert_count", promgr_insert_count);
-	 * 
-	 * return mav;
-	 * 
-	 * }
-	 */
 
 }

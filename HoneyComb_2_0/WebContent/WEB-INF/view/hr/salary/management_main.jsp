@@ -22,7 +22,7 @@ function writeSalary(mem_num) { // salary 입력
 			.open(
 					url,
 					"post",
-					"toolbar=no,width=450,height=400,directories=no,status=yes,scrollbars=yes,menubar=no");
+					"toolbar=no,width=900,height=350,directories=no,status=yes,scrollbars=yes,menubar=no");
 }
 
 </script>
@@ -150,6 +150,16 @@ function writeSalary(mem_num) { // salary 입력
 					</span>
 
 				</form>
+				
+				<span class="col-md-3"> 
+					
+				</span>
+				
+				<span class="col-md-3 text-right"> 
+					
+						<b>단위 : 천원</b>
+
+				</span>
 
 			</div>
 
@@ -191,22 +201,21 @@ function writeSalary(mem_num) { // salary 입력
 					</c:if>
 
 					<c:if test="${!empty salaryList}">
-
 						<tbody>
 							<c:forEach var="item" items="${salaryList}">
 								<tr id="${item.mem_num}">
 									<td class="text-center">${item.name}</td>
 									<td class="text-center">${item.com_dept_name}</td>
 									<td class="text-center">${item.com_pos_name}</td>
-									<td class="text-center">${item.salary_month}</td>
-									<td class="text-center">${item.salary_add_time}</td>
-									<td class="text-center">${item.salary_add_holiday}</td>
-									<td class="text-center">${item.salary_bonus}</td>
-									<td class="text-center">${item.costs_food}</td>
-									<td class="text-center">${item.costs_transport}</td>
-									<td class="text-center">${item.costs_benefit}</td>
-									<td class="text-center">${item.costs_etc}</td>
-									<td class="text-center">${item.costs_etc}</td>
+									<td class="text-center">${item.salary_month / 1000}</td>
+									<td class="text-center">${item.salary_add_time / 1000}</td>
+									<td class="text-center">${item.salary_add_holiday / 1000}</td>
+									<td class="text-center">${item.salary_bonus / 1000}</td>
+									<td class="text-center">${item.costs_food / 1000}</td>
+									<td class="text-center">${item.costs_transport / 1000}</td>
+									<td class="text-center">${item.costs_benefit / 1000}</td>
+									<td class="text-center">${item.costs_etc / 1000}</td>
+									<td class="text-center">${item.salary_sum / 1000}</td>
 									<td class="text-center">
 										<input type="button" class="btn btn-primary btn-xs" value="입력" onclick="writeSalary(${item.mem_num})">
 									</td>

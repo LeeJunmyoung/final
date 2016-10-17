@@ -5,6 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="salary">
 
+	<update id="setSalary_item" parameterType="salary.db.SalaryDataBean">
+		update salary set
+		salary_year=#{salary_year},salary_add_time=#{salary_add_time},salary_add_holiday=#{salary_add_holiday},salary_bonus=#{salary_bonus},
+		costs_food=#{costs_food},costs_transport=#{costs_transport},costs_benefit=#{costs_benefit},costs_etc=#{costs_etc}
+		where salary_num=#{salary_num}
+	</update>
+
+
 	<select id="getDept" parameterType="int" resultType="salary.db.DeptDataBean">
 		select
 		distinct com_dept_num, com_dept_name from members where
@@ -20,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getSalary_list_dept" parameterType="HashMap"
 		resultType="salary.db.SalaryDataBean">
 		select
-		s.salary_num,s.mem_num,m.name,s.com_num,m.com_name,m.com_dept_num,m.com_dept_name,m.com_pos_num,m.com_pos_name,s.salary_year,s.salary_add_time,s.salary_add_holiday,s.salary_bonus,s.costs_food,s.costs_transport,s.costs_benefit
+		s.salary_num,s.mem_num,m.name,s.com_num,m.com_name,m.com_dept_num,m.com_dept_name,m.com_pos_num,m.com_pos_name,s.salary_year,s.salary_add_time,s.salary_add_holiday,s.salary_bonus,s.costs_food,s.costs_transport,s.costs_benefit,s.costs_etc
 		from salary s inner join members m on s.mem_num = m.mem_num where
 		s.com_num=#{com_num} and m.com_dept_num=#{dept_num} order by
 		m.com_pos_num
@@ -29,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getSalary_list_pos" parameterType="HashMap"
 		resultType="salary.db.SalaryDataBean">
 		select
-		s.salary_num,s.mem_num,m.name,s.com_num,m.com_name,m.com_dept_num,m.com_dept_name,m.com_pos_num,m.com_pos_name,s.salary_year,s.salary_add_time,s.salary_add_holiday,s.salary_bonus,s.costs_food,s.costs_transport,s.costs_benefit
+		s.salary_num,s.mem_num,m.name,s.com_num,m.com_name,m.com_dept_num,m.com_dept_name,m.com_pos_num,m.com_pos_name,s.salary_year,s.salary_add_time,s.salary_add_holiday,s.salary_bonus,s.costs_food,s.costs_transport,s.costs_benefit,s.costs_etc
 		from salary s inner join members m on s.mem_num = m.mem_num where
 		s.com_num=#{com_num} and m.com_pos_num=#{pos_num} order by
 		m.com_dept_num
@@ -38,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getSalary_list_all" parameterType="int"
 		resultType="salary.db.SalaryDataBean">
 		select
-		s.salary_num,s.mem_num,m.name,s.com_num,m.com_name,m.com_dept_num,m.com_dept_name,m.com_pos_num,m.com_pos_name,s.salary_year,s.salary_add_time,s.salary_add_holiday,s.salary_bonus,s.costs_food,s.costs_transport,s.costs_benefit
+		s.salary_num,s.mem_num,m.name,s.com_num,m.com_name,m.com_dept_num,m.com_dept_name,m.com_pos_num,m.com_pos_name,s.salary_year,s.salary_add_time,s.salary_add_holiday,s.salary_bonus,s.costs_food,s.costs_transport,s.costs_benefit,s.costs_etc
 		from salary s inner join members m on s.mem_num = m.mem_num where
 		s.com_num=#{com_num} order by m.com_dept_num, m.com_pos_num
 	</select>
@@ -46,10 +54,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getSalary_item" parameterType="int"
 		resultType="salary.db.SalaryDataBean">
 		select
-		s.salary_num,s.mem_num,m.name,s.com_num,m.com_name,m.com_dept_num,m.com_dept_name,m.com_pos_num,m.com_pos_name,s.salary_year,s.salary_add_time,s.salary_add_holiday,s.salary_bonus,s.costs_food,s.costs_transport,s.costs_benefit
+		s.salary_num,s.mem_num,m.name,s.com_num,m.com_name,m.com_dept_num,m.com_dept_name,m.com_pos_num,m.com_pos_name,s.salary_year,s.salary_add_time,s.salary_add_holiday,s.salary_bonus,s.costs_food,s.costs_transport,s.costs_benefit,s.costs_etc
 		from salary s inner join members m on s.mem_num = m.mem_num where
 		s.mem_num=#{mem_num}
-
 	</select>
 
 </mapper>
