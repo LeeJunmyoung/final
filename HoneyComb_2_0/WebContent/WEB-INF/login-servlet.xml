@@ -51,8 +51,7 @@
 <bean id = "CompanyCheckController" class="login.controller.CompanyCheckController" p:logindao-ref="logindao"/>
 
 
-
-
+<bean id="NaverLogInController" class="login.controller.NaverLoginController" p:logindao-ref="logindao"></bean>
 
 
 
