@@ -22,7 +22,7 @@ function writeSalary(mem_num) { // salary 입력
 			.open(
 					url,
 					"post",
-					"toolbar=no,width=900,height=350,directories=no,status=yes,scrollbars=yes,menubar=no");
+					"toolbar=no,width=300,height=350,directories=no,status=yes,scrollbars=yes,menubar=no");
 }
 
 </script>
