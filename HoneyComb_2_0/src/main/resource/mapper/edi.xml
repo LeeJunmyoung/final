@@ -28,22 +28,35 @@
 
 	<select id="getEDI_Table_ing" parameterType="hashmap" resultType="edi.db.EDI_DateBean">
 		select * from (select * from EDI where (com_num = #{com_num} and
-		edi_writer=#{mem_num} )or (com_num = #{com_num} and
-		mid_mem_num=#{mem_num} ) or
+		edi_writer=#{mem_num} and fin_accept=0 )or (com_num = #{com_num} and
+		mid_mem_num=#{mem_num} and fin_accept=0 ) or
 		(com_num=#{com_num} and mid_accept = 1 and
-		fin_mem_num= #{mem_num}) order by
+		fin_mem_num= #{mem_num} and fin_accept=0) order by
 		edi_num DESC) where ROWNUM <![CDATA[ < ]]>6
 	</select>
 
 	<select id="getEDI_Table_ing_count" parameterType="hashmap" resultType="int">
 		select count(*) from (select * from EDI where (com_num =#{com_num} and
-		edi_writer=#{mem_num} )or (com_num = #{com_num} and mid_mem_num=#{mem_num} ) or
-		(com_num=#{com_num} and mid_accept = 1 and fin_mem_num= #{mem_num}))
+		edi_writer=#{mem_num} and fin_accept=0 )or (com_num = #{com_num} and mid_mem_num=#{mem_num} and fin_accept=0 ) or
+		(com_num=#{com_num} and mid_accept = 1 and fin_accept=0 and fin_mem_num= #{mem_num}))
 	</select>
 
 	<select id="getEDIonlyOne" parameterType="int" resultType="edi.db.EDI_DateBean">
 		select * from edi where edi_num = #{edi_num}
 	</select>
+	
+	<select id="getEDI_Table_end" parameterType="int" resultType="edi.db.EDI_DateBean">
+		select * from (select * from EDI where (com_num = #{com_num} and
+		fin_accept=1) order by
+		edi_num DESC) where ROWNUM <![CDATA[ < ]]>6
+	</select>
+	
+	<select id="getEDI_Table_end_count" parameterType="int" resultType="int">
+		select count(*) from (select * from EDI where (com_num = #{com_num} and
+		fin_accept=1) order by
+		edi_num DESC) where ROWNUM <![CDATA[ < ]]>6
+	</select>
+	
 
 
 
@@ -64,6 +77,13 @@
 		#{draftDate},#{edi_writer},#{writer_sign}
 		)
 	</insert>
+	<update id="sign_Mid" parameterType="hashmap">
+	update edi set mid_accept=1,mid_sign=#{mid_sign} where edi_num=#{EDI_num}
+	</update>
+	
+	<update id="sign_fin" parameterType="hashmap">
+	update edi set fin_accept=1, fin_sign=#{fin_sign}, approvaldate=#{endDate} where edi_num=#{EDI_num}
+	</update>
 
 
 

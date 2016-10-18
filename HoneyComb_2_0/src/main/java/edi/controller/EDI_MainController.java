@@ -30,6 +30,12 @@ public class EDI_MainController {
 		int com_num=(int) request.getSession().getAttribute("com_num");
 		int mem_num=(int)request.getSession().getAttribute("mem_num");
 		
+		List<EDI_DateBean> EDI_Table_end=dao.getEDI_Table_end(com_num);
+		int EDI_Table_end_count= dao.getEDI_Table_end_count(com_num);
+		
+		map.put("EDI_Table_end", EDI_Table_end);
+		map.put("EDI_Table_end_count", EDI_Table_end_count);
+		
 		///진행함
 		
 		List<EDI_DateBean> EDI_Table_ing=dao.getEDI_Table_ing(com_num,mem_num);
