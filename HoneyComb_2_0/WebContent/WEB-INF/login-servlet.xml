@@ -28,7 +28,7 @@
 
 
 	<bean id = "SignInController" class="login.controller.SignInController" p:dao-ref="dao"/>
-	<bean id="NaverLogInController" class="login.controller.NaverLoginController" p:dao-ref="dao"></bean>
+	<bean id="APILogInController" class="login.controller.APILoginController" p:dao-ref="dao" p:logindao-ref="logindao"></bean>
 
 	<bean id = "LogInController" class="login.controller.LogInController" p:logindao-ref="logindao" />
 

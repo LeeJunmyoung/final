@@ -6,39 +6,30 @@ import java.security.SecureRandom;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.LocaleResolver;
 
 @Controller
-@RequestMapping("/logIn.do")
-public class LogInController {
-
-	private LoginDAO logindao;
+public class APILoginController {
+	@Autowired
+	private SignInDAO dao;
 	
+	private LoginDAO logindao;
+	public void setDao(SignInDAO dao) {
+		this.dao = dao;
+	}
+	@Autowired
 	public void setLogindao(LoginDAO logindao) {
 		this.logindao = logindao;
 	}
-	
 
-	// @RequestMapping 메서드의 리턴 타입이 String => return값을 viewname으로 사용
-	@RequestMapping(method = RequestMethod.GET)
-	public String form() {
-		return "logIn";
-	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public String submit(@RequestParam("email") String email, @RequestParam("passwd") String passwd,
-			HttpServletRequest request) {
-
-		LogOnDataBean lodb = new LogOnDataBean();
-		lodb = logindao.Checkmembers(email, passwd);
-		if (lodb == null) {
-
-			return "logInpro";
-		} else {
+	@RequestMapping("/login/apiLogIn.do")
+	public String NaverLoginCk(String email, String gender, String name, HttpServletRequest request){
+		int mailCheck = Integer.parseInt(dao.CheckEmail(email));
+		if(mailCheck > 0){
+			LogOnDataBean lodb = logindao.getUserInfo(email);
 			HttpSession session = request.getSession();
 			session.setAttribute("mem_num", lodb.getMem_num());
 			session.setAttribute("com_num", lodb.getCom_num());
@@ -48,10 +39,17 @@ public class LogInController {
 			session.setAttribute("phone_num", lodb.getPhone_num());
 			session.setAttribute("email", email);
 			session.setAttribute("profile_img", lodb.getProfile_img());
-			return "comCheck";
-
+			
+			return "redirect: /HoneyComb_2_0/login/LoginMainFrame.do";
 		}
-
+		dao.insertAPI(email, gender, name);
+		System.out.println(email);
+		System.out.println(gender);
+		System.out.println(name);
+		System.out.println("success");
+		
+		
+		return "/HoneyComb_2_0/login/logIn.do";
 	}
 
 }

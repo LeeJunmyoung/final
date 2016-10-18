@@ -315,7 +315,7 @@ function naverSignInCallback() {
 	var email = naver_id_login.getProfileData('email');
 	var gender = naver_id_login.getProfileData('gender');
 	var name = naver_id_login.getProfileData('nickname');
-	window.opener.location.replace("login/naverLogIn.do?email="+email+"&gender="+gender+"&name="+name);
+	window.opener.location.replace("login/apiLogIn.do?email="+email+"&gender="+gender+"&name="+name);
 	window.close();
 	// naver_id_login.getProfileData('프로필항목명');
 	// 프로필 항목은 개발가이드를 참고하시기 바랍니다.
