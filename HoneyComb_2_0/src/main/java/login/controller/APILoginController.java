@@ -30,17 +30,9 @@ public class APILoginController {
 		int mailCheck = Integer.parseInt(dao.CheckEmail(email));
 		if(mailCheck > 0){
 			LogOnDataBean lodb = logindao.getUserInfo(email);
-			HttpSession session = request.getSession();
-			session.setAttribute("mem_num", lodb.getMem_num());
-			session.setAttribute("com_num", lodb.getCom_num());
-			session.setAttribute("com_dept_num", lodb.getCom_dept_num());
-			session.setAttribute("com_pos_num", lodb.getCom_pos_num());
-			session.setAttribute("name", lodb.getName());
-			session.setAttribute("phone_num", lodb.getPhone_num());
-			session.setAttribute("email", email);
-			session.setAttribute("profile_img", lodb.getProfile_img());
+			setInfoSession(lodb, request, email);
 			
-			return "redirect: /HoneyComb_2_0/login/LoginMainFrame.do";
+			return "redirect: /HoneyComb_2_0/login/Comcheck.do";
 		}
 		dao.insertAPI(email, gender, name);
 		System.out.println(email);
@@ -49,7 +41,20 @@ public class APILoginController {
 		System.out.println("success");
 		
 		
-		return "/HoneyComb_2_0/login/logIn.do";
+		return "redirect: /HoneyComb_2_0/login/logIn.do";
+	}
+	
+	private void setInfoSession(LogOnDataBean lodb, HttpServletRequest request, String email){
+		HttpSession session = request.getSession();
+		session.setAttribute("mem_num", lodb.getMem_num());
+		session.setAttribute("com_num", lodb.getCom_num());
+		session.setAttribute("com_dept_num", lodb.getCom_dept_num());
+		session.setAttribute("com_pos_num", lodb.getCom_pos_num());
+		session.setAttribute("name", lodb.getName());
+		session.setAttribute("phone_num", lodb.getPhone_num());
+		session.setAttribute("email", email);
+		session.setAttribute("profile_img", lodb.getProfile_img());
+		
 	}
 
 }

@@ -20,7 +20,7 @@ public class SignInDAO extends SqlSessionDaoSupport {
 		return mailCheck;
 	}
 	
-	public void insertAPI(String email, String name, String gender){
+	public void insertAPI(String email, String gender, String name){
 		LogOnDataBean logdb = new LogOnDataBean();
 		logdb.setEmail(email);
 		logdb.setName(name);
