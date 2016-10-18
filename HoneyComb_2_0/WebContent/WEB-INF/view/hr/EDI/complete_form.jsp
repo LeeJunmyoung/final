@@ -163,30 +163,25 @@ textarea {
 </style>
 
 <script type="text/javascript">
-	function check_check(){
-		var send_dept_name = '${edi_info.send_dept_name}';
-		var my_dept_name = '${com_dept_name}';
-		var my_mem_num = '${mem_num}';
-		var writer = '${edi_info.edi_writer}';
-		var mid_mem_num= '${edi_info.mid_mem_num}';
-		var fin_mem_num= '${edi_info.fin_mem_num}';
-		
-		alert("send_dept_name::"+send_dept_name);
-		alert("my_dept_name::"+my_dept_name);
-		alert("my_mem_num::"+my_mem_num);
-		alert("writer::"+writer);
-		alert("mid_mem_num::"+mid_mem_num);
-		alert("fin_mem_num::"+fin_mem_num);
-		if(send_dept_name==my_dept_name){
-			if(my_mem_num==writer||my_mem_num==mid_mem_num||my_mem_num==fin_mem_num){
-				
-			}
-			
-		}else{
-			window.close();
-		}
-	}
 	
+function check_check(){
+	var send_dept_name = '${edi_info.send_dept_name}';
+	var my_dept_name = '${com_dept_name}';
+	var my_mem_num = '${mem_num}';
+	var writer = '${edi_info.edi_writer}';
+	var mid_mem_num= '${edi_info.mid_mem_num}';
+	var fin_mem_num= '${edi_info.fin_mem_num}';
+
+	if(send_dept_name==my_dept_name||my_mem_num==writer || my_mem_num==mid_mem_num || my_mem_num==fin_mem_num){
+		
+			
+		
+		
+	}else{
+		alert('열람 권한이 없습니다.')
+		window.close();
+	}
+}
 	
 	
 </script>
