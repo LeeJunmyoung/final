@@ -8,8 +8,23 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+
 <script type="text/javascript">
-	function fromtodept() {
+/* window.onbeforeunload = function() {
+    alert('ggg');
+	return "Bye now!";
+}; */
+window.addEventListener("beforeunload", function (e) {
+	  var confirmationMessage = "\o/";
+
+	  e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
+	  return confirmationMessage;              // Gecko, WebKit, Chrome <34
+	});
+
+function fromtodept() {
 		var url = "receiveForm.do";
 		window
 				.open(
@@ -20,6 +35,7 @@
 	}
 
 	function select_approval() {
+
 		var url = "select_approval.do";
 		window
 				.open(
@@ -31,6 +47,7 @@
 
 	$(document).ready(function() {
 		$('#approval_mem').hide();
+
 		$('#sign_form').mouseenter(function() {
 
 			$('#approval_mem').show();
@@ -49,39 +66,35 @@
 		})
 
 	});
-	
-	
-	
-	function check_invaild(){
-		if(document.getElementById('document_num').value==""){
+
+	function check_invaild() {
+		if (document.getElementById('document_num').value == "") {
 			alert("문서번호를 지정해주세요");
 			return false;
 		}
-		if(document.getElementById('send_dept_name').value==""){
+		if (document.getElementById('send_dept_name').value == "") {
 			alert("수신처를 지정하세요");
-			
+
 			return false;
 		}
-		if(document.getElementById('edi_subject').value==""){
+		if (document.getElementById('edi_subject').value == "") {
 			alert("제목을 입력하세요");
-			
+
 			return false;
 		}
-		
-		if(document.getElementById('fin_mem_num').value==""){
+
+		if (document.getElementById('fin_mem_num').value == "") {
 			alert("결제권자를 지정해주세요");
-			
+
 			return false;
 		}
-		
-		
-		
+
 	}
 </script>
 
 <title>문서 작성</title>
 <style type="text/css">
-HTML,form {
+HTML, form {
 	width: 100%;
 	height: 100%;
 }
@@ -129,12 +142,11 @@ h2 {
 	width: 50%;
 	height: 30%;
 }
-.form_right table{
-	position:relative;
-	left:-15px;
-	
-}
 
+.form_right table {
+	position: relative;
+	left: -15px;
+}
 
 .btn {
 	padding: 2px;
@@ -229,22 +241,28 @@ textarea {
 }
 </style>
 
-
+<script language="javascript">
+	//not event f5  event.clientY < 0
+	//event.altKey When press Alt +F4 
+	//event.ctrlKey When press Ctrl +F4 
+	//event.clientY 107 or 129 is  Alt F4 postion on window screen it may change base on screen resolution
+</script>
 
 
 </head>
 <body>
-<form action="writeEDI.do" method="post" enctype="multipart/form-data" onsubmit="return check_invaild();" >
-	<div class="EDI_write_form">
-		<h2>
-			전자 문서 작성 <input type="submit" class="btn btn-primary" value="등록하기">
-		</h2>
+	<form action="writeEDI.do" method="post" enctype="multipart/form-data"
+		onsubmit="return check_invaild();">
+		<div class="EDI_write_form">
+			<h2>
+				전자 문서 작성 <input type="submit" class="btn btn-primary" value="등록하기">
+			</h2>
 
-		<hr class="hr_class">
+			<hr class="hr_class">
 
 
 
-		
+
 
 			<div class="form_left">
 				<table>
@@ -255,7 +273,8 @@ textarea {
 					</tr>
 					<tr>
 						<td style="width: 70px;">문서번호</td>
-						<td>&nbsp; :&nbsp;<input type="text" id="document_num" name="document_num" ></td>
+						<td>&nbsp; :&nbsp;<input type="text" id="document_num"
+							name="document_num"></td>
 
 					</tr>
 
@@ -315,7 +334,8 @@ textarea {
 			<div class="EDI_contents">
 				<div class="edi_subject_div">
 					<p class="p_subject">문 서 제 목 :</p>
-					<input type="text" id="edi_subject" name="edi_subject" style="width: 80%;">
+					<input type="text" id="edi_subject" name="edi_subject"
+						style="width: 80%;">
 				</div>
 				<div class="edi_contents_div">
 					<p class="p_contents">내용</p>
@@ -325,10 +345,10 @@ textarea {
 			</div>
 
 
-	</div>
-<input type="hidden" id="mid_mem_num" name="mid_mem_num" value=""/>
-<input type="hidden" id="fin_mem_num" name="fin_mem_num" value=""/>
-<input type="hidden" id="send_dept_name" name="send_dept_name" value=""/>
-</form>
+		</div>
+		<input type="hidden" id="mid_mem_num" name="mid_mem_num" value="" /> <input
+			type="hidden" id="fin_mem_num" name="fin_mem_num" value="" /> <input
+			type="hidden" id="send_dept_name" name="send_dept_name" value="" />
+	</form>
 </body>
 </html>

@@ -73,6 +73,17 @@
 	margin: auto;
 	
 }
+.main_div_edi{
+position: relative;
+top:10px;
+left:40px;
+}
+.ing_EDI_div{
+position: relative;
+top:10px;
+left:40px;
+
+}
 </style>
 
 
@@ -87,7 +98,7 @@
 	
 	
 	
-	
+	<div class="main_div_edi">
 		<div class="row">
 
 			<div class="col-md-9">
@@ -155,7 +166,7 @@
 		</div>
 
 	
-	
+	</div>
 
 
 
@@ -172,7 +183,7 @@
 	 
 	 
 	<div id="EDI_wait">
-	
+	<div class="ing_EDI_div">
 		<div class="row">
 
 			<div class="col-md-9">
@@ -240,7 +251,7 @@
 		</div>
 
 	
-	
+	</div>
 	
 	</div>
 	<div id="EDI_temp"></div>

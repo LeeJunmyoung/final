@@ -31,8 +31,7 @@ function setmember(){
 	$("#final_approval_name", opener.document).text(fin_mem_name);
 	
 	
-	$('#approval_mem', opener.document).hide();
-	$('#sign_form', opener.document).css('background-color', '#fff');
+
 	
 	
 	window.close();
