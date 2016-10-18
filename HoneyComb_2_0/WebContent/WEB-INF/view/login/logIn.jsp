@@ -196,6 +196,7 @@ a:hover {
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
+      
     });
   }
 
@@ -240,6 +241,7 @@ a:hover {
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
+    	alert(response.email);
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
@@ -291,8 +293,6 @@ a:hover {
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="findEmail.do">Email</a>&nbsp;/&nbsp;
 							<a href="findPasswd.do">Passwd 찾기</a>
 						</div>
-						
-						<a href="#" onclick="FB.logout();">[logout]</a><br>
 				</div>
 			</div>
 		</div>
