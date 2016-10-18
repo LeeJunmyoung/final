@@ -176,7 +176,7 @@ a:hover {
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      
+      alert("로그인성공");
       testAPI();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
@@ -240,8 +240,8 @@ a:hover {
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-    	alert(response.email);
+    FB.api('/me', {fields: 'email'}, function(response) {
+    	alert(response.email); 
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
@@ -285,7 +285,9 @@ a:hover {
 
 							<button type="submit" class="btn btn-default">Sign in</button>
 							<br>
+							
 							<br> <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">페이스북으로 로그인하기</fb:login-button>
+							
 							<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 							<div id="naver_id_login">네이버 아이디로 로그인</div>
 							<!-- //네이버아이디로로그인 버튼 노출 영역 -->
@@ -293,6 +295,7 @@ a:hover {
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="findEmail.do">Email</a>&nbsp;/&nbsp;
 							<a href="findPasswd.do">Passwd 찾기</a>
 						</div>
+
 				</div>
 			</div>
 		</div>
