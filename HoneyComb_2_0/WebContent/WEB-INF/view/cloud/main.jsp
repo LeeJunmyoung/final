@@ -10,9 +10,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="/HoneyComb_2_0/resources/script/cloudScript.js"></script>
-
 <script type="text/javascript">
-
 	$(function(){
 	if($("input:text").attr("readonly")==false){
 		alert("test");
@@ -21,10 +19,11 @@
 		var selectedFiles = new Array();
 		var i =0;
 		$("input:checkbox[name='selectedFiles']:checked").each(function(){
+			alert(this.value)
 			selectedFiles[i] = this.value;
 			i++
 		});
-		$(location).attr('href',"url"); 
+		$(location).attr('href',"download?selectedFiles="+selectedFiles); 
 		
 	});
 	$("#delete").click(function(){
@@ -55,51 +54,57 @@
 	});
 });
 </script>
+<link rel="stylesheet" href="/HoneyComb_2_0/resources/css/cloud.css">
 </head>
 <body>
 <div>
-<input type="button" value="업로드" onclick="openupload('${param.folder}')">
-<input type="button" value="다운로드" id="download">
-<input type="button" value="삭제" id="delete">
-<input type="button" value="폴더 만들기" onclick="openMakeFolder('${param.folder}')">
+	<input type="button" class="basicButton" value="업로드" onclick="openupload('${param.folder}')">
+	<input type="button" class="basicButton" value="다운로드" id="download">
+	<input type="button" class="basicButton" value="삭제" id="delete">
+	<input type="button" class="basicButton" value="폴더 만들기" onclick="openMakeFolder('${param.folder}')">
 </div>
 <div>
 	<ui>
 		<c:if test="${param.folder ne null || !param.folder == ''}">
-			<div><a href="javascript:goUpperFolder('${param.folder}')">상위폴더로</a></div>
+				<div class="item" ondblclick="goUpperFolder('${param.folder}')">
+					<img src="/HoneyComb_2_0/resources/images/cloud_img/go_upper.png">
+				</div>
 		</c:if>	
 		
 		<c:forEach var="cloudlist" items="${cloudlist}">
 			<li>
-				<c:if test="${fn:substring(cloudlist.file_path,0,1)=='$'}">
-				<input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}" >
-				<label for="${cloudlist.file_num}">
-						<div style="border:5px solid" ondblclick="changeFolder('${cloudlist.file_path}')">
-						this is folder
-				</c:if>
-			
-				<c:if test="${fn:substring(cloudlist.file_path,0,1)!='$'}">
-				<input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}">
-				<label for="${cloudlist.file_num}">
-						<div style="border:5px solid">
-						this is file
-				</c:if>
-				<input type="text" value="${cloudlist.file_name}" readonly="readonly" id="${cloudlist.file_num}">
-					  file_name :::${cloudlist.file_name}<br>
-					  file_uploader :::${cloudlist.file_uploader}<br>
-					  file_size :::${cloudlist.file_size}<br>
-					  file_date :::${cloudlist.file_date}<br>
-					  
-			<%-- 		  file_num :::${cloudlist.file_num}<br>
-					  com_num :::${cloudlist.com_num}<br>
-					  folder :::${cloudlist.folder}<br>
-					  file_path:::${cloudlist.file_path}<br>
-					  promgr_num :::${cloudlist.promgr_num}<br>
-					  mem_num :::${cloudlist.mem_num}<br>
-					  com_pos_num :::${cloudlist.com_pos_num}<br> --%>
-					</div>
-				</label>
-			<li>
+				<div class="itemFrame">
+					<c:if test="${fn:substring(cloudlist.file_path,0,1)=='$'}">
+						<input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}" >
+						<label for="${cloudlist.file_num}">
+							<div class="item" ondblclick="changeFolder('${cloudlist.file_path}')">
+							<img src="/HoneyComb_2_0/resources/images/cloud_img/folder.png">
+							</div>
+					</c:if>
+				
+					<c:if test="${fn:substring(cloudlist.file_path,0,1)!='$'}">
+						<input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}">
+						<label for="${cloudlist.file_num}">
+							<div class="item" >
+							<img src="/HoneyComb_2_0/resources/images/cloud_img/file.png">
+							</div>
+					</c:if>
+					<div class="itemInfo">
+						<input type="text" value="${cloudlist.file_name}" readonly="readonly" id="${cloudlist.file_num}"><br>
+						${cloudlist.file_uploader}<br>
+						${cloudlist.file_size}<br>
+						${cloudlist.file_date}<br>						  
+				<%-- 		  file_num :::${cloudlist.file_num}<br>
+						  com_num :::${cloudlist.com_num}<br>
+						  folder :::${cloudlist.folder}<br>
+						  file_path:::${cloudlist.file_path}<br>
+						  promgr_num :::${cloudlist.promgr_num}<br>
+						  mem_num :::${cloudlist.mem_num}<br>
+						  com_pos_num :::${cloudlist.com_pos_num}<br> --%>
+						</div>
+					</label>
+				</div>
+			</li>
 		</c:forEach>
 	</ui>
 </div>

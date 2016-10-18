@@ -24,7 +24,7 @@ $("#folder").keyup(function(){
 });
 			
 </script>
-
+<link rel="stylesheet" href="/HoneyComb_2_0/resources/css/cloud.css">
 </head>
 <body>
  생성할 폴더명을 입력해 주세요

@@ -25,7 +25,7 @@ $(function(){
 	})
 });
 </script>
-
+<link rel="stylesheet" href="/HoneyComb_2_0/resources/css/cloud.css">
 </head>
 <body>
 	<form name="form"	action="upload" enctype="multipart/form-data" method="post">
@@ -37,7 +37,7 @@ $(function(){
 		<c:if test="${com_pos_num < 3}">
 			보안설정<input type="checkbox" name="security">
 		</c:if>
-		<input type="submit" id="submit" value="업로드" disabled="disabled">
+		<input type="submit" class="basicButton" id="submit" value="업로드" disabled="disabled">
 		<p id="dupli"/>
 	
 	</form>

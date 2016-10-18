@@ -1,0 +1,53 @@
+@CHARSET "UTF-8";
+
+.basicButton{
+	background-color: #344d91;
+	color: #fff;
+	width:100px;
+	height:30px;
+	border: #2e6da4;
+	border-radius: 4px;
+}
+.basicButton:HOVER {
+	background-color:#000080;
+}
+input[type=checkbox]{
+display: none;
+}   
+div.goupper{
+	
+}
+div.item  img{
+	width: 75px;
+	height: 75px;
+	margin:50px;
+}
+div.item{
+	border:3px #b1b3e2 solid;
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	padding: 10px;
+
+}
+input[type=checkbox]:checked+label div.item{
+	border:3px #7276cb solid;
+}
+
+div.itemInfo input[type=text]{
+	text-align:center;
+	margin: auto;
+	border: none;
+}
+ul{
+	display:inline;
+}
+li {
+	list-style-type: none;
+	display :inline;
+}
+div.itemFrame{
+	display :inline;
+	font-size: small;
+	text-align:center;
+}

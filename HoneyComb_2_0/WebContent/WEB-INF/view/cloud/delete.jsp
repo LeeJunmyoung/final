@@ -16,6 +16,7 @@ function closeit(){
 	window.close()
 }
 </script>
+<link rel="stylesheet" href="/HoneyComb_2_0/resources/css/cloud.css">
 </head>
 <body>
 <form action="deletePro">
@@ -37,8 +38,8 @@ function closeit(){
 		</c:forEach>
 	</table>
 	위 파일들을 삭제하시겠습니까?
-	<input type="submit" value="예">
-	<input type="button" value="취소" onclick="closeit()">
+	<input type="submit" class="basicButton" value="예">
+	<input type="button" class="basicButton" value="취소" onclick="closeit()">
 </form>
 </body>
 </html>

@@ -95,7 +95,6 @@ public class CloudMainController implements ApplicationContextAware{
 	/*다운로드 처리*/
 	@RequestMapping(value = "/download")
 	public ModelAndView downloadFile(String selectedFiles){
-		
 		String[] fileNums = selectedFiles.split(",");
 		List downloadInfo = dao.getFileInfo(fileNums);
 		return new ModelAndView("downloadFiles", "downloadInfo", downloadInfo);
