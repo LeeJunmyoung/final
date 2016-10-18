@@ -137,7 +137,7 @@ input[type=text] {
 	height: 120px;
 	width: 100px;
 	margin-top: 20px;
-	border: 2px solid #4367b0;
+	border: 2px solid #bbb;
 	border-radius: 5px;
 }
 /* 상단 프로필 */

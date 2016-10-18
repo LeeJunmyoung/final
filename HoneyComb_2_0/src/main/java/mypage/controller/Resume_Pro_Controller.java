@@ -59,21 +59,22 @@ public class Resume_Pro_Controller {
 		return mav;
 
 	}
-	
+
 	@RequestMapping("base_pro")
-	public String base_Pro(HttpServletRequest request, @RequestParam String phone_num, @RequestParam String mem_address) {
-		
+	public String base_Pro(HttpServletRequest request, @RequestParam String phone_num,
+			@RequestParam String mem_address) {
+
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		Map base_map = new HashMap<>();
 		base_map.put("phone_num", phone_num);
 		base_map.put("mem_address", mem_address);
 		base_map.put("mem_num", mem_num);
-		
+
 		Map base_session = dao.base_Update(mem_num, base_map);
-		
+
 		request.getSession().setAttribute("phone_num", base_session.get("phone_num"));
 		request.getSession().setAttribute("mem_address", base_session.get("mem_address"));
-		
+
 		return "resume_close";
 	}
 
@@ -81,54 +82,50 @@ public class Resume_Pro_Controller {
 	public String school_Pro(HttpServletRequest request, @ModelAttribute Mem_School sch) {
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
-		
+
 		dao.school_Insert(mem_num, sch);
 
-		return "resume_close";
+		return "resume_change_close";
 	}
 
 	@RequestMapping("edu_pro")
 	public String edu_Pro(HttpServletRequest request, @ModelAttribute Mem_Edu edu) {
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
-		
+
 		dao.edu_Insert(mem_num, edu);
 
-		return "resume_close";
+		return "resume_change_close";
 	}
 
 	@RequestMapping("certi_pro")
 	public String certi_Pro(HttpServletRequest request, @ModelAttribute Mem_Certi cer) {
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
-		
+
 		dao.certi_Insert(mem_num, cer);
 
-		return "resume_close";
+		return "resume_change_close";
 	}
 
 	@RequestMapping("mili_pro")
 	public String mili_Pro(HttpServletRequest request, @ModelAttribute Mem_Mili mil) {
-		
-		System.out.println("mili :::" + mil.toString());
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
-		
+
 		dao.mili_Insert(mem_num, mil);
 
-		return "resume_close";
+		return "resume_change_close";
 	}
 
 	@RequestMapping("career_pro")
 	public String career_Pro(HttpServletRequest request, @ModelAttribute Mem_Career car) {
-		
-		System.out.println("career :::" + car.toString());
 
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
-		
+
 		dao.career_Insert(mem_num, car);
 
-		return "resume_close";
+		return "resume_change_close";
 	}
 
 }

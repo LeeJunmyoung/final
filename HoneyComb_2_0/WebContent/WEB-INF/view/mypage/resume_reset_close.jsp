@@ -5,7 +5,6 @@
 <title>Insert title here</title>
 <script>
 	function close_page() {
-		opener.opener.location.reload();
 		opener.location.reload();
 
 		window.close();
@@ -46,9 +45,9 @@ p {
 </style>
 </head>
 <body style="background: #e9ebee;">
-<!-- resume 기본정보등록시 -->
+<!-- resume reset -->
 
-	<p>등록되었습니다</p>
+	<p>초기화되었습니다</p>
 	<br>
 	<div id="div_button">
 		<a href="#" onclick="close_page()" class="button">닫기</a>

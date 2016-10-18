@@ -24,22 +24,34 @@
 						"post",
 						"toolbar=no, left=200, top=100, width=700, height=280, directories=no, status=yes, scrollbar=yes, menubar=no");
 	}
-	
+
 	function base_change() {
-		
+
 		var phone_num = document.base.phone_num.value;
 		var mem_address = document.base.mem_address.value;
-		
-		alert(phone_num);
-		alert(mem_address);
-		
-		var url = "/HoneyComb_2_0/mypage/base_pro?phone_num=" + phone_num + "&mem_address=" + mem_address;
-		
+
+		var url = "/HoneyComb_2_0/mypage/base_pro?phone_num=" + phone_num
+				+ "&mem_address=" + mem_address;
+
 		window
-		.open(
-				url,
-				"post",
-				"toolbar=no, left=200, top=100, width=500, height=280, directories=no, status=yes, scrollbar=yes, menubar=no");
+				.open(
+						url,
+						"post",
+						"toolbar=no, left=400, top=150, width=350, height=100, directories=no, status=yes, scrollbar=yes, menubar=no");
+	}
+	
+	function resume_reset(c) {
+		
+		var code = c;
+		
+		url = "/HoneyComb_2_0/mypage/resume_reset?code=" + code;
+
+		window
+				.open(
+						url,
+						"post",
+						"toolbar=no, left=400, top=150, width=350, height=100, directories=no, status=yes, scrollbar=yes, menubar=no");
+		 
 	}
 </script>
 <style>
@@ -146,6 +158,29 @@ input[type=text] {
 	color: white;
 }
 
+.button_reset {
+	width: 40px;
+	display: inline-block;
+	margin-bottom: 2px;
+	margin-left: 5px;
+	background-color: #4367b0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	font-size: 12px;
+	padding: 2px 7px;
+	text-decoration: none;
+	float: right;
+	text-align: center;
+}
+
+.button_reset:hover {
+	background-color: #344d91;
+	color: white;
+}
+
 .button_base {
 	width: 80px;
 	display: inline-block;
@@ -212,8 +247,8 @@ input[type=text] {
 					<tr>
 						<!-- <td></td> -->
 						<td class="bold">주 소</td>
-						<td colspan="3"><input type="text" name="mem_address" id="address"
-							value="${ base_list.mem_address }" /></td>
+						<td colspan="3"><input type="text" name="mem_address"
+							id="address" value="${ base_list.mem_address }" /></td>
 						<!-- <td></td> -->
 						<!-- <td></td> -->
 					</tr>
@@ -245,7 +280,9 @@ input[type=text] {
 
 				<div class="div_title">
 					<p class="title">
-						학 력<a href="#" onclick="resume_pro(1)" class="button">등록</a>
+						학 력
+						<a href="#" onclick="resume_pro(1)" class="button">등록</a>
+						<c:if test="${ !empty school_list }"><a href="#" onclick="resume_reset(1)" class="button_reset">초기화</a></c:if>
 					</p>
 				</div>
 
@@ -281,7 +318,9 @@ input[type=text] {
 
 				<div class="div_title">
 					<p class="title">
-						교육 이수<a href="#" onclick="resume_pro(2)" class="button">등록</a>
+						교육 이수
+						<a href="#" onclick="resume_pro(2)" class="button">등록</a>
+						<c:if test="${ !empty edu_list }"><a href="#" onclick="resume_reset(2)" class="button_reset">초기화</a></c:if>
 					</p>
 				</div>
 
@@ -318,7 +357,9 @@ input[type=text] {
 
 				<div class="div_title">
 					<p class="title">
-						자격증<a href="#" onclick="resume_pro(3)" class="button">등록</a>
+						자격증
+						<a href="#" onclick="resume_pro(3)" class="button">등록</a>
+						<c:if test="${ !empty certi_list }"><a href="#" onclick="resume_reset(3)" class="button_reset">초기화</a></c:if>
 					</p>
 				</div>
 
@@ -356,8 +397,9 @@ input[type=text] {
 				<p class="title">
 					병 역
 					<c:if test="${ empty mili_list }">
-						<a href="#" onclick="resume_pro(4)" class="button">등록</a>
+					<a href="#" onclick="resume_pro(4)" class="button">등록</a>
 					</c:if>
+					<c:if test="${ !empty mili_list }"><a href="#" onclick="resume_reset(4)" class="button_reset">초기화</a></c:if>
 				</p>
 			</div>
 
@@ -407,7 +449,9 @@ input[type=text] {
 
 				<div class="div_title">
 					<p class="title">
-						경 력<a href="#" onclick="resume_pro(5)" class="button">등록</a>
+						경 력
+						<a href="#" onclick="resume_pro(5)" class="button">등록</a>
+						<c:if test="${ !empty career_list }"><a href="#" onclick="resume_reset(5)" class="button_reset">초기화</a></c:if>
 					</p>
 				</div>
 
