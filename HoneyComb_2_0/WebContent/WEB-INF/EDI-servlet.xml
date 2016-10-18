@@ -18,8 +18,9 @@
 	<context:annotation-config />
 
 
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
-	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 
 
 
@@ -54,24 +55,36 @@
 
 
 
-	<bean id="EDI_MainController" class="edi.controller.EDI_MainController" p:dao-ref="EDI_DAO"></bean>
+	<bean id="EDI_MainController" class="edi.controller.EDI_MainController"
+		p:dao-ref="EDI_DAO"></bean>
 
-	<bean id="EDI_WriteFormController" class="edi.controller.EDI_WriteFormController" p:dao-ref="EDI_DAO"></bean>
+	<bean id="EDI_WriteFormController" class="edi.controller.EDI_WriteFormController"
+		p:dao-ref="EDI_DAO"></bean>
 
-	<bean id="EDI_ReceiveController" class="edi.controller.EDI_ReceiveController" p:dao-ref="EDI_DAO"></bean>
+	<bean id="EDI_ReceiveController" class="edi.controller.EDI_ReceiveController"
+		p:dao-ref="EDI_DAO"></bean>
 
-	<bean id="SelectApprovalMemFrameController" class="edi.controller.SelectApprovalMemFrameController" p:dao-ref="EDI_DAO" ></bean>
+	<bean id="SelectApprovalMemFrameController" class="edi.controller.SelectApprovalMemFrameController"
+		p:dao-ref="EDI_DAO"></bean>
+
+	<bean id="EDI_Review_Controller" class="edi.controller.EDI_Review_Controller"
+		p:dao-ref="EDI_DAO"></bean>
+
+	<bean id="EDI_Ing_SignController" class="edi.controller.EDI_Ing_SignController"
+		p:dao-ref="EDI_DAO"></bean>
+
+	<bean id="Complete_FormController" class="edi.controller.Complete_FormController"
+		p:dao-ref="EDI_DAO"></bean>
 	
-
 
 	<bean id="EDI_DAO" class="edi.db.EDI_DAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	
-	
-	
-	
-	
+
+
+
+
+
 	<context:property-placeholder location="classpath:db.properties" />
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
@@ -90,14 +103,14 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 
 
 </beans>

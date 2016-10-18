@@ -44,6 +44,7 @@ public class EDI_WriteFormController {
 		
 		EDI_DateBean edb = new EDI_DateBean();
 		int com_num = (int) request.getSession().getAttribute("com_num");
+		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		String attachfileDBPath="";
 		if(attachfile!=null){
 			attachfileDBPath = ref_File_Save(request,attachfile); // 파일 저장
@@ -58,12 +59,14 @@ public class EDI_WriteFormController {
 		edb.setSend_dept_name(send_dept_name);
 		edb.setDocument_num(document_num);
 		edb.setDraftDate(writeDate());
+		edb.setEdi_writer(mem_num);
+		edb.setWriter_sign(signDate());
 		dao.insertNewEDI(edb);
 		
 		
 		
 
-		return "EDI/EDI_main";
+		return "writer_close";
 	}
 
 	public String writeDate() {
@@ -76,6 +79,23 @@ public class EDI_WriteFormController {
 
 		return d;
 	}
+	public String signDate(){
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int mon = cal.get(Calendar.MONTH) + 1;
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		int hour = cal.get(Calendar.HOUR_OF_DAY);
+		int mm = cal.get(Calendar.MINUTE);
+		if(mm<10){
+			String dd = year + "-" + mon + "-" + day+" "+hour+":0"+mm ;
+			return dd;
+		}
+		
+		String d = year + "-" + mon + "-" + day+" "+hour+":"+mm ;
+		return d;
+		
+	}
+	
 	public String ref_File_Save(HttpServletRequest request,MultipartFile attachfile){
 		String savepath = request.getSession().getServletContext().getRealPath("attachfile");
 		Date d = new Date();

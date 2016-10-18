@@ -15,6 +15,100 @@ public class EDI_DateBean {
 	private String attechFile;
 	private String draftDate;
 	private String approvalDate;
+	private int edi_writer;
+	private String writer_sign;
+	private String mid_sign;
+	private String fin_sign;
+	
+	public String getWriter_sign() {
+		return writer_sign;
+	}
+	public void setWriter_sign(String writer_sign) {
+		this.writer_sign = writer_sign;
+	}
+	public String getMid_sign() {
+		return mid_sign;
+	}
+	public void setMid_sign(String mid_sign) {
+		this.mid_sign = mid_sign;
+	}
+	public String getFin_sign() {
+		return fin_sign;
+	}
+	public void setFin_sign(String fin_sign) {
+		this.fin_sign = fin_sign;
+	}
+	public int getEdi_writer() {
+		return edi_writer;
+	}
+	public void setEdi_writer(int edi_writer) {
+		this.edi_writer = edi_writer;
+	}
+	//////밑에는 그냥 필요 정보
+	private String mid_mem_name;
+	private String mid_mem_dept;
+	private String mid_mem_pos;
+	private String fin_mem_name;
+	private String fin_mem_dept;
+	private String fin_mem_pos;
+	private String writer_mem_name;
+	private String writer_mem_dept;
+	private String writer_mem_pos;
+	
+	public String getMid_mem_name() {
+		return mid_mem_name;
+	}
+	public void setMid_mem_name(String mid_mem_name) {
+		this.mid_mem_name = mid_mem_name;
+	}
+	public String getMid_mem_dept() {
+		return mid_mem_dept;
+	}
+	public void setMid_mem_dept(String mid_mem_dept) {
+		this.mid_mem_dept = mid_mem_dept;
+	}
+	public String getMid_mem_pos() {
+		return mid_mem_pos;
+	}
+	public void setMid_mem_pos(String mid_mem_pos) {
+		this.mid_mem_pos = mid_mem_pos;
+	}
+	public String getFin_mem_name() {
+		return fin_mem_name;
+	}
+	public void setFin_mem_name(String fin_mem_name) {
+		this.fin_mem_name = fin_mem_name;
+	}
+	public String getFin_mem_dept() {
+		return fin_mem_dept;
+	}
+	public void setFin_mem_dept(String fin_mem_dept) {
+		this.fin_mem_dept = fin_mem_dept;
+	}
+	public String getFin_mem_pos() {
+		return fin_mem_pos;
+	}
+	public void setFin_mem_pos(String fin_mem_pos) {
+		this.fin_mem_pos = fin_mem_pos;
+	}
+	public String getWriter_mem_name() {
+		return writer_mem_name;
+	}
+	public void setWriter_mem_name(String writer_mem_name) {
+		this.writer_mem_name = writer_mem_name;
+	}
+	public String getWriter_mem_dept() {
+		return writer_mem_dept;
+	}
+	public void setWriter_mem_dept(String writer_mem_dept) {
+		this.writer_mem_dept = writer_mem_dept;
+	}
+	public String getWriter_mem_pos() {
+		return writer_mem_pos;
+	}
+	public void setWriter_mem_pos(String writer_mem_pos) {
+		this.writer_mem_pos = writer_mem_pos;
+	}
 	@Override
 	public String toString() {
 		return "EDI_DateBean [EDI_num=" + EDI_num + ", document_num=" + document_num + ", com_num=" + com_num
