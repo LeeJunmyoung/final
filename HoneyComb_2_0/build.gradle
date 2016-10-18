@@ -39,12 +39,17 @@ dependencies {
     
     
     // https://mvnrepository.com/artifact/javax.mail/mail
-compile group: 'javax.mail', name: 'mail', version: '1.4.7'
+	compile group: 'javax.mail', name: 'mail', version: '1.4.7'
 
-compile group: 'net.sf.json-lib', name: 'json-lib-ext-spring', version: '1.0.2'
+	compile group: 'net.sf.json-lib', name: 'json-lib-ext-spring', version: '1.0.2'
 	//json 설정
-compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.3'
-compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.3'
+	compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
+
+	// view_pdf setting
+	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.12'
+	compile group: 'com.lowagie', name: 'itext', version: '2.1.7'
+	
 
    
 }

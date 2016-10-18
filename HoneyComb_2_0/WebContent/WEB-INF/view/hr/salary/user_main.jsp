@@ -13,13 +13,13 @@
 
 <script>
 
-function viewSalary(mem_num) { // salary 자세히보기
-	url = "/HoneyComb_2_0/salary/user_view.do?mem_num="+mem_num;
+function viewPaystub(mem_num) { // 급여명세서 보기
+	url = "/HoneyComb_2_0/salary/paystub.do?mem_num="+mem_num;
 	window
 			.open(
 					url,
 					"post",
-					"toolbar=no,width=900,height=350,directories=no,status=yes,scrollbars=yes,menubar=no");
+					"toolbar=no,width=800,height=600,directories=no,status=yes,scrollbars=yes,menubar=no");
 }
 
 </script>
@@ -103,7 +103,7 @@ function viewSalary(mem_num) { // salary 자세히보기
 
 				</table>
 				
-				<input type="button" class="btn btn-primary btn-sm" value="입력" onclick="viewSalary(${salary.mem_num})">
+				<input type="button" class="btn btn-primary btn-sm" value="급여 명세서 보기" onclick="viewPaystub(${salary.mem_num})">
 		
 		</div>
 		
