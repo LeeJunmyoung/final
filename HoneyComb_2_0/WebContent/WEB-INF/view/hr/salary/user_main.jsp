@@ -51,61 +51,59 @@ function viewSalary(mem_num) { // salary 자세히보기
 			<table class="table table-bordered" style="margin-top: 20px">
 					<thead>
 						<tr>
-							<th class="text-center" rowspan="12">연봉</th>
+							<th class="text-center" colspan="2">연봉</th>
+							<td class="text-right" colspan="2">${salary.salary_year}</td>
 						</tr>
 						<tr>
-							<td class="text-center" rowspan="12">${salary.salary_year}</td>
-						</tr>
-						<tr>
-							<th class="text-center" rowspan="6">지급내용(과세)</th>
-							<th class="text-center" rowspan="6">지급내용(비과세)</th>
+							<th class="text-center" colspan="2">지급내용(과세)</th>
+							<th class="text-center" colspan="2">지급내용(비과세)</th>
 						</tr>
 					</thead>
 					
-					<c:if test="${!empty salary}">
+					<%-- <c:if test="${!empty salary}"> --%>
 						<tbody>
 							<tr>
-								<th class="text-center" rowspan="3">기본급</th>
-								<td class="text-center" rowspan="3">${salary.salary_month}</td>
-								<th class="text-center" rowspan="3">식대</th>
-								<td class="text-center" rowspan="3">${salary.costs_food}</td>
+								<th class="text-center">기본급</th>
+								<td class="text-right">${salary.salary_month}</td>
+								<th class="text-center">식대</th>
+								<td class="text-right">${salary.costs_food}</td>
 							</tr>
 							<tr>
-								<th class="text-center" rowspan="3">야근수당</th>
-								<td class="text-center" rowspan="3">${salary.salary_add_time}</td>
-								<th class="text-center" rowspan="3">교통비</th>
-								<td class="text-center" rowspan="3">${salary.costs_transport}</td>
+								<th class="text-center">야근수당</th>
+								<td class="text-right">${salary.salary_add_time}</td>
+								<th class="text-center">교통비</th>
+								<td class="text-right">${salary.costs_transport}</td>
 							</tr>
 							<tr>
-								<th class="text-center" rowspan="3">휴가수당</th>
-								<td class="text-center" rowspan="3">${salary.salary_add_holiday}</td>
-								<th class="text-center" rowspan="3">복리후생</th>
-								<td class="text-center" rowspan="3">${salary.costs_benefit}</td>
+								<th class="text-center">휴가수당</th>
+								<td class="text-right">${salary.salary_add_holiday}</td>
+								<th class="text-center">복리후생</th>
+								<td class="text-right">${salary.costs_benefit}</td>
 							</tr>
 							<tr>
-								<th class="text-center" rowspan="3">상여금</th>
-								<td class="text-center" rowspan="3">${salary.salary_bonus}</td>
-								<th class="text-center" rowspan="3">기타</th>
-								<td class="text-center" rowspan="3">${salary.costs_etc}</td>
+								<th class="text-center">상여금</th>
+								<td class="text-right">${salary.salary_bonus}</td>
+								<th class="text-center">기타</th>
+								<td class="text-right">${salary.costs_etc}</td>
 								
 							</tr>
 							<tr>
-								<th class="text-center" rowspan="3">월급여액</th>
-								<td class="text-center" rowspan="3">${salary.salary_sum}</td>
-								<th class="text-center" rowspan="3">소득공제액</th>
-								<td class="text-center" rowspan="3">${salary.tax_sum}</td>
+								<th class="text-center">월급여액</th>
+								<td class="text-right">${salary.salary_sum}</td>
+								<th class="text-center">소득공제액</th>
+								<td class="text-right">${salary.tax_sum}</td>
 							</tr>
 							<tr>
-								<th class="text-center" rowspan="6">실수령액</th>
-								<td class="text-center" rowspan="6">${salary.salary_sum - salary.tax_sum}</td>
+								<th class="text-center" colspan="2">실수령액</th>
+								<td class="text-right" colspan="2">${salary.salary_sum - salary.tax_sum}</td>
 							</tr>
 						</tbody>
 
-					</c:if>
+					<%-- </c:if> --%>
 
 				</table>
 				
-				<input type="button" class="btn btn-primary btn-xs" value="입력" onclick="viewSalary(${salary.mem_num})">
+				<input type="button" class="btn btn-primary btn-sm" value="입력" onclick="viewSalary(${salary.mem_num})">
 		
 		</div>
 		

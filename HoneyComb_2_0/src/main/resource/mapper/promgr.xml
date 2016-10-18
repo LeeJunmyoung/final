@@ -82,6 +82,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		chklist_item_num=#{item_num}
 	</update>
 
+	<update id="set_file_num" parameterType="hashmap">
+		update promgr set
+		file_num=#{file_num_str} where promgr_num=#{promgr_num}
+	</update>
+
 	<select id="count_promgr" parameterType="hashmap" resultType="int">
 		select
 		count(*) from promgr where com_num=#{com_num} and mem_num like
@@ -172,12 +177,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		chklist_title_name=#{chkList_name} order by chklist_title_num desc
 	</select>
 
-	<select id="get_chkItem_num_all" parameterType="String" resultType="String">
+	<select id="get_chkItem_num_all" parameterType="String"
+		resultType="String">
 		select chklist_item_num from chklist_item where
 		promgr_num=#{promgr_num}
 	</select>
 
-	<select id="get_chkList_num_all" parameterType="String" resultType="String">
+	<select id="get_chkList_num_all" parameterType="String"
+		resultType="String">
 		select chklist_title_num from chklist_title where
 		promgr_num=#{promgr_num}
 	</select>
@@ -210,6 +217,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from chklist_item where
 		chklist_title_num=#{list_num} and
 		chklist_item_chk=1
+	</select>
+
+	<select id="new_file_num" parameterType="String" resultType="String">
+		select
+		file_num from cloud where promgr_num=#{promgr_num} and folder is not
+		null order
+		by file_num desc
 	</select>
 
 	<delete id="del_promgr" parameterType="hashmap">

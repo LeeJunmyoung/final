@@ -229,13 +229,13 @@
 				"toolbar=no ,width=450, height=250,directories=no,status=yes,scrollbars=yes,menubar=no");
 	}
 	
- 	function DownFile(file_name, file_path){
- 		document.location.href="/HoneyComb_2_0/cloud/cloudDownItem.cloud?file_name="+file_name+"&file_path="+file_path;
+ 	function DownFile(file_num){
+ 		document.location.href="/HoneyComb_2_0/cloud/download?selectedFiles="+file_num;
 	}
 	
-	function DelFile(promgr_num, file_path){ // file 삭제
+	function DelFile(file_num){ // file 삭제
 		
-		url = "/HoneyComb/cloud/cloudDeleteItem.cloud?promgr_num="+promgr_num+"&file_path="+file_path;
+		url = "/HoneyComb_2_0/cloud/deletePro?file_num="+file_num;
 		window
 				.open(
 						url,
@@ -425,8 +425,6 @@
 
 														</c:if>
 
-														<!-- chkItem -->
-
 													</form>
 
 													<input type="button" class="btn btn-default btn-xs"
@@ -438,8 +436,6 @@
 											</c:forEach>
 
 										</c:if>
-
-										<!-- chklist -->
 
 									</div>
 
@@ -453,34 +449,36 @@
 
 											<c:forEach var="view" items="${article.file_view}">
 
-												<div id="${view.file_num}">
+												<c:if test="${view.file_num != null }">
 
-													<label id="file_lab_${view.file_num}"
-														ondblclick="AppearFile(${mem_num}, ${view.mem_num},'file_btn_group_${view.file_num}')">
-														${view.file_name} </label> <input type="button"
-														class="btn btn-default btn-xs" value="down"
-														onclick="DownFile('${view.file_name}', '${view.file_path}')">
+													<div id="${view.file_num}">
 
-													<div class="btn-group" id="file_btn_group_${view.file_num}"
-														style="visibility: hidden;">
+														<label id="file_lab_${view.file_num}"
+															ondblclick="AppearFile(${mem_num}, ${view.mem_num},'file_btn_group_${view.file_num}')">
+															${view.file_name} </label> <input type="button"
+															class="btn btn-default btn-xs" value="down"
+															onclick="DownFile(${view.file_num})">
 
-														<input type="button" class="btn btn-default btn-xs"
-															value="DEL"
-															onclick="DelFile('${article.promgr_num}', '${view.file_path}')">
+														<div class="btn-group"
+															id="file_btn_group_${view.file_num}"
+															style="visibility: hidden;">
 
-														<input type="button" class="btn btn-default btn-xs"
-															value="X"
-															onclick="HiddenFile(${mem_num}, ${view.mem_num},'file_btn_group_${view.file_num}')">
+															<input type="button" class="btn btn-default btn-xs"
+																value="DEL" onclick="DelFile(${view.file_num})">
+
+															<input type="button" class="btn btn-default btn-xs"
+																value="X"
+																onclick="HiddenFile(${mem_num}, ${view.mem_num},'file_btn_group_${view.file_num}')">
+
+														</div>
 
 													</div>
 
-												</div>
+												</c:if>
 
 											</c:forEach>
 
 										</c:if>
-
-										<!-- file -->
 
 									</div>
 
@@ -594,7 +592,8 @@
 				<ul class="pagination pagination-sm">
 
 					<c:if test="${startPage > pageSize}">
-						<li><a href="/HoneyComb_2_0/promgr/more.do?pageNum=${startPage - pageSize}">이전</a>
+						<li><a
+							href="/HoneyComb_2_0/promgr/more.do?pageNum=${startPage - pageSize}">이전</a>
 						</li>
 					</c:if>
 
@@ -603,7 +602,8 @@
 					</c:forEach>
 
 					<c:if test="${endPage < pageCount}">
-						<li><a href="/HoneyComb_2_0/promgr/more.do?pageNum=${startPage + pageSize}">다음</a>
+						<li><a
+							href="/HoneyComb_2_0/promgr/more.do?pageNum=${startPage + pageSize}">다음</a>
 						</li>
 					</c:if>
 
