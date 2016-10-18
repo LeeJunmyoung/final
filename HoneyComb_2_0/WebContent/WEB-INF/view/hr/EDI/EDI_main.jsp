@@ -38,6 +38,18 @@
 							"toolbar=no,width=800,height=980,left=300,directories=no,status=no,scrollbars=no,menubar=no");
 			
 		})
+		$('.edi_end').click(function(){
+			
+			var EDI_num = this.id;
+			url = "EDI_complete_form.do?EDI_num="+EDI_num;
+			window.open(
+							url,
+							"get",
+							"toolbar=no,width=800,height=980,left=300,directories=no,status=no,scrollbars=no,menubar=no");
+			
+		})
+		
+		
 		
 		
 		
@@ -59,6 +71,7 @@
 
 .EDI_ing_cover {
 	margin: auto;
+	
 }
 </style>
 
@@ -79,7 +92,7 @@
 
 			<div class="col-md-9">
 
-				<b>결제함 <span class="badge">111</span></b>
+				<b>결제함 <span class="badge">${EDI_Table_end_count }</span></b>
 
 			</div>
 
@@ -111,20 +124,20 @@
 						<tr>
 							<th class="text-center">문서번호</th>
 							<th class="text-center">제목</th>
-							<th class="text-center">부서</th>
+							<th class="text-center">관련 부서</th>
 							<th class="text-center">기안자</th>
-							<th class="text-center">작성일</th>
+							<th class="text-center">승인날짜</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:if test="${not empty EDI_Table_ing  }">
-							<c:forEach var="EDI_Table_ing" items="${EDI_Table_ing }">
-								<tr id='${EDI_Table.EDI_num }'>
-									<th class="col-md-2 text-center">${EDI_Table_ing.document_num }</th>
-									<th class="col-md-4">${EDI_Table_ing.EDI_Subject }</th>
-									<th class="col-md-2 text-center">${EDI_Table_ing.writer_mem_dept }</th>
-									<th class="col-md-2 text-center">${EDI_Table_ing.writer_mem_name }</th>
-									<th class="col-md-3 text-center">${EDI_Table_ing.draftDate }</th>
+						<c:if test="${not empty EDI_Table_end  }">
+							<c:forEach var="EDI_Table_end" items="${EDI_Table_end }">
+								<tr class='edi_end' id='${EDI_Table_end.EDI_num }'>
+									<th class="col-md-2 text-center">${EDI_Table_end.document_num }</th>
+									<th class="col-md-4">${EDI_Table_end.EDI_Subject }</th>
+									<th class="col-md-2 text-center">${EDI_Table_end.send_dept_name }</th>
+									<th class="col-md-2 text-center">${EDI_Table_end.writer_mem_pos } ${EDI_Table_end.writer_mem_name }</th>
+									<th class="col-md-3 text-center">${EDI_Table_end.approvalDate }</th>
 								</tr>
 
 							</c:forEach>

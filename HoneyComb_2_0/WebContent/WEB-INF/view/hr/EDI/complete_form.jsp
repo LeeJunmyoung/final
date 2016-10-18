@@ -163,65 +163,32 @@ textarea {
 </style>
 
 <script type="text/javascript">
-function midsign(){
 	
-	
-		
-	
-		var EDI_num = '${edi_info.EDI_num}';
-		
-		
-		url = "midsign.do?EDI_num="+EDI_num;
-		
-		
+function check_check(){
+	var send_dept_name = '${edi_info.send_dept_name}';
+	var my_dept_name = '${com_dept_name}';
+	var my_mem_num = '${mem_num}';
+	var writer = '${edi_info.edi_writer}';
+	var mid_mem_num= '${edi_info.mid_mem_num}';
+	var fin_mem_num= '${edi_info.fin_mem_num}';
 
-			var out = confirm("결제 하시겠습니까?");
-
-			if (out) {
-				this.location.href=url;
+	if(send_dept_name==my_dept_name||my_mem_num==writer || my_mem_num==mid_mem_num || my_mem_num==fin_mem_num){
 		
-			} else {
-				return false;
-			}
-
+			
 		
 		
-	
+	}else{
+		alert('열람 권한이 없습니다.')
+		window.close();
+	}
 }
-function finsign(){
 	
 	
-	
-	
-	var EDI_num = '${edi_info.EDI_num}';
-	
-	
-	url = "finsign.do?EDI_num="+EDI_num;
-	
-	
-
-		var out = confirm("결제 하시겠습니까?");
-
-		if (out) {
-			this.location.href=url;
-	
-		} else {
-			return false;
-		}
-
-	
-	
-
-}
-
-
-
-
 </script>
 
 
 </head>
-<body>
+<body onload="check_check()">
 	<form action="writeEDI.do" method="post" enctype="multipart/form-data"
 		onsubmit="return check_invaild();">
 		<div class="EDI_write_form">
@@ -288,22 +255,8 @@ function finsign(){
 					</tr>
 					<tr>
 						<td id="sign_form_td_sign3">${edi_info.writer_sign}</td>
-						<td id="sign_form_td_sign3"><c:if
-								test="${empty edi_info.mid_sign}">
-								<c:if test="${mem_num eq edi_info.mid_mem_num and edi_info.mid_accept eq 0 }">
-									<input type="button" class="btn btn-primary" value="서명" onclick="midsign()">
-								</c:if>
-							</c:if> <c:if test="${not empty edi_info.mid_sign}">
-						${edi_info.mid_sign }
-						</c:if></td>
-						<td id="sign_form_td_sign3"><c:if
-								test="${empty edi_info.fin_sign}">
-								<c:if test="${mem_num == edi_info.fin_mem_num and edi_info.fin_accept eq 0  }">
-									<input type="button" class="btn btn-primary" value="서명" onclick="finsign()">
-								</c:if>
-							</c:if> <c:if test="${not empty edi_info.fin_sign}">
-						 ${edi_info.fin_sign }
-						</c:if></td>
+						<td id="sign_form_td_sign3">${edi_info.mid_sign }</td>
+						<td id="sign_form_td_sign3">${edi_info.fin_sign }</td>
 					</tr>
 
 

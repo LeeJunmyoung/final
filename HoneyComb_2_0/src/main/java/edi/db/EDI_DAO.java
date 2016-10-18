@@ -105,5 +105,55 @@ public class EDI_DAO extends SqlSessionDaoSupport {
 		
 		return edb;
 	}
+	
+	
+	public void sign_Mid(int EDI_num,String mid_sign){
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("EDI_num", EDI_num);
+		map.put("mid_sign", mid_sign);
+		getSqlSession().update("edi.sign_Mid", map);
+	
+	}
+	
+	
+	public void sign_fin(int EDI_num,String fin_sign,String endDate){
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("EDI_num", EDI_num);
+		map.put("fin_sign", fin_sign);
+		map.put("endDate", endDate);
+		getSqlSession().update("edi.sign_fin", map);
+		
+		
+	}
+	
+	public List<EDI_DateBean> getEDI_Table_end(int com_num){
+		
+		
+
+		List<EDI_DateBean> list = getSqlSession().selectList("edi.getEDI_Table_end", com_num);
+		List<EDI_DateBean> returnlist = new ArrayList<EDI_DateBean>();
+
+		for (Object object : list) {
+			EDI_DateBean edb = (EDI_DateBean) object;
+			LogOnDataBean lodb = getMemberInfo(edb.getEdi_writer());
+			edb.setWriter_mem_dept(lodb.getCom_dept_name());
+			edb.setWriter_mem_pos(lodb.getCom_pos_name());
+			edb.setWriter_mem_name(lodb.getName());
+
+			returnlist.add(edb);
+
+		}
+		
+		return returnlist;
+		
+		
+	}
+	
+	public int getEDI_Table_end_count(int com_num) {
+
+		int count = getSqlSession().selectOne("edi.getEDI_Table_end_count", com_num);
+
+		return count;
+	}
 
 }
