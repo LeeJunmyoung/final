@@ -176,7 +176,6 @@ a:hover {
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      history.go(0);
       alert("로그인성공"); 
       testAPI();
     } else if (response.status === 'not_authorized') {
@@ -294,9 +293,11 @@ a:hover {
 							<button type="submit" class="btn btn-default">Sign in</button>
 							<br>
 							
-							<a href="#" scope="public_profile,email" class="btn-social btn-facebook" id="FBbtn" onclick="FB.login();"> 
-							<span class="fa fa-facebook">&nbsp;Facebook 계정으로 로그인하기</span></a>
-							
+							<!-- <a href="#" scope="public_profile,email" class="btn-social btn-facebook" id="FBbtn" onclick="FB.login();"> 
+							<span class="fa fa-facebook">&nbsp;Facebook 계정으로 로그인하기</span></a> -->
+							<br>
+							<fb:login-button data-size="large" scope="public_profile,email" onlogin="checkLoginState();">Facebook 아이디로 로그인</fb:login-button>
+							<br>
 							<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 							<div id="naver_id_login">네이버 아이디로 로그인</div>
 							<!-- //네이버아이디로로그인 버튼 노출 영역 -->
