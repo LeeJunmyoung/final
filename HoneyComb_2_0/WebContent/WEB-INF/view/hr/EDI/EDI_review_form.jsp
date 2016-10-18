@@ -216,7 +216,6 @@ function finsign(){
 
 
 
-
 </script>
 
 
@@ -260,7 +259,7 @@ function finsign(){
 
 					<tr>
 						<td style="width: 70px;">파 일 : &nbsp;&nbsp;</td>
-						<td>파일 클릭할 곳</td>
+						<td><p id="attechFile"><a href="EDIDown.do?EDI_num=${edi_info.EDI_num }">${edi_info.attechFile }</a></td>
 					</tr>
 
 

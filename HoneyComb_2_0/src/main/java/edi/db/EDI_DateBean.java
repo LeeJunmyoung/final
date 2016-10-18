@@ -12,7 +12,7 @@ public class EDI_DateBean {
 	private int fin_mem_num;
 	private int fin_accept;
 	private String send_dept_name;
-	private String attechFile;
+	private String attachFile;
 	private String draftDate;
 	private String approvalDate;
 	private int edi_writer;
@@ -114,7 +114,7 @@ public class EDI_DateBean {
 		return "EDI_DateBean [EDI_num=" + EDI_num + ", document_num=" + document_num + ", com_num=" + com_num
 				+ ", EDI_Subject=" + EDI_Subject + ", EDI_TextArea=" + EDI_TextArea + ", mid_mem_num=" + mid_mem_num
 				+ ", mid_accept=" + mid_accept + ", fin_mem_num=" + fin_mem_num + ", fin_accept=" + fin_accept
-				+ ", send_dept_name=" + send_dept_name + ", attechFile=" + attechFile + ", draftDate=" + draftDate
+				+ ", send_dept_name=" + send_dept_name + ", attachFile=" + attachFile + ", draftDate=" + draftDate
 				+ ", approvalDate=" + approvalDate + "]";
 	}
 	public String getDraftDate() {
@@ -190,10 +190,10 @@ public class EDI_DateBean {
 		this.send_dept_name = send_dept_name;
 	}
 	public String getAttechFile() {
-		return attechFile;
+		return attachFile;
 	}
 	public void setAttechFile(String attechFile) {
-		this.attechFile = attechFile;
+		this.attachFile = attechFile;
 	}
 	
 }

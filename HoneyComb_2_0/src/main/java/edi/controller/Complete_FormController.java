@@ -22,6 +22,8 @@ public class Complete_FormController {
 	@RequestMapping("/EDI_complete_form.do")
 	public String viewCompleteForm(@RequestParam int EDI_num,ModelMap map){
 		EDI_DateBean getEDIonlyOne = dao.getEDIonlyOne(EDI_num);
+		int start = getEDIonlyOne.getAttechFile().indexOf("00000") + 5;
+		getEDIonlyOne.setAttechFile(getEDIonlyOne.getAttechFile().substring(start));
 		map.addAttribute("edi_info", getEDIonlyOne);
 		
 		return "complete_form";

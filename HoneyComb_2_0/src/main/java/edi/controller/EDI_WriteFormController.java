@@ -101,7 +101,7 @@ public class EDI_WriteFormController {
 		Date d = new Date();
 		String add_date = String.valueOf(d.getTime());
 		String file_name = attachfile.getOriginalFilename();
-		String convert_File_Name = add_date + file_name;
+		String convert_File_Name = add_date+"00000" + file_name;
 		File file = new File(savepath + "\\" + convert_File_Name);
 		String DBpath = "/HoneyComb_2_0/attachfile/" + convert_File_Name;
 		try {
