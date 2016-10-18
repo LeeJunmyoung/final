@@ -28,10 +28,18 @@ public class EDI_MainController {
 	@RequestMapping("/EDI_Main.do")
 	public String maintogo(HttpServletRequest request,ModelMap map){
 		int com_num=(int) request.getSession().getAttribute("com_num");
+		int mem_num=(int)request.getSession().getAttribute("mem_num");
 		
-		List<EDI_DateBean> list=dao.getEDI_Table(com_num);
+		///진행함
 		
-		map.put("EDI_Table", list);
+		List<EDI_DateBean> EDI_Table_ing=dao.getEDI_Table_ing(com_num,mem_num);
+		int EDI_Table_ing_count= dao.getEDI_Table_ing_count(com_num, mem_num);
+		
+		map.put("EDI_Table_ing", EDI_Table_ing);
+		map.put("EDI_Table_ing_count",EDI_Table_ing_count);
+		
+		////
+		
 		
 		return "EDI/EDI_main";
 	}

@@ -62,6 +62,8 @@
 
 	<bean id="SelectApprovalMemFrameController" class="edi.controller.SelectApprovalMemFrameController" p:dao-ref="EDI_DAO" ></bean>
 	
+	<bean id="EDI_Review_Controller" class="edi.controller.EDI_Review_Controller" p:dao-ref="EDI_DAO" ></bean>
+	
 
 
 	<bean id="EDI_DAO" class="edi.db.EDI_DAO">

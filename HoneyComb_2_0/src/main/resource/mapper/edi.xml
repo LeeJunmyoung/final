@@ -26,10 +26,25 @@
 	</select>
 
 
-	<select id="getEDI_Table" parameterType="int" resultType="edi.db.EDI_DateBean">
-		select * from (select * from EDI where com_num = #{com_num} order by
+	<select id="getEDI_Table_ing" parameterType="hashmap" resultType="edi.db.EDI_DateBean">
+		select * from (select * from EDI where (com_num = #{com_num} and
+		edi_writer=#{mem_num} )or (com_num = #{com_num} and
+		mid_mem_num=#{mem_num} ) or
+		(com_num=#{com_num} and mid_accept = 1 and
+		fin_mem_num= #{mem_num}) order by
 		edi_num DESC) where ROWNUM <![CDATA[ < ]]>6
 	</select>
+
+	<select id="getEDI_Table_ing_count" parameterType="hashmap" resultType="int">
+		select count(*) from (select * from EDI where (com_num =#{com_num} and
+		edi_writer=#{mem_num} )or (com_num = #{com_num} and mid_mem_num=#{mem_num} ) or
+		(com_num=#{com_num} and mid_accept = 1 and fin_mem_num= #{mem_num}))
+	</select>
+
+	<select id="getEDIonlyOne" parameterType="int" resultType="edi.db.EDI_DateBean">
+		select * from edi where edi_num = #{edi_num}
+	</select>
+
 
 
 	<insert id="insertNewEDI" parameterType="edi.db.EDI_DateBean">
@@ -38,14 +53,15 @@
 		edi_subject,edi_textarea,mid_mem_num,
 		mid_accept,fin_mem_num,
 		fin_accept,send_dept_name,
-		attachfile,draftdate)
+		attachfile,draftdate,edi_writer,
+		writer_sign)
 		values(EDI_seq.nextval,#{document_num},
 		#{com_num},#{EDI_Subject},
 		#{EDI_TextArea},
 		#{mid_mem_num},0,
 		#{fin_mem_num},0,
-		#{send_dept_name},#{attechFile}
-		#{draftDate}
+		#{send_dept_name},#{attechFile},
+		#{draftDate},#{edi_writer},#{writer_sign}
 		)
 	</insert>
 
