@@ -81,7 +81,7 @@ li {
 					</c:if>
 					<li><a href="/HoneyComb_2_0/salary/user_main.do">SALARY</a></li>
 
-					<c:if test="${sessionScope.com_dept_num == 2}">
+					<c:if test="${sessionScope.com_dept_num == 2 and sessionScope.com_dept_num == 0}">
 						<li><a href="/HoneyComb_2_0/salary/management_main.do">SALARY MANAGEMENT</a></li>
 					</c:if>
 				</ul></li>
