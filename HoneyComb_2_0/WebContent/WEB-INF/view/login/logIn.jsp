@@ -240,11 +240,18 @@ a:hover {
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', {fields: 'email'}, function(response) {
-    	alert(response.email); 
+    FB.api('/me', {fields: 'email, name, gender'},  function(response) {
+    	var email = response.email;
+    	var name = response.name;
+    	var gender = response.gender;
+    	window.location.replace("login/apiLogIn.do?email="+email+"&gender="+gender+"&name="+name);
+    /* 	alert(response.email); 
+    	alert(response.name);
+    	alert(response.gender);
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+        'Thanks for logging in, ' + response.name + '!'; */
+      
     });
   }
 </script>
