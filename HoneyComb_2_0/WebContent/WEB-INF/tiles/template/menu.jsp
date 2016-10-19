@@ -26,10 +26,11 @@
 
 	$(function() {
 		$("#dropdown").click(function() {
-			if ($("#dropdown ul", this).css("display") == "none") {
-				$("#dropdown ul").slideUp("fast");
+			if ($("#dropdown_hr", this).css("display") == "none") {
+				$("#dropdown_hr").slideDown("fast");
 			} else {
-				$("#dropdown ul").slideDown("fast");
+				
+				$("#dropdown_hr").slideUp("fast");
 			}
 		});
 	});
@@ -71,10 +72,10 @@ li {
 
 			<li><a href="/HoneyComb_2_0/chatting/mainchat.do">MESSAGE</a></li>
 			<li><a href="/HoneyComb_2_0/cloud/main">CLOUD</a></li>
-
+			<li><a href="/HoneyComb_2_0/EDI/EDI_Main.do">E-DOC 24</a></li>
 			<li id="dropdown"><a>HR <span class="caret"></span></a>
-				<ul class="nav nav-pills nav-stacked">
-					<li><a href="/HoneyComb_2_0/EDI/EDI_Main.do">EDInterchage</a></li>
+				<ul id="dropdown_hr" class="nav nav-pills nav-stacked">
+					
 					<li><a href="/HoneyComb_2_0/dept/chart">DEPT</a></li>
 					<c:if test="${ sessionScope.com_pos_num <= 4 }">
 					<li><a href="/HoneyComb_2_0/accept/accept">ACCEPT</a></li>
