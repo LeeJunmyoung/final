@@ -21,7 +21,7 @@ $(function(){
 		cPath = fullPath.lastIndexOf("\\");
 		fName = fullPath.substring(cPath+1);
 		folder = '${param.folder}';
-		dupliCk(fName,folder);
+		dupliCk(fName,folder,'${promgr_num}');
 	})
 });
 </script>
@@ -29,6 +29,7 @@ $(function(){
 </head>
 <body>
 	<form name="form"	action="upload" enctype="multipart/form-data" method="post">
+		<input type="hidden" value="${param.folder}" name="folder">
 		<c:if test="${promgr_num != null}">
 			<input type="hidden" name="promgr_num" value="${promgr_num}"> 
 			<input type="hidden" name = "promgr_name" value="${promgr_name}"> 

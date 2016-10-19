@@ -117,13 +117,12 @@
 		</c:forEach>
 	</ui>
 </div>
-<div id="contextBox" style="display: none; position: absolute; z-index: 1000">
-	<a href="javascript:openupload('${param.folder}')">업로드</a>
-	<a href="javascript:download()">다운로드</a>
-	<a href = "javascript:openMakeFolder('${param.folder}')">폴더 만들기</a>
-	<a href="javascript:deletefile()">삭제</a>
-	<a href="javascript:changeFileName()">이름 바꾸기</a>
-	<a href="" >파일 열기</a>
+<div class="contextBox" id="contextBox" style="display: none; position: absolute; z-index: 1000">
+	<div onclick="openupload('${param.folder}')">업로드</div>
+	<div onclick="download()">다운로드</div>
+	<div onclick="openMakeFolder('${param.folder}')">폴더 만들기</div>
+	<div onclick="deletefile()">삭제</div>
+	<div onclick="changeFileName()">이름 바꾸기</div>
 </div>
 </body>
 </html>

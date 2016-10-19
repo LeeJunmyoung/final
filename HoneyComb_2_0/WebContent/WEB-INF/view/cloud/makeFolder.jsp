@@ -19,7 +19,7 @@ $("#folder").keyup(function(){
 	blankCk(item);
 	specialCharCk(item);
 	var folder = '${param.folder}';
-	dupliCk(item ,folder)
+	dupliCk(item ,folder,0)
 	});
 });
 			

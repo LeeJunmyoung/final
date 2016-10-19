@@ -16,15 +16,18 @@ function specialCharCk(value){
 		return;
 	};
 };
-function dupliCk(item, folder) {
+function dupliCk(item, folder, promgr_num) {
 	var item = item;
 	var folder = folder
+	var promgr_num = promgr_num
+	
 	$.ajax({
 		type : "POST",
 		url : "/HoneyComb_2_0/cloud/dupleCk",
 		data : {
 			"item" : item,
-			"folder" : folder
+			"folder" : folder,
+			"promgr_num" : promgr_num
 		},
 		success : function(data) {
 			console.log(data);
@@ -47,7 +50,6 @@ function openDelete(selectedFiles){
 	window.open("delete?selectedFiles="+selectedFiles,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=800,height=400");
 }
 function openMakeFolder(folder){
-	
 	window.open("makeFolder?folder="+folder,'',"toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400")
 }
 
