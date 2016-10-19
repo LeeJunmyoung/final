@@ -43,7 +43,7 @@
 			    .css({"display":"block", top: event.pageY + "px", left: event.pageX + "px"});	
 		
 	}).bind("click", function(event) {
-		checkChange();
+		/* checkChange(); */
 		$("#contextBox").hide(); 
 	});
 	$(document).keypress(function(e){

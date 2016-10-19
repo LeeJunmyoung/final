@@ -23,6 +23,14 @@ $(function(){
 		folder = '${param.folder}';
 		dupliCk(fName,folder,'${promgr_num}');
 	})
+	var file_Target=$('.file_upload .upload_hidden');
+	file_Target.on('change', function(){  // 값이 변경되면
+	 	    if(window.FileReader){  // modern browser
+	 	      var filename = $(this)[0].files[0].name;
+	 	    }
+	 	    // 추출한 파일명 삽입
+	 	    $(this).siblings('.upload_name').val(filename);
+	 	  });
 });
 </script>
 <link rel="stylesheet" href="/HoneyComb_2_0/resources/css/cloud.css">
@@ -34,10 +42,18 @@ $(function(){
 			<input type="hidden" name="promgr_num" value="${promgr_num}"> 
 			<input type="hidden" name = "promgr_name" value="${promgr_name}"> 
 		</c:if>
-		<input type="file" name="uploadfile" id="uploadFile">
+		<div class="file_upload">
+			<input type="text" disabled="disabled"class="upload_name">
+			<label for="uploadFile">
+				<div class="choosefile">파일선택</div>
+			</label>
+			<input type="file" name="uploadfile" id="uploadFile" class="upload_hidden">
+		</div>
+		
 		<c:if test="${com_pos_num < 3}">
 			보안설정<input type="checkbox" name="security">
 		</c:if>
+		
 		<input type="submit" class="basicButton" id="submit" value="업로드" disabled="disabled">
 		<p id="dupli"/>
 	
