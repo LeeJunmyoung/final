@@ -58,12 +58,12 @@ public class Cal_DAO extends SqlSessionDaoSupport{
 			
 			Date formatdate = new Date(cal.getCal_end().getYear(),cal.getCal_end().getMonth(),cal.getCal_end().getDate()+1);
 			
-			
+			String cal_contents = cal.getCal_contents().replaceAll("<br>", "\r\n");
 			cal.setCal_end(formatdate);
 			formatdate= new Date(cal.getCal_start().getYear(),cal.getCal_start().getMonth(),cal.getCal_start().getDate());
 			cal.setCal_start(formatdate);
 			//System.out.println(cal.toString());
-			
+			cal.setCal_contents(cal_contents);
 
 			totalCal1.add(cal);
 		}
@@ -101,6 +101,12 @@ public class Cal_DAO extends SqlSessionDaoSupport{
 		
 		
 		
+	}
+	public Cal_DataBean getCalDetail(int cal_num){
+		
+		Cal_DataBean cdb = getSqlSession().selectOne("cal.getCalDetail",cal_num);
+		
+		return cdb;
 	}
 	
 	

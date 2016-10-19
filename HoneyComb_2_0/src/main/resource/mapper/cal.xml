@@ -7,6 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="viewCal" resultSets="hashmap" resultType="cal.db.Cal_DataBean">
 		select * from calendar where (mem_num = #{mem_num} and category=1 ) or (com_num=#{com_num} and category=3) or (com_dept_num=#{com_dept_num} and category=2)
 	</select>
+	
+	<select id="getCalDetail" resultSets="int" resultType="cal.db.Cal_DataBean" >
+	select * from calendar where cal_num =#{cal_num}
+	</select>
 
 
 	<insert id="cal_insert" parameterType="hashmap" >

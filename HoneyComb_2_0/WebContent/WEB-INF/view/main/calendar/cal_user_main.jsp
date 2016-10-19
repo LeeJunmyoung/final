@@ -66,8 +66,7 @@ top:50px;
 															+ start
 															+ "&cal_end="
 															+ end
-															+ "&cal_contents="
-															+ event.Contents;
+															
 															+ "&type=nonono"
 
 													open(
@@ -111,7 +110,7 @@ top:50px;
 								newEvent.title = '${total.cal_subject}';
 								newEvent.start = start;
 								newEvent.end = end;
-								newEvent.Contents = '${total.cal_contents}';
+				
 								newEvent.number = '${total.cal_num}'
 								newEvent.allDay = false;
 								if('${total.category}'==1){

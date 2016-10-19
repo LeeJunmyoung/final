@@ -39,7 +39,7 @@ public class Insert_Cal_Controller {
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		int dept_num = (int) request.getSession().getAttribute("com_dept_num");
-
+		contents=contents.replace("\r\n","<br>");
 		
 		calbean.setCal_subject(title);
 		calbean.setCal_contents(contents);
