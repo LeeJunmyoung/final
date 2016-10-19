@@ -22,30 +22,49 @@ import edi.db.Temp_EDI_DateBean;
 import net.sf.json.JSONObject;
 
 @Controller
-public class EDI_WriteFormController {
-
+public class Temp_EDIController {
+	
+	
 	private EDI_DAO dao;
 	
 	
+	
+	
+
+
+
+
+
 	public void setDao(EDI_DAO dao) {
 		this.dao = dao;
 	}
 
-	@RequestMapping(value = "/writeForm.do", method = RequestMethod.GET)
-	public String writeForm(ModelMap map) {
 
-		String write_date = writeDate();
-		map.addAttribute("write_date", write_date);
 
-		return "EDI_WriteForm";
-	}
 
-	@RequestMapping(value = "/writeEDI.do", method = RequestMethod.POST)
-	public String writeForm(
-			@RequestParam("attachfile") MultipartFile attachfile, @RequestParam String edi_subject,
-			@RequestParam String textarea_edi, @RequestParam int mid_mem_num, @RequestParam int fin_mem_num,
-			@RequestParam String send_dept_name,@RequestParam("document_num") String document_num,HttpServletRequest request) {
+
+
+
+
+
+	@RequestMapping("/temp_form.do")
+	public String tempForm(@RequestParam("temp_EDI_num") int temp_EDI_num, ModelMap map){
 		
+		
+		Temp_EDI_DateBean tedb = dao.getTempOne(temp_EDI_num);
+		
+		
+		map.put("EDItemp", tedb);
+		
+		
+		return "EDI_TempForm";
+	}
+	@RequestMapping("/tempwriteEDI.do")
+	public String submitForm(@RequestParam("attachfile") MultipartFile attachfile, @RequestParam String edi_subject,
+			@RequestParam String textarea_edi, @RequestParam int mid_mem_num, @RequestParam int fin_mem_num,
+			@RequestParam String send_dept_name,@RequestParam("document_num") String document_num,HttpServletRequest request,@RequestParam("temp_EDI_num") int temp_EDI_num){
+		
+
 		EDI_DateBean edb = new EDI_DateBean();
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
@@ -66,18 +85,22 @@ public class EDI_WriteFormController {
 		edb.setEdi_writer(mem_num);
 		edb.setWriter_sign(signDate());
 		dao.insertNewEDI(edb);
+		dao.deleteTempTable(temp_EDI_num);
 		
 		
 		
-
 		return "writer_close";
 	}
 	
-	@RequestMapping(value = "/writeTempEDI.do", method = RequestMethod.POST)
+	
+	
+	
+
+	@RequestMapping(value = "/writeTempUpdate.do", method = RequestMethod.POST)
 	public void writeTempForm(@RequestParam String edi_subject,@RequestParam( defaultValue="0") String textarea_edi,
 			 @RequestParam( defaultValue="0") String mid_mem_num,@RequestParam( defaultValue="0") String fin_mem_num,
 			 @RequestParam( defaultValue="0") String send_dept_name,@RequestParam(value="document_num",defaultValue="0") String document_num
-			 ,@RequestParam( defaultValue="0") String write_date,HttpServletResponse resp,HttpServletRequest request
+			 ,@RequestParam( defaultValue="0") String write_date,@RequestParam( defaultValue="0") String temp_EDI_num,HttpServletResponse resp,HttpServletRequest request
 			 ) throws IOException{
 		int com_num = (int) request.getSession().getAttribute("com_num");
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
@@ -95,9 +118,9 @@ public class EDI_WriteFormController {
 		tedb.setWrite_date(write_date);
 		tedb.setEdi_writer(mem_num);
 		tedb.setCom_num(com_num);
+		tedb.setTemp_EDI_num(Integer.valueOf(temp_EDI_num));
 		
-		
-		dao.insertTempEDI(tedb);
+		dao.updateTempTable(tedb);
 	
 		
 		JSONObject json = new JSONObject();
@@ -107,7 +130,17 @@ public class EDI_WriteFormController {
 		out.print(json.toString());
 		
 	}
-
+	@RequestMapping("/del_temp.do")
+	public String delTemp(@RequestParam( defaultValue="0") String temp_EDI_num,ModelMap map){
+		dao.deleteTempTable(Integer.valueOf(temp_EDI_num));
+	
+		
+		
+		return "close";
+	}
+	
+	
+	
 	public String writeDate() {
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
@@ -156,5 +189,6 @@ public class EDI_WriteFormController {
 		
 		
 	}
-
+	
+	
 }

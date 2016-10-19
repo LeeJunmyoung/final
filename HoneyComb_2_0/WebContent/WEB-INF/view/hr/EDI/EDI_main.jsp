@@ -49,6 +49,17 @@
 			
 		})
 		
+		$('.temp_edi').click(function(){
+			
+			var temp_EDI_num = this.id;
+			url = "temp_form.do?temp_EDI_num="+temp_EDI_num;
+			window.open(
+							url,
+							"get",
+							"toolbar=no,width=800,height=980,left=300,directories=no,status=no,scrollbars=no,menubar=no");
+			
+		})
+		
 		
 		
 		
@@ -79,6 +90,12 @@ top:10px;
 left:40px;
 }
 .ing_EDI_div{
+position: relative;
+top:10px;
+left:40px;
+
+}
+.temp_div_wrapper{
 position: relative;
 top:10px;
 left:40px;
@@ -254,7 +271,82 @@ left:40px;
 	</div>
 	
 	</div>
-	<div id="EDI_temp"></div>
+	<div id="EDI_temp">
+	
+	
+	
+	<div class="temp_div_edi">
+	<div class="temp_div_wrapper">
+		<div class="row">
+
+			<div class="col-md-9">
+
+				<b>임시저장함 <span class="badge">${temp_EDI_count }</span></b>
+
+			</div>
+
+			<div class="col-md-1" style="margin-right: 3px;">
+
+				
+
+			</div>
+
+			<div class="col-md-1">
+
+				<input type="button" class="btn btn-primary btn-xs" value="더보기"
+					onclick="location.href='#'">
+
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-11">
+
+
+
+
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th class="text-center">문서번호</th>
+							<th class="text-center">제목</th>
+							<th class="text-center">관련 부서</th>
+							<th class="text-center">기안자</th>
+							<th class="text-center">작성날짜</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:if test="${not empty EDI_temp  }">
+							<c:forEach var="EDI_temp" items="${EDI_temp}">
+								<tr class='temp_edi' id='${EDI_temp.temp_EDI_num}'>
+									<th class="col-md-2 text-center">${EDI_temp.document_num }</th>
+									<th class="col-md-4">${EDI_temp.EDI_Subject }</th>
+									<th class="col-md-2 text-center">${EDI_temp.send_dept_name }</th>
+									<th class="col-md-2 text-center">${name} </th>
+									<th class="col-md-3 text-center">${EDI_temp.write_date }</th>
+								</tr>
+
+							</c:forEach>
+						</c:if>
+						
+
+
+					</tbody>
+				</table>
+
+
+
+			</div>
+
+		</div>
+
+	
+	</div>
+	</div>
+	
+	</div>
 
 
 

@@ -156,5 +156,71 @@ public class EDI_DAO extends SqlSessionDaoSupport {
 
 		return count;
 	}
+	
+	public void insertTempEDI(Temp_EDI_DateBean tedb){
+		getSqlSession().insert("edi.insertTempEDI",tedb);
+		
+		
+	}
+	
+	
+	public List<Temp_EDI_DateBean> getTemptable(int mem_num){
+		List<Temp_EDI_DateBean> list = getSqlSession().selectList("edi.getTemp_table",mem_num);
+		
+		
+		
+		return list;
+	}
+	
+	public int getTempCount(int mem_num){
+		
+		int count = getSqlSession().selectOne("edi.getTemp_table_count",mem_num);
+		return count;
+	}
+	
+	
+	public Temp_EDI_DateBean getTempOne(int temp_EDI_num){
+		
+		Temp_EDI_DateBean tedb = getSqlSession().selectOne("edi.getTempOne",temp_EDI_num);
+		
+		if(tedb.getEDI_TextArea()!=null){
+		String text = tedb.getEDI_TextArea().replaceAll("<br>", "\r\n");
+		tedb.setEDI_TextArea(text);
+		}
+		if(tedb.getMid_mem_num()!=0){
+		LogOnDataBean mid_mem = getMemberInfo(tedb.getMid_mem_num());
+		LogOnDataBean fin_mem = getMemberInfo(tedb.getFin_mem_num());
+		
+		tedb.setMid_mem_dept(mid_mem.getCom_dept_name());
+		tedb.setMid_mem_pos(mid_mem.getCom_pos_name());
+		tedb.setMid_mem_name(mid_mem.getName());
+		tedb.setFin_mem_dept(fin_mem.getCom_dept_name());
+		tedb.setFin_mem_pos(fin_mem.getCom_pos_name());
+		tedb.setFin_mem_name(fin_mem.getName());
+
+		}
+		
+		
+				
+		
+		
+		
+		
+		return tedb;
+	}
+	
+	public void updateTempTable(Temp_EDI_DateBean tedb){
+		
+		getSqlSession().update("edi.updateTempTable",tedb);
+		
+		
+		
+	}
+	public void deleteTempTable(int temp_EDI_num){
+		
+		getSqlSession().delete("edi.deleteTempTable",temp_EDI_num);
+	}
+	
+	
 
 }

@@ -160,6 +160,10 @@ textarea {
 #document_num {
 	width: 100px;
 }
+.left_table{
+position: relative;
+left:-50px;
+}
 </style>
 
 <script type="text/javascript">
@@ -201,7 +205,7 @@ function check_check(){
 
 
 			<div class="form_left">
-				<table>
+				<table class="left_table">
 					<tr>
 						<td style="width: 70px;">작 성 일 :</td>
 						<td>&nbsp;&nbsp;${edi_info.draftDate}</td>

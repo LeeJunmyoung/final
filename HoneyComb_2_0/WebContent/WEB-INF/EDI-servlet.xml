@@ -75,7 +75,10 @@
 
 	<bean id="Complete_FormController" class="edi.controller.Complete_FormController"
 		p:dao-ref="EDI_DAO"></bean>
-	
+
+	<bean id="Temp_EDIController" class="edi.controller.Temp_EDIController"
+		p:dao-ref="EDI_DAO"></bean>
+
 
 	<bean id="EDI_DAO" class="edi.db.EDI_DAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />

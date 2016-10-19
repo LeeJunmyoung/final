@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,12 +19,10 @@
 	 return "Bye now!";
 	 }; */
 
-	function fromtodept() {
+	function fromtodept1() {
 		var url = "receiveForm.do";
-		window
-				.open(
-						url,
-						'get',
+		window.open(url,
+						'post',
 						"toolbar=no,width=300,height=400,left=600,directories=no,status=no,scrollbars=no,menubar=no");
 
 	}
@@ -34,33 +33,52 @@
 		window
 				.open(
 						url,
-						'get',
+						'post',
 						"toolbar=no,width=650,height=550,left=600,directories=no,status=no,scrollbars=no,menubar=no");
 
 	}
-	function tempsavebutton() {
-		var write_date = '${write_date}';
-		var document_num = document.getElementById("document_num").value;
+	function del_temp() {
 		
+
+		var out = confirm("정말 삭제 하시겠습니까?");
+
+		if (out) {
+			var temp=${EDItemp.temp_EDI_num};
+			window.location.href= "del_temp.do?temp_EDI_num="+temp+"";
+		} else {
+			return false;
+		}
+		
+
+		
+	}
+	
+	
+	function tempupdatebutton() {
+		var write_date = '${EDItemp.write_date}';
+		var temp_EDI_num = '${EDItemp.temp_EDI_num}';
+		var document_num = document.getElementById("document_num").value;
 		var edi_subject = document.getElementById("edi_subject").value;
 		var textarea_edi = document.getElementById("textarea_edi").value;
 		var mid_mem_num = document.getElementById("mid_mem_num").value;
 		var fin_mem_num = document.getElementById("fin_mem_num").value;
 		var send_dept_name = document.getElementById("send_dept_name").value;
 
-		if(edi_subject==""){
+		if (edi_subject == "") {
 			alert('제목은 필수 사항 입니다');
 			return false;
 		}
-		
 
-		var param = "write_date=" + write_date + "&document_num=" + document_num + "&edi_subject=" + edi_subject
-				+ "&textarea_edi=" + textarea_edi+"&mid_mem_num=" + mid_mem_num+"&fin_mem_num=" + fin_mem_num+"&send_dept_name=" + send_dept_name;
- 
+		var param = "write_date=" + write_date + "&document_num="
+				+ document_num + "&edi_subject=" + edi_subject
+				+ "&textarea_edi=" + textarea_edi + "&mid_mem_num="
+				+ mid_mem_num + "&fin_mem_num=" + fin_mem_num
+				+ "&send_dept_name=" + send_dept_name+"&temp_EDI_num="+temp_EDI_num;
+
 		$.ajax({
 			type : "POST",
 			data : param,
-			url : 'writeTempEDI.do',
+			url : 'writeTempUpdate.do',
 			dataType : "json",
 			success : function(args) {
 				alert('임시저장되었습니다');
@@ -70,11 +88,20 @@
 			error : function(e) {
 				alert('내용을 입력하세요');
 			}
-		}); 
+		});
 
 	}
+	
 
 	$(document).ready(function() {
+
+		
+				
+				
+			
+		
+		
+		
 		$('#approval_mem').hide();
 
 		$('#sign_form').mouseenter(function() {
@@ -119,6 +146,8 @@
 		}
 
 	}
+	
+	
 </script>
 
 <title>문서 작성</title>
@@ -278,6 +307,9 @@ textarea {
 #temp_save {
 	width: 61px;
 }
+#submitsubmit{
+margin-right: 3px;
+}
 </style>
 
 <script language="javascript">
@@ -289,8 +321,8 @@ textarea {
 
 
 </head>
-<body>
-	<form action="writeEDI.do" method="post" enctype="multipart/form-data">
+<body >
+	<form action="tempwriteEDI.do" method="post" enctype="multipart/form-data" onsubmit="return check_invaild()">
 		<div class="EDI_write_form">
 			<h2>전자 문서 작성</h2>
 
@@ -304,20 +336,21 @@ textarea {
 				<table>
 					<tr>
 						<td style="width: 70px;">작 성 일 :</td>
-						<td>&nbsp;&nbsp;${write_date}</td>
+						<td>&nbsp;&nbsp;${EDItemp.write_date}</td>
 
 					</tr>
 					<tr>
 						<td style="width: 70px;">문서번호</td>
 						<td>&nbsp; :&nbsp;<input type="text" id="document_num"
-							name="document_num"></td>
+							name="document_num" value="${EDItemp.document_num}"></td>
 
 					</tr>
 
 					<tr>
 						<td style="width: 70px;">수 신 처 :</td>
-						<td><p id="dept_name"></p>&nbsp;&nbsp;<input type="button"
-							class="btn btn-primary" value="선택" onclick="fromtodept()" /></td>
+						<td><p id="dept_name">${EDItemp.send_dept_name}</p>&nbsp;&nbsp;<input
+							type="button" class="btn btn-primary" value="선택"
+							onclick="fromtodept1()" /></td>
 
 					</tr>
 
@@ -350,10 +383,25 @@ textarea {
 					<tr>
 						<td id="sign_form_td_sign2"><p>${com_pos_name}</p>
 							<p>${name}</p></td>
-						<td id="sign_form_td_sign2"><p id="middle_approval_pos">미지정</p>
-							<p id="middle_approval_name"></p></td>
-						<td id="sign_form_td_sign2"><p id="final_approval_pos">미지정</p>
-							<p id="final_approval_name"></p></td>
+						<td id="sign_form_td_sign2"><p id="middle_approval_pos">
+								<c:choose>
+									<c:when test="${not empty EDItemp.mid_mem_pos}">${EDItemp.mid_mem_pos}</c:when>
+									<c:otherwise>미지정</c:otherwise>
+								</c:choose>
+							</p>
+							<p id="middle_approval_name">
+								<c:if test="${not empty EDItemp.mid_mem_name}">	${EDItemp.mid_mem_name}</c:if>
+							</p></td>
+						<td id="sign_form_td_sign2"><p id="final_approval_pos">
+								<c:choose>
+									<c:when test="${not empty EDItemp.fin_mem_pos}">${EDItemp.fin_mem_pos}</c:when>
+									<c:otherwise>미지정</c:otherwise>
+								</c:choose>
+							</p>
+							<p id="final_approval_name">
+
+								<c:if test="${not empty EDItemp.fin_mem_name}">${EDItemp.fin_mem_name}</c:if>
+							</p></td>
 					</tr>
 					<tr>
 						<td id="sign_form_td_sign3"></td>
@@ -371,24 +419,30 @@ textarea {
 				<div class="edi_subject_div">
 					<p class="p_subject">문 서 제 목 :</p>
 					<input type="text" id="edi_subject" name="edi_subject"
-						style="width: 80%;">
+						style="width: 80%;" value="${EDItemp.EDI_Subject}">
 				</div>
 				<div class="edi_contents_div">
 					<p class="p_contents">내용</p>
 					<div class="contents_menubar"></div>
-					<textarea id="textarea_edi" name="textarea_edi"></textarea>
+					<textarea id="textarea_edi" name="textarea_edi">${EDItemp.EDI_TextArea}</textarea>
 				</div>
 			</div>
 
 
 		</div>
-		<input type="hidden" id="mid_mem_num" name="mid_mem_num" value="" />
-		<input type="hidden" id="fin_mem_num" name="fin_mem_num" value="" />
+		<input type="hidden" id="mid_mem_num" name="mid_mem_num"
+			value="${EDItemp.mid_mem_num}" /> <input type="hidden"
+			id="fin_mem_num" name="fin_mem_num" value="${EDItemp.fin_mem_num}" />
 		<input type="hidden" id="send_dept_name" name="send_dept_name"
-			value="" />
+			value="${EDItemp.send_dept_name}" />
+			<input type="hidden" id="temp_EDI_num" name="temp_EDI_num"
+			value="${EDItemp.temp_EDI_num}" />
 		<div class="button_div">
-			<input id='temp_save' class="btn btn-primary" value="임시저장" onclick="return tempsavebutton()">
-			 <input type="submit" class="btn btn-primary" value="등록하기">
+			<input id='temp_save' class="btn btn-primary" value="임시저장"
+				onclick="return tempupdatebutton()"> <input id="submitsubmit" type="submit"
+				class="btn btn-primary" value="등록하기"><input id='temp_save' class="btn btn-primary" value="삭제"
+				onclick="return del_temp()">
+				
 		</div>
 	</form>
 
