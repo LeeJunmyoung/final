@@ -37,19 +37,8 @@
 				$('#mili_date').val('─');
 			}
 
-		})
-	})
-
-	function certi_search() {
-
-		url = "/HoneyComb_2_0/mypage/certi_search";
-
-		window
-				.open(
-						url,
-						"post",
-						"toolbar=no, left=200, top=100, width=700, height=400, directories=no, status=yes, scrollbar=yes, menubar=no");
-	}
+		});
+	});
 
 	function school_che() {
 		if (!document.school_submit.school_name.value) {

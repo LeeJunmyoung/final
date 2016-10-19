@@ -6,7 +6,6 @@
 	function user_check(pw) {
 
 		var user_passwd = pw; // user passwd
-		alert(user_passwd);
 		var pw1 = document.user.passwd1.value; // 입력 비밀번호
 		var pw2 = document.user.passwd2.value; // 입력 비밀번호 확인 
 
