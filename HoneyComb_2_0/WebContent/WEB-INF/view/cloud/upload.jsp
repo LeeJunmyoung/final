@@ -31,6 +31,14 @@ $(function(){
 	 	    // 추출한 파일명 삽입
 	 	    $(this).siblings('.upload_name').val(filename);
 	 	  });
+	$("input:checkbox").change(function(){
+		if($(this).is(":checked")){
+			$("#secureimg").attr('src',"/HoneyComb_2_0/resources/images/cloud_img/secured.png");
+		}else{
+			$("#secureimg").attr('src',"/HoneyComb_2_0/resources/images/cloud_img/unlock.jpg");
+		};
+		
+	});
 });
 </script>
 <link rel="stylesheet" href="/HoneyComb_2_0/resources/css/cloud.css">
@@ -51,11 +59,17 @@ $(function(){
 		</div>
 		
 		<c:if test="${com_pos_num < 3}">
-			보안설정<input type="checkbox" name="security">
+			<div class="security">
+			<input type="checkbox" name="security"id="security">
+				<label for="security">
+					<img src="/HoneyComb_2_0/resources/images/cloud_img/unlock.jpg" id="secureimg">
+					보안설정
+				</label>
+			</div>
 		</c:if>
 		
-		<input type="submit" class="basicButton" id="submit" value="업로드" disabled="disabled">
-		<p id="dupli"/>
+		<input type="submit" class="basicButton" id="submit" value="업로드" disabled="disabled" style="margin-left:40% ">
+		<div class="duplitext"><p id="dupli"/></div>
 	
 	</form>
 	

@@ -11,9 +11,12 @@
 .basicButton:HOVER {
 	background-color:#000080;
 }
+.basicButton:DISABLED {
+	background-color:#e3e4ff;
+}
 input[type=checkbox]{
 display: none;
-}   
+}  
 div.goupper{ 
 	
 }
@@ -71,6 +74,52 @@ div.contextBox>div:HOVER{
 div.contextBox>div:DISABLED{
 	background-color: black;
 }
-div.upload_hidden{
-	
+.upload_hidden{
+	position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+.choosefile{
+	text-align:center;
+display: inline-block;
+color:black;
+width:70px;
+height: 25px;
+background-color: #F8F8F8 ;	
+border: 1px solid silver;
+cursor:pointer;
+margin: -5px;
+}
+.choosefile:HOVER {
+background-color: silver;
+}
+.upload_name{
+	margin-top:30%;
+	margin-left:20%;
+	height: 21px;
+	display: inline-block;
+}
+div .file_upload *{
+	align: center;
+}
+
+div.security{
+	margin: 10px;
+	font-size:smaller;
+	text-align: center;
+}
+.security img{
+	width: 15px;
+	height: 15px;
+}
+input #submit{
+	margin-left: 30%;
+}
+div.duplitext{
+	margin-left: 10%
 }
