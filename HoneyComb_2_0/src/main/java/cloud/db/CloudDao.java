@@ -32,12 +32,15 @@ public class CloudDao extends SqlSessionDaoSupport {
 		getSqlSession().insert("cloud.upload", info);
 		
 		// promgr file_num add
-		String promgr_num = String.valueOf(info.getPromgr_num());
-		setFileNum(promgr_num);
+		if(info.getFolder()!= ""){
+			if(info.getPromgr_num() > 0){
+			String promgr_num = String.valueOf(info.getPromgr_num());
+			setFileNum(promgr_num);
+			}
+		}
 	}
 
 	private void setFileNum(String promgr_num) {
-		
 		String new_file_num = getSqlSession().selectList("promgr.new_file_num", promgr_num).get(0).toString();
 		
 		PromgrDataBean promgr = getSqlSession().selectOne("promgr.get_promgr", promgr_num);
@@ -115,7 +118,6 @@ public class CloudDao extends SqlSessionDaoSupport {
 		map.put("promgr_num", promgr_num);
 		map.put("item", folder);
 		String duplick = getSqlSession().selectOne("cloud.dupliCk", map);
-		System.out.println("dao.duplick::" + duplick);
 		return duplick;
 	}
 
@@ -138,5 +140,10 @@ public class CloudDao extends SqlSessionDaoSupport {
 		map.put("file_name", file_name);
 		getSqlSession().update("cloud.changeFileName", map);
 		return i;
+	}
+	
+	public String getPromgr_folder(int promgr_num){
+		String folder = getSqlSession().selectOne("cloud.find_promgr_folder", promgr_num);
+		return folder;
 	}
 }

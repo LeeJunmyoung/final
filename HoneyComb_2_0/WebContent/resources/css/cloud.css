@@ -57,3 +57,17 @@ div.itemFrame{
 div.button_Header{
 	margin-bottom: 15px;
 }
+div.contextBox{
+	background-color: white;
+	border: 2px solid #F8F8F8;
+}
+div.contextBox>div{
+	border-bottom: 1px solid #F8F8F8;
+	cursor: pointer;
+}
+div.contextBox>div:HOVER{
+	background-color: #F8F8F8;
+}
+div.contextBox>div:DISABLED{
+	background-color: black;
+}

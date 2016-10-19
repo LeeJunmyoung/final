@@ -56,19 +56,16 @@ public class CloudMainController implements ApplicationContextAware{
 
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
-	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,@RequestParam(required = false)String folder,  HttpServletRequest request, String security, @RequestParam(required = false,defaultValue = "0")int promgr_num, @RequestParam(value = "promgr_name", defaultValue = "")String promgr_name){
+	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,@RequestParam(required = false, value="folder")String folder,  HttpServletRequest request, String security, @RequestParam(required = false,defaultValue = "0")int promgr_num, @RequestParam(value = "promgr_name", defaultValue = "")String promgr_name){
 		int com_pos_num = (security != null)?0:1;
 		folder = (folder==null)?"":folder;
 		
-		System.out.println("controllerFoldeR::"+folder);
-		System.out.println("controllerpromgr_num::"+promgr_num);
 	/*	if(promgr_num == 0){
 			return null;
 		}*/
 		if(promgr_num > 0 ){
 			folder = "%%"+promgr_name;
 			String promgDupli = dao.promgrDuplick(promgr_num,folder, request);
-			System.out.println("controoler.promgDupli::"+promgDupli);
 			
 			if(promgDupli.equals("0")){
 			makeFolderPro("",folder,request,promgr_num);
@@ -127,7 +124,9 @@ public class CloudMainController implements ApplicationContextAware{
 	/*ajax 로 중복체크*/
 	@RequestMapping(value = "/dupleCk")
 	@ResponseBody
-	public String duplicateCheck(@RequestParam(value="item")String item,@RequestParam(value = "folder", required = false) String folder, HttpServletRequest request){
+	public String duplicateCheck(@RequestParam(value="item")String item,@RequestParam(value = "folder", required = false) String folder,@RequestParam(value = "promgr_num", required = false) int promgr_num, HttpServletRequest request){
+
+		folder = (promgr_num > 0)?dao.getPromgr_folder(promgr_num):folder;
 		
 		folder = (folder == "")? null:folder;
 		int com_num = (int)request.getSession().getAttribute("com_num");
