@@ -36,13 +36,14 @@ public class PromgrCommentModController {
 
 		Timestamp update_time = new Timestamp(System.currentTimeMillis());
 
+//		comment_content = comment_content.replace("\r\n", "<br>");
 		int promgr_update_count = dao.modComment(comment_num, comment_content, update_time);
 
 		ModelAndView mav = new ModelAndView("pro");
 		mav.addObject("promgr_update_count", promgr_update_count);
 
 		return mav;
-		
+
 	}
 
 }

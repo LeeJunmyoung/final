@@ -135,7 +135,7 @@ public class PaystubView extends AbstractPdfView {
 		cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 		table.addCell(cell);
 
-		cell = new Cell(new Paragraph(String.valueOf(""), font));
+		cell = new Cell(new Paragraph(String.valueOf(paystub.getTax_ei()), font));
 		cell.setColspan(2);
 		cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 		cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
@@ -163,7 +163,7 @@ public class PaystubView extends AbstractPdfView {
 		cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 		table.addCell(cell);
 
-		cell = new Cell(new Paragraph(String.valueOf(""), font));
+		cell = new Cell(new Paragraph(String.valueOf(paystub.getTax_li()), font));
 		cell.setColspan(2);
 		cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 		cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
