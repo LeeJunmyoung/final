@@ -14,18 +14,18 @@
 input[type=checkbox]{
 display: none;
 }   
-div.goupper{
+div.goupper{ 
 	
 }
 div.item  img{
 	width: 75px;
 	height: 75px;
-	margin:50px;
+	margin: 25px;
 }
-div.item{
+div.item{	
 	border:3px #b1b3e2 solid;
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	display: inline-block;
 	padding: 10px;
 
@@ -35,6 +35,8 @@ input[type=checkbox]:checked+label div.item{
 }
 
 div.itemInfo input[type=text]{
+	width:150px;
+	text-overflow: ellipsis;
 	text-align:center;
 	margin: auto;
 	border: none;
@@ -47,7 +49,11 @@ li {
 	display :inline;
 }
 div.itemFrame{
+	text-overflow: ellipsis;
 	display :inline;
 	font-size: small;
 	text-align:center;
+}
+div.button_Header{
+	margin-bottom: 15px;
 }
