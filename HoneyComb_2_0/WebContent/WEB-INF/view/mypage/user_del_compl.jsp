@@ -9,7 +9,7 @@
 
 <script>
 	function opener_close() {
-		opener.window.location.href = "/HoneyComb/view/mainPage.jsp";
+		opener.window.location.href = "/HoneyComb_2_0/index.jsp";
 		this.window.close();
 	}
 </script>
@@ -21,6 +21,6 @@ h1 {
 }
 </style>
 <body onload="setTimeout('opener_close()', '3000')">
-<h1 align="center">3초후 메인화면으로 이동합니다</h1>
+	<h1 align="center">3초후 초기화면으로 이동합니다</h1>
 </body>
 </html>

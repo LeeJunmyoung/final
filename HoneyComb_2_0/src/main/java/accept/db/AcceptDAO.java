@@ -14,11 +14,7 @@ public class AcceptDAO extends SqlSessionDaoSupport {
 
 		int com_num = -num;
 		List awaiter_list = getSqlSession().selectList("accept.accept_select", com_num);
-
-		for (int i = 0; i < awaiter_list.size(); i++) {
-			System.out.println(awaiter_list.get(i));
-		}
-
+		
 		return awaiter_list;
 	}
 
