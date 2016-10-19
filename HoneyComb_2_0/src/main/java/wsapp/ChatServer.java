@@ -1,6 +1,6 @@
 
 package wsapp;
-
+//서버입니다.
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.ArrayList;

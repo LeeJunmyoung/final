@@ -290,7 +290,7 @@ textarea {
 
 </head>
 <body>
-	<form action="writeEDI.do" method="post" enctype="multipart/form-data">
+	<form action="writeEDI.do" method="post" enctype="multipart/form-data" onsubmit="return check_invaild()">
 		<div class="EDI_write_form">
 			<h2>전자 문서 작성</h2>
 
