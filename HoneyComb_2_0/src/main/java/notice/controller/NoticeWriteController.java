@@ -35,7 +35,7 @@ public class NoticeWriteController {
 		NoticeDataBean article = new NoticeDataBean();
 
 		article.setNotice_title(request.getParameter("notice_title"));
-		article.setNotice_content(request.getParameter("notice_content"));
+		article.setNotice_content(request.getParameter("notice_content").replace("\r\n","<br>"));
 		article.setNotice_member((String) request.getSession().getAttribute("name"));
 		article.setCom_num((int) request.getSession().getAttribute("com_num"));
 		article.setNotice_date(new Timestamp(System.currentTimeMillis()));
