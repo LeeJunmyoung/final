@@ -58,7 +58,7 @@ $(function(){
 			<input type="file" name="uploadfile" id="uploadFile" class="upload_hidden">
 		</div>
 		
-		<c:if test="${com_pos_num < 3}">
+		<c:if test="${com_pos_num < 4}">
 			<div class="security">
 			<input type="checkbox" name="security"id="security">
 				<label for="security">
