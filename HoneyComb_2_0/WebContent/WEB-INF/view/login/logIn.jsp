@@ -296,7 +296,7 @@ a:hover {
 	</div>
 	<script type="text/javascript">
 		var naver_id_login = new naver_id_login("XxuZWIw4L8tP4C_0BW1_",
-				"http://112.220.63.3:8180/HoneyComb_2_0/login/logIn.do");
+				"http://localhost:8180/HoneyComb_2_0/login/logIn.do");
 		var state = naver_id_login.getUniqState();
 		naver_id_login.setButton("green", 3, 40);
 		naver_id_login.setDomain("/login/naverLogIn");
