@@ -68,7 +68,7 @@ $(function(){
 			</div>
 		</c:if>
 		
-		<input type="submit" class="basicButton" id="submit" value="업로드" disabled="disabled" style="margin-left:40% ">
+		<input type="submit" class="basicButton" id="submit" value="업로드" disabled="disabled" style="margin-left:40%; margin-top: 10px;">
 		<div class="duplitext"><p id="dupli"/></div>
 	
 	</form>

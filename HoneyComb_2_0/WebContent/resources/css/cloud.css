@@ -118,8 +118,32 @@ div.security{
 	height: 15px;
 }
 input #submit{
+	margin-top: 10px;
 	margin-left: 30%;
 }
 div.duplitext{
 	margin-left: 10%
+}
+.delForm{
+	text-align: center;
+}
+table .delTable_upper{
+	text-align: center;
+	border: 0.1px solid white;
+	background: #7276cb;
+	color: white;
+}
+table .delForm{
+	padding: 10px;
+	width: 100px;
+}
+tr.delTable_Lower:nth-child(even){
+	background:	#fcfcfc;
+}
+
+tr.delTable_Lower:nth-child(odd){
+	background:	#f4f4ff;
+}
+td.delForm_lower{
+	text-align: center;
 }
