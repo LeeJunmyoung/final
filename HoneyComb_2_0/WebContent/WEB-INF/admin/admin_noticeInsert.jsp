@@ -193,19 +193,25 @@ h1 {
 <script>
 	function writeSave() {
 
-		if (document.writeform.notice_title.value == "") {
-			alert("제목을 입력하십시요.");
-			document.writeform.notice_title.focus();
+		if (document.writeform.notice_admin_title.value == "") {
+			alert("제목을 입력하십시오");
+			document.writeform.notice_admin_title.focus();
+
 			return false;
 		}
 
-		if (document.writeform.notice_content.value == "") {
-			alert("내용을 입력하십시요.");
-			document.writeform.notice_content.focus();
+		if (document.writeform.notice_admin_content.value == "") {
+			alert("내용을 입력하십시오");
+			document.writeform.notice_admin_content.focus();
+
 			return false;
 		}
-		
-		alert("등록에 성공하셨습니다");
+
+		if (document.writeform.notice_admin_title.value != ""
+				&& document.writeform.notice_admin_content.value != "") {
+			alert("등록되었습니다");
+			return true;
+		}
 	}
 </script>
 
@@ -216,8 +222,9 @@ h1 {
 		<div id="logo_wrapper">
 			<img id="logo_banner" src="/HoneyComb_2_0/resources/img/logo.png"
 				width="80" height="80"
-				onclick="location.href='/HoneyComb_2_0/admin/admin_mainPage'"> <a
-				id="logo_a" href="/HoneyComb_2_0/admin/admin_mainPage"><p id="Honey_comB">HONEYCOMB</p></a>
+				onclick="location.href='/HoneyComb_2_0/admin/admin_mainPage'">
+			<a id="logo_a" href="/HoneyComb_2_0/admin/admin_mainPage"><p
+					id="Honey_comB">HONEYCOMB</p></a>
 		</div>
 	</div>
 
@@ -229,8 +236,7 @@ h1 {
 		</div>
 		<div id='form_div'>
 			<form class="col-sm-10" role="form" method="post" name="writeform"
-				action="/HoneyComb_2_0/admin/admin_notice"
-				onsubmit="return writeSave()">
+				action="/HoneyComb_2_0/admin/admin_notice">
 
 				<div class="form-group">
 					<label for="notice_admin_title">공지제목:</label> <input type="text"
@@ -242,9 +248,9 @@ h1 {
 					<textarea class="form-control" rows="5" id="notice_admin_content"
 						name="notice_admin_content"></textarea>
 				</div>
-				<input type="submit" class="btn btn-primary btn-xs" value="공지작성">
+				<input type="submit" onclick="return writeSave()" class="btn btn-primary btn-xs" value="공지작성">
 				<input type="button" class="btn btn-primary btn-xs" value="back"
-					onclick="history.go(-1)">
+					onclick="javascript:location.href='/HoneyComb_2_0/admin/admin_mainPage'">
 			</form>
 		</div>
 	</div>
