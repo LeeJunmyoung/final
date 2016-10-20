@@ -57,8 +57,8 @@ public class CloudMainController implements ApplicationContextAware{
 		//메인에서 업로드
 	@RequestMapping(value="/upload", method = RequestMethod.POST)
 	public String uploadMain(@RequestParam("uploadfile")MultipartFile uploadfile,@RequestParam(required = false, value="folder")String folder,  HttpServletRequest request, String security, @RequestParam(required = false,defaultValue = "0")int promgr_num, @RequestParam(value = "promgr_name", defaultValue = "")String promgr_name){
-		int com_pos_num = (security != null)?0:1;
-		folder = (folder==null)?"":folder;
+		int com_pos_num = (security != null)?5:6;
+		folder = (folder==null)?"":folder;	
 		
 	/*	if(promgr_num == 0){
 			return null;

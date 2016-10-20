@@ -12,27 +12,53 @@
 <script type="text/javascript" src="/HoneyComb_2_0/resources/script/cloudScript.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
-	if($("input:text").attr("readonly")==false){
-		alert("test");
-	}
+		$("#delete").attr("disabled", true);
+	
+	$('body').click(function(){
+		$("#download").attr("disabled",false);
+		$("input:checkbox[name='selectedFiles']:checked").each(function(){
+			
+			if($("#"+this.value+"ITEM").val() == 'folder'){
+				$("#download").attr("disabled",true)
+			}
+			
+		});
+	});
+
 	$("#download").click(function(){
 		var selectedFiles = new Array();
 		var i =0;
+		var secure=0;
+		if($("input:checkbox[name='selectedFiles']:checked").length >= 5){
+			alert("파일은 쵀대 5개까지 다운로드가 가능합니다.")
+			return false;
+		}
 		$("input:checkbox[name='selectedFiles']:checked").each(function(){
+			if($("#"+this.value+"pos_Num").val() <= '${com_pos_num}'){
+				alert("보안에 의해 파일을 다운로드할 수 없습니다.");
+				secure ++
+			}
+			
 			selectedFiles[i] = this.value;
 			i++
 		});
+		if (secure > 0){return false};
 		$(location).attr('href',"download?selectedFiles="+selectedFiles); 
 		
 	});
 	$("#delete").click(function(){
 		var selectedFiles =  new Array();
 		var i = 0;
+		var secure = 0;
 		$("input:checkbox[name='selectedFiles']:checked").each(function(){
+			if($("#"+this.value+"pos_Num").val() <= '${com_pos_num}'){
+				alert("보안에 의해 파일을 삭제할 수 없습니다.");
+				secure ++
+			}
 			selectedFiles[i] = this.value;
 			i++
 		});
+		if (secure > 0){return false};
 		openDelete(selectedFiles); 
 		
 	});	
@@ -87,11 +113,13 @@
 		<fmt:parseNumber value="${cloudlist.file_size/1024}" integerOnly="true" var="file_size"/>
 		<fmt:formatDate value="${cloudlist.file_date}" pattern="yyyy-MM-dd" var="file_date"/>
 		
-			<li>
+			<li> 
 				<div class="itemFrame">
 					<c:if test="${fn:substring(cloudlist.file_path,0,1)=='$'}">
 						<input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}" >
+						
 						<label for="${cloudlist.file_num}">
+						<input type="hidden" id="${cloudlist.file_num}ITEM" value="folder">
 							<div class="item" ondblclick="changeFolder('${cloudlist.file_path}')">
 								<img src="/HoneyComb_2_0/resources/images/cloud_img/folder.png">
 							</div>
@@ -100,11 +128,13 @@
 					<c:if test="${fn:substring(cloudlist.file_path,0,1)!='$'}">
 						<input type="checkbox" id="${cloudlist.file_num}" name="selectedFiles" value="${cloudlist.file_num}">
 						<label for="${cloudlist.file_num}">
+							<input type="hidden" id="${cloudlist.file_num}ITEM" value="file">
 							<div class="item" >
 							<img src="/HoneyComb_2_0/resources/images/cloud_img/file.png">
 							</div>
 					</c:if>
 					<div class="itemInfo">
+					<input type="hidden" value="${cloudlist.com_pos_num}" id="${cloudlist.file_num}pos_Num">
 						<input type="text" value="${cloudlist.file_name}" readonly="readonly" id="${cloudlist.file_num}"><br>
 						${cloudlist.file_uploader}<br>
 						${file_size} byte<br>

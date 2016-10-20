@@ -1,3 +1,4 @@
+var OriginalFileName = null;
 function duplInit(){
 	$("#dupli").html("");
 	$("#submit").attr("disabled",false);
@@ -85,6 +86,7 @@ function changeFileName(){
 		alert("한개의 파일만 선택하여 주세요");
 		return false;
 	}
+	OriginalFileName = $("input:text[id="+checked.val()+"]").val();
 	$("input:text[id="+checked.val()+"]").removeAttr("readonly").focus();
 }
 function checkChange(){
@@ -98,6 +100,23 @@ function checkChange(){
 function changeFilename(file_num, file_name){
 		var file_num = file_num;
 		var file_name = file_name;
+		var getLastPath = OriginalFileName.lastIndexOf(".");
+		var OriginalExtend = OriginalFileName.substring(getLastPath,OriginalFileName.length);
+		
+		var getLastPath_n = file_name.lastIndexOf(".");
+		var NewExtend = (getLastPath_n == -1)?-1:file_name.substring(getLastPath_n,file_name.length)
+		console.log(NewExtend+","+OriginalExtend);
+		if(NewExtend != OriginalExtend || NewExtend == -1){
+			var result = confirm("확장자가 바뀌면 다운로드시 실행이 안될 수 있습니다. 이름을 바꾸시겠습니까?")
+			if(result){
+				
+			}else{
+				return false;
+			}
+		}
+		
+		
+		
 	$.ajax({
 			type : "POST",
 			url : "/HoneyComb_2_0/cloud/changeName",
@@ -109,6 +128,7 @@ function changeFilename(file_num, file_name){
 				console.log(data);
 				if (data == 0) {
 					$("input:text[id="+file_num+"]").attr("readonly", true);
+					OriginalFileName = null;
 				} else {
 					alert("다른 이름을 선택하여 주세요");
 					$("input:text[id="+file_num+"]").attr("readonly", true);
