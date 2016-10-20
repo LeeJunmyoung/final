@@ -20,11 +20,15 @@ public class Admin_comInsert {
 	public void setDao(AdminDao dao) {
 		this.dao = dao;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public void admincomInsert(@RequestParam int com_num, HttpServletRequest request) {
 		int admincomInsert = dao.admincomInsert(com_num);
 		admincomInsert = dao.admincomDelete(com_num);
 		admincomInsert = dao.adminUpdate(com_num);
+
+		// salary row add
+		dao.setSalaryMember(com_num);
+
 	}
 }

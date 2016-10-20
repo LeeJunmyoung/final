@@ -8,7 +8,8 @@
 		com_aff from temp_com where com_name = #{com_name} </select> -->
 	<!-- complete_com search -->
 
-	<select id="complete_com_search" parameterType="String" resultType="company.db.Company">
+	<select id="complete_com_search" parameterType="String"
+		resultType="company.db.Company">
 		select * from complete_com where com_name like #{com_name}
 	</select>
 
@@ -40,10 +41,12 @@
 		update members set
 		com_num = 0-(#{com_num}), com_name =
 		#{com_name},
-		com_dept_name = #{com_dept_name},
+		com_dept_name =
+		#{com_dept_name},
 		com_dept_num =
 		#{com_dept_num},
-		com_pos_name = #{com_pos_name},
+		com_pos_name =
+		#{com_pos_name},
 		com_pos_num =
 		#{com_pos_num}
 		where mem_num = #{mem_num}

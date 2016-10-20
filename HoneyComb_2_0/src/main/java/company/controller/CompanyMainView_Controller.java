@@ -1,21 +1,16 @@
 package company.controller;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import company.db.CompanyDAO;
 import company.db.MembersDTO;
@@ -105,24 +100,24 @@ public class CompanyMainView_Controller {
 
 	}
 
-	@RequestMapping(value = "/mem_com_update" , method = RequestMethod.POST)
+	@RequestMapping(value = "/mem_com_update", method = RequestMethod.POST)
 	public String mem_Comapny_Submit(@ModelAttribute MembersDTO mem, HttpServletRequest request) {
-		
+
 		int mem_num = (int) request.getSession().getAttribute("mem_num");
-		
+
 		Map dept_map = deptMap();
 		Map pos_map = posMap();
 		String com_dept_name = (String) dept_map.get(mem.getCom_dept_num());
 		String com_pos_name = (String) pos_map.get(mem.getCom_pos_num());
-		
+
 		mem.setMem_num(mem_num);
 		mem.setCom_dept_name(com_dept_name);
 		mem.setCom_pos_name(com_pos_name);
-		
+
 		System.out.println("Members:::" + mem);
-		
+
 		int x = dao.mem_ComData_Update(mem);
-		
+
 		return "wait_accept_company";
 	}
 

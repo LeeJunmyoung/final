@@ -1,6 +1,7 @@
 package admin.db;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -39,7 +40,7 @@ public class AdminDao extends SqlSessionDaoSupport {
 		int admincomDelete = getSqlSession().delete("admincomdelete", com_num);
 		return admincomDelete;
 	}
-	
+
 	public int adminUpdate(int com_num) {
 		int adminUpdate = getSqlSession().update("adminupdate", com_num);
 		return adminUpdate;
@@ -61,4 +62,25 @@ public class AdminDao extends SqlSessionDaoSupport {
 		adminNotice = getSqlSession().selectList("getadminNotice", notice_admin_num);
 		return adminNotice;
 	}
+
+	// salary row add
+	public void setSalaryMember(int com_num) {
+
+		int mem_num = getSqlSession().selectOne("admin.getMem_num", com_num);
+
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+
+		map.put("mem_num", mem_num);
+		map.put("com_num", com_num);
+
+		int x = getSqlSession().insert("admin.setSalary_member", map);
+
+		if (x > 0) {
+			System.out.println("salary member add 성공");
+		} else {
+			System.out.println("salary member add 실패");
+		}
+
+	}
+
 }

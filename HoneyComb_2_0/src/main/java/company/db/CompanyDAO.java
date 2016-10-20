@@ -13,7 +13,7 @@ public class CompanyDAO extends SqlSessionDaoSupport {
 		// temp_com 등록
 
 		int x = getSqlSession().insert("company.temp_com_insert", dto);
-		
+
 		if (x >= 1) {
 			System.out.println("temp_com 등록 성공");
 		} else {
@@ -38,29 +38,29 @@ public class CompanyDAO extends SqlSessionDaoSupport {
 		} else {
 			System.out.println("ceo 등록 실패");
 		}
-		
+
 		return x;
 	}
-	
+
 	public int mem_ComData_Update(MembersDTO dto) {
-		
+
 		int x = getSqlSession().update("company.temp_mem_update", dto);
-		
+
 		if (x >= 1) {
 			System.out.println("members Company 등록 성공");
 		} else {
 			System.out.println("members Company 등록 실패");
 		}
-		
+
 		return x;
 	}
-	
+
 	public List searchCom(String com_name) {
-		
+
 		List search_list = new ArrayList<>();
-		
-		search_list = getSqlSession().selectList("company.complete_com_search", "%"+com_name+"%");
-		
+
+		search_list = getSqlSession().selectList("company.complete_com_search", "%" + com_name + "%");
+
 		return search_list;
 	}
 
