@@ -16,10 +16,8 @@ function specialCharCk(value){
 		return;
 	};
 };
-function dupliCk(item, folder, promgr_num) {
-	var item = item;
-	var folder = folder
-	var promgr_num = promgr_num
+function dupliCk(item, folder, promgr_num){
+	promgr_num = promgr_num ? promgr_num : 0;
 	
 	$.ajax({
 		type : "POST",
@@ -38,6 +36,9 @@ function dupliCk(item, folder, promgr_num) {
 				$("#submit").attr("disabled",true);
 			}
 
+		},
+		error: function(xhr) {
+			console.log(xhr);
 		}
 	});
 };

@@ -175,8 +175,9 @@ function check_check(){
 	var writer = '${edi_info.edi_writer}';
 	var mid_mem_num= '${edi_info.mid_mem_num}';
 	var fin_mem_num= '${edi_info.fin_mem_num}';
+	var com_dept_num '${com_dept_num}';
 
-	if(send_dept_name==my_dept_name||my_mem_num==writer || my_mem_num==mid_mem_num || my_mem_num==fin_mem_num){
+	if(send_dept_name==my_dept_name||my_mem_num==writer || my_mem_num==mid_mem_num || my_mem_num==fin_mem_num||com_pos_num==1||com_dept_num==2||com_dept_num==2){
 		
 			
 		

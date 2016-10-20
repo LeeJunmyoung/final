@@ -27,12 +27,16 @@ $("#folder").keyup(function(){
 <link rel="stylesheet" href="/HoneyComb_2_0/resources/css/cloud.css">
 </head>
 <body>
- 생성할 폴더명을 입력해 주세요
+ <p style="text-align: center">생성할 폴더명을 입력해 주세요<p>
  <form method="post" action="/HoneyComb_2_0/cloud/makeFolder">
+ <div style="text-align: center;">
  	<input type="text" name="item" id="folder">
+ </div>
  	<input type="hidden" name="folder" value="${param.folder}">
- 	<input type="submit" value="확인" id="submit" disabled="disabled">
- 	<p id="dupli"/>
+ 	<div style="text-align: center; margin-top: 10px">
+ 	<input type="submit" class="basicButton" value="확인" id="submit" disabled="disabled">
+ 	</div>
+ 	<p id="dupli" style="text-align: center;"/>
  </form>
  
 </body>

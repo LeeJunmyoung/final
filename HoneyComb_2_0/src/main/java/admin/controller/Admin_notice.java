@@ -28,15 +28,15 @@ public class Admin_notice {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView adminNoticePost( HttpServletRequest request) {
+	public String adminNoticePost( HttpServletRequest request) {
 		System.out.println("post 실행중");
 		AdminNoticeInfo admininfo = new AdminNoticeInfo();
 		admininfo.setNotice_admin_title(request.getParameter("notice_admin_title"));
 		admininfo.setNotice_admin_content(request.getParameter("notice_admin_content"));
 		admininfo.setNotice_admin_date(new Timestamp(System.currentTimeMillis()));
 		int noticelist = dao.adminNoticeInsert(admininfo);
-		List<AdminNoticeInfo> adminNotice = dao.getadminNotice();
-		ModelAndView mav = new ModelAndView("admin_notice", "noticelist", adminNotice);
-		return mav;
+		
+		
+		return "admin_main_page";
 	}
 }

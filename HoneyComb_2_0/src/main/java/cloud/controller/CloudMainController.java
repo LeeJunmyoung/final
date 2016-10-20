@@ -118,14 +118,12 @@ public class CloudMainController implements ApplicationContextAware{
 	@RequestMapping(value = "/makeFolder", method=RequestMethod.GET)
 	public ModelAndView makeFilder(){
 		ModelAndView mav =  new ModelAndView("/makeFolder");
-		
 		return mav;
 	}
 	/*ajax 로 중복체크*/
 	@RequestMapping(value = "/dupleCk")
 	@ResponseBody
 	public String duplicateCheck(@RequestParam(value="item")String item,@RequestParam(value = "folder", required = false) String folder,@RequestParam(value = "promgr_num", required = false) int promgr_num, HttpServletRequest request){
-
 		folder = (promgr_num > 0)?dao.getPromgr_folder(promgr_num):folder;
 		
 		folder = (folder == "")? null:folder;

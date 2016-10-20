@@ -12,6 +12,7 @@
 <script type="text/javascript" src="/HoneyComb_2_0/resources/script/cloudScript.js"></script>
 <script type="text/javascript">
 	$(function(){
+		
 	if($("input:text").attr("readonly")==false){
 		alert("test");
 	}
@@ -36,6 +37,7 @@
 		
 	});	
 	$(document).bind("contextmenu", function(event) { 
+		
 		 event.preventDefault();
 		 checkChange();
 			    $("#contextBox")
@@ -43,8 +45,12 @@
 			    .css({"display":"block", top: event.pageY + "px", left: event.pageX + "px"});	
 		
 	}).bind("click", function(event) {
-		checkChange();
+		/* checkChange(); */
 		$("#contextBox").hide(); 
+		$("#delete").attr("disabled", false);
+		if($("input:checkbox[name='selectedFiles']:checked").length == 0){
+			$("#delete").attr("disabled", true);
+		}
 	});
 	$(document).keypress(function(e){
 		if(e.which == 13){

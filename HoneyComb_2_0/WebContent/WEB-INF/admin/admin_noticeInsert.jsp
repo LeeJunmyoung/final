@@ -204,6 +204,8 @@ h1 {
 			document.writeform.notice_content.focus();
 			return false;
 		}
+		
+		alert("등록에 성공하셨습니다");
 	}
 </script>
 

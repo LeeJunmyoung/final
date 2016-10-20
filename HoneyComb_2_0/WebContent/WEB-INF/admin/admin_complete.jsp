@@ -194,7 +194,7 @@ height: 100%;
 		<div id="back_button_div">
 
 			<input type="button" class="btn btn-primary btn-xs" value="back"
-				id='back_button' onclick="history.go(-1)">
+				id='back_button' onclick="javascript:location.href='admin_mainPage'">
 		</div>
  
 	</form>

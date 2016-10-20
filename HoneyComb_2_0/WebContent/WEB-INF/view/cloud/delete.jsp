@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,26 +21,32 @@ function closeit(){
 </head>
 <body>
 <form action="deletePro">
-	<table>
-	<tr>
-		<td>파일명</td>
-		<td>저장자</td>
-		<td>저장날짜</td>
-		<td>파일크기</td>	
+	<table style="table-layout: auto; margin: auto;">
+	<tr class="delTable_upper">
+		<td class="delForm">파일명</td>
+		<td class="delForm">저장자</td>
+		<td class="delForm">저장날짜</td>
+		<td class="delForm">파일크기</td>	
 	</tr>
 		<c:forEach items="${deleteInfo}" var="info">
-		<input type="hidden" value="${info.file_num}" name="file_num">
-		<tr>
-			<td>${info.file_name}</td>
-			<td>${info.file_uploader}</td>
-			<td>${info.file_date}</td>
-			<td>${info.file_size}</td>
+		<fmt:formatDate value="${info.file_date}" pattern="yyyy-MM-dd" var="file_date"/>
+		<tr class="delTable_Lower">
+			<td style="display: none;"><input type="hidden" value="${info.file_num}" name="file_num"></td>
+			<td class="delForm_lower">${info.file_name}</td>
+			<td class="delForm_lower">${info.file_uploader}</td>
+			<td class="delForm_lower">${file_date}</td>
+			<td class="delForm_lower">${info.file_size}</td>
 		</tr>
+		
 		</c:forEach>
 	</table>
-	위 파일들을 삭제하시겠습니까?
-	<input type="submit" class="basicButton" value="예">
-	<input type="button" class="basicButton" value="취소" onclick="closeit()">
+	<div style="text-align: center;">
+		위 파일들을 삭제하시겠습니까?
+	</div>
+	<div style="text-align: center; margin-top: 10px;">
+		<input type="submit" class="basicButton" value="예">
+		<input type="button" class="basicButton" value="취소" onclick="closeit()">
+	</div>
 </form>
 </body>
 </html>
