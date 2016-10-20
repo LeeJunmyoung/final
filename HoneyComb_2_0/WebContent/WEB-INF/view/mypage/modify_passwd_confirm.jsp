@@ -14,7 +14,6 @@
 	function PW_Check(pw) {
 
 		var passwd = pw;
-		alert(passwd);
 		check_pw = 0;
 		if (document.pwChange.pw.value == "") {
 			alert("비밀번호를 입력하세요");

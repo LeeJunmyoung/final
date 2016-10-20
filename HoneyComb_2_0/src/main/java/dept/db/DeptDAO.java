@@ -111,10 +111,6 @@ public class DeptDAO extends SqlSessionDaoSupport {
 		map.put("com_pos_num", com_pos_num);
 		map.put("com_pos_name", com_pos_name);
 		
-		System.out.println("mem_num ::: " + map.get("mem_num"));
-		System.out.println("com_pos_num ::: " + map.get("com_pos_num"));
-		System.out.println("com_pos_name ::: " + map.get("com_pos_name"));
-		
 		int x = getSqlSession().update("dept.pos_ch", map);
 
 	}
