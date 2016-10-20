@@ -83,7 +83,7 @@ h1 {
 				<c:forEach var="adminlist" items="${adminlist}">
 					<tr>
 						<td align="center" class="title" width="100">사업장명</td>
-						<td align="center" class="title" width="100">주소</td>
+						<td align="center" class="title" width="300">주소</td>
 						<td align="center" class="title" width="100">사업장계열</td>
 						<td align="center" class="title" width="100">전화번호</td>
 					</tr>

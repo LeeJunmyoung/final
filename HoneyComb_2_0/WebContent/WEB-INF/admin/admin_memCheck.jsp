@@ -16,7 +16,7 @@
 	src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
 <style type="text/css">
 #home_banner {
-position:absolute;
+	position: absolute;
 	width: 100%;
 	height: 11%;
 	background: #344d91;
@@ -24,22 +24,22 @@ position:absolute;
 }
 
 #logo_wrapper {
-width:700px;
-position:absolute;
+	width: 700px;
+	position: absolute;
 	left: 250px;
-	z-index:3;
+	z-index: 3;
 }
 
 #logo_banner {
 	display: inline;
-	float:left;
+	float: left;
 	margin: auto;
 	width: 100px;
 	height: 100px;
 }
 
 #Honey_comB {
-position:absolute;
+	position: absolute;
 	display: inline;
 	font-size: 38pt;
 	color: #fff;
@@ -124,7 +124,7 @@ td {
 	height: 89%;
 	background: white;
 	position: absolute;
-	top:11%;
+	top: 11%;
 	left: 250px;
 }
 
@@ -132,27 +132,12 @@ body {
 	background: #e9ebee;
 }
 
-#back_button {
-	position: relative;
-	top: 40px;
-	width: 50px;
-	margin: 0 auto;
-	margin-bottom: 50px;
-}
-
-#back_button_div {
-	width: 60px;
-	margin: auto;
-}
-
 tr {
-	width: 100px;
-	height: 31px;
+	height: 40px;
 }
 
 td {
-	width: 100px;
-	height: 31px;
+	height: 35px;
 }
 
 #h1_tag {
@@ -168,15 +153,7 @@ h1 {
 	text-align: center;
 }
 
-#no_member {
-	width: 680;
-	text-align: center;
-	font-size: 20pt;
-	margin: auto;
-}
-
 #memCheck_table {
-	width: 800px;
 	text-align: center;
 	margin: auto;
 }
@@ -187,6 +164,45 @@ input[type=text] {
 	font-size: 16px;
 	padding-left: 10px;
 	text-align: lift;
+}
+
+#back_button_div {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#button_center {
+	margin: 0 auto;
+	width: 100px;
+}
+
+.button {
+	width: 100px;
+	text-align: center;
+	background-color: #4367b0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	display: block;
+	cursor: pointer;
+	color: #fff;
+	font-size: 15px;
+	padding: 5px 10px;
+	text-decoration: none;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-right: 60px;
+}
+
+.button:hover {
+	background-color: #344d91;
+	color: white;
+}
+
+.button:active {
+	position: relative;
+	top: 1px;
 }
 </style>
 
@@ -245,6 +261,7 @@ function in_focus(){
 			<br> Present Condition
 			<hr>
 		</div>
+		<br> <br>
 		<div id="member_check">
 			<form name="join_company" align="center" method="post"
 				action="/HoneyComb/memCheck/memCheck_ComSearch.mc">
@@ -256,34 +273,35 @@ function in_focus(){
 					<c:if test="${ empty adminlist  }">
 						<tr>
 						<tr colspan="5">
-							<p id='no_member'>회사가 없습니다.</p>
+							<p style="width: 680px;" align="center">등록된 회사가 없습니다</p>
 						</tr>
 					</c:if>
 				<table border='1px' id="memCheck_table">
 					<c:if test="${ !empty adminlist  }">
 						<tr id='visible_tr'>
-							<td width="100" class="title" align="center">Company</td>
-							<td width="250" class="title" align="center">Address</td>
-							<td width="70" class="title" align="center">Affiliation</td>
-							<td width="150" class="title" align="center">PhoneNumber</td>
-							<td width="70" class="title" align="center">Detail</td>
+							<td style="width: 150px;" class="title" align="center">Company</td>
+							<td style="width: 650px;" class="title" align="center">Address</td>
+							<td style="width: 80px;" class="title" align="center">Affiliation</td>
+							<td style="width: 120px;" class="title" align="center">PhoneNumber</td>
+							<td style="width: 100px;" class="title" align="center">Detail</td>
 						</tr>
 						<c:forEach var="adminlist" items="${ adminlist }">
 							<tr id="text" name="${ adminlist.com_name }">
-								<td width="100" align="center">${ adminlist.com_name }</td>
-								<td width="250" align="center">${ adminlist.com_add }</td>
-								<td width="70" align="center">${ adminlist.com_aff }</td>
-								<td width="150" align="center">0${ adminlist.com_phone }</td>
+								<td align="center">${ adminlist.com_name }</td>
+								<td align="center">${ adminlist.com_add }</td>
+								<td align="center">${ adminlist.com_aff }</td>
+								<td align="center">${ adminlist.com_phone }</td>
 								<td><input type="button" class="btn btn-primary btn-xs"
 									value="memberList" onclick="memberList(${ adminlist.com_num })"></td>
 							</tr>
 						</c:forEach>
 					</c:if>
 				</table>
+				<br> <br> <br> <br>
 				<div id="back_button_div">
-
-					<input type="button" class="btn btn-primary btn-xs" value="back"
-						id='back_button' onclick="history.go(-1)">
+					<div id="button_center">
+						<a href="/HoneyComb_2_0/admin/admin_mainPage" class="button">뒤로가기</a>
+					</div>
 				</div>
 			</form>
 		</div>

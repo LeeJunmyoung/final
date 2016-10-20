@@ -76,8 +76,8 @@ public class CompanyMainView_Controller {
 
 		Map<Integer, String> pos_map = new HashMap<Integer, String>();
 
-		pos_map.put(2, "과장");
-		pos_map.put(3, "부장");
+		pos_map.put(2, "부장");
+		pos_map.put(3, "과장");
 		pos_map.put(4, "팀장");
 		pos_map.put(5, "대리");
 		pos_map.put(6, "사원");

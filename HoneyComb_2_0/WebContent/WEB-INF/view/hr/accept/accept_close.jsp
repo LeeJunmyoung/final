@@ -11,18 +11,54 @@
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 <script type="text/javascript">
-function frame_close() {
-	
-			opener.location.reload();
-			window.close();
-		}
-		</script>
+	function close_page() {
+		opener.location.reload();
 
+		window.close();
+	}
+</script>
+<style>
+p {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#div_button {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.button {
+	width: 80px;
+	margin-bottom: 2px;
+	margin-left: 5px;
+	background-color: #4367b0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #fff;
+	font-size: 14px;
+	padding: 5px 10px;
+	text-decoration: none;
+	text-align: center;
+}
+
+.button:hover {
+	background-color: #344d91;
+	color: white;
+}
+</style>
 </head>
-<body>
-	<center>
-		<p>완료되었습니다</p>
-		<input type="button" value="닫기" onclick="frame_close()"  />
-	</center>
+<body style="background: #e9ebee;">
+	<!-- resume 기본정보등록시 -->
+
+	<p>완료되었습니다</p>
+	<br>
+	<div id="div_button">
+		<a href="#" onclick="close_page()" class="button">닫기</a>
+	</div>
+
 </body>
 </html>

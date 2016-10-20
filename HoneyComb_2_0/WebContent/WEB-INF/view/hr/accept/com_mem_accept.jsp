@@ -18,7 +18,7 @@ function approve(num) {
 	.open(
 			url,
 			"post",
-			"toolbar=no, left=400, top=200, width=500, height=150, directories=no, status=yes, scrollbar=yes, menubar=no");
+			"toolbar=no, left=400, top=150, width=350, height=100, directories=no, status=yes, scrollbar=yes, menubar=no");
 }
 
 function refusal(num) {
