@@ -17,7 +17,9 @@
 	$('body').click(function(){
 		$("#download").attr("disabled",false);
 		$("input:checkbox[name='selectedFiles']:checked").each(function(){
-			
+			if($("#"+this.value+"promgr_num").val()>0){
+				$("#delete").attr("disabled",true)
+			}
 			if($("#"+this.value+"ITEM").val() == 'folder'){
 				$("#download").attr("disabled",true)
 			}
@@ -135,6 +137,7 @@
 					</c:if>
 					<div class="itemInfo">
 					<input type="hidden" value="${cloudlist.com_pos_num}" id="${cloudlist.file_num}pos_Num">
+					<input type="hidden" value="${cloudlist.promgr_num}" id="${cloudlist.file_num}promgr_num">
 						<input type="text" value="${cloudlist.file_name}" readonly="readonly" id="${cloudlist.file_num}"><br>
 						${cloudlist.file_uploader}<br>
 						${file_size} byte<br>
