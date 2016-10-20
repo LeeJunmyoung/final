@@ -97,7 +97,7 @@ select {
 					AFFILIATE <select name="com_pos_num">
 						<option value="선택하세요">선택하세요</option>
 						<c:forEach var="pos" items="${ pos_map }">
-							<option value="${ pos.key }">${ pos.value }</option>
+							<option value="${ pos.key }">${ pos.key }_${ pos.value }</option>
 						</c:forEach>
 					</select> <input type="hidden" name="mem_num" value="${ mem_num }" /><input
 						type="submit" value="변경" class="button" />

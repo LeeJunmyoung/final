@@ -91,10 +91,8 @@ public class DeptDAO extends SqlSessionDaoSupport {
 		return career_list;
 	}
 
-	public void dept_ch(int mem_num, int com_dept_num) {
+	public void dept_ch(int mem_num, int com_dept_num, String com_dept_name) {
 		// 부서 변경
-
-		String com_dept_name = getSqlSession().selectOne("dept.dept_name_select", com_dept_num);
 		
 		Map map = new HashMap<>();
 		map.put("mem_num", mem_num);
@@ -105,16 +103,18 @@ public class DeptDAO extends SqlSessionDaoSupport {
 
 	}
 
-	public void pos_ch(int mem_num, int com_pos_num) {
+	public void pos_ch(int mem_num, int com_pos_num, String com_pos_name) {
 		// 직급 변경
-
-		String com_pos_name = getSqlSession().selectOne("dept.pos_name_select", com_pos_num);
 		
 		Map map = new HashMap<>();
 		map.put("mem_num", mem_num);
 		map.put("com_pos_num", com_pos_num);
 		map.put("com_pos_name", com_pos_name);
-
+		
+		System.out.println("mem_num ::: " + map.get("mem_num"));
+		System.out.println("com_pos_num ::: " + map.get("com_pos_num"));
+		System.out.println("com_pos_name ::: " + map.get("com_pos_name"));
+		
 		int x = getSqlSession().update("dept.pos_ch", map);
 
 	}

@@ -271,9 +271,9 @@ function in_focus(){
 				<p>
 					<br> <br>
 					<c:if test="${ empty adminlist  }">
-						<tr>
+					<br> <br>
 						<tr colspan="5">
-							<p style="width: 680px;" align="center">등록된 회사가 없습니다</p>
+							<center><p style="width: 680px; font-size: 20px;">등록된 회사가 없습니다</p></center>
 						</tr>
 					</c:if>
 				<table border='1px' id="memCheck_table">
