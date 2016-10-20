@@ -100,21 +100,23 @@ function checkChange(){
 function changeFilename(file_num, file_name){
 		var file_num = file_num;
 		var file_name = file_name;
-		var getLastPath = OriginalFileName.lastIndexOf(".");
-		var OriginalExtend = OriginalFileName.substring(getLastPath,OriginalFileName.length);
-		
-		var getLastPath_n = file_name.lastIndexOf(".");
-		var NewExtend = (getLastPath_n == -1)?-1:file_name.substring(getLastPath_n,file_name.length)
-		console.log(NewExtend+","+OriginalExtend);
-		if(NewExtend != OriginalExtend || NewExtend == -1){
-			var result = confirm("확장자가 바뀌면 다운로드시 실행이 안될 수 있습니다. 이름을 바꾸시겠습니까?")
-			if(result){
-				
-			}else{
-				return false;
+		if($("#"+file_num+"ITEM").val() != 'folder'){
+
+			var getLastPath = OriginalFileName.lastIndexOf(".");
+			var OriginalExtend = OriginalFileName.substring(getLastPath,OriginalFileName.length);
+			
+			var getLastPath_n = file_name.lastIndexOf(".");
+			var NewExtend = (getLastPath_n == -1)?-1:file_name.substring(getLastPath_n,file_name.length)
+			console.log(NewExtend+","+OriginalExtend);
+			if(NewExtend != OriginalExtend || NewExtend == -1){
+				var result = confirm("확장자가 바뀌면 다운로드시 실행이 안될 수 있습니다. 이름을 바꾸시겠습니까?")
+				if(result){
+					
+				}else{
+					return false;
+				}
 			}
 		}
-		
 		
 		
 	$.ajax({
