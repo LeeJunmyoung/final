@@ -2,7 +2,7 @@
 
 ## 그룹웨어
 
-*기능
+* 기능
 1. 공지
 2. 전자결재
 3. 캘린더(일정 공유)
@@ -13,5 +13,5 @@
 8. 어드민
 9. Oauth
 
-"ref : https://www.youtube.com/watch?v=kXRG81Ab-F0"
+> ref : https://www.youtube.com/watch?v=kXRG81Ab-F0
 
